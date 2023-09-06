@@ -35,6 +35,8 @@ const postUser_1 = (req, res) => {
    }
 }
 
+
+
 const updateUser_1 = (req, res) => {
     const { id } = req.params
     const {name} = req.body
