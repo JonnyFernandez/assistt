@@ -18,8 +18,8 @@ const getAllUser_1 = (req, res) => {
 const User1_ById = (req, res) => {
     const { id } = req.params;
     try {
-        let getById= getUserById_1(id)
-        res.status(200).json(getById)
+        let getById1= getUserById_1(id)
+        res.status(200).json(getById1)
     } catch (error) {
         res.status(400).json({ error: error.message })
     }
