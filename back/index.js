@@ -1,3 +1,4 @@
+const {conn} = require('./src/db')
 const server = require('./src/app')
 require('dotenv').config()
 const port = process.env.PORT || 3001;
@@ -5,4 +6,11 @@ const port = process.env.PORT || 3001;
 
 
 
-server.listen( port, ()=>{ console.log(`server in port: ${port}`); } )
+
+
+conn.sync({ force: true }).then(() => {
+    console.log('conexion con db');
+    server.listen(port, () => { 
+      console.log(`%s listening at ${port}`); // eslint-disable-line no-console
+    });
+  });
