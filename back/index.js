@@ -8,7 +8,7 @@ const port = process.env.PORT || 3001;
 
 
 
-conn.sync({ force: true }).then(() => {
+conn.sync({ alter: true }).then(() => {
     console.log('conexion con db');
     server.listen(port, () => { 
       console.log(`%s listening at ${port}`); // eslint-disable-line no-console
