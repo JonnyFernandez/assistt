@@ -31,9 +31,13 @@ module.exports = (sequelize) => {
         },
         email: {
             type: DataTypes.STRING,
-            allowNull: false,
-            unique: true
+            unique: true,
+            validate: {
+                notEmpty: true,
+                isEmail: true,
+            }
         },
+            
         active: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
@@ -44,9 +48,9 @@ module.exports = (sequelize) => {
             allowNull: false,
             unique: true
         },
-        password:{
-            type : DataTypes.STRING,
-            allowNull :false
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
 
     }, { freezeTableName: true })
