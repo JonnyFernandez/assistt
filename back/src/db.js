@@ -85,14 +85,10 @@ Prod.belongsToMany(Orders, { through: 'ProdOrder' })
 
 
 //------------------------- relacion usuario1 con endidad---------------
-User1.hasMany(Entity, {           //user1
-  foreignKey: "user1Entity",
-  as: "Entity",
-});
+//                                    user1
 
-Entity.belongsTo(User1, {
-  foreignKey: "user1Entity",
-});
+User1.belongsToMany(Entity, { through: 'UserEntity' })
+Entity.belongsToMany(User1, { through: 'UserEntity' })
 //-------------------relacion usuario1 con order------------------------
 User1.hasMany(Orders, {           //user1
   foreignKey: "userOrder",
