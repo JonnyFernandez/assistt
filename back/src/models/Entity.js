@@ -7,11 +7,11 @@ module.exports = (sequelize) => {
       
         name: {
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
             unique: true
         },
       
 
-    }, { freezeTableName: true })
+    }, { timestamps: false, freezeTableName: true })
 };
 

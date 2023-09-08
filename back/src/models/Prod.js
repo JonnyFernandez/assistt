@@ -13,15 +13,25 @@ module.exports = (sequelize) => {
         name: {
             type: DataTypes.STRING,
             allowNull: true,
-            unique: true
+           
         },
         description:{
             type: DataTypes.TEXT,
-            unique: true,
-            allowNull: false
-        }
+            
+            
+        },
+         active: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: true
+        },
+        create_date: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: DataTypes.NOW,
+          },
         
-    }, { freezeTableName: true })
+    }, { timestamps: false, freezeTableName: true })
 };
       
 

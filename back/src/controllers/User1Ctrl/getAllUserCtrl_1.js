@@ -1,58 +1,59 @@
-const {User1, Review, Entity, Orders } = require('../../db')
+const { User1, Review, Entity, Orders } = require('../../db')
 
 
+const getAllUser1 = async () => {
+    const aux = await User1.findAll({
+        include: [
+            {
+                model: Entity,
+                attributes: ["name"],
+                through: {
+                    attributes: [],
+                }
+            },
+            {
 
+                model: Review,
+                as: 'Review1',
+                attributes: ["review"]
+            },
+            {
+                model: Orders,
+                as: 'Orders',
+                attributes: ["codeOrder"]
+            },
+        ],
 
-const getAllUser1 = async() => {
-  const aux = await User1.findAll({
-    include: [
-          {
-              model: Review,
-              as: 'Review1',
-              attributes: ["review"]
-          },
-          {
-              model: Entity,
-              as: 'Entity',
-              attributes: ["name"]
-          },
-          {
-              model: Orders,
-              as: 'Orders',
-              attributes: ["codeOrder"]
-          },
-      ],
-
-})
-  return  aux;
+    })
+    return aux;
 }
 
 
-const getByName1 = async(codeUser) => {
-     const getOne = await User1.findAll({
-      where:{usercode:codeUser},
-      include: [
-        {
-            model: Review,
-            as: 'Review1',
-            attributes: ["review"]
-        },
-        {
-            model: Entity,
-            as: 'Entity',
-            attributes: ["name"]
-        },
-        {
-            model: Orders,
-            as: 'Orders',
-            attributes: ["codeOrder"]
-        },
-    ],
+const getByName1 = async (codeUser) => {
+    const getOne = await User1.findAll({
+        where: { usercode: codeUser },
+        include: [
+            {
+                model: Review,
+                as: 'Review1',
+                attributes: ["review"]
+            },
+            {
+                model: Entity,
+                as: 'Entity',
+                attributes: ["name"]
+            },
+            {
+                model: Orders,
+                as: 'Orders',
+                attributes: ["codeOrder"]
+            },
+        ],
     })
-     return   getOne;
+    return getOne;
 
 
- }
+}
 
 
-module.exports = {getAllUser1, getByName1}
+module.exports = { getAllUser1, getByName1 }

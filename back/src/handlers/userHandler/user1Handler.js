@@ -4,9 +4,9 @@ const createUser1 = require('../../controllers/User1Ctrl/postUserCtrl_1')
 const update1 = require('../../controllers/User1Ctrl/updateUserCtrl_1')
 
 
-const getAllUser_1 = async(req, res) => {
+const getAllUser_1 = async (req, res) => {
     const { codeUser } = req.query;
-    
+
     try {
         let aux1 = codeUser ? await getByName1(codeUser) : await getAllUser1()
         res.status(200).json(aux1)
@@ -26,10 +26,11 @@ const User1_ById = async (req, res) => {
     }
 }
 
-const postUser_1 = async(req, res) => {
-    const { cuit, name, address, email, phone, password } = req.body;
+const postUser_1 = async (req, res) => {
+    const { cuit, name, address, email, phone, password, entity } = req.body;
+   
     try {
-        const newUser1 = await createUser1(cuit, name, address, email, phone, password)
+        const newUser1 = await createUser1(cuit, name, address, email, phone, password, entity)
         res.status(200).json(newUser1)
     } catch (error) {
         res.status(400).json({ error: error.message })
@@ -38,11 +39,11 @@ const postUser_1 = async(req, res) => {
 
 
 
-const updateUser_1 = async(req, res) => {
+const updateUser_1 = async (req, res) => {
     const { id } = req.params
-    const { active } = req.body
+    const { data } = req.body
     try {
-        const UpdateUser1 = await update1(id, active)
+        const UpdateUser1 = await update1(id, data)
         res.status(200).json(UpdateUser1);
     } catch (error) {
         res.status(400).json({ error: error.message })

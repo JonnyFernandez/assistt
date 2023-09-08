@@ -53,6 +53,6 @@ module.exports = (sequelize) => {
             allowNull: false
         }
 
-    }, { freezeTableName: true })
+    }, { timestamps: false, freezeTableName: true })
 };
 
