@@ -7,7 +7,6 @@ module.exports = (sequelize) => {
         review: {
             type: DataTypes.STRING,
             allowNull: true,
-            unique: true
         },
       
 

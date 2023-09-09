@@ -18,7 +18,6 @@ module.exports = (sequelize) => {
         stimate_date: {
             type: DataTypes.STRING,
             allowNull: true,
-            unique: true
         },
         pay:{
             type: DataTypes.ENUM,
