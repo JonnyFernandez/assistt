@@ -5,8 +5,6 @@ const generateCode = require('../../utils/codeGenerator')
 
 
 
-
-
 const createUser1 = async (cuit, name, address, email, phone, password, entity) => {
     let usercode = generateCode()
 

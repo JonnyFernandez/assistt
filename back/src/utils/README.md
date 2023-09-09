@@ -136,3 +136,23 @@
     "data": false
 }
 ```
+### **Creacion de Orden:**
+**Post en la ruta: http://localhost:3001/order**
+```javascript
+{
+    "codeOrder": "020",
+    "stimate_date": "29",
+    "pay": "efectivo",
+    "userId": "39f523e6-8712-470b-8373-fc6700308ef2",
+    "prodId":["1"]
+}
+```
+### **Creacion de Reseña:**
+**Post en la ruta: http://localhost:3001/review**
+```javascript
+{
+  "review": "hola lindo pedido",
+  "userId": "39f523e6-8712-470b-8373-fc6700308ef2",
+  "codeOrder": "1234"
+}
+```
