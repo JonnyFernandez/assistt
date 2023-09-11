@@ -36,6 +36,10 @@ module.exports = (sequelize) => {
         //     type: DataTypes.BOOLEAN,
         //     allowNull: true
         // },
+        // apobado: {
+        //     type: DataTypes.BOOLEAN,
+        //     allowNull: true
+        // },
         // providerCode: {
         //     type: DataTypes.STRING,
         //     allowNull: true
