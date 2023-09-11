@@ -3,7 +3,7 @@ const { Prod } = require('../../db')
 const createProd = async (code, name, description) => {
 
     const findExist = await Prod.findAll({ where: { code: code } })
-    
+
     // if (findExist) throw new Error(`el prod de codigo: "${code}" ya existes`)
 
     await Prod.findOrCreate({ where: { code, name, description } })
@@ -21,7 +21,7 @@ const getProd = async () => {
 
 const update = async (id, active) => {
     let prodX = await Prod.findByPk(id)
-    if(!prodX) throw new Error(`No hay prod con id: ${id} para actualizar`)
+    if (!prodX) throw new Error(`No hay prod con id: ${id} para actualizar`)
     prodX.active = active
     await prodX.save()
 
