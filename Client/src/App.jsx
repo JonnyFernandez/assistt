@@ -1,5 +1,17 @@
 import { Landing, User1, User2, User3, User4, Profile1, Cart, Orders } from "./views"
 import { Route, Routes } from "react-router-dom"
+import axios from "axios";
+axios.defaults.baseURL = "http://localhost:3001";
+
+
+
+
+
+
+
+
+
+
 
 function App() {
 
