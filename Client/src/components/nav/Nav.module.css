@@ -1,0 +1,29 @@
+.navContainer{
+    width: 100%;
+    height: 50px;
+    /* background-color: red; */
+    display: flex;
+    justify-content: space-around;
+}
+
+.logo{
+    font-size: xx-large;
+    text-decoration: none;
+}
+
+.perfil{
+font-size: xx-large;
+text-decoration: none;
+}
+
+
+/* css de Nav1 */
+
+.nav1Container{
+    width: 99%;
+    height: 50px;
+    /* background-color: red; */
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
