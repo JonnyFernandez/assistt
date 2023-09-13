@@ -4,7 +4,7 @@ import s from './User1.module.css'
 import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux'
 import { getProd } from '../../redux/actions'
-
+import Card from "../../components/card/Card"
 
 
 
@@ -14,10 +14,10 @@ const User1 = () => {
   let prod = useSelector(state => state.Product)
 
   useEffect(() => {
-
+    dispatch(getProd())
   }, [])
 
-
+  // console.log(prod);
 
   return (
     <div  >
@@ -28,7 +28,17 @@ const User1 = () => {
 
       <div className={s.bodyContainerUser1}>
         <div className={s.bodyLeft}></div>
-        <div className={s.bodyRight}></div>
+
+        <div className={s.bodyRight}>
+          {
+            prod && prod.map(item => {
+              return (
+                <Card key={item.id} id={item.id} code={item.code} name={item.name} description={item.description} quanty={item.quanty} price={item.price} />
+              )
+            })
+          }
+
+        </div>
 
 
 

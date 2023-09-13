@@ -1,0 +1,21 @@
+.Fav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 869px;
+    background-color: #669bbc;
+}
+
+.subDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.inicio {
+    margin-top: 20px;
+    /* background-color: red; */
+    font-size: xx-large;
+    text-decoration: none;
+    color: white;
+}
