@@ -1,0 +1,52 @@
+.cardContainer {
+    margin-top: 10px;
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: row;
+
+}
+
+
+.card {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-around; */
+    width: 32%;
+    height: auto;
+    width: 100%;
+    border-bottom: 1px solid black;
+    margin-left: 20px;
+}
+
+
+
+.divCode {
+    /* background-color: red; */
+    height: auto;
+    width: 400px;
+}
+
+.divCode1 {
+    height: auto;
+    width: 100px;
+    /* background-color: red; */
+    margin-left: -10px;
+}
+
+.divBotones {
+    background-color: red;
+    position: relative;
+    margin-right: 120px;
+
+}
+
+
+.buttoContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+
+}

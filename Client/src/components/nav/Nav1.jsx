@@ -24,6 +24,12 @@ const Nav1 = () => {
                 </NavLink>
 
             </div>
+            <div>
+                <NavLink to={'/fav'}>
+                    Favoritos
+                </NavLink>
+
+            </div>
 
 
 

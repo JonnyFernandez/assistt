@@ -1,1 +1,5 @@
 export const GET_PROD = "GET_PROD"
+export const ADD_FAV = "ADD_FAV"
+export const REMOVE_FAV = "REMOVE_FAV"
+export const REMOVE_CART = "REMOVE_CART"
+export const ADD_CART = "ADD_CART"

@@ -1,4 +1,5 @@
 const { Prod } = require('../../db')
+const prodBlack = require('../../utils/demo')
 
 const createProd = async (code, name, description) => {
 
@@ -13,9 +14,11 @@ const createProd = async (code, name, description) => {
 
 
 const getProd = async () => {
-    const aux = await Prod.findAll()
-    if (aux.length < 1) throw new Error('No hay prod cargados en la db')
-    return aux
+    // const aux = await Prod.findAll()
+    // if (aux.length < 1) throw new Error('No hay prod cargados en la db')
+    // return aux
+    const prod = prodBlack()
+    return prod
 }
 
 
