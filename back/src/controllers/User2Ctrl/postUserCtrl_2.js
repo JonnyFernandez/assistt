@@ -1,9 +1,13 @@
-const { User2 } = require( '../../db' )
-const bcrypt = require( "bcryptjs" );
-const { generateCode2 } = require( '../../utils/codeGenerator' )
+const { User2 } = require('../../db')
+const bcrypt = require("bcryptjs");
+const { generateCode2 } = require('../../utils/codeGenerator')
 
-const createUser2 = async ( cuit, name, address, email, phone, password ) => {
-    let usercode2 = generateCode2()
+const createUser2 = async (cuit, name, address, email, phone, password) => {
+
+
+    console.log(cuit);
+
+    let usercode = generateCode2() //------------------generador de codigo-----------
 
     name = name.toUpperCase();
     address = address.toUpperCase();
@@ -14,7 +18,7 @@ const createUser2 = async ( cuit, name, address, email, phone, password ) => {
 
     const passwordHash = await bcrypt.hash(password, 10);
 
-    const userData2 = { usercode2, cuit, name, address, email, phone, password: passwordHash};
+    const userData2 = { usercode, cuit, name, address, email, phone, password: passwordHash, };
 
     let creationUser2 = await User2.create(userData2);
     return creationUser2;
