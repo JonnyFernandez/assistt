@@ -196,5 +196,5 @@
  "active": true;
 }
 
-En caso de que no se apruebe seria false, con esto vemos la actividad del revisor que aprueba!! luego pasa a Anita.
+// En caso de que no se apruebe seria false, con esto vemos la actividad del revisor que aprueba!! luego pasa a Anita.
 ```
