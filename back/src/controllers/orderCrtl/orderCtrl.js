@@ -34,7 +34,7 @@ const getOrder = async () => {
             {
                 model: Review,
                 as: 'ReviewGeneral',
-                attributes: ["review"]
+                attributes: ["review", "id"]
             },
 
 

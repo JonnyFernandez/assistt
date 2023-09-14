@@ -149,6 +149,7 @@
 ```
 ### **Creacion de Reseña:**
 **Post en la ruta: http://localhost:3001/review**
+
 ```javascript
 {
   "review": "hola lindo pedido",
@@ -177,5 +178,5 @@
  "active": true; 
 }
 
-En caso de que no se apruebe seria false, con esto vemos la actividad del revisor que aprueba!! luego pasa a Anita.
+// En caso de que no se apruebe seria false, con esto vemos la actividad del revisor que aprueba!! luego pasa a Anita.
 ```
