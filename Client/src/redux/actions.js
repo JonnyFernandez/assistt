@@ -1,4 +1,4 @@
-import { GET_PROD, ADD_FAV, REMOVE_FAV, ADD_CART, REMOVE_CART } from './actionsType'
+import { GET_PROD, ADD_FAV, REMOVE_FAV, ADD_CART, REMOVE_CART, GET_PROFILE } from './actionsType'
 import axios from 'axios'
 
 
@@ -30,3 +30,12 @@ export const addCart = (payload) => {
     return { type: ADD_CART, payload: payload };
 
 };
+
+
+// ----------------------profile------------------
+export const getUserProfile = () => {
+    return async (dispatch) => {
+        let res = await axios(`/user1?codeUser=H5640`)
+        return dispatch({ type: GET_PROFILE, payload: res.data })
+    }
+}

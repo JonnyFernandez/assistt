@@ -4,8 +4,8 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
     // defino el modelo
     sequelize.define('Prod', {
-      
-        code:{
+
+        code: {
             type: DataTypes.STRING,
             unique: true,
             allowNull: false
@@ -13,24 +13,33 @@ module.exports = (sequelize) => {
         name: {
             type: DataTypes.STRING,
             allowNull: true,
-           
+
         },
-        description:{
+        description: {
             type: DataTypes.TEXT,
-            
+
         },
-         active: {
+        active: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
             defaultValue: true
+        },
+        price: {
+            type: DataTypes.DECIMAL(10, 2),
+            allowNull: true,
+            defaultValue: 1
+        },
+        quanty: {
+            type: DataTypes.INTEGER,
+            defaultValue: 1
         },
         create_date: {
             type: DataTypes.DATE,
             allowNull: false,
             defaultValue: DataTypes.NOW,
-          },
-        
+        },
+
     }, { timestamps: false, freezeTableName: true })
 };
-      
+
 

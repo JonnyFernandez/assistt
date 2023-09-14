@@ -24,26 +24,26 @@ module.exports = (sequelize) => {
             values: ['efectivo', 'tarjeta', 'cheque'],
             allowNull: false
         },
-        // monto: {
-        //     type: DataTypes.DECIMAL(10, 2),
-        //     allowNull: true
-        // },
-        // revisor1: {
-        //     type: DataTypes.BOOLEAN,
-        //     allowNull: true
-        // },
-        // revisor2: {
-        //     type: DataTypes.BOOLEAN,
-        //     allowNull: true
-        // },
-        // apobado: {
-        //     type: DataTypes.BOOLEAN,
-        //     allowNull: true
-        // },
-        // providerCode: {
-        //     type: DataTypes.STRING,
-        //     allowNull: true
-        // }
+        monto: {
+            type: DataTypes.DECIMAL(10, 2),
+            allowNull: true
+        },
+        revisor1: {
+            type: DataTypes.BOOLEAN,
+            allowNull: true
+        },
+        revisor2: {
+            type: DataTypes.BOOLEAN,
+            allowNull: true
+        },
+        apobado: {
+            type: DataTypes.BOOLEAN,
+            allowNull: true
+        },
+        providerCode: {
+            type: DataTypes.STRING,
+            allowNull: true
+        }
 
 
 

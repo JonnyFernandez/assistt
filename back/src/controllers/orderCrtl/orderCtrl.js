@@ -1,6 +1,6 @@
 const { User1, Prod, Orders, Review } = require('../../db')
 
-const createOrder = async (codeOrder, stimate_date, pay, userId, prodId ) => {
+const createOrder = async (codeOrder, stimate_date, pay, userId, prodId) => {
     const user = await User1.findByPk(userId);
 
     if (!user) throw new Error(`No existe usuario con este codigo "${userId}"`);
@@ -26,7 +26,7 @@ const getOrder = async () => {
         include: [
             {
                 model: Prod,
-                attributes: ["name"],
+                attributes: ["name", "price", "quanty"],
                 through: {
                     attributes: [],
                 }
@@ -44,4 +44,4 @@ const getOrder = async () => {
     return getOrders;
 }
 
-module.exports = {createOrder, getOrder};
+module.exports = { createOrder, getOrder };
