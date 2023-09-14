@@ -1,4 +1,4 @@
-const { User2, Review } = require( '../../db' )
+const { User2, Review, Orders } = require( '../../db' )
 
 
 const getAllUser2 = async () => {
@@ -8,7 +8,12 @@ const getAllUser2 = async () => {
                 model: Review,
                 as: 'Review2',
                 attributes: [ "review" ]
-            }
+            },
+            {
+                model: Orders,
+                as: 'Orders',
+                attributes: ["codeOrder"]
+            },
         ]
 
     } )
@@ -26,6 +31,11 @@ const getByName2 = async ( codeUser ) => {
                 model: Review,
                 as: 'Review2',
                 attributes: [ "review" ]
+            },
+            {
+                model: Orders,
+                as: 'Orders',
+                attributes: ["codeOrder"]
             },
         ]
     } )
