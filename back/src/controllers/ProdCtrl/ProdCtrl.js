@@ -14,11 +14,11 @@ const createProd = async (code, name, description) => {
 
 
 const getProd = async () => {
-    // const aux = await Prod.findAll()
-    // if (aux.length < 1) throw new Error('No hay prod cargados en la db')
-    // return aux
-    const prod = prodBlack()
-    return prod
+    const aux = await Prod.findAll()
+    if (aux.length < 1) throw new Error('No hay prod cargados en la db')
+    return aux
+    // const prod = prodBlack()
+    // return prod
 }
 
 

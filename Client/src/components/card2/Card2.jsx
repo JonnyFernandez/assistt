@@ -2,11 +2,12 @@ import c from './Card2.module.css'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import { addFav, removeFav, addCart, removeCard } from '../../redux/actions'
-
+import { codeToOrder } from '../../utils/codes'
 
 
 const Card2 = ({ id, code, name, description, quanty, price }) => {
 
+    const OrderCode = codeToOrder()
 
     const dispatch = useDispatch()
 
@@ -15,14 +16,6 @@ const Card2 = ({ id, code, name, description, quanty, price }) => {
 
 
     const [cart, setCart] = useState(false)
-
-    const [input, setInput] = useState({
-        codeOrder: 234,
-        stimate_date: "24-9-1598",
-        pay: "efectivo",
-        userId: "39f523e6-8712-470b-8373-fc6700308ef2",
-        "prodId": ["1"]
-    })
 
 
 

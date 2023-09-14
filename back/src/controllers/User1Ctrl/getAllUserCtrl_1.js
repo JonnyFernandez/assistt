@@ -40,8 +40,10 @@ const getByName1 = async (codeUser) => {
             },
             {
                 model: Entity,
-                as: 'Entity',
-                attributes: ["name"]
+                attributes: ["name"],
+                through: {
+                    attributes: [],
+                }
             },
             {
                 model: Orders,

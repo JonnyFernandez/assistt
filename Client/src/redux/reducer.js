@@ -1,10 +1,38 @@
-import { GET_PROD, ADD_FAV, REMOVE_FAV, ADD_CART, REMOVE_CART } from '../redux/actionsType'
+import { GET_PROD, ADD_FAV, REMOVE_FAV, ADD_CART, REMOVE_CART, GET_PROFILE } from '../redux/actionsType'
 
 const InitialState = {
     Product: [],
     backupProduct: [],
     favorite: [],
-    cart: []
+    cart: [],
+    profile: [{
+        "id": "14848a06-9c73-4c72-9333-0b4d3cc973cd",
+        "usercode": "H5640",
+        "cuit": "20-98388665-5",
+        "name": "JONNY FERNANDEZ",
+        "address": "CORRIENTE",
+        "email": "jonny@hotmail.com",
+        "active": true,
+        "phone": "2215047727",
+        "password": "$2a$10$odgEgXZp9nrUrXcUoer4XeCbsjfQIEciL99nwee1l1e9eFVDklSV.",
+        "Review1": [],
+        "Entities": [
+            {
+                "name": "Laboratorio"
+            },
+            {
+                "name": "Hospital"
+            }
+        ],
+        "Orders": [
+            {
+                "codeOrder": "020"
+            },
+            {
+                "codeOrder": "030"
+            }
+        ]
+    }]
 }
 
 
@@ -39,6 +67,12 @@ const reducer = (state = InitialState, action) => {
             return {
                 ...state,
                 cart: newCart
+            }
+        case GET_PROFILE:
+
+            return {
+                ...state,
+                // profile: action.payload
             }
 
         default: {
