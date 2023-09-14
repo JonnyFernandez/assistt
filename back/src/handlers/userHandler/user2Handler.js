@@ -1,7 +1,7 @@
 const { getAllUser2, getByName2 } = require('../../controllers/User2Ctrl/getAllUserCtrl_2')
 const getUserById_2 = require('../../controllers/User2Ctrl/getUserById_2')
 const update2 = require('../../controllers/User2Ctrl/updateUserCtrl_2')
-const createUser2 = require('../../controllers/user2Ctrl/postUserCtrl_2')
+const createUser2 = require('../../controllers/User2Ctrl/postUserCtrl_2')
 
 const getAllUser_2 = async (req, res) => {
     const { codeUser } = req.query;
@@ -25,7 +25,6 @@ const User2_ById = async (req, res) => {
 
 const postUser_2 = async (req, res) => {
     const { cuit, name, address, email, phone, password } = req.body;
-
 
     try {
         const newUser2 = await createUser2(cuit, name, address, email, phone, password)

@@ -12,7 +12,6 @@ const getAllUser1 = async () => {
                 }
             },
             {
-
                 model: Review,
                 as: 'Review1',
                 attributes: ["review"]

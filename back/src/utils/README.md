@@ -156,3 +156,26 @@
   "codeOrder": "1234"
 }
 ```
+### **Crear usuario 2:**
+**POST en la ruta: http://localhost:3001/user2/**
+
+```javascript
+{
+  "cuit":"2064101864",
+  "name":"jonny",
+  "address": "colon numero 435",
+  "email":"jonnytapia@hotmail.com",
+  "phone":"5571247",
+  "password":"H123"
+}
+```
+### **Modificacion orden desde User 2:**
+**PUT en la ruta: http://localhost:3001/order/1**
+
+```javascript
+{
+ "active": true; 
+}
+
+En caso de que no se apruebe seria false, con esto vemos la actividad del revisor que aprueba!! luego pasa a Anita.
+```

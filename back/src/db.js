@@ -36,7 +36,7 @@ const { Entity, Orders, Prod, Review, User1, User2, User3, User4 } = sequelize.m
 // console.log(sequelize.models);
 
 //--------------------Relaciones----------------------------------
-Orders.hasMany(Review, {           //user1
+Orders.hasMany(Review, {           //TODOS LOS USER
   foreignKey: "ordersReview",
   as: "ReviewGeneral",
 });
@@ -44,7 +44,7 @@ Orders.hasMany(Review, {           //user1
 Review.belongsTo(Orders, {
   foreignKey: "ordersReview",
 });
-
+//---------------------------------------------------------------
 
 //relacion usuario - > reseña
 User1.hasMany(Review, {           //user1
@@ -100,12 +100,22 @@ Review.belongsTo(User4, {
 User1.belongsToMany(Entity, { through: 'UserEntity' })
 Entity.belongsToMany(User1, { through: 'UserEntity' })
 //-------------------relacion usuario1 con order------------------------
+
 User1.hasMany(Orders, {           //user1
   foreignKey: "userOrder",
   as: "Orders",
 });
 
 Orders.belongsTo(User1, {
+  foreignKey: "userOrder",
+});
+//------------------------------------------------------------------
+User2.hasMany(Orders, {           //user2
+  foreignKey: "userOrder",
+  as: "Orders",
+});
+
+Orders.belongsTo(User2, {
   foreignKey: "userOrder",
 });
 
