@@ -1,8 +1,6 @@
 const { User1, Entity } = require('../../db')
 const bcrypt = require("bcryptjs");
-const generateCode = require('../../utils/codeGenerator')
-
-
+const { generateCode } = require('../../utils/codeGenerator')
 
 
 const createUser1 = async (cuit, name, address, email, phone, password, entity) => {
@@ -29,10 +27,7 @@ const createUser1 = async (cuit, name, address, email, phone, password, entity) 
     await aux.addEntity(EntityDB);
 
 
-
-
-
-    
+ 
     return `Usuario ${usercode} creado`
 }
 
