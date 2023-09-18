@@ -17,7 +17,7 @@ module.exports = (sequelize) => {
         },
         cuit: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             unique: true
         },
         name: {
@@ -27,7 +27,7 @@ module.exports = (sequelize) => {
 
         address: {
             type: DataTypes.TEXT,
-            allowNull: false,
+            allowNull: true,
         },
         email: {
             type: DataTypes.STRING,
@@ -41,22 +41,24 @@ module.exports = (sequelize) => {
         },
         phone: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             unique: true
         },
-        password:{
-            type : DataTypes.STRING,
-            allowNull :false
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false
         },
-        cbu:{
-            type : DataTypes.STRING,
-            allowNull :false
+        cbu: {
+            type: DataTypes.STRING,
+            allowNull: true,
+            unique: true
         },
-        alias:{
-            type : DataTypes.STRING,
-            allowNull :false
+        alias: {
+            type: DataTypes.STRING,
+            allowNull: true,
+            unique: true
         }
-       
+
 
     }, { timestamps: false, freezeTableName: true })
 };

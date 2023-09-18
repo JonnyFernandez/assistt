@@ -1,11 +1,13 @@
+const { User3 } = require('../../db')
 
-
-const getAllUser3 = () => {
-    return "hola andy, user 3"
+const getAllUser3 = async () => {
+    const getAll = await User3.findAll()
+    return getAll
 }
 
-const getByName3 = (name) => {
-    return `${name} usuario 3`
+const getByName3 = async (usercode) => {
+    const getByUsercode = await User3.findAll({ where: { usercode } })
+    return getByUsercode
 }
 
 module.exports = {
