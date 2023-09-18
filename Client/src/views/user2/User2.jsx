@@ -1,8 +1,20 @@
-const User2 =()=>{
-    return(
-        <div >
+import Nav from '../../components/nav/Nav'
+import Nav2 from '../../components/nav/Nav2'
 
-            <div>User2</div>
+const User2 = () => {
+    return (
+        <div >
+            <div className='divHeader' >
+                <Nav />
+                <Nav2 />
+
+            </div>
+            <div className='divBody' ></div>
+            <div className='divFooter' ></div>
+
+
+
+
         </div>
     )
 }

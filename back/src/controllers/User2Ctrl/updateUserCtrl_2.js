@@ -15,7 +15,14 @@ const update2 = async (id, active) => {
     // Guarda los cambios en la base de datos
     await updateOrder2.save();
 
-    return "Orden modificada";
+
+    let OrderState = active ? 'Onden en proceso' : 'Orden rechazada'
+
+    return OrderState;
+
+
+
+
   } catch (error) {
     return error.message; // Maneja errores, por ejemplo, si no se encuentra el registro
   }

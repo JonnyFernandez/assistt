@@ -96,7 +96,7 @@
 ];
 ```
 
-### **Desactivar usuario usuario por su id:**
+### **Desactivar usuario por su id:**
 
 **PUT en la ruta: http://localhost:3001/user1/b2f16d61-83f5-424d-b4db-95d309b580ac**
 
@@ -120,7 +120,7 @@
 }
 ```
 
-### **Ver todos los Productos:**
+## **Ver todos los Productos:**
 
 **GET en la ruta: http://localhost:3001/prod/**
 
@@ -198,3 +198,129 @@
 
 // En caso de que no se apruebe seria false, con esto vemos la actividad del revisor que aprueba!! luego pasa a Anita.
 ```
+
+
+### **Modificacion orden desde User 3:**
+
+**PUT en la ruta: http://localhost:3001/user3/order/2**
+
+```javascript
+{
+ "active": true;
+}
+
+```
+
+
+
+### **Creacion User 3:**
+
+**POSTen la ruta: http://localhost:3001/user3**
+
+```javascript
+{
+  "name":"Andy",
+  "email":"jony@hotmail.com",
+  "password":"p123"
+}
+
+```
+
+### **Modificar User 3:**
+
+**PUT la ruta: http://localhost:3001/user3/5de254e9-bc25-411d-a7fa-5db8594fe064**
+
+```javascript
+{
+  "cuit":"24-19555777-5",
+  "address":"Calle 44",
+  "phone":"11 44445555"
+}
+
+```
+
+### **Creacion de review desde User3:**
+
+**Post en la ruta: http://localhost:3001/review**
+
+```javascript
+{
+  "review": "hola lindo pedido",
+  "userId": "39f523e6-8712-470b-8373-fc6700308ef2",
+  "codeOrder": "SbY8h"
+}
+```
+### **Creacion User 4:**
+
+**POSTen la ruta: http://localhost:3001/user4**
+
+```javascript
+{
+  "name":"Andy",
+  "email":"jony@hotmail.com",
+  "password":"p123"
+}
+
+```
+### **Ver todos los User 4:**
+
+**GET en la ruta: http://localhost:3001/user4**
+
+```javascript
+{
+  "name":"Andy",
+  "email":"jony@hotmail.com",
+  "password":"p123"
+}
+
+```
+### **Buscar por usercode User 4:**
+
+**GET en la ruta: http://localhost:3001/user4?usercode=P9234**
+
+```javascript
+{
+  "id": "c162c619-5078-4555-a4fd-99932788be2d",
+  "usercode": "P2328",
+  "cuit": null,
+  "name": "pepe",
+  "address": null,
+  "email": "Ytravolta@gmail.com",
+  "active": true,
+  "phone": null,
+  "password": "123",
+  "cbu": null,
+  "alias": null
+}
+// ejemplo de repuesta
+```
+### **Acrualizar info User 4:**
+
+**PUT en la ruta: http://localhost:3001/user4/b0630e78-0814-41d8-b60f-40a86673e619**
+
+```javascript
+{
+  "cuit":"5555",
+  "address":"Ytravolta@gmail.com",
+  "phone":"555555",
+  "password":"555555",
+  "cbu":"555555",
+  "alias":"555555"
+}
+// ejemplo de repuesta
+```
+
+
+### **Aprobar/rechazar orden desde User 4:**
+
+**PUT en la ruta: http://localhost:3001/order/1**
+
+```javascript
+{
+ "active": true;
+}
+
+// En caso de que no se apruebe seria false, con esto vemos la actividad del revisor que aprueba!! luego pasa a Anita.
+```
+
+
