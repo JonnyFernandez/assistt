@@ -110,14 +110,33 @@ Orders.belongsTo(User1, {
   foreignKey: "userOrder",
 });
 //------------------------------------------------------------------
-User2.hasMany(Orders, {           //user2
-  foreignKey: "userOrder",
-  as: "Orders",
-});
+// User2.hasMany(Orders, {           //user2
+//   foreignKey: "userOrder",
+//   as: "Orders",
+// });
 
-Orders.belongsTo(User2, {
-  foreignKey: "userOrder",
-});
+// Orders.belongsTo(User2, {
+//   foreignKey: "userOrder",
+// });
+
+//---------------------------------USER 3---------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

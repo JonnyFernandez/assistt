@@ -36,7 +36,7 @@ module.exports = (sequelize) => {
             type: DataTypes.BOOLEAN,
             allowNull: true
         },
-        apobado: {
+        aprobado: {
             type: DataTypes.BOOLEAN,
             allowNull: true
         },
