@@ -6,27 +6,32 @@ const Landing =()=>{
     return(
         <div className={h.Landing} >
 
+          <nav className={h.titulonav}>
+          
+            <div className={h.title}>Gestion Compras</div>
+          
+          </nav>
+
           <div className={h.container}>
              
 
          <div className={h.titleContainer}>
-            <div className={h.title}>Assistt-One</div>
+            <div className={h.title}></div> 
          </div>
           
           <div className={h.linkContainer} >
-            <NavLink className={h.link} to="/user1">salud</NavLink>
-            <NavLink className={h.link} to="/user2">revisor</NavLink>
-            <NavLink className={h.link} to="/user3">admin</NavLink>
-            <NavLink className={h.link} to="/user4">proveedor</NavLink>
+            <NavLink className={h.link} to="/user1">Unidad</NavLink>
+            <NavLink className={h.link} to="/user2">Autorizante</NavLink>
+            <NavLink className={h.link} to="/user3">Administrador</NavLink>
+            <NavLink className={h.link} to="/user4">Proveedor</NavLink>
           </div>
 
           </div> 
 
 
-
+        
         </div>
     )
-}
-
+} 
 
 export default Landing

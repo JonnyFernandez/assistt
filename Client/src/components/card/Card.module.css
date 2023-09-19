@@ -21,20 +21,33 @@
 
 
 .divCode {
-    /* background-color: red; */
     height: auto;
     width: 400px;
+}
+.code {
+    height: auto;
+    width: 10px;
+    display: grid;
+    grid-template-columns:  repeat(1, 1fr);
+    column-gap: 2rem;
+    margin-left: 19px;
+    justify-items: center;
+
 }
 
 .divCode1 {
     height: auto;
     width: 100px;
-    /* background-color: red; */
-    margin-left: -10px;
+    /* background-color: rgb(23, 99, 203); */
+    margin-left: -1rem;
+    align-items: center;
+    display: grid;
+    grid-template-columns:  repeat(2,1fr);
+    column-gap: 2rem;
 }
 
 .divBotones {
-    background-color: red;
+    background-color: rgb(25, 2, 2);
     position: relative;
     margin-right: 120px;
 
@@ -48,5 +61,6 @@
     transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
+    margin: auto 2.5rem;
 
 }

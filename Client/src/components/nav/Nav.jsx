@@ -17,7 +17,7 @@ const Nav = () => {
     return (
         <div className={p.navContainer} >
             <NavLink className={p.logo} to={'/'} >
-                ASSISTT
+            <img className={p.logo} to={'/'} src="public/logo3.png" alt="logo" />
             </NavLink>
             <NavLink className={p.perfil} to={'/Profile1'}>
                 {myProf ? myProf[0].name : 'Perfil'}
