@@ -19,11 +19,14 @@
 .profileBodyLeft {
     width: 40%;
     height: 670px;
-    background-color: antiquewhite;
+    margin: auto 0;
+    background-color: whitesmoke;
     display: flex;
     flex-direction: column;
 }
-
+h1 {
+    
+}
 .profileBodyRight {
     width: 60%;
     height: 670px;

@@ -25,9 +25,9 @@ const Profile1 = () => {
                 <div className={p.subDiv}>
                     <NavLink to={'/user1'}>Inicio</NavLink>
                     <NavLink to={'/orders'}>Pedidos</NavLink>
-                    <NavLink to={'/cart'}>Carrito</NavLink>
+                    <NavLink to={'/cart'}>Notificaciones</NavLink>
                     <NavLink to={'/fav'}>Favoritos</NavLink>
-                    <NavLink to={'/'}>Notificaciones</NavLink>
+                    <NavLink to={'/'}>Carrito</NavLink>
                     <NavLink to={'/'}>Salir</NavLink>
 
                 </div>
@@ -48,14 +48,14 @@ const Profile1 = () => {
                 </div> */}
                 <div className={p.profileBodyLeft}>
                     <h1>Nombre: {myProfile[0].name}</h1>
-                    <h2>Cuit: {myProfile[0].cuit}</h2>
-                    <h2>Entidad: </h2>
-                    <h2>Ubicación: {myProfile[0].address}</h2>
-                    <h2>Email: {myProfile[0].email}</h2>
-                    <h2>Historial de Pedidos: {myProfile[0].Orders.length}</h2>
-                    <h2>comentarios: {myProfile[0].Review1.length}</h2>
+                    <h3>Cuit Unidad: {myProfile[0].cuit}</h3>
+                    <h3>Unidad de Negocio: </h3>
+                    <h3>Ubicación: {myProfile[0].address}</h3>
+                    <h3>Email: {myProfile[0].email}</h3>
+                    <h3>Historial de Pedidos: {myProfile[0].Orders.length}</h3>
+                    <h3>Teléfono de Contacto</h3>
+                    <h3>comentarios: {myProfile[0].Review1.length}</h3>                    
                     <p>Lista de los pedidos anteriores realizados por el usuario, incluyendo detalles como la fecha, número de pedido y estado actual de cada pedido.</p>
-                    <h2>Teléfono de Contacto</h2>
                 </div>
 
 
