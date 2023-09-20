@@ -117,6 +117,7 @@
   "code":"M0001",
   "name":"JonnyTapias",
   "description":"una ricura"
+  "supplie_type":"ENUM"
 }
 ```
 

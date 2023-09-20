@@ -24,6 +24,10 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        institution_name: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
 
         address: {
             type: DataTypes.TEXT,
@@ -37,7 +41,7 @@ module.exports = (sequelize) => {
                 isEmail: true,
             }
         },
-            
+
         active: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
