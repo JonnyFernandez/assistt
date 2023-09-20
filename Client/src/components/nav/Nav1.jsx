@@ -18,14 +18,26 @@ const Nav1 = () => {
 
             <div>
                 <NavLink to={'/cart'}>
-                   <a href="#"> Carrito </a>
+                    <a href="#"> Carrito </a>
                 </NavLink>
-                
-            </div>
-
-                          <SearchBar />            
 
             </div>
+            <div>
+                <NavLink to={'/fav'}>
+                    <button>❤️</button>
+                </NavLink>
+
+            </div>
+
+            <SearchBar />
+
+            <a href="">
+                Profile
+            </a>
+
+
+
+        </div>
 
 
     )
