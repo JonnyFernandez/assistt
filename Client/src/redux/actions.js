@@ -33,7 +33,25 @@ export const addCart = (payload) => {
 
 
 // ----------------------profile------------------
-export const getUserProfile = () => {
+export const getUser1 = (user1Code) => {
+    return async (dispatch) => {
+        let res = await axios(`/user1?codeUser=${user1Code}`)
+        return dispatch({ type: GET_PROFILE, payload: res.data })
+    }
+}
+export const getUser2 = () => {
+    return async (dispatch) => {
+        let res = await axios(`/user1?codeUser=H5640`)
+        return dispatch({ type: GET_PROFILE, payload: res.data })
+    }
+}
+export const getUser3 = () => {
+    return async (dispatch) => {
+        let res = await axios(`/user1?codeUser=H5640`)
+        return dispatch({ type: GET_PROFILE, payload: res.data })
+    }
+}
+export const getUser4 = () => {
     return async (dispatch) => {
         let res = await axios(`/user1?codeUser=H5640`)
         return dispatch({ type: GET_PROFILE, payload: res.data })
