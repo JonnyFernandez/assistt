@@ -1,13 +1,13 @@
 const { Prod } = require('../../db')
 const prodBlack = require('../../utils/demo')
 
-const createProd = async (code, name, description) => {
+const createProd = async (code, name, description, supplie_type) => {
 
     const findExist = await Prod.findAll({ where: { code: code } })
 
-    // if (findExist) throw new Error(`el prod de codigo: "${code}" ya existes`)
 
-    await Prod.findOrCreate({ where: { code, name, description } })
+
+    await Prod.findOrCreate({ where: { code, name, description, supplie_type } })
     // console.log(`producto ${name} ingresado`);
     return `producto ${name} ingresado`
 }

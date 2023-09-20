@@ -1,13 +1,13 @@
-const {createProd, getProd, update} = require('../../controllers/ProdCtrl/ProdCtrl')
+const { createProd, getProd, update } = require('../../controllers/ProdCtrl/ProdCtrl')
 
-const postProd = async(req, res) => {
-    const { code, name, description } = req.body;
+const postProd = async (req, res) => {
+    const { code, name, description, supplie_type } = req.body;
     try {
-        const newProd = await createProd(code, name, description)
+        const newProd = await createProd(code, name, description, supplie_type)
         res.status(201).json(newProd)
 
     } catch (error) {
-        res.status(400).json({error: error.message})
+        res.status(400).json({ error: error.message })
     }
 }
 
@@ -16,20 +16,20 @@ const getAllProd = async (req, res) => {
         const Prod = await getProd()
         res.status(201).json(Prod)
     } catch (error) {
-        res.status(400).json({error: error.message})
+        res.status(400).json({ error: error.message })
     }
- }
+}
 
 const updateProd = async (req, res) => {
-    const {id} = req.params;
-    const {active} = req.body
+    const { id } = req.params;
+    const { active } = req.body
     try {
         const aux = await update(id, active)
         res.status(201).json(aux)
     } catch (error) {
-        res.status(400).json({error: error.message})
+        res.status(400).json({ error: error.message })
     }
- }
+}
 
 
 

@@ -19,18 +19,23 @@ module.exports = (sequelize) => {
             type: DataTypes.TEXT,
 
         },
+        supplie_type: {
+            type: DataTypes.ENUM,
+            values: ['almacen', 'libreria', 'medico', 'limpieza', 'otros'],
+            allowNull: false
+        },
         active: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
             defaultValue: true
         },
+        quanty: {
+            type: DataTypes.INTEGER,
+            defaultValue: 1
+        },
         price: {
             type: DataTypes.DECIMAL(10, 2),
             allowNull: true,
-            defaultValue: 1
-        },
-        quanty: {
-            type: DataTypes.INTEGER,
             defaultValue: 1
         },
         create_date: {
