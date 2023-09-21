@@ -1,15 +1,8 @@
 import { Landing, User1, User2, User3, User4, Profile1, Cart, Orders, Fav } from "./views"
 import { Route, Routes } from "react-router-dom"
 import axios from "axios";
+import OrderDetail from "./views/orders/orderDetail";
 axios.defaults.baseURL = "http://localhost:3001";
-
-
-
-
-
-
-
-
 
 
 
@@ -27,6 +20,7 @@ function App() {
         <Route exact path="/Profile1" element={<Profile1 />} />
         <Route exact path="/cart" element={<Cart />} />
         <Route exact path="/orders" element={<Orders />} />
+        <Route exact path="/detail/:id" element={<OrderDetail />} />
         <Route exact path="/fav" element={<Fav />} />
       </Routes>
     </div>

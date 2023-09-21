@@ -1,0 +1,92 @@
+/* User3.module.css */
+
+/* Estilos para el contenedor principal de User3 */
+.user3Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.contenedor1 {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Estilos para la información en el lado izquierdo */
+.bodyLeft {
+    background-color: #e9e3e3; /* Gris claro */
+    border-radius: 5px;
+    margin-right: 10px;
+    padding: 20px;
+    color: #000; /* Texto negro */
+    font-family: Arial, sans-serif; /* Fuente alternativa */
+}
+
+/* Estilos para la información en el lado derecho */
+.bodyRight {
+    background-color: #6e8db2; /* Azul claro */
+    border-radius: 5px;
+    color: #333;
+    padding: 20px;
+    font-family: Arial, sans-serif; /* Fuente alternativa */
+}
+
+.bodyLeft, .bodyRight {
+    width: 48%; /* Distribuye el espacio de manera uniforme */
+    padding: 10px;
+}
+
+/* Estilos para el pie de página */
+.footerUser3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    background-color: #f7f7f7;
+    padding: 0 20px;
+    box-sizing: border-box;
+    border-top: 1px solid #ddd; /* Línea superior */
+}
+
+/* Estilos para los títulos de sección */
+.sectionTitle {
+    font-size: 1.5rem;
+    margin-bottom: 15px; /* Incrementado el margen inferior */
+    color: #333;
+}
+
+.reviewList {
+    list-style: none;
+    padding: 0;
+}
+
+.reviewListItem {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+/* Estilos para los estados */
+.statusApproved {
+    color: #3CB371; /* Cambiado el color del estado aprobado a verde más suave */
+    font-weight: bold; /* Texto en negrita */
+}
+
+.statusRejected {
+    color: #FF4500; /* Cambiado el color del estado rechazado a naranja */
+    font-weight: bold;
+}
+
+.statusPending {
+    color: #FFD700; /* Cambiado el color del estado pendiente a amarillo */
+    font-weight: bold;
+}
+
+.statusInProgress {
+    color: #1E90FF; /* Cambiado el color del estado en proceso a azul */
+    font-weight: bold;
+}
+

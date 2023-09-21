@@ -1,0 +1,125 @@
+/* orderDetail.module.css */
+
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.h1 {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    text-shadow: 2px 2px 2px #333;
+    color: #2a4858; /* Azul oscuro */
+    font-size: 45px;
+    margin: 20px 0;
+}
+
+.contenedor1 {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.bodyLeft, .bodyRight {
+    width: 48%; /* Distribuye el espacio de manera uniforme */
+    padding: 10px;
+}
+
+/* Estilos para la información en el lado izquierdo */
+.bodyLeft {
+    background-color: #e9e3e3; /* Gris claro */
+    border-radius: 5px;
+    margin-right: 10px;
+    color: #000; /* Texto negro */
+    font-family: Arial, sans-serif; /* Fuente alternativa */
+}
+
+/* Estilos para la información en el lado derecho */
+.bodyRight {
+    background-color: #6e8db2; /* Azul claro */
+    border-radius: 5px;
+    color: #333;
+    font-family: Arial, sans-serif; /* Fuente alternativa */
+}
+
+/* Estilos para los divs secundarios dentro de .bodyLeft */
+.bodyLeft > .div {
+    background-color: #d3d3d3; /* Gris claro */
+    border-radius: 5px;
+    color: #ccc;
+    padding: 12px;
+    margin-bottom: 15px; /* Agrega espacio inferior entre los divs */
+    font-family: Arial, sans-serif; /* Fuente alternativa */
+}
+
+
+
+/* Estilos para los títulos dentro de los divs secundarios */
+.bodyLeft h2 {
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 10px;
+    color: #2a4858; /* Azul oscuro */
+}
+
+/* Estilos para el texto dentro de los divs secundarios */
+.bodyLeft p {
+    color: #333;
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.label {
+    font-weight: bold;
+    margin: 10px 0;
+    font-size: 18px;
+    color: #2a4858; /* Azul oscuro */
+}
+
+.p {
+    color: #333;
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.h2 {
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 10px;
+    color: #2a4858; /* Azul oscuro */
+}
+
+.productList {
+    list-style: none;
+    padding: 0;
+}
+
+.productListItem {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.reviewList {
+    list-style: none;
+    padding: 0;
+}
+
+.reviewListItem {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.backLink {
+    text-decoration: none;
+    color: #2a4858; /* Azul oscuro */
+    font-weight: bold;
+    margin-top: 40px;
+    font-size:x-large;
+    display: block;
+}
+
+
