@@ -103,7 +103,7 @@ Entity.belongsToMany(User1, { through: 'UserEntity' })
 
 User1.hasMany(Orders, {           //user1
   foreignKey: "userOrder",
-  as: "Orders",
+  as: "orders",
 });
 
 Orders.belongsTo(User1, {

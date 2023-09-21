@@ -9,9 +9,9 @@ import {
     GET_ORDER,
     CLEAN_DETAIL,
     ORDER_DETAIL,
+    BY_TYPE
 } from './actionsType'
 
-import { GET_PROD, ADD_FAV, REMOVE_FAV, ADD_CART, REMOVE_CART, GET_PROFILE, BY_TYPE } from './actionsType'
 import axios from 'axios'
 
 

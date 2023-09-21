@@ -87,9 +87,27 @@ const createReview = async (review, userId, codeOrder) => {
 };
 
 
-
 const getReview = async () => {
-  const aux = await Review.findAll()
+  const aux = await Review.findAll({
+    include: [
+        {
+          model: User1,
+          attributes: ["name", "usercode"]
+        },
+        {
+          model: User2,
+          attributes: ["name", "usercode"]
+        },
+        {
+            model: User3,
+            attributes: ["name", "usercode"]
+        },
+        {
+          model: User4,
+          attributes: ["name", "usercode"]
+      },
+    ]
+})
 
   return aux
 }
