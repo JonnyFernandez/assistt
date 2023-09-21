@@ -31,9 +31,7 @@ const Nav1 = () => {
 
             <SearchBar />
 
-            <a href="">
-                Profile
-            </a>
+            <NavLink to={'/profile1'} >Perfil</NavLink>
 
 
 

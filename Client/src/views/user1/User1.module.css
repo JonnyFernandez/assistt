@@ -37,6 +37,7 @@ h1 {
     align-items: center;
     padding: 0.5rem 1rem;
     margin-bottom: 0 auto;
+    cursor: pointer;
 }
 
 .entradablog a {
@@ -58,9 +59,9 @@ a {
     text-align: center;
 }
 
-p {
+/* p {
     text-align: center;
-}
+} */
 
 .icono {
     min-width: 100%;
