@@ -8,10 +8,9 @@ import {
     REMOVE_CART,
     GET_PROFILE,
     ORDER_DETAIL,
-    CLEAN_DETAIL
+    CLEAN_DETAIL,
+    BY_TYPE
 } from '../redux/actionsType'
-
-import { GET_PROD, ADD_FAV, REMOVE_FAV, ADD_CART, REMOVE_CART, GET_PROFILE, BY_TYPE } from '../redux/actionsType'
 
 
 const InitialState = {

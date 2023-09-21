@@ -33,8 +33,13 @@
     font-family: Arial, sans-serif; /* Fuente alternativa */
 }
 
-.bodyLeft, .bodyRight {
-    width: 48%; /* Distribuye el espacio de manera uniforme */
+.bodyLeft {
+    width: 30%;
+    padding: 10px;
+}
+
+.bodyRight {
+    width: 70%; /* Distribuye el espacio de manera uniforme */
     padding: 10px;
 }
 

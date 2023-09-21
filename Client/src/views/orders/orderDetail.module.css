@@ -12,14 +12,15 @@
     text-align: center;
     text-shadow: 2px 2px 2px #333;
     color: #2a4858; /* Azul oscuro */
-    font-size: 45px;
+    font-size: 30px;
     margin: 20px 0;
 }
+
 
 .contenedor1 {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 80%;
 }
 
 .bodyLeft, .bodyRight {
@@ -38,7 +39,7 @@
 
 /* Estilos para la información en el lado derecho */
 .bodyRight {
-    background-color: #6e8db2; /* Azul claro */
+    background-color: #6397d7; /* Azul claro */
     border-radius: 5px;
     color: #333;
     font-family: Arial, sans-serif; /* Fuente alternativa */

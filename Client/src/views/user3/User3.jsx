@@ -1,10 +1,12 @@
 
 import style from '../user3/User3.module.css';
-import Nav from '../../components/nav/Nav';
+import Nav from "../../components/nav/Nav"
+import Nav1 from "../../components/nav/Nav1"
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOrders } from '../../redux/actions'; // Importa tu acción
 import { Link } from 'react-router-dom';
+import OrderDetail from '../orders/orderDetail';
 
 
 const User3 = () => {
@@ -22,11 +24,11 @@ const User3 = () => {
     };
 
       
-
   return (
-    <div className={style.user3Container}>
+    <div>
       <Nav />
-      
+      <Nav1 />
+    <div className={style.user3Container}>
       <div className={style.contenedor1}>
         <div className={style.bodyLeft}>
           <h2 >Órdenes de Compra</h2>
@@ -43,32 +45,10 @@ const User3 = () => {
         </div>
         
         <div className={style.bodyRight}>
-
-        <div className={style.providersSection}>
-          <h2 className={style.sectionTitle}>Proveedores</h2>
-          <ul className={style.list}>
-            <li>Proveedor 1</li>
-            <li>Proveedor 2</li>
-          </ul>
-        </div>
-        <div className={style.approvalsSection}>
-          <h2 className={style.sectionTitle}>Aprobaciones Anteriores</h2>
-          <ul className={style.list}>
-            <li>Aprobación 1 - <span className={style.statusApproved}>Aprobada</span></li>
-            <li>Aprobación 2 - <span className={style.statusRejected}>Rechazada</span></li>
-         
-          </ul>
-        </div>
-
-        <div className={style.orderStatusSection}>
-          <h2 className={style.sectionTitle}>Estado de las Órdenes</h2>
-          <ul className={style.list}>
-            <li>Orden 1 - <span className={style.statusInProgress}>En Proceso</span></li>
-            <li>Orden 2 - <span className={style.statusApproved}>Aprobada</span></li>
-        
-          </ul>
-        </div>
+                <OrderDetail />
+            
       </div>
+    </div>
     </div>
     </div>
   );

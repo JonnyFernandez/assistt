@@ -18,7 +18,7 @@ const getAllUser1 = async () => {
             },
             {
                 model: Orders,
-                as: 'Orders',
+                as: 'orders',
                 attributes: ["codeOrder"]
             },
         ],
