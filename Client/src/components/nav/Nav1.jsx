@@ -24,7 +24,7 @@ const Nav1 = () => {
             </div>
             <div>
                 <NavLink to={'/fav'}>
-                    <button>❤️</button>
+                    🤍
                 </NavLink>
 
             </div>
