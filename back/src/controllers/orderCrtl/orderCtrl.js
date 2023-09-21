@@ -44,4 +44,13 @@ const getOrder = async () => {
     return getOrders;
 }
 
-module.exports = { createOrder, getOrder };
+const getIdOrders = async (id) => {
+    
+    let OrderDB = await getOrder()
+
+    let idOrder = OrderDB.find(el => el.id == id)
+
+    return idOrder;
+}
+
+module.exports = { createOrder, getOrder, getIdOrders};

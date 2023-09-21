@@ -121,8 +121,6 @@ Orders.belongsTo(User2, {
 
 
 
-
-
 module.exports = {
   ...sequelize.models,
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
