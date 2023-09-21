@@ -3,9 +3,9 @@ import Nav1 from "../../components/nav/Nav1"
 import s from './User1.module.css'
 import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux'
-import { getProd } from '../../redux/actions'
+import { getProd, prodByType } from '../../redux/actions'
 import Card from "../../components/card/Card"
-import { NavLink } from "react-router-dom"
+// import { NavLink } from "react-router-dom"
 
 
 const User1 = () => {
@@ -13,11 +13,22 @@ const User1 = () => {
   const dispatch = useDispatch()
   let prod = useSelector(state => state.Product)
 
+
+
   useEffect(() => {
     dispatch(getProd())
   }, [])
 
-  // console.log(prod);
+
+  const handlerchange = (e) => {
+    dispatch(prodByType(e.target.value))
+
+  };
+  const handlerRefresh = (e) => {
+    dispatch(getProd())
+
+  };
+
 
   return (
     <div  >
@@ -30,7 +41,7 @@ const User1 = () => {
         <div className={s.bodyLeft}>
           <div className={s.contenedor}>
 
-            <article class={s.entradablog}>
+            <div className={s.entradablog} >
 
               <div className={s.icono2}>
                 <svg className={s.icono} xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-message-2-share" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -42,11 +53,12 @@ const User1 = () => {
                   <path d="M21 21.5v-4.5h-4.5" />
                 </svg>
               </div>
-              {/* <a className={s.textboton} href="#">Ultimo Pedido</a> */}
-              <NavLink to={'/orders'}> Ultimo Pedido </NavLink>
-            </article>
+              {/* <NavLink> Restablecer </NavLink> */}
+              <button onClick={handlerRefresh} value=''>Restablecer</button>
 
-            <article className={s.entradablog}>
+            </div>
+
+            <div className={s.entradablog}  >
               <div className={s.icono2}>
                 <svg className={s.icono} xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-access-point" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -57,10 +69,11 @@ const User1 = () => {
                   <path d="M6.337 17.657a8 8 0 0 1 0 -11.314" />
                 </svg>
               </div>
-              <a href="#">Editar Pedido</a>
-            </article>
+              {/* <a >Editar Pedido</a> */}
+              <button  >Editar Pedido</button>
+            </div>
 
-            <article className={s.entradablog}>
+            <div className={s.entradablog} onClick={handlerchange} value='almacen'>
 
               <div className={s.icono2}>
                 <svg className={s.icono} xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-salad" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -72,9 +85,9 @@ const User1 = () => {
                   <path d="M13 11v-.5a2.5 2.5 0 1 0 -5 0v.5" />
                 </svg>
               </div>
-              <a href="#">Insumos Almacen</a>
-            </article>
-
+              {/* <NavLink>Insumos Almacen</NavLink> */}
+              <button onClick={handlerchange} value='almacen' >Insumos Almacen</button>
+            </div>
 
             <article className={s.entradablog}>
               <div className={s.icono2}>
@@ -84,7 +97,8 @@ const User1 = () => {
                   <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
                 </svg>
               </div>
-              <a href="#">Insumos Libreria</a>
+              {/* <a href="#">Insumos Libreria</a> */}
+              <button onClick={handlerchange} value='libreria'>Insumos Libreria</button>
             </article>
 
             <article className={s.entradablog}>
@@ -97,7 +111,8 @@ const User1 = () => {
                   <path d="M12 12l0 4" />
                 </svg>
               </div>
-              <a href="#">Insumos Medicos</a>
+              {/* <a href="#">Insumos Medicos</a> */}
+              <button onClick={handlerchange} value='medico'>Insumos Medicos</button>
             </article>
 
             <article className={s.entradablog}>
@@ -115,7 +130,26 @@ const User1 = () => {
                   <path d="M20 6a4 4 0 0 0 -.4 -1.8" />
                 </svg>
               </div>
-              <a href="#">Insumos Limpieza</a>
+              {/* <a href="#">Insumos Limpieza</a> */}
+              <button onClick={handlerchange} value='limpieza'>Insumos Limpieza</button>
+            </article>
+            <article className={s.entradablog}>
+              <div className={s.icono2}>
+                <svg className={s.icono} xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-wiper-wash" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M12 20m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                  <path d="M3 11l5.5 5.5a5 5 0 0 1 7 0l5.5 -5.5a12 12 0 0 0 -18 0" />
+                  <path d="M12 20l0 -14" />
+                  <path d="M4 6a4 4 0 0 1 .4 -1.8" />
+                  <path d="M7 2.1a4 4 0 0 1 2 0" />
+                  <path d="M12 6a4 4 0 0 0 -.4 -1.8" />
+                  <path d="M12 6a4 4 0 0 1 .4 -1.8" />
+                  <path d="M15 2.1a4 4 0 0 1 2 0" />
+                  <path d="M20 6a4 4 0 0 0 -.4 -1.8" />
+                </svg>
+              </div>
+              {/* <a href="#">Insumos Limpieza</a> */}
+              <button onClick={handlerchange} value='otros'>Otros</button>
             </article>
           </div>
         </div>

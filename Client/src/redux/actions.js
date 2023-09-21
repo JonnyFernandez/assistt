@@ -1,4 +1,4 @@
-import { GET_PROD, ADD_FAV, REMOVE_FAV, ADD_CART, REMOVE_CART, GET_PROFILE } from './actionsType'
+import { GET_PROD, ADD_FAV, REMOVE_FAV, ADD_CART, REMOVE_CART, GET_PROFILE, BY_TYPE } from './actionsType'
 import axios from 'axios'
 
 
@@ -56,4 +56,9 @@ export const getUser4 = () => {
         let res = await axios(`/user1?codeUser=H5640`)
         return dispatch({ type: GET_PROFILE, payload: res.data })
     }
+}
+
+//------------------------fliter by Sopplies type------------------
+export const prodByType = (payload) => {
+    return { type: BY_TYPE, payload: payload }
 }
