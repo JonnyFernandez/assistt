@@ -1,3 +1,4 @@
+
 import style from '../user3/User3.module.css';
 import Nav from '../../components/nav/Nav';
 import React, { useEffect } from 'react';
@@ -55,7 +56,7 @@ const User3 = () => {
           <ul className={style.list}>
             <li>Aprobación 1 - <span className={style.statusApproved}>Aprobada</span></li>
             <li>Aprobación 2 - <span className={style.statusRejected}>Rechazada</span></li>
-            {/* Agrega más elementos según sea necesario */}
+         
           </ul>
         </div>
 
@@ -64,7 +65,7 @@ const User3 = () => {
           <ul className={style.list}>
             <li>Orden 1 - <span className={style.statusInProgress}>En Proceso</span></li>
             <li>Orden 2 - <span className={style.statusApproved}>Aprobada</span></li>
-            {/* Agrega más información según sea necesario */}
+        
           </ul>
         </div>
       </div>

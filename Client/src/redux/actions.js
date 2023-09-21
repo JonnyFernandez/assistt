@@ -1,3 +1,4 @@
+
 import {
     GET_PROD,
     ADD_FAV,
@@ -9,6 +10,8 @@ import {
     CLEAN_DETAIL,
     ORDER_DETAIL,
 } from './actionsType'
+
+import { GET_PROD, ADD_FAV, REMOVE_FAV, ADD_CART, REMOVE_CART, GET_PROFILE, BY_TYPE } from './actionsType'
 import axios from 'axios'
 
 
@@ -30,27 +33,13 @@ export const getOrders = () => {
     }
 }
 
-// export const getOrderDetail = ( id ) => {
-//     return async ( dispatch ) => {
-//         try {
-//             let response = await axios( `/order/${id}` );
-//             console.log(response.data);
-//             return dispatch( { type: ORDER_DETAIL, payload: response.data } );
-//         } catch ( error ) {
-//             return error.message;
-//         }
-//     };
-// };
-
 export const getOrderDetail = (id) => {
     return async (dispatch) => {
       try {
-        // Asegúrate de que id sea un valor válido (por ejemplo, un número o una cadena)
         if (!id) {
           throw new Error('ID inválido');
         }
-  
-        // Realiza la solicitud axios con el valor de id
+ 
         let response = await axios(`/order/${id}`);
         console.log(response.data);
         return dispatch({ type: ORDER_DETAIL, payload: response.data });
@@ -89,9 +78,41 @@ export const addCart = ( payload ) => {
 
 
 // ----------------------profile------------------
+
 export const getUserProfile = () => {
     return async ( dispatch ) => {
         let res = await axios( `/user1?codeUser=H5640` )
         return dispatch( { type: GET_PROFILE, payload: res.data } )
     }
 }
+
+export const getUser1 = (user1Code) => {
+    return async (dispatch) => {
+        let res = await axios(`/user1?codeUser=${user1Code}`)
+        return dispatch({ type: GET_PROFILE, payload: res.data })
+    }
+}
+export const getUser2 = () => {
+    return async (dispatch) => {
+        let res = await axios(`/user1?codeUser=H5640`)
+        return dispatch({ type: GET_PROFILE, payload: res.data })
+    }
+}
+export const getUser3 = () => {
+    return async (dispatch) => {
+        let res = await axios(`/user1?codeUser=H5640`)
+        return dispatch({ type: GET_PROFILE, payload: res.data })
+    }
+}
+export const getUser4 = () => {
+    return async (dispatch) => {
+        let res = await axios(`/user1?codeUser=H5640`)
+        return dispatch({ type: GET_PROFILE, payload: res.data })
+    }
+}
+
+//------------------------fliter by Sopplies type------------------
+export const prodByType = (payload) => {
+    return { type: BY_TYPE, payload: payload }
+}
+

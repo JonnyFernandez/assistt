@@ -6,32 +6,37 @@ const Nav1 = () => {
     return (
         <div className={p.nav1Container}  >
             <div>
-                Inicio
+                <a> Inicio </a>
             </div>
 
             <div>
                 <NavLink to={'/orders'}>
-                    Pedidos
+                    <a> Pedidos </a>
                 </NavLink>
             </div>
 
 
-            <SearchBar />
-
             <div>
                 <NavLink to={'/cart'}>
-                    Carrito
+                    <a href="#"> Carrito </a>
                 </NavLink>
 
             </div>
             <div>
                 <NavLink to={'/fav'}>
-                    Favoritos
+                    🤍
                 </NavLink>
 
             </div>
 
+            <SearchBar />
+
+            <NavLink to={'/profile1'} >Perfil</NavLink>
+
+
         </div>
+
+
     )
 }
 

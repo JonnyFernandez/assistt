@@ -1,0 +1,102 @@
+/* contienes todo el componente */
+.bodyContainerUser2 {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 600px;
+    /* background-color: rgba(118, 114, 109, 0.63); */
+
+}
+
+/* contiene solo el boby  */
+.body {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    width: 98%;
+    height: 600px;
+    /* background-color: #606c38; */
+}
+
+/* parte izquierda del body */
+.bodyLeft {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    height: 600px;
+    background-color: #d6ccc2;
+}
+
+/* parte derecha del body, la cual contiene dos div */
+.bodyRight {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    height: 600px;
+    background-color: #180d0294;
+}
+
+/* primer div de la boby derecho, donde esta la lista */
+.bodyRightList {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    height: 600px;
+    background-color: aqua;
+}
+
+/* segundo div del boby derecho, dnde esta la info */
+.bodyRightInfo {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 600px;
+    background-color: #33ab53;
+}
+
+/* cabezera del lista */
+.ListHead {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    height: 50px;
+    background-color: bisque;
+}
+
+/* cuerpo de la lista */
+.ListBody {
+    width: 100%;
+    height: 550px;
+    background-color: #118ab2;
+}
+
+/* cabezera de la info */
+.headerInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    height: 50px;
+    background-color: rgba(93, 70, 41, 0.445);
+}
+
+.headerBody {
+    width: 100%;
+    height: 550px;
+    background-color: hsla(195, 77%, 59%, 0.447);
+}
+
+
+
+
+
+
+
+
+
+.divFooter {
+    height: 50px;
+    width: 100%;
+    background-color: #fb8500;
+}
