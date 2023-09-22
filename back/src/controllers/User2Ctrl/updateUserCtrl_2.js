@@ -20,9 +20,6 @@ const update2 = async (id, active) => {
 
     return OrderState;
 
-
-
-
   } catch (error) {
     return error.message; // Maneja errores, por ejemplo, si no se encuentra el registro
   }

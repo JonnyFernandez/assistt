@@ -10,7 +10,9 @@ import {
     CLEAN_DETAIL,
     ORDER_DETAIL,
     BY_TYPE,
-    GET_REVIEWS 
+    GET_REVIEWS,
+    PUT_REVISOR1,
+    PUT_REVISOR2
 } from './actionsType'
 
 import axios from 'axios'
@@ -80,9 +82,9 @@ export const addCart = ( payload ) => {
 
 // ----------------------profile------------------
 
-export const getUserProfile = (userCode) => {
+export const getUserProfile = () => {
     return async ( dispatch ) => {
-        let res = await axios( `/user?codeUser=${userCode}` )
+        let res = await axios( `/user1` )
         return dispatch( { type: GET_PROFILE, payload: res.data } )
     }
 }
@@ -142,9 +144,23 @@ export const getReviews = () => {
   };
   
   
-  
 //------------------------fliter by Sopplies type------------------
 export const prodByType = (payload) => {
     return { type: BY_TYPE, payload: payload }
 }
+
+export const putRevisor2 = (id, dataRevisor2) => {
+  return async (dispatch) => {
+    const { data } = await axios.put(`/user3/order/${id}`, dataRevisor2);
+    return dispatch({ type: PUT_REVISOR2, payload: data });
+  };
+};
+
+export const putRevisor1 = (id, dataRevisor1) => {
+  return async (dispatch) => {
+    const { data } = await axios.put(`/user2/order/${id}`, dataRevisor1);
+    return dispatch({ type: PUT_REVISOR1, payload: data });
+  };
+};
+
 

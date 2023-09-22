@@ -10,6 +10,8 @@ import {
     CLEAN_DETAIL,
     BY_TYPE,
     GET_REVIEWS,
+    PUT_REVISOR2,
+    PUT_REVISOR1
   } from '../redux/actionsType';
   
   const InitialState = {
@@ -19,6 +21,7 @@ import {
     backupProduct: [],
     favorite: [],
     cart: [],
+    allUsers: [],
     reviewsWithUserInfo: [], // Agregamos esta propiedad para almacenar las revisiones con información de usuario
     profile: [
       {
@@ -127,6 +130,17 @@ import {
           ...state,
           Product: typeSupplies,
         };
+        case PUT_REVISOR2: {
+          return {
+            ...state,
+          };
+        }
+        case PUT_REVISOR1: {
+          return {
+            ...state,
+          };
+        }
+     
       default: {
         return {
           ...state,
