@@ -9,7 +9,8 @@ import {
     GET_ORDER,
     CLEAN_DETAIL,
     ORDER_DETAIL,
-    BY_TYPE
+    BY_TYPE,
+    GET_REVIEWS 
 } from './actionsType'
 
 import axios from 'axios'
@@ -79,38 +80,69 @@ export const addCart = ( payload ) => {
 
 // ----------------------profile------------------
 
-export const getUserProfile = () => {
+export const getUserProfile = (userCode) => {
     return async ( dispatch ) => {
-        let res = await axios( `/user1?codeUser=H5640` )
+        let res = await axios( `/user?codeUser=${userCode}` )
         return dispatch( { type: GET_PROFILE, payload: res.data } )
     }
 }
 
-export const getUser1 = (user1Code) => {
-    return async (dispatch) => {
-        let res = await axios(`/user1?codeUser=${user1Code}`)
-        return dispatch({ type: GET_PROFILE, payload: res.data })
-    }
-}
-export const getUser2 = () => {
-    return async (dispatch) => {
-        let res = await axios(`/user1?codeUser=H5640`)
-        return dispatch({ type: GET_PROFILE, payload: res.data })
-    }
-}
-export const getUser3 = () => {
-    return async (dispatch) => {
-        let res = await axios(`/user1?codeUser=H5640`)
-        return dispatch({ type: GET_PROFILE, payload: res.data })
-    }
-}
-export const getUser4 = () => {
-    return async (dispatch) => {
-        let res = await axios(`/user1?codeUser=H5640`)
-        return dispatch({ type: GET_PROFILE, payload: res.data })
-    }
-}
 
+// export const getUser1 = (userCode) => {
+//     return async (dispatch) => {
+//         let res = await axios(`/user1?codeUser=${userCode}`)
+//         return dispatch({ type: GET_PROFILE, payload: res.data })
+//     }
+// }
+// export const getUser2 = (userCode) => {
+//     return async (dispatch) => {
+//         let res = await axios(`/user1?codeUser=${userCode}`)
+//         return dispatch({ type: GET_PROFILE, payload: res.data })
+//     }
+// }
+// export const getUser3 = (userCode) => {
+//     return async (dispatch) => {
+//         let res = await axios(`/user1?codeUser=${userCode}`)
+//         return dispatch({ type: GET_PROFILE, payload: res.data })
+//     }
+// }
+// export const getUser4 = (userCode) => {
+//     return async (dispatch) => {
+//         let res = await axios(`/user1?codeUser=${userCode}`)
+//         return dispatch({ type: GET_PROFILE, payload: res.data })
+//     }
+// }
+
+
+
+//------------------------REVIEW-----------------------------------
+
+export const getReviews = () => {
+    return async function (dispatch) {
+      try {
+        const res = await axios.get("/review");
+  
+        // Mapea las revisiones para agregar la información del usuario a cada una
+        const reviewsWithUserInfo = await Promise.all(
+          res.data.map(async (review) => {
+            // Suponemos que `userReviewId` es el ID del usuario que hizo la revisión
+            const user = await getUserInfo(review.userReviewId); // Debes implementar esta función
+            return {
+              ...review,
+              user, // Agregamos la información del usuario a la revisión
+            };
+          })
+        );
+  
+        dispatch({ type: GET_REVIEWS, payload: reviewsWithUserInfo });
+      } catch (error) {
+        console.error("Error al obtener las reseñas:", error);
+      }
+    };
+  };
+  
+  
+  
 //------------------------fliter by Sopplies type------------------
 export const prodByType = (payload) => {
     return { type: BY_TYPE, payload: payload }

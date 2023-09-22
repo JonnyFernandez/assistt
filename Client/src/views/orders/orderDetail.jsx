@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { getOrderDetail, cleanDetail } from "../../redux/actions";
-import { useParams, Link, NavLink } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import style from "./orderDetail.module.css";
 
 
@@ -66,6 +66,8 @@ const OrderDetail = () => {
                         {ReviewGeneral.map((review, index) => (
                             <li key={index} className={style.reviewListItem}>
                                 {review.review}
+                                <p className={style.p}>Usuario: {review.user?.name}</p>
+                                <p className={style.p}>Código de usuario: {review.user?.usercode}</p>
                             </li>
                         ))}
                     </ul>
