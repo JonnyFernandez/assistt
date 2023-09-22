@@ -9,9 +9,7 @@ const Nav = () => {
     const dispatch = useDispatch()
     const myProf = useSelector((state) => state.profile)
 
-    useEffect(() => {
-        dispatch(getUserProfile())
-    }, [dispatch])
+
 
 
     return (
