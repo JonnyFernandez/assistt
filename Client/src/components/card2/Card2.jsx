@@ -1,11 +1,12 @@
 import c from './Card2.module.css'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { addFav, removeFav, addCart, removeCard } from '../../redux/actions'
+import { addCart, removeCard, quantity } from '../../redux/actions'
 import { codeToOrder } from '../../utils/codes'
 
 
-const Card2 = ({ id, code, name, description, quanty, price }) => {
+
+const Card2 = ({ id, code, name, description, price }) => {
 
     const OrderCode = codeToOrder()
 
@@ -17,6 +18,13 @@ const Card2 = ({ id, code, name, description, quanty, price }) => {
 
     const [cart, setCart] = useState(false)
 
+    const [inputs, setInputs] = useState({
+        quanty: '1'
+
+    })
+
+    // console.log(inputs);
+
 
 
     useEffect(() => {
@@ -27,7 +35,23 @@ const Card2 = ({ id, code, name, description, quanty, price }) => {
         });
     }, [myList]);
 
+    const handleChange = (e) => {
+        let property = e.target.name;
+        let value = e.target.value
 
+        setInputs({
+            ...inputs,
+            [property]: value
+        })
+
+    }
+
+    const sendUpdate = () => {
+        if (!inputs.quanty) return alert('poner cantidad')
+        dispatch(quantity(id, inputs))
+
+        setInputs({ "quanty": '' })
+    }
 
 
     const handleCart = () => {
@@ -36,13 +60,13 @@ const Card2 = ({ id, code, name, description, quanty, price }) => {
             dispatch(removeCard(id))
         } else {
             setCart(true)
-            dispatch(addCart({ id, code, name, description, quanty, price }))
+            dispatch(addCart({ id, code, name, description, price }))
         }
     }
 
 
 
-    // console.log(myFav);
+
 
     return (
         <div className={c.cardContainer} >
@@ -69,7 +93,10 @@ const Card2 = ({ id, code, name, description, quanty, price }) => {
             <div className={c.divBotones}>
                 <div className={c.buttoContainer}>
 
-                    <input type="number" min={1} name="" />
+                    <input type="number" min={1} onChange={handleChange} name="quanty" value={inputs.quanty} placeholder='cantidad' />
+                    <button onClick={() => sendUpdate()}>agregar</button>
+
+
 
                     {cart
                         ? (<button className={c.classCart1} onClick={handleCart}> quitar </button>)

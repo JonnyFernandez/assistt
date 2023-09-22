@@ -12,14 +12,16 @@ const Cart = () => {
     const myCart = useSelector(state => state.cart)
     const codeOrder = codeToOrder()
 
+    const usersID = myCart.map(item => item.id)
+    console.log(usersID);
 
-    // const [input, setInput] = useState({
-    //     codeOrder:'',
-    //     stimate_date: "24-9-1598",
-    //     pay: "efectivo",
-    //     userId: "39f523e6-8712-470b-8373-fc6700308ef2",
-    //     prodId: ["1"]
-    // })
+    const [input, setInput] = useState({
+        codeOrder: '',
+        stimate_date: "",
+        pay: "efectivo",
+        userId: "",
+        prodId: []
+    })
 
     // const HandlerInput =()=>{
 
@@ -34,8 +36,6 @@ const Cart = () => {
                 <div>
                     <Nav />
                 </div>
-
-
                 <div className={L.subDiv}>
 
                     <NavLink to={'/user1'} className={L.inicio} >Inicio</NavLink>
@@ -45,12 +45,15 @@ const Cart = () => {
                     <NavLink to={'/fav'} className={L.inicio} >Favoritos</NavLink>
 
                 </div>
-
             </div>
+
+
+
 
             <div className={L.divBody}>
                 <div className={L.divBodyLeft}>
-                    <h1><strong># Pedido: </strong></h1>
+                    <h1><strong>Pedido: {codeOrder} </strong></h1>
+                    {/* las card renderizadas */}
                     {
                         myCart && myCart.map(item => {
                             return (
@@ -62,12 +65,14 @@ const Cart = () => {
 
 
                 <div className={L.divBodyRight}>
-                    <label htmlFor="">Codigo de Orden</label>
-                    <input type="text" placeholder='codeOrder' />
-                    <label htmlFor="">Tipo de pago</label>
-                    <input type="text" placeholder='tipo de pago' />
-                    <label htmlFor="">UserID</label>
-                    <input type="text" placeholder='User ID' />
+
+
+                    <label htmlFor="">Codigo de Orden: {codeOrder} </label>
+                    {/* <input type="text" placeholder='codeOrder' /> */}
+                    {/* <label htmlFor="">Tipo de pago</label>
+                    <input type="text" placeholder='tipo de pago' /> */}
+                    {/* <label htmlFor="">UserID</label>
+                    <input type="text" placeholder='User ID' /> */}
                     <label htmlFor="">Fecha estimada</label>
                     <input type="date" />
                     <label htmlFor="">Comentario</label>
