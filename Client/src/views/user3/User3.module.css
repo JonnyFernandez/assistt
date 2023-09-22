@@ -20,8 +20,9 @@
     border-radius: 5px;
     margin-right: 10px;
     padding: 20px;
-    color: #000; /* Texto negro */
-    font-family: Arial, sans-serif; /* Fuente alternativa */
+    font-size: 12px;
+    color: #0d066d; /* Texto negro */
+    /* Fuente alternativa */
 }
 
 /* Estilos para la información en el lado derecho */
@@ -74,24 +75,17 @@
     margin: 10px 0;
 }
 
-/* Estilos para los estados */
-.statusApproved {
-    color: #3CB371; /* Cambiado el color del estado aprobado a verde más suave */
-    font-weight: bold; /* Texto en negrita */
+.customLink {
+    text-decoration: none;
+    color: #4617c8;
+    font-weight: bold;
+    transition: color 0.3s ease; /* Agregar una transición suave de color */
 }
 
-.statusRejected {
-    color: #FF4500; /* Cambiado el color del estado rechazado a naranja */
-    font-weight: bold;
+.customLink:hover {
+    color: #ed5924; /* Cambiar el color al pasar el cursor (por ejemplo, a naranja) */
+    /* Otros cambios de estilo que desees aplicar al pasar el cursor */
 }
 
-.statusPending {
-    color: #FFD700; /* Cambiado el color del estado pendiente a amarillo */
-    font-weight: bold;
-}
 
-.statusInProgress {
-    color: #1E90FF; /* Cambiado el color del estado en proceso a azul */
-    font-weight: bold;
-}
 

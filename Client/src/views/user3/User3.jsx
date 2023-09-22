@@ -1,7 +1,7 @@
 
 import style from '../user3/User3.module.css';
 import Nav from "../../components/nav/Nav"
-import Nav1 from "../../components/nav/Nav1"
+import Nav3 from "../../components/nav/Nav3"
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOrders } from '../../redux/actions'; // Importa tu acción
@@ -18,16 +18,11 @@ const User3 = () => {
         dispatch(getOrders());
       }, [dispatch]);
 
-      const getUserNameById = (userId) => {
-        const user = user.find((user) => user.id === userId);
-        return user ? user.name : ""; // Si se encuentra el usuario, devuelve su nombre; de lo contrario, devuelve una cadena vacía.
-    };
-
-      
+    
   return (
     <div>
       <Nav />
-      <Nav1 />
+      <Nav3 />
     <div className={style.user3Container}>
       <div className={style.contenedor1}>
         <div className={style.bodyLeft}>
@@ -36,7 +31,7 @@ const User3 = () => {
               {orders.map((order) => (
               <li className={style.reviewListItem} key={order.id}>
                 Código de Órden:{" "}
-                <Link to={`/detail/${order.id}`} className={style.orderLink}>
+                <Link to={`/detail/${order.id}`} className={`${style.orderLink} ${style.customLink}`}>
                   {order.codeOrder}
                 </Link>
               </li>
