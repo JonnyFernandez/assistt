@@ -15,4 +15,7 @@ export const GET_REVIEWS = "GET_REVIEWS"
 export const PUT_REVISOR1 = "PUT_REVISOR1"
 export const PUT_REVISOR2 = "PUT_REVISOR2"
 
+export const SUMA = "SUMA"
+export const RESTA = "RESTA"
 
+export const CREATE_ORDER = "CREATE_ORDER"
