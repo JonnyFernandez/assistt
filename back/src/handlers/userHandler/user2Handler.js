@@ -1,6 +1,6 @@
 const { getAllUser2, getByName2 } = require('../../controllers/User2Ctrl/getAllUserCtrl_2')
 const getUserById_2 = require('../../controllers/User2Ctrl/getUserById_2')
-const update2 = require('../../controllers/User2Ctrl/updateUserCtrl_2')
+const updateOrder2 = require('../../controllers/User2Ctrl/updateUserCtrl_2')
 const createUser2 = require('../../controllers/User2Ctrl/postUserCtrl_2')
 
 const getAllUser_2 = async (req, res) => {
@@ -45,10 +45,22 @@ const updateUser_2 = async (req, res) => {
     }
 }
 
+const updateOrder = async (req, res) => {
+    const { active } = req.body;
+    const { id } = req.params;
+    try {
+        const UpOrder2 = await updateOrder2(id, active)
+        res.status(201).json(UpOrder2)
+    } catch (error) {
+        res.status(400).json({ error: error.message })
+    }
+}
+
 
 module.exports = {
     getAllUser_2,
     User2_ById,
     postUser_2,
-    updateUser_2
+    updateUser_2,
+    updateOrder
 }

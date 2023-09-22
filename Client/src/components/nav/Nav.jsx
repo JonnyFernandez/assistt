@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import p from './Nav.module.css'
-import { getUser1 } from '../../redux/actions'
+import { getUserProfile } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 
@@ -9,9 +9,7 @@ const Nav = () => {
     const dispatch = useDispatch()
     const myProf = useSelector((state) => state.profile)
 
-    // useEffect(() => {
-    //     dispatch(getUser1())
-    // }, [dispatch])
+
 
 
     return (
