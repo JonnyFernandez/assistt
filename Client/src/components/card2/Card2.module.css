@@ -50,3 +50,9 @@
     flex-direction: column;
 
 }
+
+.inputsNum {
+    display: flex;
+    flex-direction: row;
+
+}

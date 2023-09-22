@@ -3,30 +3,55 @@ import Nav from '../../components/nav/Nav'
 import L from './Cart.module.css'
 import { useSelector, useDispatch } from 'react-redux'
 import Card2 from '../../components/card2/Card2'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { codeToOrder } from '../../utils/codes'
+import { getUser1, createOrder } from '../../redux/actions'
+import { useNavigate } from 'react-router-dom'
 
 const Cart = () => {
 
-    const dispatch = useDispatch()
-    const myCart = useSelector(state => state.cart)
+    const navigate = useNavigate()
+
     const codeOrder = codeToOrder()
 
-    const usersID = myCart.map(item => item.id)
-    console.log(usersID);
+    const dispatch = useDispatch()
+    const myCart = useSelector(state => state.cart)
+
+
+    const prod_ID = myCart.map(item => item.id)
+
+    useEffect(() => {
+        dispatch(getUser1("H3474")) //le mando el userCode de forma manual!!! hay que mejorar
+    }, [])
+
+    const profile = useSelector(state => state.profile)
+
+    let idUser1 = profile[0].id
+
+    console.log(idUser1);
 
     const [input, setInput] = useState({
-        codeOrder: '',
+        codeOrder: codeOrder,
         stimate_date: "",
         pay: "efectivo",
-        userId: "",
-        prodId: []
+        userId: idUser1,
+        prodId: prod_ID
     })
+    console.log(input);
 
-    // const HandlerInput =()=>{
+    const handleChange = (e) => {
+        setInput({
+            ...input,
+            stimate_date: e.target.value
+        })
+    }
 
-    // }
-
+    const sendInput = () => {
+        if (!input.stimate_date) return alert("poner fecha")
+        dispatch(createOrder(input))
+        alert(`${input.codeOrder}`)
+        navigate('/user1')
+    }
 
 
 
@@ -52,8 +77,7 @@ const Cart = () => {
 
             <div className={L.divBody}>
                 <div className={L.divBodyLeft}>
-                    <h1><strong>Pedido: {codeOrder} </strong></h1>
-                    {/* las card renderizadas */}
+
                     {
                         myCart && myCart.map(item => {
                             return (
@@ -67,19 +91,18 @@ const Cart = () => {
                 <div className={L.divBodyRight}>
 
 
-                    <label htmlFor="">Codigo de Orden: {codeOrder} </label>
-                    {/* <input type="text" placeholder='codeOrder' /> */}
-                    {/* <label htmlFor="">Tipo de pago</label>
-                    <input type="text" placeholder='tipo de pago' /> */}
-                    {/* <label htmlFor="">UserID</label>
-                    <input type="text" placeholder='User ID' /> */}
+                    <label htmlFor="">Codigo de Orden: </label>
+
                     <label htmlFor="">Fecha estimada</label>
-                    <input type="date" />
-                    <label htmlFor="">Comentario</label>
-                    <textarea />
+                    {/* <input type="text" value={input.stimate_date} onChange={HandlerChange} /> */}
+                    <input type="date" placeholder="dd/mm/aaaa..." value={input.stimate_date} onChange={handleChange} />
 
 
-                    <button>Enviar</button>
+                    {/* <label htmlFor="">Comentario</label>
+                    <textarea /> */}
+
+
+                    <button onClick={() => sendInput()} >Crear</button>
 
 
                 </div>
