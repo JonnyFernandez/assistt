@@ -16,7 +16,8 @@ import {
   PUT_REVISOR2,
   SUMA,
   RESTA,
-  CREATE_ORDER
+  CLEAN_CART,
+
 } from './actionsType'
 
 
@@ -200,4 +201,8 @@ export const createOrder = (input) => {
     }
 
   }
+}
+// ------------------LIMPIAR CARRITO----------
+export const cleanCart = () => {
+  return { type: CLEAN_CART }
 }
