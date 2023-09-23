@@ -118,7 +118,9 @@ const Cart = () => {
 
 
 
-            <div className='divFooter'></div>
+            <div className='divFooter'>
+                <footer className={L.footer}>Assistt one - Todos los derechos reservados 2023</footer>
+            </div>
 
 
 

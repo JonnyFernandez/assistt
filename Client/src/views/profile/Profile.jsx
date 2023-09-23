@@ -47,15 +47,15 @@ const Profile1 = () => {
                     <h2>Teléfono de Contacto</h2>
                 </div> */}
                 <div className={p.profileBodyLeft}>
-                    <h1>Nombre: {myProfile[0].name}</h1>
+                    <h3>Nombre: {myProfile[0].name}</h3>
                     <h3>Cuit Unidad: {myProfile[0].cuit}</h3>
                     <h3>Unidad de Negocio: </h3>
                     <h3>Ubicación: {myProfile[0].address}</h3>
                     <h3>Email: {myProfile[0].email}</h3>
                     <h3>Historial de Pedidos: {myProfile[0].Orders.length}</h3>
                     <h3>Teléfono de Contacto</h3>
-                    <h3>comentarios: {myProfile[0].Review1.length}</h3>                    
-                    <p>Lista de los pedidos anteriores realizados por el usuario, incluyendo detalles como la fecha, número de pedido y estado actual de cada pedido.</p>
+                    <h3>comentarios: {myProfile[0].Review1.length}</h3>
+                    <p className={p.parrafo} >Lista de los pedidos anteriores realizados por el usuario, incluyendo detalles como la fecha, número de pedido y estado actual de cada pedido.</p>
                 </div>
 
 
@@ -70,7 +70,7 @@ const Profile1 = () => {
 
 
             </div>
-            <div className={p.prodileFooter}></div>
+            <div className={p.prodileFooter}> Assistt one - Todos los de derechos reservados 2023</div>
 
 
 

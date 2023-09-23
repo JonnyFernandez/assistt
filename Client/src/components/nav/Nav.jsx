@@ -15,7 +15,7 @@ const Nav = () => {
     return (
         <div className={p.navContainer} >
             <NavLink className={p.logo} to={'/'} >
-                <img className={p.logo} to={'/'} src="/logo3.png" alt="logo" />
+                <img className={p.logo} to={'/'} src="/logo111.png" alt="logo" />
             </NavLink>
 
 

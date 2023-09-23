@@ -54,7 +54,7 @@ const User1 = () => {
                 </svg>
               </div>
               {/* <NavLink> Restablecer </NavLink> */}
-              <button onClick={handlerRefresh} value=''>Restablecer</button>
+              <button className={s.insuboton} onClick={handlerRefresh} value=''>Restablecer</button>
 
             </div>
 
@@ -70,7 +70,7 @@ const User1 = () => {
                 </svg>
               </div>
               {/* <a >Editar Pedido</a> */}
-              <button  >Editar Pedido</button>
+              <button className={s.insuboton}>Editar Pedido</button>
             </div>
 
             <div className={s.entradablog} onClick={handlerchange} value='almacen'>
@@ -86,7 +86,7 @@ const User1 = () => {
                 </svg>
               </div>
               {/* <NavLink>Insumos Almacen</NavLink> */}
-              <button onClick={handlerchange} value='almacen' >Insumos Almacen</button>
+              <button className={s.insuboton} onClick={handlerchange} value='almacen' >Insumos Almacen</button>
             </div>
 
             <article className={s.entradablog}>
@@ -98,7 +98,7 @@ const User1 = () => {
                 </svg>
               </div>
               {/* <a href="#">Insumos Libreria</a> */}
-              <button onClick={handlerchange} value='libreria'>Insumos Libreria</button>
+              <button className={s.insuboton} onClick={handlerchange} value='libreria'>Insumos Libreria</button>
             </article>
 
             <article className={s.entradablog}>
@@ -112,7 +112,7 @@ const User1 = () => {
                 </svg>
               </div>
               {/* <a href="#">Insumos Medicos</a> */}
-              <button onClick={handlerchange} value='medico'>Insumos Medicos</button>
+              <button className={s.insuboton} onClick={handlerchange} value='medico'>Insumos Medicos</button>
             </article>
 
             <article className={s.entradablog}>
@@ -131,7 +131,7 @@ const User1 = () => {
                 </svg>
               </div>
               {/* <a href="#">Insumos Limpieza</a> */}
-              <button onClick={handlerchange} value='limpieza'>Insumos Limpieza</button>
+              <button className={s.insuboton} onClick={handlerchange} value='limpieza'>Insumos Limpieza</button>
             </article>
             <article className={s.entradablog}>
               <div className={s.icono2}>
@@ -149,7 +149,7 @@ const User1 = () => {
                 </svg>
               </div>
               {/* <a href="#">Insumos Limpieza</a> */}
-              <button onClick={handlerchange} value='otros'>Otros</button>
+              <button className={s.insuboton} onClick={handlerchange} value='otros'>Otros</button>
             </article>
           </div>
         </div>
@@ -171,7 +171,7 @@ const User1 = () => {
 
       </div>
       <div className={s.footerUser1}>
-        <footer> Gestion Compras - Todos los derechos reservados 2023®.</footer>
+        <footer> Assistt one - Todos los derechos reservados 2023®.</footer>
       </div>
     </div>
   )
