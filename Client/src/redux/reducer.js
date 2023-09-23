@@ -26,7 +26,7 @@ const InitialState = {
         "id": "14848a06-9c73-4c72-9333-0b4d3cc973cd",
         "usercode": "CMSF01",
         "cuit": "20-98388665-5",
-        "name": "Toelida gimenez",
+        "name": "Centro Medico *****",
         "address": "Ushuaia, Tierra del Fuego",
         "email": "compras.centromedico@hotmail.com",
         "active": true,
@@ -54,8 +54,8 @@ const InitialState = {
 }
 
 
-const reducer = ( state = InitialState, action ) => {
-    switch ( action.type ) {
+const reducer = (state = InitialState, action) => {
+    switch (action.type) {
         case GET_PROD:
             return {
                 ...state,
@@ -67,16 +67,16 @@ const reducer = ( state = InitialState, action ) => {
                 ...state,
                 Orders: action.payload
             }
-            case ORDER_DETAIL:
-                return {
-                    ...state,
-                    orderDetail: action.payload
-                };
-            case CLEAN_DETAIL:
-                return {
-                    ...state,
-                    dogsDetail: {}
-                };
+        case ORDER_DETAIL:
+            return {
+                ...state,
+                orderDetail: action.payload
+            };
+        case CLEAN_DETAIL:
+            return {
+                ...state,
+                dogsDetail: {}
+            };
         case ADD_FAV:
             return {
                 ...state,
@@ -87,7 +87,7 @@ const reducer = ( state = InitialState, action ) => {
 
             }
         case REMOVE_FAV:
-            const fav = state.favorite.filter( ( item ) => item.id !== action.payload )
+            const fav = state.favorite.filter((item) => item.id !== action.payload)
 
             return {
                 ...state,
@@ -102,7 +102,7 @@ const reducer = ( state = InitialState, action ) => {
                 ]
             }
         case REMOVE_CART:
-            const newCart = state.cart.filter( ( item ) => item.id !== action.payload )
+            const newCart = state.cart.filter((item) => item.id !== action.payload)
             return {
                 ...state,
                 cart: newCart

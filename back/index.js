@@ -22,3 +22,4 @@ conn.sync({ alter: true }).then(() => {
   server.listen(port, () => { console.log(`%s listening at ${port}`); });
   console.log(`Swagger at Url http://localhost:${port}/api-docs/`);
 })
+// ------

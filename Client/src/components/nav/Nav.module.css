@@ -1,20 +1,22 @@
 /* colroes principales rgb(23, 99, 203) */
 /* colores secundarios rgb(229, 242, 242) */
 
-@media (min-width: 480px) {
-    .navContainer{
+@media (min-width: 400px) {
+    .navContainer {
         max-width: 120rem;
         height: 4.5rem;
-        background-color: rgb(23, 99, 203); 
+        background-color: rgb(23, 99, 203);
         display: flex;
         justify-content: space-around;
         flex-direction: row;
         align-items: center;
     }
 }
+
 .logo {
     max-width: 13rem;
 }
+
 .logo:hover {
     text-shadow: 1px 1px 2px pink;
 }
@@ -30,10 +32,11 @@
     padding-top: 1rem;
     padding-left: 1.5rem;
     padding-bottom: 1rem;
-    padding-right: 1.5rem;   
+    padding-right: 1.5rem;
 }
+
 .perfil:hover {
-  text-shadow: 1px 1px 2px pink;     
+    text-shadow: 1px 1px 2px pink;
 }
 
 
@@ -49,11 +52,11 @@
     flex-direction: column;
     align-items: center;
 }
+
 @media (min-width: 480px) {
     .nav1Container {
         flex-direction: row;
         justify-content: space-around;
-        
     }
 }
 
@@ -65,7 +68,7 @@
     font-size: 1rem;
     gap: 2rem;
 }
+
 .nav1Container a:hover {
     text-shadow: 1px 1px 2px pink;
-} 
-
+}
