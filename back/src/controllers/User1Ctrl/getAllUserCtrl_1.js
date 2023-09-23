@@ -46,7 +46,7 @@ const getByName1 = async (codeUser) => {
             },
             {
                 model: Orders,
-                as: 'Orders',
+                as: 'orders',
                 attributes: ["codeOrder"]
             },
         ],

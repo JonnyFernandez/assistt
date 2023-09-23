@@ -32,4 +32,20 @@ const update = async (id, active) => {
     return response
 }
 
-module.exports = { createProd, getProd, update }
+const updateCantidad = async (id, quanty) => {
+    // console.log(quanty);
+    const aux = await Prod.findByPk(id)
+
+    // console.log(aux);
+
+
+    aux.quanty = quanty
+
+
+    await aux.save()
+
+
+    return aux
+}
+
+module.exports = { createProd, getProd, update, updateCantidad }

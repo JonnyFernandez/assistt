@@ -1,17 +1,17 @@
-// Función para generar un código aleatorio de 5 caracteres alfanuméricos
-function generateRandomCode(length) {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let code = '';
+// // Función para generar un código aleatorio de 5 caracteres alfanuméricos
+// function generateRandomCode(length) {
+//     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+//     let code = '';
   
-    for (let i = 0; i < length; i++) {
-      const randomIndex = Math.floor(Math.random() * characters.length);
-      code += characters.charAt(randomIndex);
-    }
+//     for (let i = 0; i < length; i++) {
+//       const randomIndex = Math.floor(Math.random() * characters.length);
+//       code += characters.charAt(randomIndex);
+//     }
   
-    return code;
-  }
+//     return code;
+//   }
   
-module.exports = generateRandomCode
+// module.exports = generateRandomCode
   
   
   

@@ -1,4 +1,4 @@
-const { createProd, getProd, update } = require('../../controllers/ProdCtrl/ProdCtrl')
+const { createProd, getProd, update, updateCantidad } = require('../../controllers/ProdCtrl/ProdCtrl')
 
 const postProd = async (req, res) => {
     const { code, name, description, supplie_type } = req.body;
@@ -31,6 +31,20 @@ const updateProd = async (req, res) => {
     }
 }
 
+const updateQuantity = async (req, res) => {
+    const { id } = req.params;
+    const { quanty } = req.body
+    console.log(id);
+    try {
+        const cantidad = await updateCantidad(id, quanty)
+        res.status(201).json(cantidad)
+
+    } catch (error) {
+        res.status(400).json({ error: error.message })
+    }
+
+}
 
 
-module.exports = { postProd, getAllProd, updateProd }
+
+module.exports = { postProd, getAllProd, updateProd, updateQuantity }
