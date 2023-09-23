@@ -18,4 +18,5 @@ export const PUT_REVISOR2 = "PUT_REVISOR2"
 export const SUMA = "SUMA"
 export const RESTA = "RESTA"
 
-export const CREATE_ORDER = "CREATE_ORDER"
+
+export const CLEAN_CART = "CLEAN_CART"

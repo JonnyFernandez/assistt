@@ -13,7 +13,8 @@ import {
   PUT_REVISOR2,
   PUT_REVISOR1,
   SUMA,
-  RESTA
+  RESTA,
+  CLEAN_CART
 } from '../redux/actionsType';
 
 const InitialState = {
@@ -129,6 +130,12 @@ const reducer = (state = InitialState, action) => {
         ...state,
         cart: [...state.cart,]
       }
+    case CLEAN_CART:
+      return {
+        ...state,
+        cart: []
+      }
+
 
 
     default: {

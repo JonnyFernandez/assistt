@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import Card2 from '../../components/card2/Card2'
 import { useState, useEffect } from 'react'
 import { codeToOrder } from '../../utils/codes'
-import { getUser1, createOrder } from '../../redux/actions'
+import { getUser1, createOrder, cleanCart } from '../../redux/actions'
 import { useNavigate } from 'react-router-dom'
 
 const Cart = () => {
@@ -26,9 +26,9 @@ const Cart = () => {
 
     const profile = useSelector(state => state.profile)
 
-    let idUser1 = profile[0].id
+    const idUser1 = profile[0]?.id
 
-    console.log(idUser1);
+    // console.log(idUser1);
 
     const [input, setInput] = useState({
         codeOrder: codeOrder,
@@ -37,7 +37,7 @@ const Cart = () => {
         userId: idUser1,
         prodId: prod_ID
     })
-    console.log(input);
+    // console.log(input);
 
     const handleChange = (e) => {
         setInput({
@@ -49,6 +49,7 @@ const Cart = () => {
     const sendInput = () => {
         if (!input.stimate_date) return alert("poner fecha")
         dispatch(createOrder(input))
+        dispatch(cleanCart())
         alert(`${input.codeOrder}`)
         navigate('/user1')
     }
