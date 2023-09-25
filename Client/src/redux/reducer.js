@@ -11,7 +11,9 @@ import {
     BY_TYPE,
     GET_REVIEWS,
     PUT_REVISOR2,
-    PUT_REVISOR1
+    PUT_REVISOR1,
+    POST_USER1,
+    GET_ENTITY
   } from '../redux/actionsType';
   
   const InitialState = {
@@ -22,6 +24,8 @@ import {
     favorite: [],
     cart: [],
     allUsers: [],
+    allEntity: [],
+    error: null,
     reviewsWithUserInfo: [], // Agregamos esta propiedad para almacenar las revisiones con información de usuario
     profile: [
       {
@@ -72,6 +76,11 @@ import {
               ...state,
               reviewsWithUserInfo, // Actualizamos la propiedad reviewsWithUserInfo en el estado
             };
+        case GET_ENTITY:
+              return {
+                  ...state,
+                  allEntity: action.payload
+              };
             
       case GET_PROD:
         return {
@@ -92,8 +101,14 @@ import {
       case CLEAN_DETAIL:
         return {
           ...state,
-          dogsDetail: {},
+          orderDetail: {},
         };
+
+        case POST_USER1: {
+          return {
+            ...state
+          };
+        }
       case ADD_FAV:
         return {
           ...state,

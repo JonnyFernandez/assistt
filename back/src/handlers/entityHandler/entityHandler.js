@@ -1,4 +1,4 @@
-const {createEntity, deleteEntity, getEntitys} = require('../../controllers/entityCtrl/entityCtrl')
+const {createEntity, deleteEntity, getEntities} = require('../../controllers/entityCtrl/entityCtrl')
 
 const postEntity = async (req, res) => {
     let {name} = req.body;
@@ -23,7 +23,7 @@ const removeEntity = async(req, res) => {
 
 const getAllEntity =async(req, res)=>{
     try {
-        const aux = await getEntitys()
+        const aux = await getEntities()
         res.status(201).json(aux)
     } catch (error) {
         res.status(400).json({ error: error.message })

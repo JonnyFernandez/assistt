@@ -27,14 +27,17 @@ const User1_ById = async (req, res) => {
 }
 
 const postUser_1 = async (req, res) => {
-    const { cuit, name, address, email, phone, password, entity } = req.body;
+    const { name, email, password, entity } = req.body;
    
     try {
-        const newUser1 = await createUser1(cuit, name, address, email, phone, password, entity)
-        res.status(200).json(newUser1)
-    } catch (error) {
-        res.status(400).json({ error: error.message })
-    }
+        console.log("Entrando en postUser_1");
+        const newUser1 = await createUser1(name, email, password, entity);
+        console.log("Usuario creado:", newUser1);
+        res.status(200).json(newUser1);
+      } catch (error) {
+        console.error("Error al crear usuario:", error);
+        res.status(400).json({ error: error.message });
+      }
 }
 
 
