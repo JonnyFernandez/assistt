@@ -1,5 +1,6 @@
 
 import {
+
     GET_PROD,
     ADD_FAV,
     REMOVE_FAV,
@@ -16,94 +17,92 @@ import {
     PUT_REVISOR2,
     POST_USER1,
     GET_ENTITY,
+    SUMA,
+    RESTA,
+    CLEAN_CART,
+
 
 } from './actionsType'
+
+
+
 
 import axios from 'axios'
 import Swal from 'sweetalert2'
 
 
 export const getProd = () => {
-    return async function (dispatch) {
-        let res = await axios("/prod")
-        return dispatch({ type: GET_PROD, payload: res.data })
-    }
+  return async function (dispatch) {
+    let res = await axios("/prod")
+    return dispatch({ type: GET_PROD, payload: res.data })
+  }
 }
 
 //-------------------ORDENES----------------------------------
 export const getOrders = () => {
-    return async function (dispatch) {
-        try {
-            const res = await axios.get("/order");
-            dispatch({ type: GET_ORDER, payload: res.data });
-        } catch (error) {
-            console.error("Error al obtener las órdenes:", error);
-        }
+  return async function (dispatch) {
+    try {
+      const res = await axios.get("/order");
+      dispatch({ type: GET_ORDER, payload: res.data });
+    } catch (error) {
+      console.error("Error al obtener las órdenes:", error);
     }
+  }
 }
 
 export const getOrderDetail = (id) => {
-    return async (dispatch) => {
-        try {
-            if (!id) {
-                throw new Error('ID inválido');
-            }
+  return async (dispatch) => {
+    try {
+      if (!id) {
+        throw new Error('ID inválido');
+      }
 
-            let response = await axios(`/order/${id}`);
-            console.log(response.data);
-            return dispatch({ type: ORDER_DETAIL, payload: response.data });
-        } catch (error) {
-            return error.message;
-        }
-    };
+      let response = await axios(`/order/${id}`);
+      console.log(response.data);
+      return dispatch({ type: ORDER_DETAIL, payload: response.data });
+    } catch (error) {
+      return error.message;
+    }
+  };
 };
 
 export const cleanDetail = () => {
-    return { type: CLEAN_DETAIL };
+  return { type: CLEAN_DETAIL };
 };
 
 // -------------------favorites---------------------
 export const addFav = (payload) => {
 
-    return { type: ADD_FAV, payload: payload };
+  return { type: ADD_FAV, payload: payload };
 
 };
 
 export const removeFav = (id) => {
 
-    return { type: REMOVE_FAV, payload: id }
+  return { type: REMOVE_FAV, payload: id }
 }
 // ------------------------Cart/ CARRITO-----------------
 export const removeCard = (id) => {
 
-    return { type: REMOVE_CART, payload: id }
+  return { type: REMOVE_CART, payload: id }
 }
 
 export const addCart = (payload) => {
 
-    return { type: ADD_CART, payload: payload };
+  return { type: ADD_CART, payload: payload };
 
 };
 
 
 // ----------------------profile------------------
 
-export const getUserProfile = () => {
 
-    return async (dispatch) => {
-        let res = await axios(`/user1?codeUser=H5640`)
-        return dispatch({ type: GET_PROFILE, payload: res.data })
-
-    }
+export const getUser1 = (userCode) => {
+  return async (dispatch) => {
+    let res = await axios(`/user1?codeUser=${userCode}`)
+    return dispatch({ type: GET_PROFILE, payload: res.data })
+  }
 }
-
-
-// export const getUser1 = (userCode) => {
-//     return async (dispatch) => {
-//         let res = await axios(`/user1?codeUser=${userCode}`)
-//         return dispatch({ type: GET_PROFILE, payload: res.data })
-//     }
-// }
 // export const getUser2 = (userCode) => {
 //     return async (dispatch) => {
 //         let res = await axios(`/user1?codeUser=${userCode}`)
@@ -201,17 +200,17 @@ export const getReviews = () => {
 
 //------------------------fliter by Sopplies type------------------
 export const prodByType = (payload) => {
-    return { type: BY_TYPE, payload: payload }
+  return { type: BY_TYPE, payload: payload }
 }
 
 
 
 // -----------------MODIFICAR CANTIDAD DE PROD-------------
 export const quantity = (id, input) => {
-    return async (dispatch) => {
-        await axios.put(`/prod/api/${id}`, input)
+  return async (dispatch) => {
+    await axios.put(`/prod/api/${id}`, input)
 
-    }
+  }
 }
 
 
@@ -232,3 +231,31 @@ export const putRevisor1 = (id, dataRevisor1) => {
 
 
 
+
+export const suma = (id) => {
+  return { type: SUMA, payload: id }
+}
+
+export const resta = (id) => {
+  return { type: RESTA, payload: id }
+}
+
+
+
+// --------------------------CREAR ORDEN DE COMPRAS-------------
+
+export const createOrder = (input) => {
+  return async (dispatch) => {
+    try {
+      await axios.post(`/order`, input)
+
+    } catch (error) {
+      console.log(error.message);
+    }
+
+  }
+}
+// ------------------LIMPIAR CARRITO----------
+export const cleanCart = () => {
+  return { type: CLEAN_CART }
+}

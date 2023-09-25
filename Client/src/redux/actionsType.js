@@ -28,6 +28,7 @@ export const GET_REVIEWS = "GET_REVIEWS"
 export const PUT_REVISOR1 = "PUT_REVISOR1"
 export const PUT_REVISOR2 = "PUT_REVISOR2"
 
+
 //----------CREAR USUARIOS--------
 export const POST_USER1 = "POST_USER1"
 export const POST_USER2 = "POST_USER2"
@@ -36,3 +37,10 @@ export const POST_USER4 = "POST_USER4"
 
 //---------ENTIDAD-----------------------------
 export const GET_ENTITY = "GET_ENTITY"
+
+export const SUMA = "SUMA"
+export const RESTA = "RESTA"
+
+
+export const CLEAN_CART = "CLEAN_CART"
+
