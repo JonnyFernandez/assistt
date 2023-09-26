@@ -1,5 +1,4 @@
 import {
-
     GET_PROD,
     GET_ORDER,
     ADD_FAV,
@@ -108,6 +107,54 @@ import {
           ...state,
           orderDetail: {},
         };
+          ...review,
+          user, // Agregamos la información del usuario a la revisión
+
+        };
+      });
+
+      return {
+        ...state,
+        reviewsWithUserInfo, // Actualizamos la propiedad reviewsWithUserInfo en el estado
+      };
+      case GET_ENTITY:
+              return {
+                  ...state,
+                  allEntity: action.payload
+              };
+
+    case GET_PROD:
+      return {
+        ...state,
+        Product: action.payload,
+        backupProduct: action.payload,
+      };
+    case GET_ORDER:
+      return {
+        ...state,
+        Orders: action.payload,
+      };
+    case ORDER_DETAIL:
+      return {
+        ...state,
+        orderDetail: action.payload,
+      };
+    case CLEAN_DETAIL:
+      return {
+        ...state,
+        orderDetail: {},
+      };
+       case POST_USER1: {
+          return {
+            ...state
+          };
+    case ADD_FAV:
+      return {
+        ...state,
+        favorite: [...state.favorite, action.payload],
+      };
+    case REMOVE_FAV:
+      const fav = state.favorite.filter((item) => item.id !== action.payload);
 
         case POST_USER1: {
           return {
@@ -186,7 +233,15 @@ import {
         ...state,
         cart: []
       }
+
      
-      default: {
-        return {
-          ...state,
+    default: {
+      return {
+        ...state,
+      };
+    }
+  }
+};
+
+export default reducer;
+
