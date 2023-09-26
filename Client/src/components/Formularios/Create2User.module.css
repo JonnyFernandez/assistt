@@ -1,4 +1,3 @@
-
 .formcontainer {
     display: flex;
     flex-direction: column;
@@ -70,7 +69,7 @@
   }
   
   .form label .input {
-    width: 90%;
+    width: 100%;
     padding: 10px 10px 20px 10px;
     outline: 0;
     border: 1px solid rgba(105, 105, 105, 0.397);
@@ -137,28 +136,16 @@
     font-size: 12px;
     cursor: pointer;
     position: absolute;
-    right: 1px;
+    right: 6px;
     top: 50%;
     transform: translateY(-50%);
   }
 
- 
 
   .errormessage {
-    color: red; /* Cambia el color del texto a rojo */
-    font-size: 0.8em; /* Ajusta el tamaño de fuente */
-    margin-top: 4px; /* Agrega un pequeño espacio superior */
+    color: red; 
+    font-size: 0.8em; 
+    margin-top: 2px; 
   }
 
-/* Estilo para el contenedor flexbox */
-.flexContainer {
-    display: flex;
-    justify-content: space-between; /* Distribuye el espacio horizontalmente */
-    align-items: flex-start; /* Alinea los grupos de divs en la parte superior */
-  }
-  
-  /* Estilo para cada grupo de divs */
-  .flexGroup {
-    flex: 1; /* Hace que cada grupo de divs ocupe todo el espacio disponible */
-    margin-right: 10px; /* Espacio entre los grupos de divs (ajusta según sea necesario) */
-  }
+

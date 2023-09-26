@@ -14,6 +14,8 @@ import {
   PUT_REVISOR1,
   POST_USER1,
   POST_USER2,
+  POST_USER3,
+  POST_USER4,
   GET_ENTITY,
   SUMA,
   RESTA,
@@ -108,6 +110,18 @@ const reducer = (state = InitialState, action) => {
       return {
         ...state,
       };
+    case POST_USER2:
+        return {
+          ...state,
+        };
+    case POST_USER3:
+          return {
+            ...state,
+          };
+    case POST_USER4:
+          return {
+            ...state,
+          };
     case ADD_FAV:
       return {
         ...state,

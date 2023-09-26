@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { postUser2 } from "../../redux/actions";
+import { postUser3 } from "../../redux/actions";
 import { toast } from "react-hot-toast";
-import style from "../Formularios/Create2User.module.css";
+import style from "../Formularios/Create3User.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
-const Create2User = () => {
+const Create3User = () => {
   const dispatch = useDispatch();
   const [showPwd, setShowPwd] = useState(false);
   const [showPwds, setShowPwds] = useState(false);
@@ -22,9 +22,6 @@ const Create2User = () => {
     defaultValues: {
       name: "",
       email: "",
-      cuit: "",
-      address: "",
-      phone: "",
       password: "",
       confirmPassword: "",
     },
@@ -36,12 +33,9 @@ const Create2User = () => {
         name: data.name,
         email: data.email,
         password: data.password,
-        cuit: data.cuit,
-        address: data.address,
-        phone: data.phone,
       };
 
-      const newUser = await dispatch(postUser2(userData));
+      const newUser = await dispatch(postUser3(userData));
 
       if (newUser && newUser.error) {
         toast.error(newUser.error);
@@ -67,7 +61,7 @@ const Create2User = () => {
       <form className={style.form}
         onSubmit={handleSubmit(onSubmit)}>
         <p className={style.title}>Regístrate</p>
-        <p className={style.message}>Crea una cuenta nueva, Revisor</p>
+        <p className={style.message}>Crea una cuenta nueva, Administrador</p>
         
         <div className={style.flex} >
         <label htmlFor="name"  className={style.flex}>
@@ -80,11 +74,10 @@ const Create2User = () => {
                 />
                 <span>Nombre Completo</span>
                 </label>
-                <p className={style.errormessage}>{errors.name?.message}</p>
           </div>
+                <p className={style.errormessage}>{errors.name?.message}</p>
 
-          <div className={style.flex}>
-  <div className={style.flex}>
+          <div className={style.formGroup}>
     <label htmlFor="email" className={style.flex}>
       <input
         className={style.input}
@@ -100,8 +93,9 @@ const Create2User = () => {
       />
       <span>Email</span>
     </label>
-    <p className={style.errormessage}>{errors.email?.message}</p>
   </div>
+    <p className={style.errormessage}>{errors.email?.message}</p>
+  
     <label htmlFor="cuit" className={style.flex}>
       <input
         className={style.input}
@@ -112,19 +106,7 @@ const Create2User = () => {
       <span>Cuit</span>
     </label>
     <p className={style.errormessage}>{errors.cuit?.message}</p>
-  </div>
-
-  <div className={style.flex}>
-    <label htmlFor="address" className={style.flex}>
-      <input
-        className={style.input}
-        type="text"
-        placeholder=""
-        {...register("address", { required: "La dirección es requerida" })}
-      />
-      <span>Dirección</span>
-    <p className={style.errormessage}>{errors.address?.message}</p>
-    </label>
+  
   
     <label htmlFor="phone" className={style.flex}>
       <input
@@ -136,9 +118,9 @@ const Create2User = () => {
       <span>Teléfono</span>
     </label>
     <p className={style.errormessage}>{errors.phone?.message}</p>
-  </div>
-          <div className={style.flex}>
+  
 
+          <div className={style.flex}>
           <label htmlFor="password"  className={style.flex}>
   <input className={style.input}
     type={showPwd ? "text" : "password"}
@@ -183,7 +165,6 @@ const Create2User = () => {
   </label>
 </div>
   {errors.confirmPassword && <span className={style.errormessage} >{errors.confirmPassword.message}</span>}
-
         <div>
           <button className={style.submit } type="submit">Registrarse</button>
         </div>
@@ -192,4 +173,4 @@ const Create2User = () => {
   );
 };
 
-export default Create2User;
+export default Create3User;

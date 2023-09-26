@@ -16,6 +16,8 @@ import {
     PUT_REVISOR2,
     POST_USER1,
     POST_USER2,
+    POST_USER3,
+    POST_USER4,
     GET_ENTITY,
     SUMA,
     RESTA,
@@ -167,12 +169,55 @@ export const postUser2 = (newUser) => {
   };
 };
 
-// export const postUser1 = (newUser) => {
-//   return async (dispatch) => {
-//     const res = await axios.post("/user1", newUser);
-//     return dispatch({ type: POST_USER1, res });
-//   };
-// };
+export const postUser3 = (newUser) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post('/user3', newUser);
+      Swal.fire({
+        text: 'Usuario Creado',
+        icon: 'success',
+      });
+
+       dispatch({ type: POST_USER3, payload: data });
+
+      return data; // Retorna los datos del nuevo usuario si es necesario
+    } catch (error) {
+      console.error('Error desconocido al crear usuario:', error);
+      Swal.fire({
+        text: 'Error desconocido al crear usuario',
+        icon: 'error',
+      });
+      return null;
+
+    }
+  };
+};
+
+export const postUser4 = (newUser) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post('/user4', newUser);
+      Swal.fire({
+        text: 'Usuario Creado',
+        icon: 'success',
+      });
+
+       dispatch({ type: POST_USER4, payload: data });
+
+      return data; // Retorna los datos del nuevo usuario si es necesario
+    } catch (error) {
+      console.error('Error desconocido al crear usuario:', error);
+      Swal.fire({
+        text: 'Error desconocido al crear usuario',
+        icon: 'error',
+      });
+      return null;
+
+    }
+  };
+};
+
+//--------------------Todas las entidades-------------------------
 
 
 export const getEntity = () => {
@@ -247,9 +292,6 @@ export const putRevisor1 = (id, dataRevisor1) => {
     return dispatch({ type: PUT_REVISOR1, payload: data });
   };
 };
-
-
-
 
 export const suma = (id) => {
   return { type: SUMA, payload: id }

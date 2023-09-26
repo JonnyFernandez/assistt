@@ -26,6 +26,9 @@ const Create1User = () => {
     defaultValues: {
       name: "",
       email: "",
+      cuit: "",
+      address: "",
+      phone: "",
       password: "",
       confirmPassword: "",
       entity: [], // Inicialmente, entity es una matriz vacía
@@ -41,6 +44,9 @@ const Create1User = () => {
       const userData = {
         name: data.name,
         email: data.email,
+        cuit: "",
+        address: "",
+        phone: "",
         password: data.password,
         entity: selectedEntities,
       };
@@ -91,11 +97,11 @@ const Create1User = () => {
 
       <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
         <p className={style.title} >Regístrate</p>
-        <p className={style.message}>Crea una cuenta nueva</p>
+        <p className={style.message}>Crea una cuenta nueva, Cliente</p>
       
         <div className={style.flex}>
-        <div>
-        <label>
+       
+        <label htmlFor="name">
           <input className={style.input}
             type="text"
             placeholder=""
@@ -103,11 +109,10 @@ const Create1User = () => {
           />
           <span>Nombre completo</span>
           </label>
-        </div>
-          {errors.name && <span className={style.errormessage}>{errors.name.message}</span>}
+          <p className={style.errormessage}>{errors.name?.message}</p>
 
-        <div className={style.flex}>
-          <label>
+        <div >
+          <label htmlFor="email" className={style.flex} >
           <input className={style.input}
             type="text"
             placeholder=""
@@ -125,7 +130,40 @@ const Create1User = () => {
         </div>
           {errors.email && <p className={style.errormessage} >{errors.email.message}</p>}
 
-        <div className={style.flex}>
+          <div className={style.flex}>
+          <label htmlFor="cuit" >
+      <input
+        className={style.input}
+        type="text"
+        placeholder=""
+        {...register("cuit", { required: "El cuit es requerido" })}
+      />
+      <span>Cuit</span>
+    </label>
+    <p className={style.errormessage}>{errors.cuit?.message}</p>
+
+    <label htmlFor="address">
+      <input
+        className={style.input}
+        type="text"
+        placeholder=""
+        {...register("address", { required: "La dirección es requerida" })}
+      />
+      <span>Dirección</span>
+    </label>
+    <p className={style.errormessage}>{errors.address?.message}</p>
+    </div>
+    <label htmlFor="phone" className={style.flex}>
+      <input
+        className={style.input}
+        type="text"
+        placeholder=""
+        {...register("phone", { required: "El teléfono es requerido" })}
+      />
+      <span>Teléfono</span>
+    </label>
+    <p className={style.errormessage}>{errors.phone?.message}</p>
+  
           <select className={style.select}
           {...register("entity")} onChange={handleSelect}>
             {entity.map((entityItem, index) => (
@@ -134,11 +172,10 @@ const Create1User = () => {
               </option>
             ))}
           </select>
-        </div>
-
+     
         <div className={style.flex}>
-        <div>
-          <label>
+        <div className={style.flex}>
+        <label htmlFor="password">
   <input className={style.input}
     type={showPwd ? "text" : "password"}
     placeholder=""
@@ -157,11 +194,10 @@ const Create1User = () => {
   </button>
           </label>
 </div>
-
   {errors.password && <p className={style.errormessage} >{errors.password.message}</p>}
 
 <div className={style.flex}>
-  <label>
+  <label htmlFor="confirmPassword">
   <input
     className={style.input}
     type={showPwds ? "text" : "password"}
@@ -177,7 +213,7 @@ const Create1User = () => {
     onClick={() => toggleShowPassword("confirmPassword")}
     className={style.eyeButton}
   >
-    <FontAwesomeIcon icon={showPwd ? faEye : faEyeSlash} />
+    <FontAwesomeIcon icon={showPwds ? faEye : faEyeSlash} />
   </button>
   </label>
 </div>
