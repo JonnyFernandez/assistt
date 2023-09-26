@@ -190,35 +190,6 @@ export const getEntity = () => {
   };
 };
 
-
-//------------------------REVIEW-----------------------------------
-
-export const getReviews = () => {
-    return async function (dispatch) {
-      try {
-        const res = await axios.get("/review");
-
-        // Mapea las revisiones para agregar la información del usuario a cada una
-        const reviewsWithUserInfo = await Promise.all(
-          res.data.map(async (review) => {
-            // Suponemos que `userReviewId` es el ID del usuario que hizo la revisión
-            const user = await getUserInfo(review.userReviewId); // Debes implementar esta función
-            return {
-              ...review,
-              user, // Agregamos la información del usuario a la revisión
-            };
-          })
-        );
-
-        dispatch({ type: GET_REVIEWS, payload: reviewsWithUserInfo });
-      } catch (error) {
-        console.error("Error al obtener las reseñas:", error);
-      }
-    };
-  };
-
-
-
 //------------------------REVIEW-----------------------------------
 
 export const getReviews = () => {
