@@ -12,11 +12,9 @@ const postEntity = async () => {
     try {
         // Crear un array de promesas para todas las operaciones findOrCreate
         const promises = data.map(item => Entity.findOrCreate({ where: { name: item } }));
-
+        
         // Esperar a que se completen todas las promesas
         await Promise.all(promises);
-
-        console.log("Entidades cargadas desde utils");
     } catch (error) {
         console.error("Error al cargar entidades:", error);
     }

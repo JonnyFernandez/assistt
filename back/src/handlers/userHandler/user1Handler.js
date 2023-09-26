@@ -30,12 +30,9 @@ const postUser_1 = async (req, res) => {
     const { name, email, password, entity } = req.body;
    
     try {
-        console.log("Entrando en postUser_1");
         const newUser1 = await createUser1(name, email, password, entity);
-        console.log("Usuario creado:", newUser1);
         res.status(200).json(newUser1);
       } catch (error) {
-        console.error("Error al crear usuario:", error);
         res.status(400).json({ error: error.message });
       }
 }

@@ -3,6 +3,9 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { getEntity, postUser1 } from "../../redux/actions";
 import { toast } from "react-hot-toast";
+import style from "../Formularios/Create1User.module.css"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const Create1User = () => {
   const dispatch = useDispatch();
@@ -75,12 +78,6 @@ const Create1User = () => {
     console.log("selectedEntities", selectedEntities);
   };
 
-  const handleAddEntity = () => {
-    if (selectedEntity && !selectedEntities.includes(selectedEntity)) {
-      setSelectedEntities([...selectedEntities, selectedEntity]);
-      setSelectedEntity("");
-    }
-  };
 
   const handleRemoveEntity = (entityToRemove) => {
     const updatedEntities = selectedEntities.filter(
@@ -90,22 +87,30 @@ const Create1User = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <h2>Regístrate y crea una cuenta nueva</h2>
+    <div className={style.formcontainer}>
+
+      <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
+        <p className={style.title} >Regístrate</p>
+        <p className={style.message}>Crea una cuenta nueva</p>
+      
+        <div className={style.flex}>
         <div>
-          <input
+        <label>
+          <input className={style.input}
             type="text"
-            placeholder="Nombre Completo"
+            placeholder=""
             {...register("name", { required: "El nombre es requerido" })}
           />
-          {errors.name && <span>{errors.name.message}</span>} {/* Muestra el error si existe */}
+          <span>Nombre completo</span>
+          </label>
         </div>
+          {errors.name && <span className={style.errormessage}>{errors.name.message}</span>}
 
-        <div>
-          <input
+        <div className={style.flex}>
+          <label>
+          <input className={style.input}
             type="text"
-            placeholder="Email"
+            placeholder=""
             {...register("email", {
               required: "El email es requerido",
               pattern: {
@@ -114,10 +119,15 @@ const Create1User = () => {
               },
             })}
           />
-          {errors.email && <span>{errors.email.message}</span>} {/* Muestra el error si existe */}
+          <span>Email</span>
+          </label>
         </div>
-        <div>
-          <select {...register("entity")} onChange={handleSelect}>
+        </div>
+          {errors.email && <p className={style.errormessage} >{errors.email.message}</p>}
+
+        <div className={style.flex}>
+          <select className={style.select}
+          {...register("entity")} onChange={handleSelect}>
             {entity.map((entityItem, index) => (
               <option key={index} value={entityItem.name}>
                 {entityItem.name}
@@ -125,42 +135,58 @@ const Create1User = () => {
             ))}
           </select>
         </div>
+
+        <div className={style.flex}>
         <div>
-          <input
-            type={showPwd ? "text" : "password"}
-            placeholder="Contraseña"
-            {...register("password", {
-              required: "La contraseña es requerida",
-              validate: (value) => value === watch("confirmPassword"),
-            })}
-          />
-          <button type="button" onClick={() => toggleShowPassword("password")}>
-            Mostrar Contraseña
-          </button>
-          {errors.password && <span>{errors.password.message}</span>}
-        </div>
-        <div>
-          <input
-            type={showPwds ? "text" : "password"}
-            placeholder="Confirmar Contraseña"
-            {...register("confirmPassword", {
-              required: "Las contraseñas no coinciden",
-              validate: (value) => value === watch("password"),
-            })}
-          />
-          <button
-            type="button"
-            onClick={() => toggleShowPassword("confirmPassword")}
-          >
-            Mostrar Contraseña
-          </button>
-          {errors.confirmPassword && (
-            <span>{errors.confirmPassword.message}</span>
-          )}
-        </div>
-        <div>
-          <p>Entidades seleccionadas:</p>
-          <ul>
+          <label>
+  <input className={style.input}
+    type={showPwd ? "text" : "password"}
+    placeholder=""
+    {...register("password", {
+      required: "La contraseña es requerida",
+      validate: (value) => value === watch("confirmPassword"),
+    })}
+  />
+  <span>Contraseña</span>
+  <button
+    type="button"
+    onClick={() => toggleShowPassword("password")}
+    className={style.eyeButton}
+  >
+     <FontAwesomeIcon icon={showPwd ? faEye : faEyeSlash} />
+  </button>
+          </label>
+</div>
+
+  {errors.password && <p className={style.errormessage} >{errors.password.message}</p>}
+
+<div className={style.flex}>
+  <label>
+  <input
+    className={style.input}
+    type={showPwds ? "text" : "password"}
+    placeholder=""
+    {...register("confirmPassword", {
+      required: "Las contraseñas no coinciden",
+      validate: (value) => value === watch("password"),
+    })}
+  />
+  <span>Confirmar Contraseña</span>
+  <button
+    type="button"
+    onClick={() => toggleShowPassword("confirmPassword")}
+    className={style.eyeButton}
+  >
+    <FontAwesomeIcon icon={showPwd ? faEye : faEyeSlash} />
+  </button>
+  </label>
+</div>
+</div>
+  {errors.confirmPassword && <p className={style.errormessage} >{errors.confirmPassword.message}</p>}
+
+        <div > 
+          <p className={style.message}>Entidad seleccionada:</p>
+          <ul className={style.entitylist} >
             {selectedEntities.map((entity) => (
               <li key={entity}>
                 {entity}{" "}
@@ -175,15 +201,15 @@ const Create1User = () => {
           </ul>
         </div>
         <div>
-          <button type="submit">Registrarse</button>
+
+          <button className={style.submit } type="submit">Registrarse</button>
         </div>
       </form>
     </div>
   );
-};
+ }
 
 export default Create1User;
-
 
 
 
