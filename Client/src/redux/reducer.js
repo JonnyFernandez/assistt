@@ -1,4 +1,5 @@
 import {
+
     GET_PROD,
     GET_ORDER,
     ADD_FAV,
@@ -14,7 +15,10 @@ import {
     PUT_REVISOR1,
     POST_USER1,
     POST_USER2,
-    GET_ENTITY
+    GET_ENTITY,
+    SUMA,
+    RESTA,
+    CLEAN_CART
   } from '../redux/actionsType';
   
   const InitialState = {
@@ -161,14 +165,28 @@ import {
             ...state,
           };
         }
+          case SUMA:
+      const aux = state.cart
+      let source = aux.find(item => item.id === action.payload)
+      source ? source.quanty++ : ''
+      return {
+        ...state,
+        cart: [...state.cart,]
+      }
+    case RESTA:
+      const aux1 = state.cart
+      let source1 = aux1.find(item => item.id === action.payload)
+      source1 ? source1.quanty-- : ''
+      return {
+        ...state,
+        cart: [...state.cart,]
+      }
+    case CLEAN_CART:
+      return {
+        ...state,
+        cart: []
+      }
      
       default: {
         return {
           ...state,
-        };
-      }
-    }
-  };
-  
-  export default reducer;
-  

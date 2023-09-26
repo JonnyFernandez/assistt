@@ -1,12 +1,12 @@
 import c from './Card2.module.css'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { addCart, removeCard, quantity } from '../../redux/actions'
+import { addCart, removeCard, quantity, suma, resta } from '../../redux/actions'
 import { codeToOrder } from '../../utils/codes'
 
 
 
-const Card2 = ({ id, code, name, description, price }) => {
+const Card2 = ({ id, code, name, description, quanty, price }) => {
 
     const OrderCode = codeToOrder()
 
@@ -16,12 +16,19 @@ const Card2 = ({ id, code, name, description, price }) => {
 
 
 
+
+
+
     const [cart, setCart] = useState(false)
 
     const [inputs, setInputs] = useState({
         quanty: '1'
 
     })
+
+    useEffect(() => {
+        setInputs({ "quanty": quanty })
+    }, [myList])
 
     // console.log(inputs);
 
@@ -35,22 +42,13 @@ const Card2 = ({ id, code, name, description, price }) => {
         });
     }, [myList]);
 
-    const handleChange = (e) => {
-        let property = e.target.name;
-        let value = e.target.value
 
-        setInputs({
-            ...inputs,
-            [property]: value
-        })
-
-    }
 
     const sendUpdate = () => {
         if (!inputs.quanty) return alert('poner cantidad')
         dispatch(quantity(id, inputs))
 
-        setInputs({ "quanty": '' })
+
     }
 
 
@@ -64,7 +62,16 @@ const Card2 = ({ id, code, name, description, price }) => {
         }
     }
 
+    const handlerIncrese = () => {
+        dispatch(suma(id))
 
+    }
+    const handlerDecrese = () => {
+        dispatch(resta(id))
+
+
+
+    }
 
 
 
@@ -93,9 +100,16 @@ const Card2 = ({ id, code, name, description, price }) => {
             <div className={c.divBotones}>
                 <div className={c.buttoContainer}>
 
-                    <input type="number" min={1} onChange={handleChange} name="quanty" value={inputs.quanty} placeholder='cantidad' />
-                    <button onClick={() => sendUpdate()}>agregar</button>
+                    {/* <input type="number" min={1} onChange={handleChange} name="quanty" value={inputs.quanty} placeholder='cantidad' /> */}
 
+                    <div className={c.inputsNum}>
+                        <button onClick={handlerDecrese} >-</button>
+                        <span>{quanty}</span>
+                        <button onClick={handlerIncrese} >+</button>
+
+                    </div>
+
+                    <button onClick={() => sendUpdate()}>agregar</button>
 
 
                     {cart
