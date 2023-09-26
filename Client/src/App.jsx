@@ -1,5 +1,6 @@
 import { Landing, User1, User2, User3, User4, Profile1, Cart, Orders, Fav } from "./views"
 import Create1User from "./components/Formularios/Create1User";
+import Create2User from "./components/Formularios/Create2User";
 import { Route, Routes } from "react-router-dom"
 import axios from "axios";
 axios.defaults.baseURL = "http://localhost:3001";
@@ -21,7 +22,8 @@ function App() {
         <Route exact path="/cart" element={<Cart />} />
         <Route exact path="/orders" element={<Orders />} />
         <Route exact path="/detail/:id" element={<User3 />} />
-        <Route exact path="/register" element={<Create1User />} />
+        <Route exact path="/register1" element={<Create1User />} />
+        <Route exact path="/register2" element={<Create2User />} />
         <Route exact path="/fav" element={<Fav />} />
       </Routes>
     </div>

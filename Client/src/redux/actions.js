@@ -15,6 +15,7 @@ import {
     PUT_REVISOR1,
     PUT_REVISOR2,
     POST_USER1,
+    POST_USER2,
     GET_ENTITY,
 
 } from './actionsType'
@@ -130,7 +131,7 @@ export const postUser1 = (newUser) => {
     try {
       const { data } = await axios.post('/user1', newUser);
       Swal.fire({
-        html: `<strong>${data}</strong> `,
+        text: 'Usuario Creado',
         icon: 'success',
       });
 
@@ -140,7 +141,30 @@ export const postUser1 = (newUser) => {
     } catch (error) {
       console.error('Error desconocido al crear usuario:', error);
       Swal.fire({
-        html: '<strong>Error desconocido al crear usuario</strong>',
+        text: 'Error desconocido al crear usuario',
+        icon: 'error',
+      });
+      return null;
+    }
+  };
+};
+
+export const postUser2 = (newUser) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post('/user2', newUser);
+      Swal.fire({
+        text: 'Usuario Creado',
+        icon: 'success',
+      });
+
+       dispatch({ type: POST_USER2, payload: data });
+
+      return data; // Retorna los datos del nuevo usuario si es necesario
+    } catch (error) {
+      console.error('Error desconocido al crear usuario:', error);
+      Swal.fire({
+        text: 'Error desconocido al crear usuario',
         icon: 'error',
       });
       return null;

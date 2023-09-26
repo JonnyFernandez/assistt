@@ -13,6 +13,7 @@ import {
     PUT_REVISOR2,
     PUT_REVISOR1,
     POST_USER1,
+    POST_USER2,
     GET_ENTITY
   } from '../redux/actionsType';
   
@@ -105,6 +106,11 @@ import {
         };
 
         case POST_USER1: {
+          return {
+            ...state
+          };
+        }
+        case POST_USER2: {
           return {
             ...state
           };

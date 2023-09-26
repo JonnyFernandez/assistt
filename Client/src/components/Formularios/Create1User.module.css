@@ -1,0 +1,211 @@
+.formcontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #e7dbdb;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 500px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    position: relative;
+  }
+  
+  .title {
+    font-size: 28px;
+    color: royalblue;
+    font-weight: 600;
+    letter-spacing: -1px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+  }
+  
+  .title::before,.title::after {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    left: 0px;
+    background-color: royalblue;
+  }
+  
+  .title::before {
+    width: 18px;
+    height: 18px;
+    background-color: royalblue;
+  }
+  
+  .title::after {
+    width: 18px;
+    height: 18px;
+    animation: pulse 1s linear infinite;
+  }
+  
+  .message {
+    color: rgba(88, 87, 87, 0.822);
+    font-size: 14px;
+  }
+  
+  
+  .flex {
+    display: flex;
+    width: 120%;
+    gap: 6px;
+  }
+  
+  .form label {
+    position: relative;
+  }
+  
+  .form label .input { 
+    padding: 10px 10px 25px 10px;
+    outline: 0;
+    border: 1px solid rgba(105, 105, 105, 0.397);
+    border-radius: 10px;
+  }
+  
+  .form label .input + span{
+    position: absolute;
+    left: 10px;
+    color: grey;
+    font-size: 0.9em;
+    cursor: text;
+    transition: 0.3s ease;
+  }
+  
+ 
+  .form label .input:focus + span,
+  .form label .input:valid + span {
+    top: 30px;
+    font-size: 0.7em;
+    font-weight: 600;
+  }
+  
+  .form label .input:valid + span {
+    color: green;
+  }
+  
+  .submit {
+    border: none;
+    outline: none;
+    background-color: royalblue;
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    transform: .3s ease;
+  }
+  
+  .submit:hover {
+    background-color: rgb(56, 90, 194);
+  }
+  
+  @keyframes pulse {
+    from {
+      transform: scale(0.9);
+      opacity: 1;
+    }
+  
+    to {
+      transform: scale(1.8);
+      opacity: 0;
+    }
+  }
+
+  /* Estilizar el elemento <select> */
+.select {
+    width: 79%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #333;
+    font-size: 16px;
+  }
+  
+
+  /* Estilizar la lista de entidades seleccionadas */
+ul.selected-entities {
+    list-style: none;
+    padding: 0;
+  }
+  
+  /* Estilizar los elementos <li> dentro de la lista */
+  ul.selected-entities li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    background-color: #f2f2f2;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
+  /* Estilizar el botón "Eliminar" dentro de los elementos <li> */
+  ul.selected-entities li button {
+    background: none;
+    border: none;
+    color: red;
+    cursor: pointer;
+  }
+  
+  
+  .eyeButton {
+    border: none;
+    background: none;
+    font-size: 12px;
+    cursor: pointer;
+    position: absolute;
+    right: 1px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+
+/* Estilizar la lista de entidades seleccionadas */
+ul.entitylist {
+    list-style: none;
+    padding: 0;
+  }
+  
+  /* Estilizar los elementos <li> dentro de la lista */
+  ul.entitylist li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: #f2f2f2;
+    padding: 5px 50px;
+    border-radius: 5px;
+    color: #333;
+    font-size: 15px;
+  }
+  
+  /* Estilizar el botón "Eliminar" dentro de los elementos <li> */
+  ul.entitylist li button {
+    background: none;
+    border: none;
+    color: red;
+    cursor: pointer;
+  }
+
+  /* styles.module.css */
+.errormessage {
+  color: red; /* Cambia el color del texto a rojo */
+  font-size: 0.8em; /* Ajusta el tamaño de fuente */
+  margin-top: 4px; /* Agrega un pequeño espacio superior */
+}
+
+
+  
+ 
+  
