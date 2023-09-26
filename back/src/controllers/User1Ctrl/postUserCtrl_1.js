@@ -1,8 +1,9 @@
 const { User1, Entity } = require( '../../db' );
 const bcrypt = require( "bcryptjs" );
-// const { generateCode } = require('../../utils/codeGenerator');
+const { generateCode } = require('../../utils/codeGenerator');
 
-const createUser1 = async ( name, email, password, entity ) => {
+const createUser1 = async ( cuit, name, address, email, phone, password, entity ) => {
+    let usercode = generateCode()
     try { // Buscar la entidad en la base de datos
         const EntityDB = await Entity.findAll( {
             where: {
@@ -26,14 +27,16 @@ const createUser1 = async ( name, email, password, entity ) => {
 
         const passwordHash = await bcrypt.hash( password, 10 );
         const userData = {
+            usercode,
+            cuit,
             name,
+            address,
             email,
+            phone,
             password: passwordHash
         };
 
-        console.log( "Entrando en postUser_1" );
         const newUser1 = await User1.create( userData );
-        console.log( "Usuario creado:", newUser1 );
 
         // Asociar al usuario con la entidad encontrada
         await newUser1.addEntity( EntityDB );

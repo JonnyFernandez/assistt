@@ -1,16 +1,18 @@
 .formcontainer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-color: #e7dbdb;
+   
   }
-  
-  .form {
+
+.form {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    max-width: 500px;
+    max-width: 600px;
     background-color: #fff;
     padding: 20px;
     border-radius: 20px;
@@ -55,18 +57,18 @@
     font-size: 14px;
   }
   
+
   .flex {
     display: flex;
     width: 100%;
     gap: 6px;
   }
   
-  
   .form label {
     position: relative;
   }
   
-  .form label .input { 
+  .form label .input {
     width: 90%;
     padding: 10px 10px 20px 10px;
     outline: 0;
@@ -84,12 +86,16 @@
     transition: 0.3s ease;
   }
   
+  .form label .input:placeholder-shown + span {
+    top: 15px;
+    font-size: 0.9em;
+  }
+  
   .form label .input:focus + span,.form label .input:valid + span {
     top: 30px;
     font-size: 0.7em;
     font-weight: 600;
   }
-
   
   .form label .input:valid + span {
     color: green;
@@ -104,6 +110,7 @@
     color: #fff;
     font-size: 16px;
     transform: .3s ease;
+    margin-top: 15px;
   }
   
   .submit:hover {
@@ -122,46 +129,8 @@
     }
   }
 
-  /* Estilizar el elemento <select> */
-.select {
-    width: 90%;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #fff;
-    color: #333;
-    font-size: 16px;
-    margin-top: -20px;
-  }
-  
 
-  /* Estilizar la lista de entidades seleccionadas */
-ul.selected-entities {
-    list-style: none;
-    padding: 0;
-  }
-  
-  /* Estilizar los elementos <li> dentro de la lista */
-  ul.selected-entities li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 5px;
-    background-color: #f2f2f2;
-    padding: 5px 10px;
-    border-radius: 5px;
-  }
-  
-  /* Estilizar el botón "Eliminar" dentro de los elementos <li> */
-  ul.selected-entities li button {
-    background: none;
-    border: none;
-    color: red;
-    cursor: pointer;
-  }
-  
   .eyeButton {
-    display: flex;
     border: none;
     background: none;
     font-size: 12px;
@@ -171,21 +140,9 @@ ul.selected-entities {
     top: 50%;
     transform: translateY(-50%);
   }
-  
-/* Estilizar la lista de entidades seleccionadas */
-ul.entitylist {
-    list-style: none;
-    padding: 0;
+
+  .errormessage {
+    color: red; /* Cambia el color del texto a rojo */
+    font-size: 0.8em; /* Ajusta el tamaño de fuente */
+    margin: 2px; /* Agrega un pequeño espacio superior */
   }
-
-  /* styles.module.css */
-.errormessage {
-  color: red; 
-  font-size: 0.8em; 
-  margin-top: 2px;
-}
-
-
-  
- 
-  

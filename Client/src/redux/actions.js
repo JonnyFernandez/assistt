@@ -16,6 +16,8 @@ import {
     PUT_REVISOR2,
     POST_USER1,
     POST_USER2,
+    POST_USER3,
+    POST_USER4,
     GET_ENTITY,
     SUMA,
     RESTA,
@@ -167,12 +169,55 @@ export const postUser2 = (newUser) => {
   };
 };
 
-// export const postUser1 = (newUser) => {
-//   return async (dispatch) => {
-//     const res = await axios.post("/user1", newUser);
-//     return dispatch({ type: POST_USER1, res });
-//   };
-// };
+export const postUser3 = (newUser) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post('/user3', newUser);
+      Swal.fire({
+        text: 'Usuario Creado',
+        icon: 'success',
+      });
+
+       dispatch({ type: POST_USER3, payload: data });
+
+      return data; // Retorna los datos del nuevo usuario si es necesario
+    } catch (error) {
+      console.error('Error desconocido al crear usuario:', error);
+      Swal.fire({
+        text: 'Error desconocido al crear usuario',
+        icon: 'error',
+      });
+      return null;
+
+    }
+  };
+};
+
+export const postUser4 = (newUser) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post('/user4', newUser);
+      Swal.fire({
+        text: 'Usuario Creado',
+        icon: 'success',
+      });
+
+       dispatch({ type: POST_USER4, payload: data });
+
+      return data; // Retorna los datos del nuevo usuario si es necesario
+    } catch (error) {
+      console.error('Error desconocido al crear usuario:', error);
+      Swal.fire({
+        text: 'Error desconocido al crear usuario',
+        icon: 'error',
+      });
+      return null;
+
+    }
+  };
+};
+
+//--------------------Todas las entidades-------------------------
 
 
 export const getEntity = () => {
@@ -189,35 +234,6 @@ export const getEntity = () => {
     }
   };
 };
-
-
-//------------------------REVIEW-----------------------------------
-
-export const getReviews = () => {
-    return async function (dispatch) {
-      try {
-        const res = await axios.get("/review");
-
-        // Mapea las revisiones para agregar la información del usuario a cada una
-        const reviewsWithUserInfo = await Promise.all(
-          res.data.map(async (review) => {
-            // Suponemos que `userReviewId` es el ID del usuario que hizo la revisión
-            const user = await getUserInfo(review.userReviewId); // Debes implementar esta función
-            return {
-              ...review,
-              user, // Agregamos la información del usuario a la revisión
-            };
-          })
-        );
-
-        dispatch({ type: GET_REVIEWS, payload: reviewsWithUserInfo });
-      } catch (error) {
-        console.error("Error al obtener las reseñas:", error);
-      }
-    };
-  };
-
-
 
 //------------------------REVIEW-----------------------------------
 
@@ -276,9 +292,6 @@ export const putRevisor1 = (id, dataRevisor1) => {
     return dispatch({ type: PUT_REVISOR1, payload: data });
   };
 };
-
-
-
 
 export const suma = (id) => {
   return { type: SUMA, payload: id }

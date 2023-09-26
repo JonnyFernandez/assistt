@@ -27,10 +27,10 @@ const User1_ById = async (req, res) => {
 }
 
 const postUser_1 = async (req, res) => {
-    const { name, email, password, entity } = req.body;
+    const {  cuit, name, address, email, phone, password, entity } = req.body;
    
     try {
-        const newUser1 = await createUser1(name, email, password, entity);
+        const newUser1 = await createUser1(cuit, name, address, email, phone, password, entity);
         res.status(200).json(newUser1);
       } catch (error) {
         res.status(400).json({ error: error.message });

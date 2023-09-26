@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { postUser2 } from "../../redux/actions";
+import { postUser4 } from "../../redux/actions";
 import { toast } from "react-hot-toast";
-import style from "../Formularios/Create2User.module.css";
+import style from "../Formularios/Create4User.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
-const Create2User = () => {
+const Create4User = () => {
   const dispatch = useDispatch();
   const [showPwd, setShowPwd] = useState(false);
   const [showPwds, setShowPwds] = useState(false);
@@ -41,7 +41,7 @@ const Create2User = () => {
         phone: data.phone,
       };
 
-      const newUser = await dispatch(postUser2(userData));
+      const newUser = await dispatch(postUser4(userData));
 
       if (newUser && newUser.error) {
         toast.error(newUser.error);
@@ -67,7 +67,7 @@ const Create2User = () => {
       <form className={style.form}
         onSubmit={handleSubmit(onSubmit)}>
         <p className={style.title}>Regístrate</p>
-        <p className={style.message}>Crea una cuenta nueva, Revisor</p>
+        <p className={style.message}>Crea una cuenta nueva, Proveedor</p>
         
         <div className={style.flex} >
         <label htmlFor="name"  className={style.flex}>
@@ -192,4 +192,4 @@ const Create2User = () => {
   );
 };
 
-export default Create2User;
+export default Create4User;
