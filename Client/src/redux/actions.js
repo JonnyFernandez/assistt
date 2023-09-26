@@ -1,22 +1,26 @@
 
 import {
-  GET_PROD,
-  ADD_FAV,
-  REMOVE_FAV,
-  ADD_CART,
-  REMOVE_CART,
-  GET_PROFILE,
-  GET_ORDER,
-  CLEAN_DETAIL,
-  ORDER_DETAIL,
-  BY_TYPE,
-  QUANTITY,
-  GET_REVIEWS,
-  PUT_REVISOR1,
-  PUT_REVISOR2,
-  SUMA,
-  RESTA,
-  CLEAN_CART,
+
+    GET_PROD,
+    ADD_FAV,
+    REMOVE_FAV,
+    ADD_CART,
+    REMOVE_CART,
+    GET_PROFILE,
+    GET_ORDER,
+    CLEAN_DETAIL,
+    ORDER_DETAIL,
+    BY_TYPE,
+    QUANTITY,
+    GET_REVIEWS,
+    PUT_REVISOR1,
+    PUT_REVISOR2,
+    POST_USER1,
+    GET_ENTITY,
+    SUMA,
+    RESTA,
+    CLEAN_CART,
+
 
 } from './actionsType'
 
@@ -24,6 +28,7 @@ import {
 
 
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 
 export const getProd = () => {
@@ -33,6 +38,7 @@ export const getProd = () => {
   }
 }
 
+//-------------------ORDENES----------------------------------
 export const getOrders = () => {
   return async function (dispatch) {
     try {
@@ -75,7 +81,7 @@ export const removeFav = (id) => {
 
   return { type: REMOVE_FAV, payload: id }
 }
-// ------------------------Cart-----------------
+// ------------------------Cart/ CARRITO-----------------
 export const removeCard = (id) => {
 
   return { type: REMOVE_CART, payload: id }
@@ -89,8 +95,6 @@ export const addCart = (payload) => {
 
 
 // ----------------------profile------------------
-
-
 
 
 export const getUser1 = (userCode) => {
@@ -118,33 +122,80 @@ export const getUser1 = (userCode) => {
 //     }
 // }
 
+//-------------------CREACION DE USUARIOS-------------------
+// Crea un nuevo usuario
+export const postUser1 = (newUser) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post('/user1', newUser);
+      Swal.fire({
+        html: `<strong>${data}</strong> `,
+        icon: 'success',
+      });
+
+       dispatch({ type: POST_USER1, payload: data });
+
+      return data; // Retorna los datos del nuevo usuario si es necesario
+    } catch (error) {
+      console.error('Error desconocido al crear usuario:', error);
+      Swal.fire({
+        html: '<strong>Error desconocido al crear usuario</strong>',
+        icon: 'error',
+      });
+      return null;
+    }
+  };
+};
+
+// export const postUser1 = (newUser) => {
+//   return async (dispatch) => {
+//     const res = await axios.post("/user1", newUser);
+//     return dispatch({ type: POST_USER1, res });
+//   };
+// };
+
+
+export const getEntity = () => {
+  return async (dispatch) => {
+    try {
+      const res = await axios.get('/entity', {});
+      const data = res.data;
+      return dispatch({
+        type: GET_ENTITY,
+        payload: data,
+      });
+    } catch (error) {
+      return error.message;
+    }
+  };
+};
 
 
 //------------------------REVIEW-----------------------------------
 
 export const getReviews = () => {
-  return async function (dispatch) {
-    try {
-      const res = await axios.get("/review");
+    return async function (dispatch) {
+      try {
+        const res = await axios.get("/review");
 
-      // Mapea las revisiones para agregar la información del usuario a cada una
-      const reviewsWithUserInfo = await Promise.all(
-        res.data.map(async (review) => {
-          // Suponemos que `userReviewId` es el ID del usuario que hizo la revisión
-          const user = await getUserInfo(review.userReviewId); // Debes implementar esta función
-          return {
-            ...review,
-            user, // Agregamos la información del usuario a la revisión
-          };
-        })
-      );
+        // Mapea las revisiones para agregar la información del usuario a cada una
+        const reviewsWithUserInfo = await Promise.all(
+          res.data.map(async (review) => {
+            // Suponemos que `userReviewId` es el ID del usuario que hizo la revisión
+            const user = await getUserInfo(review.userReviewId); // Debes implementar esta función
+            return {
+              ...review,
+              user, // Agregamos la información del usuario a la revisión
+            };
+          })
+        );
 
-      dispatch({ type: GET_REVIEWS, payload: reviewsWithUserInfo });
-    } catch (error) {
-      console.error("Error al obtener las reseñas:", error);
-    }
+        dispatch({ type: GET_REVIEWS, payload: reviewsWithUserInfo });
+      } catch (error) {
+        console.error("Error al obtener las reseñas:", error);
+      }
+    };
   };
-};
 
 
 //------------------------fliter by Sopplies type------------------
@@ -162,6 +213,8 @@ export const quantity = (id, input) => {
   }
 }
 
+
+//--------------------APROBACIONES DE ORDENES POR USUARIOS---------------------------
 export const putRevisor2 = (id, dataRevisor2) => {
   return async (dispatch) => {
     const { data } = await axios.put(`/user3/order/${id}`, dataRevisor2);

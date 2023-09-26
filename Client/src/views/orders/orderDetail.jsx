@@ -214,7 +214,7 @@ const OrderDetail = () => {
                 </div>
                 
                     <div className={style.div}>
-                    <button className={style.approveButton} onClick={handleApproveOrder}>Aprobar</button>
+                        <button className={style.approveButton} onClick={handleApproveOrder}>Aprobar</button>
                         <button className={style.rejectButton} onClick={handleRejectOrder}>Desaprobar</button>
                     </div>
                 </div>

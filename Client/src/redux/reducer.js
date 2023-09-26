@@ -1,4 +1,4 @@
-import {
+
   GET_PROD,
   GET_ORDER,
   ADD_FAV,
@@ -15,6 +15,8 @@ import {
   SUMA,
   RESTA,
   CLEAN_CART
+  POST_USER1,
+  GET_ENTITY
 } from '../redux/actionsType';
 
 const InitialState = {
@@ -39,6 +41,7 @@ const reducer = (state = InitialState, action) => {
         return {
           ...review,
           user, // Agregamos la información del usuario a la revisión
+
         };
       });
 
@@ -46,6 +49,11 @@ const reducer = (state = InitialState, action) => {
         ...state,
         reviewsWithUserInfo, // Actualizamos la propiedad reviewsWithUserInfo en el estado
       };
+      case GET_ENTITY:
+              return {
+                  ...state,
+                  allEntity: action.payload
+              };
 
     case GET_PROD:
       return {
@@ -66,8 +74,12 @@ const reducer = (state = InitialState, action) => {
     case CLEAN_DETAIL:
       return {
         ...state,
-        dogsDetail: {},
+        orderDetail: {},
       };
+       case POST_USER1: {
+          return {
+            ...state
+          };
     case ADD_FAV:
       return {
         ...state,
@@ -135,9 +147,6 @@ const reducer = (state = InitialState, action) => {
         ...state,
         cart: []
       }
-
-
-
     default: {
       return {
         ...state,
