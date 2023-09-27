@@ -17,38 +17,38 @@ module.exports = (sequelize) => {
         },
         cuit: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             unique: true
         },
         name: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
 
         address: {
             type: DataTypes.TEXT,
-            allowNull: false,
+            allowNull: true,
         },
         email: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             unique: true
         },
         active: {
             type: DataTypes.BOOLEAN,
-            allowNull: false,
+            allowNull: true,
             defaultValue: true
         },
         phone: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             unique: true
         },
-        password:{
-            type : DataTypes.STRING,
-            allowNull :false
+        password: {
+            type: DataTypes.STRING,
+            allowNull: true
         }
-       
+
 
     }, { timestamps: false, freezeTableName: true })
 };
