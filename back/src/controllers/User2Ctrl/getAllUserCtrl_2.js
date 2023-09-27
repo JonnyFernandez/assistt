@@ -9,11 +9,6 @@ const getAllUser2 = async () => {
                 as: 'Review2',
                 attributes: [ "review" ]
             },
-            {
-                model: Orders,
-                as: 'Orders',
-                attributes: ["codeOrder"]
-            },
         ]
 
     } )

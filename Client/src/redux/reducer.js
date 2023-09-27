@@ -67,6 +67,7 @@ const InitialState = {
 
 const reducer = (state = InitialState, action) => {
   switch (action.type) {
+
     case GET_REVIEWS:
       const reviewsWithUserInfo = action.payload.map((review) => {
         const user = getUserInfo(review.userReviewId); // Debes implementar esta función

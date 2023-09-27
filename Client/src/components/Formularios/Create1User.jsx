@@ -6,6 +6,8 @@ import { toast } from "react-hot-toast";
 import style from "../Formularios/Create1User.module.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import Nav from "../nav/Nav";
+import Footer from "../footer/Footer";
 
 const Create1User = () => {
   const dispatch = useDispatch();
@@ -93,8 +95,9 @@ const Create1User = () => {
   };
 
   return (
+    <div>
+    <Nav />
     <div className={style.formcontainer}>
-
       <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
         <p className={style.title} >Regístrate</p>
         <p className={style.message}>Crea una cuenta nueva, Cliente</p>
@@ -127,43 +130,9 @@ const Create1User = () => {
           <span>Email</span>
           </label>
         </div>
-        </div>
           {errors.email && <p className={style.errormessage} >{errors.email.message}</p>}
-
-          <div className={style.flex}>
-          <label htmlFor="cuit" >
-      <input
-        className={style.input}
-        type="text"
-        placeholder=""
-        {...register("cuit", { required: "El cuit es requerido" })}
-      />
-      <span>Cuit</span>
-    </label>
-    <p className={style.errormessage}>{errors.cuit?.message}</p>
-
-    <label htmlFor="address">
-      <input
-        className={style.input}
-        type="text"
-        placeholder=""
-        {...register("address", { required: "La dirección es requerida" })}
-      />
-      <span>Dirección</span>
-    </label>
-    <p className={style.errormessage}>{errors.address?.message}</p>
-    </div>
-    <label htmlFor="phone" className={style.flex}>
-      <input
-        className={style.input}
-        type="text"
-        placeholder=""
-        {...register("phone", { required: "El teléfono es requerido" })}
-      />
-      <span>Teléfono</span>
-    </label>
-    <p className={style.errormessage}>{errors.phone?.message}</p>
-  
+            </div>
+            <div className={style.flex}>
           <select className={style.select}
           {...register("entity")} onChange={handleSelect}>
             {entity.map((entityItem, index) => (
@@ -172,8 +141,11 @@ const Create1User = () => {
               </option>
             ))}
           </select>
+      </div>
+  
+            <div className={style.flex}>
+  
      
-        <div className={style.flex}>
         <div className={style.flex}>
         <label htmlFor="password">
   <input className={style.input}
@@ -241,6 +213,10 @@ const Create1User = () => {
           <button className={style.submit } type="submit">Registrarse</button>
         </div>
       </form>
+    </div>
+      <div>
+        <Footer />
+      </div>
     </div>
   );
  }
