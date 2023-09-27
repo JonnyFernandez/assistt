@@ -320,5 +320,3 @@ export const createOrder = (input) => {
 export const cleanCart = () => {
   return { type: CLEAN_CART }
 }
-
-//----------busaqueda de users----------

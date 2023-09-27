@@ -58,10 +58,6 @@
         flex-direction: row;
         justify-content: space-around;
     }
-    .select{
-        flex-direction: row;
-        justify-content: space-around;
-    }
 }
 
 .nav1Container a {
@@ -75,18 +71,4 @@
 
 .nav1Container a:hover {
     text-shadow: 1px 1px 2px pink;
-}
-
-.select {
-    background-color: rgb(23, 99, 205);;
-    color: whitesmoke;
-    font-size: 16px;
-    border: none;
-    padding: 8px;
-    border-radius: 5px;
-}
-
-.crearUser {
-    display: none;
-    pointer-events: none;
 }

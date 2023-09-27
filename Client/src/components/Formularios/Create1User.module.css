@@ -1,112 +1,114 @@
 .formcontainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 75vh; /* Ajustar la altura */
-  background-color: #d6d5cd;
-}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #e7dbdb;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 500px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    position: relative;
+  }
+  
+  .title {
+    font-size: 28px;
+    color: royalblue;
+    font-weight: 600;
+    letter-spacing: -1px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+  }
+  
+  .title::before,.title::after {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    left: 0px;
+    background-color: royalblue;
+  }
+  
+  .title::before {
+    width: 18px;
+    height: 18px;
+    background-color: royalblue;
+  }
+  
+  .title::after {
+    width: 18px;
+    height: 18px;
+    animation: pulse 1s linear infinite;
+  }
+  
+  .message {
+    color: rgba(88, 87, 87, 0.822);
+    font-size: 14px;
+  }
+  
+  .flex {
+    display: flex;
+    width: 100%;
+    gap: 6px;
+  }
+  
+  
+  .form label {
+    position: relative;
+  }
+  
+  .form label .input { 
+    width: 90%;
+    padding: 10px 10px 20px 10px;
+    outline: 0;
+    border: 1px solid rgba(105, 105, 105, 0.397);
+    border-radius: 10px;
+  }
+  
+  .form label .input + span {
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    color: grey;
+    font-size: 0.9em;
+    cursor: text;
+    transition: 0.3s ease;
+  }
+  
+  .form label .input:focus + span,.form label .input:valid + span {
+    top: 30px;
+    font-size: 0.7em;
+    font-weight: 600;
+  }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px; /* Reducir el espacio entre los elementos */
-  max-width: 350px; /* Reducir el ancho máximo */
-  background-color: #fff;
-  padding: 15px; /* Reducir el relleno */
-  border-radius: 20px; /* Reducir la curvatura de los bordes */
-  position: relative;
-}
-
-.title {
-  font-size: 24px; /* Reducir el tamaño de fuente */
-  color: royalblue;
-  font-weight: 700;
-  letter-spacing: -1px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  padding-left: 20px; /* Reducir el espacio izquierdo */
-}
-
-.title::before, .title::after {
-  position: absolute;
-  content: "";
-  height: 12px; /* Reducir el tamaño */
-  width: 12px; /* Reducir el tamaño */
-  border-radius: 50%;
-  left: 0px;
-  background-color: royalblue;
-}
-
-.title::before {
-  width: 16px; /* Reducir el tamaño */
-  height: 16px; /* Reducir el tamaño */
-  background-color: royalblue;
-}
-
-.title::after {
-  width: 16px; /* Reducir el tamaño */
-  height: 16px; /* Reducir el tamaño */
-  animation: pulse 1s linear infinite;
-}
-
-.message {
-  color: rgba(88, 87, 87, 0.822);
-  font-size: 12px; /* Reducir el tamaño de fuente */
-}
-
-.flex {
-  display: flex;
-  width: 100%;
-  gap: 4px; /* Reducir el espacio entre los elementos */
-}
-
-.form label {
-  position: relative;
-}
-
-.form label .input { 
-  width: 80%; /* Reducir el ancho del campo de entrada */
-  padding: 8px; /* Reducir el relleno */
-  outline: 0;
-  border: 1px solid rgba(105, 105, 105, 0.397);
-  border-radius: 8px; /* Reducir la curvatura de los bordes */
-}
-
-.form label .input + span {
-  position: absolute;
-  left: 8px; /* Reducir la distancia izquierda */
-  top: 12px; /* Ajustar la posición superior */
-  color: grey;
-  font-size: 0.8em; /* Reducir el tamaño de fuente */
-  cursor: text;
-  transition: 0.3s ease;
-}
-
-.form label .input:focus + span, .form label .input:valid + span {
-  top: 20px; /* Ajustar la posición superior */
-  font-size: 0.6em; /* Reducir el tamaño de fuente */
-  font-weight: 600;
-}
-
-.form label .input:valid + span {
-  color: green;
-}
-
-.submit {
-  border: none;
-  outline: none;
-  background-color: royalblue;
-  padding: 8px; /* Reducir el relleno */
-  border-radius: 8px; /* Reducir la curvatura de los bordes */
-  color: #fff;
-  font-size: 14px; /* Reducir el tamaño de fuente */
-  transform: .3s ease;
-}
-
-.submit:hover {
-  background-color: rgb(56, 90, 194);
-}
+  
+  .form label .input:valid + span {
+    color: green;
+  }
+  
+  .submit {
+    border: none;
+    outline: none;
+    background-color: royalblue;
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    transform: .3s ease;
+  }
+  
+  .submit:hover {
+    background-color: rgb(56, 90, 194);
+  }
   
   @keyframes pulse {
     from {
@@ -121,15 +123,15 @@
   }
 
   /* Estilizar el elemento <select> */
-  .select {
-    width: 90%; /* Reducir el ancho del select */
-    padding: 9px; /* Reducir el relleno */
+.select {
+    width: 90%;
+    padding: 15px;
     border: 1px solid #ccc;
-    border-radius: 8px; /* Reducir la curvatura de los bordes */
+    border-radius: 10px;
     background-color: #fff;
     color: #333;
-    font-size: 14px; /* Reducir el tamaño de fuente */
-    
+    font-size: 16px;
+    margin-top: -20px;
   }
   
 
@@ -165,7 +167,7 @@ ul.selected-entities {
     font-size: 12px;
     cursor: pointer;
     position: absolute;
-    right: 20px;
+    right: 6px;
     top: 50%;
     transform: translateY(-50%);
   }
@@ -179,7 +181,7 @@ ul.entitylist {
   /* styles.module.css */
 .errormessage {
   color: red; 
-  font-size: 0.7em; 
+  font-size: 0.8em; 
   margin-top: 2px;
 }
 
