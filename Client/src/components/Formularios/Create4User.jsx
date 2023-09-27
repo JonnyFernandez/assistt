@@ -6,6 +6,7 @@ import { toast } from "react-hot-toast";
 import style from "../Formularios/Create4User.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import Nav from "../nav/Nav";
 
 const Create4User = () => {
   const dispatch = useDispatch();
@@ -63,6 +64,8 @@ const Create4User = () => {
   };
 
   return (
+    <div>
+      <Nav />
     <div className={style.formcontainer}>
       <form className={style.form}
         onSubmit={handleSubmit(onSubmit)}>
@@ -188,6 +191,7 @@ const Create4User = () => {
           <button className={style.submit } type="submit">Registrarse</button>
         </div>
       </form>
+    </div>
     </div>
   );
 };

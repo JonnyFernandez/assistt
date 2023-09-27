@@ -1,24 +1,23 @@
-const { User2, Review, Orders } = require('../../db')
+const { User2, Review, Orders } = require( '../../db' )
 
 
 const getAllUser2 = async () => {
-    const aux = await User2.findAll({
+    const aux = await User2.findAll( {
         include: [
             {
                 model: Review,
                 as: 'Review2',
-                attributes: ["review"]
+                attributes: [ "review" ]
             },
-
         ]
 
-    })
+    } )
     return aux;
 }
 
 
-const getByName2 = async (codeUser) => {
-    const get2 = await User2.findAll({
+const getByName2 = async ( codeUser ) => {
+    const get2 = await User2.findAll( {
         where: {
             usercode: codeUser
         },
@@ -26,11 +25,15 @@ const getByName2 = async (codeUser) => {
             {
                 model: Review,
                 as: 'Review2',
-                attributes: ["review"]
+                attributes: [ "review" ]
             },
-
+            {
+                model: Orders,
+                as: 'Orders',
+                attributes: ["codeOrder"]
+            },
         ]
-    })
+    } )
     return get2;
 
 }

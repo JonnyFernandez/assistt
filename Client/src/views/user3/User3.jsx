@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getOrders } from '../../redux/actions'; // Importa tu acción
 import { Link } from 'react-router-dom';
 import OrderDetail from '../orders/orderDetail';
+import UserList from '../../components/searchBar/UserList';
 
 
 const User3 = () => {
@@ -41,8 +42,9 @@ const User3 = () => {
         
         <div className={style.bodyRight}>
                 <OrderDetail />
-            
+                <UserList />
       </div>
+
     </div>
     </div>
     </div>
