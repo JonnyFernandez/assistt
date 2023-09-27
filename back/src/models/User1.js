@@ -1,8 +1,8 @@
-const { DataTypes } = require( 'sequelize' );
+const { DataTypes } = require('sequelize');
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
-module.exports = ( sequelize ) => { // defino el modelo
-    sequelize.define( 'User1', {
+module.exports = (sequelize) => { // defino el modelo
+    sequelize.define('User1', {
         id: {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
@@ -21,7 +21,7 @@ module.exports = ( sequelize ) => { // defino el modelo
         },
         name: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         institution_name: {
             type: DataTypes.STRING,
@@ -35,7 +35,7 @@ module.exports = ( sequelize ) => { // defino el modelo
         email: {
             type: DataTypes.STRING,
             unique: true,
-            allowNull: false,
+            allowNull: true,
             validate: {
                 notEmpty: true,
                 isEmail: true
@@ -56,8 +56,15 @@ module.exports = ( sequelize ) => { // defino el modelo
             type: DataTypes.STRING,
             allowNull: false
         },
+        entity: {
+            type: DataTypes.ENUM,
+            values: ['Hospital', 'Sanatorio', 'Laboratorio', 'Salita', 'Obra Social'],
+            allowNull: false
+
+        }
 
     }, {
         timestamps: false,
         freezeTableName: true
-    } ) };
+    })
+};

@@ -7,5 +7,7 @@ import Profile1 from "./profile/Profile"
 import Cart from "./cart/Cart"
 import Orders from "./orders/Orders"
 import Fav from "./favorite/Fav"
+import Signup from "./signup/Signup"
+import Login from "./login/Login"
 
-export { Landing, User1, User2, User3, User4, Profile1, Cart, Orders, Fav }
+export { Landing, User1, User2, User3, User4, Profile1, Cart, Orders, Fav, Login, Signup }
