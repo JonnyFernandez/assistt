@@ -6,7 +6,7 @@ const secretKey = process.env.ACCES_TOKEN_SECRET
 
 
 
-const loginUser = async (email, password) => {
+const loginUser = async (usercode, password) => {
 
     const aux1 = await User1.findAll()
     const aux2 = await User2.findAll()
@@ -14,7 +14,7 @@ const loginUser = async (email, password) => {
     const aux4 = await User4.findAll()
     const data = aux1.concat(aux2, aux3, aux4)
 
-    const user = data.find(u => u.email === email);
+    const user = data.find(u => u.usercode === usercode);
 
     if (!user) {
         throw new Error('Usuario no encontrado')

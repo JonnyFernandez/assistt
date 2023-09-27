@@ -15,7 +15,7 @@ const port = process.env.PORT || 3001;
 server.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 
-conn.sync({ alter: true }).then(() => {
+conn.sync({ force: true }).then(() => {
   console.log('conexion con db');
   postEntity()
   ProdToDB()
