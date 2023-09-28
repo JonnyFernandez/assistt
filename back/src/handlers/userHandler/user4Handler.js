@@ -1,6 +1,5 @@
 const { getAllUser4, getByName4 } = require('../../controllers/User4Ctrl/getAllUserCtrl_4')
 const getUserById_4 = require('../../controllers/User4Ctrl/userByIdCtrl_4')
-const createUser4 = require('../../controllers/User4Ctrl/postUserCtrl_4')
 const update4 = require('../../controllers/User4Ctrl/updateUserCtrl_4')
 const update_Order4 = require('../../controllers/User4Ctrl/updateOrder4Ctrl.js')
 
@@ -24,15 +23,6 @@ const User4_ById = async (req, res) => {
     }
 }
 
-const postUser_4 = async (req, res) => {
-    const { name, email, password } = req.body;
-    try {
-        const newUser4 = await createUser4(name, email, password)
-        res.status(201).json(newUser4)
-    } catch (error) {
-        res.status(400).json({ error: error.message })
-    }
-}
 
 const updateUser_4 = async (req, res) => {
     const { id } = req.params;
@@ -59,7 +49,6 @@ const updateOrder4 = async (req, res) => {
 module.exports = {
     getAllUser_4,
     User4_ById,
-    postUser_4,
     updateUser_4,
     updateOrder4
 }

@@ -6,17 +6,28 @@
 
 ### **Crear usuario:**
 
-**POST en la ruta: http://localhost:3001/user1/**
+**POST en la ruta: http://localhost:3001/api/signup1**
 
 ```javascript
 {
-  "cuit":"2064101864",
-  "name":"jonny",
-  "address": "colon numero 435",
-  "email":"jonnytapia@hotmail.com",
-  "phone":"5571247",
-  "password":"H123",
-  "entity":["Hospital","Laboratorio"]
+  "name":"pepe",
+  "email":"jonny@gmail.com",
+  "password":"123",
+  "entity":"Hospital"
+}
+```
+## **User2**
+
+### **Crear usuario:**
+
+**POST en la ruta: http://localhost:3001/api/signup2**
+
+```javascript
+{
+  "name":"pepe",
+  "email":"jonny@gmail.com",
+  "password":"123",
+  
 }
 ```
 

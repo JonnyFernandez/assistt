@@ -1,6 +1,5 @@
 const { getAllUser3, getByName3 } = require('../../controllers/User3Ctrl/getAllUserCtrl_3')
 const getUserById_3 = require('../../controllers/User3Ctrl/getUserById_3')
-const createUser3 = require('../../controllers/User3Ctrl/postUserCtrl_3')
 const update3 = require('../../controllers/User3Ctrl/updateUserCtrl_3')
 const update_order = require('../../controllers/User3Ctrl/updateOrderCtrl')
 
@@ -25,15 +24,6 @@ const User3_ById = async (req, res) => {
     }
 }
 
-const postUser_3 = async (req, res) => {
-    const { name, email, password } = req.body;
-    try {
-        const newUser3 = await createUser3(name, email, password)
-        res.status(201).json(newUser3)
-    } catch (error) {
-        res.status(400).json({ error: error.message })
-    }
-}
 
 const updateUser_3 = async (req, res) => {
     const { cuit, address, phone } = req.body;
@@ -61,7 +51,6 @@ const updateOrder = async (req, res) => {
 module.exports = {
     getAllUser_3,
     User3_ById,
-    postUser_3,
     updateUser_3,
     updateOrder
 }

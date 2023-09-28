@@ -1,6 +1,5 @@
 const { getAllUser1, getByName1 } = require('../../controllers/User1Ctrl/getAllUserCtrl_1')
 const getUserById_1 = require('../../controllers/User1Ctrl/userByIdCtrl_1')
-const createUser1 = require('../../controllers/User1Ctrl/postUserCtrl_1')
 const update1 = require('../../controllers/User1Ctrl/updateUserCtrl_1')
 
 
@@ -26,16 +25,7 @@ const User1_ById = async (req, res) => {
     }
 }
 
-const postUser_1 = async (req, res) => {
-    const {  cuit, name, address, email, phone, password, entity } = req.body;
-   
-    try {
-        const newUser1 = await createUser1(cuit, name, address, email, phone, password, entity);
-        res.status(200).json(newUser1);
-      } catch (error) {
-        res.status(400).json({ error: error.message });
-      }
-}
+
 
 
 
@@ -52,4 +42,4 @@ const updateUser_1 = async (req, res) => {
 
 
 
-module.exports = { getAllUser_1, User1_ById, postUser_1, updateUser_1 }
+module.exports = { getAllUser_1, User1_ById, updateUser_1 }

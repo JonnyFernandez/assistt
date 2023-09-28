@@ -5,6 +5,7 @@ const user3 = require('./user3.routes')
 const user4 = require('./user4.routes')
 
 const loginR = require('./login.routes')
+const refresh_token = require('./refreshToken.routes')
 const Signup1 = require('./signup/signup1.routes')
 const Signup2 = require('./signup/signup2.routes')
 const Signup3 = require('./signup/signup3.routes')
@@ -32,6 +33,7 @@ route.use('/review', review)
 
 // login and signup
 route.use('/login', loginR)
+route.use('/refresh-token', refresh_token)
 route.use('/api/signup1', Signup1)
 route.use('/api/signup2', Signup2)
 route.use('/api/signup3', Signup3)
