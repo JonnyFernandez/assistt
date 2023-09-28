@@ -6,27 +6,40 @@ import { useAuth } from "../../authAll/auth/AuthProvider";
 
 const Login = () => {
 
-    const [username, setUsername] = useState("")
+    const goTo = useNavigate()
+
+    const apiURL = 'http://localhost:3001/login'
+
+    const [usercode, setUsercode] = useState("")
     const [password, setPassword] = useState("")
 
     const auth = useAuth()
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         try {
-            const response = await axios.post("/api/login", {
-                username,
-                password,
-            });
+            const res = await axios.post(apiURL, { usercode, password });
 
-            // Manejar la respuesta del servidor, como redirigir al usuario o mostrar un mensaje de éxito.
+            const aux = res.data;
+            const usercodePrefix = aux.info.usercode[0];
 
+            const usercodeToRoute = {
+                H: '/user1',
+                R: '/user2',
+                A: '/user3',
+                P: '/user4',
+            };
+
+            if (usercodeToRoute.hasOwnProperty(usercodePrefix)) {
+                goTo(usercodeToRoute[usercodePrefix]);
+            } else {
+                console.log('Prefijo de usercode no válido');
+            }
         } catch (error) {
-            console.error(error);
-            // Manejar errores, como mostrar un mensaje de error al usuario.
+            console.log('Error al procesar la solicitud:', error);
         }
-    };
+    }
+
 
     //si el user ya esta autenticalo, lo hago pasar directamente
     if (auth.isAuthenticated) {
@@ -42,8 +55,8 @@ const Login = () => {
             </div>
             <h1>Login</h1> <hr />
             <label htmlFor="">Usercode</label> <br />
-            <input type="text" value={username}
-                onChange={(e) => setUsername(e.target.value)} /> <br />
+            <input type="text" value={usercode}
+                onChange={(e) => setUsercode(e.target.value)} /> <br />
 
             <label htmlFor="">Password</label> <br />
             <input type="text" value={password}
