@@ -28,11 +28,6 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-weight: 500;
     text-decoration: none;
-    margin-left: 70%;
-    padding-top: 1rem;
-    padding-left: 1.5rem;
-    padding-bottom: 1rem;
-    padding-right: 1.5rem;
 }
 
 .perfil:hover {
@@ -77,16 +72,13 @@
     text-shadow: 1px 1px 2px pink;
 }
 
-.select {
+.crearuser {
     background-color: rgb(23, 99, 205);;
     color: whitesmoke;
     font-size: 16px;
     border: none;
     padding: 8px;
-    border-radius: 5px;
 }
-
-.crearUser {
-    display: none;
-    pointer-events: none;
+.crearuser:hover {
+    text-shadow: 1px 1px 2px pink;
 }

@@ -9,14 +9,15 @@ function Footer() {
         width: "200px", // Ajusta el tamaño del logo aquí
       };
   return (
+    
+    
     <footer className={s.footerContainer}>
-      
-      <div >
+      <div className={s.footer}>
         <NavLink className={s.logo} to="/">
         <img src={logo} alt="assitt" style={logoStyle} />
         </NavLink>
       </div>
-      <div>
+      {/* <div className={s.footer}>
         <span>
         <NavLink to="/faq" className={s.links}>
             FAQ
@@ -32,14 +33,15 @@ function Footer() {
             Ejemplo1
           </NavLink>
         </span>
-    
-      </div>
-      <div className={s.copyright}>
+      </div> */}
+
+      <div className={`${s.footer} ${s.copyright}`}>
         <p>
           Todos los derechos reservados © 2023 <b>| Assist</b>
         </p>
       </div>
     </footer>
+    
   );
 }
 

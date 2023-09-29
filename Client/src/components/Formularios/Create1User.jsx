@@ -15,7 +15,7 @@ const Create1User = () => {
   const [showPwd, setShowPwd] = useState(false);
   const [showPwds, setShowPwds] = useState(false);
   const [selectedEntities, setSelectedEntities] = useState([]);
-  const [selectedEntity, setSelectedEntity] = useState(""); // Nueva entidad seleccionada
+  const [selectedEntity, setSelectedEntity] = useState(""); 
 
   const {
     register,
@@ -94,6 +94,10 @@ const Create1User = () => {
     setSelectedEntities(updatedEntities);
   };
 
+
+
+
+  
   return (
     <div>
     <Nav />

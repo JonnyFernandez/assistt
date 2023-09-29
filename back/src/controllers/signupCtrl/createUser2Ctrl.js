@@ -18,7 +18,7 @@ const createUser2 = async (name, email, password) => {
 
     await User2.create(userData2);
 
-    return `User ${usercode} creado`;
+    return `Código de usuario Revisor ${usercode}`;
 }
 
 
