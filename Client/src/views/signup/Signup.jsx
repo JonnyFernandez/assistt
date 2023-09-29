@@ -93,7 +93,7 @@ const generateUserNumberOptions = () => {
             return (
                 <div className={style.selectContainer}>
                     <label htmlFor="entity">
-                    <p className={style.message}>Entidad seleccionada:</p>   
+                    <p className={style.message}>Seleccionar Entidad:</p>   
                     <select  className={style.select} id="entity" onChange={handleChange}>
                         <option value="Hospital">Hospital</option>
                         <option value="Sanatorio">Sanatorio</option>
