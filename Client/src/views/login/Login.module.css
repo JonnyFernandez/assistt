@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh; /* Ajustar la altura */
+    height: 75vh; /* Ajustar la altura */
     background-image: url('../../../public/FONDOASSIST.jpg'); /* Ruta de tu imagen de fondo formal */
     background-size: cover; /* Ajustar la imagen al tamaño del contenedor */
     background-position: center; /* Centrar la imagen */
@@ -21,8 +21,8 @@
     flex-direction: column;
     background-color: rgba(255, 255, 255, 0.8);
     gap: 10px; /* Reducir el espacio entre los elementos */
-    max-width: 800px; /* Reducir el ancho máximo */
-    padding: 15px; /* Reducir el relleno */
+    max-width: 1000px; /* Reducir el ancho máximo */
+    padding: 20px; /* Reducir el relleno */
     border-radius: 20px; /* Reducir la curvatura de los bordes */
     position: relative;
   }
@@ -36,7 +36,7 @@
     display: flex;
     align-items: center;
     padding-left: 20px; /* Reducir el espacio izquierdo */
-    margin-bottom: 3px;
+    margin-bottom: 10px;
   }
   
   .title::before, .title::after {
@@ -77,7 +77,7 @@
   }
   
   .form label .input { 
-    width: 80%; /* Reducir el ancho del campo de entrada */
+    width: 90%; /* Reducir el ancho del campo de entrada */
     padding: 10px; /* Reducir el relleno */
     color: rgb(92, 83, 83);
     font-family:Tahoma, Geneva, Verdana, sans-serif;
@@ -95,7 +95,7 @@
   }
   
   .form label .input:focus + span, .form label .input:valid + span {
-    top: 25px; /* Ajustar la posición superior */
+    top: 26px; /* Ajustar la posición superior */
     font-size: 0.6em; /* Reducir el tamaño de fuente */
     font-weight: 600;
   }
@@ -104,78 +104,7 @@
     color: green;
   }
   
-  .buttonContainer {
-    display: flex; /* Utilizamos flexbox para que los botones estén en línea */
-    gap: 10px; /* Espacio entre los botones (ajusta según tus preferencias) */
-    justify-content: flex-start; /* Alineación de los botones a la izquierda */
-  }
-  
-  .submit {
-    border: none;
-    outline: none;
-    background-color: royalblue;
-    padding: 8px;
-    margin-top: 5px;
-    border-radius: 8px;
-    color: #fff;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .submit:hover {
-    background-color: rgb(56, 90, 194);
-  }
-    
-    @keyframes pulse {
-      from {
-        transform: scale(0.9);
-        opacity: 1;
-      }
-    
-      to {
-        transform: scale(1.8);
-        opacity: 0;
-      }
-    }
-  
-    /* Estilizar el elemento <select> */
-    .select {
-      width: 90%; /* Reducir el ancho del select */
-      padding: 9px; /* Reducir el relleno */
-      border: 1px solid #ccc;
-      border-radius: 8px; /* Reducir la curvatura de los bordes */
-      background-color: #fff;
-      color: #333;
-      font-size: 14px; /* Reducir el tamaño de fuente */
-      
-    }
-    
-  
-    /* Estilizar la lista de entidades seleccionadas */
-  ul.selected-entities {
-      list-style: none;
-      padding: 0;
-    }
-    
-    /* Estilizar los elementos <li> dentro de la lista */
-    ul.selected-entities li {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 5px;
-      background-color: #f2f2f2;
-      padding: 5px 10px;
-      border-radius: 5px;
-    }
-    
-    /* Estilizar el botón "Eliminar" dentro de los elementos <li> */
-    ul.selected-entities li button {
-      background: none;
-      border: none;
-      color: red;
-      cursor: pointer;
-    }
-    
+ 
     .eyeButton {
       display: flex;
       border: none;
@@ -183,16 +112,11 @@
       font-size: 12px;
       cursor: pointer;
       position: absolute;
-      right: 20px;
+      right: 3px;
       top: 50%;
       transform: translateY(-50%);
     }
     
-  /* Estilizar la lista de entidades seleccionadas */
-  ul.entitylist {
-      list-style: none;
-      padding: 0;
-    }
   
     /* styles.module.css */
   .errormessage {
@@ -209,6 +133,7 @@
     border-radius: 5px; /* Redondea los bordes */
     cursor: pointer;
     font-size: 16px;
+    margin-top: 10px;
   }
   
   .loginButton:hover {
