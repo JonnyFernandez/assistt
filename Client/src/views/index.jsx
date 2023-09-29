@@ -9,5 +9,6 @@ import Orders from "./orders/Orders"
 import Fav from "./favorite/Fav"
 import Signup from "./signup/Signup"
 import Login from "./login/Login"
+import OrderDetail from "./orders/orderDetail"
 
-export { Landing, User1, User2, User3, User4, Profile1, Cart, Orders, Fav, Login, Signup }
+export { Landing, User1, User2, User3, User4, Profile1, Cart, Orders, Fav, Login, Signup, OrderDetail }

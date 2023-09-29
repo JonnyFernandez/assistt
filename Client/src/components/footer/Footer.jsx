@@ -1,22 +1,22 @@
 import React from "react";
-import { NavLink  } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import s from '../footer/Footer.module.css'
-import logo from '../../../public/LOGO4.png'
+// import logo from '../../../public/LOGO4.png'
 
 function Footer() {
 
-    const logoStyle = {
-        width: "200px", // Ajusta el tamaño del logo aquí
-      };
+  const logoStyle = {
+    width: "200px", // Ajusta el tamaño del logo aquí
+  };
   return (
-    
-    
+
+
     <footer className={s.footerContainer}>
-      <div className={s.footer}>
+      {/* <div className={s.footer}>
         <NavLink className={s.logo} to="/">
-        <img src={logo} alt="assitt" style={logoStyle} />
+          <img src={logo} alt="assitt" style={logoStyle} />
         </NavLink>
-      </div>
+      </div> */}
       {/* <div className={s.footer}>
         <span>
         <NavLink to="/faq" className={s.links}>
@@ -41,7 +41,7 @@ function Footer() {
         </p>
       </div>
     </footer>
-    
+
   );
 }
 

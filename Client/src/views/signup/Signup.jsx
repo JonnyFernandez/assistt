@@ -38,54 +38,54 @@ const Signup = () => {
 
     const toggleShowPassword = (field) => {
         if (field === "password") {
-          setShowPwd(!showPwd);
+            setShowPwd(!showPwd);
         } else if (field === "confirmPassword") {
-          setShowPwds(!showPwds);
+            setShowPwds(!showPwds);
         }
-      };
+    };
 
 
-const handleSubmit = async (e) => {
-    e.preventDefault()
-    try {
-        const apiURL = apiURLs[`user${userNumber}`]
-        const res = await axios.post(apiURL, { name, email, password, entity })
-        console.log(res.data);
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        try {
+            const apiURL = apiURLs[`user${userNumber}`]
+            const res = await axios.post(apiURL, { name, email, password, entity })
+            console.log(res.data);
 
-        if (!res.ok) {
-            // Muestra una notificación de éxito con el usercode de la respuesta del servidor
-            const usercode = res.data; // Accede al usercode en el primer elemento del array
-            Swal.fire({
-                icon: 'success',
-                title: 'Usuario Creado Exitosamente',
-                text: `${usercode}`,
-            });
-        } else {
-            // Muestra una notificación de error
+            if (!res.ok) {
+                // Muestra una notificación de éxito con el usercode de la respuesta del servidor
+                const usercode = res.data; // Accede al usercode en el primer elemento del array
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Usuario Creado Exitosamente',
+                    text: `${usercode}`,
+                });
+            } else {
+                // Muestra una notificación de error
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Algo Salió Mal',
+                    text: `No se pudo crear el usuario. Respuesta del servidor: ${res.data}`,
+                });
+            }
+        } catch (error) {
+            // Muestra una notificación de error en caso de error de red u otro error
             Swal.fire({
                 icon: 'error',
-                title: 'Algo Salió Mal',
-                text: `No se pudo crear el usuario. Respuesta del servidor: ${res.data}`,
+                title: 'Error',
+                text: 'Ha ocurrido un error. Por favor, inténtalo de nuevo más tarde.',
             });
+            console.log(error);
         }
-    } catch (error) {
-        // Muestra una notificación de error en caso de error de red u otro error
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Ha ocurrido un error. Por favor, inténtalo de nuevo más tarde.',
-        });
-        console.log(error);
     }
-}
 
-const generateUserNumberOptions = () => {
-    const userTypes = ["Cliente", "Revisor", "Admin.", "Proveedor"];
-    const options = userTypes.map((userType, index) => (
-        <option key={index} value={index + 1}>{userType}</option>
-    ));
-    return options;
-}
+    const generateUserNumberOptions = () => {
+        const userTypes = ["Cliente", "Revisor", "Admin.", "Proveedor"];
+        const options = userTypes.map((userType, index) => (
+            <option key={index} value={index + 1}>{userType}</option>
+        ));
+        return options;
+    }
 
     // Renderiza el campo de selección de entidad solo para el primer usuario
     const renderEntitySelect = () => {
@@ -93,13 +93,13 @@ const generateUserNumberOptions = () => {
             return (
                 <div className={style.selectContainer}>
                     <label htmlFor="entity">
-                    <p className={style.message}>Seleccionar Entidad:</p>   
-                    <select  className={style.select} id="entity" onChange={handleChange}>
-                        <option value="Hospital">Hospital</option>
-                        <option value="Sanatorio">Sanatorio</option>
-                        <option value="Laboratorio">Laboratorio</option>
-                        <option value="Obra Social">Obra Social</option>
-                    </select><br />
+                        <p className={style.message}>Seleccionar Entidad:</p>
+                        <select className={style.select} id="entity" onChange={handleChange}>
+                            <option value="Hospital">Hospital</option>
+                            <option value="Sanatorio">Sanatorio</option>
+                            <option value="Laboratorio">Laboratorio</option>
+                            <option value="Obra Social">Obra Social</option>
+                        </select><br />
                     </label>
                 </div>
             );
@@ -108,83 +108,83 @@ const generateUserNumberOptions = () => {
 
     return (
         <div>
-        <Nav />
-        <div className={style.formcontainer}>
-        <form className={style.form} onSubmit={handleSubmit} >
-            <p className={style.title} >Regístrate</p>
-            <p className={style.message}>Crea una cuenta nueva</p>
+            <Nav />
+            <div className={style.formcontainer}>
+                <form className={style.form} onSubmit={handleSubmit} >
+                    <p className={style.title} >Regístrate</p>
+                    <p className={style.message}>Crea una cuenta nueva</p>
 
-        <div className={style.flex}>
-        <label htmlFor="name">
-            <input className={style.input} type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
-            <span>Nombre</span>
-            </label>
-    
-        <label htmlFor="email">
-            <input className={style.input} type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-            <span>Email</span>
-            </label>
-        </div>
+                    <div className={style.flex}>
+                        <label htmlFor="name">
+                            <input className={style.input} type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
+                            <span>Nombre</span>
+                        </label>
+
+                        <label htmlFor="email">
+                            <input className={style.input} type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                            <span>Email</span>
+                        </label>
+                    </div>
 
 
-        <div className={style.flex}>
-        <label htmlFor="password">
-            <input
-                className={style.input}
-                type={showPwd ? "text" : "password"} // Usa showPwd aquí
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            <span>Contraseña</span>
-            <button
-                type="button"
-                onClick={() => toggleShowPassword("password")}
-                className={style.eyeButton}
-            >
-                <FontAwesomeIcon icon={showPwd ? faEye : faEyeSlash} />
-            </button>
-        </label>
+                    <div className={style.flex}>
+                        <label htmlFor="password">
+                            <input
+                                className={style.input}
+                                type={showPwd ? "text" : "password"} // Usa showPwd aquí
+                                id="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                            <span>Contraseña</span>
+                            <button
+                                type="button"
+                                onClick={() => toggleShowPassword("password")}
+                                className={style.eyeButton}
+                            >
+                                <FontAwesomeIcon icon={showPwd ? faEye : faEyeSlash} />
+                            </button>
+                        </label>
 
-        <label htmlFor="confirmPassword">
-            <input
-                className={style.input}
-                type={showPwds ? "text" : "password"} // Usa showPwds aquí
-                id="confirmPassword"
-                value={confirmPassword}
-                onChange={(e) => SetConfirmPassword(e.target.value)}
-            />
-            <span>Confirmar Contraseña</span>
-            <button
-                type="button"
-                onClick={() => toggleShowPassword("confirmPassword")}
-                className={style.eyeButton}
-            >
-                <FontAwesomeIcon icon={showPwds ? faEye : faEyeSlash} />
-            </button>
-            </label>
-        </div>
+                        <label htmlFor="confirmPassword">
+                            <input
+                                className={style.input}
+                                type={showPwds ? "text" : "password"} // Usa showPwds aquí
+                                id="confirmPassword"
+                                value={confirmPassword}
+                                onChange={(e) => SetConfirmPassword(e.target.value)}
+                            />
+                            <span>Confirmar Contraseña</span>
+                            <button
+                                type="button"
+                                onClick={() => toggleShowPassword("confirmPassword")}
+                                className={style.eyeButton}
+                            >
+                                <FontAwesomeIcon icon={showPwds ? faEye : faEyeSlash} />
+                            </button>
+                        </label>
+                    </div>
 
-            <label htmlFor="typeUser">
-                <p className={style.message}>Tipo de Usuario:</p>
-            <select className={style.select}id="typeUser" 
-            onChange={handleUserNumberChange}>
-                {generateUserNumberOptions()}
-            </select>
-            </label>
-      
+                    <label htmlFor="typeUser">
+                        <p className={style.message}>Tipo de Usuario:</p>
+                        <select className={style.select} id="typeUser"
+                            onChange={handleUserNumberChange}>
+                            {generateUserNumberOptions()}
+                        </select>
+                    </label>
 
-            {/* Renderiza el campo de selección de entidad solo para el primer usuario */}
-            {renderEntitySelect()}
-            <div className={style.buttonContainer}>
-                <button className={style.submit} type="submit">Registrarse</button>
-                <Link className={style.submit}to={'/'}>Login</Link>
+
+                    {/* Renderiza el campo de selección de entidad solo para el primer usuario */}
+                    {renderEntitySelect()}
+                    <div className={style.buttonContainer}>
+                        <button className={style.submit} type="submit">Registrarse</button>
+                        <Link className={style.submit} to={'/'}>Login</Link>
+                    </div>
+                </form>
             </div>
-        </form>
-        </div>
-        <div>
-        <Footer />
-      </div>
+            <div>
+                <Footer />
+            </div>
         </div>
     )
 }
