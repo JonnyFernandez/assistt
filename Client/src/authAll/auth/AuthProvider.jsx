@@ -1,54 +1,45 @@
-//esta sera un compoente que usara useContex
-//este componente validara constantemente si el user esta validado
-import { useContext, createContext, useState } from "react";
+import { useContext, createContext, useState, useEffect } from "react";
 
-// Creamos nuestro contexto
 const AuthContext = createContext({
     isAuthenticated: false,
-    getAccessToken: () => ''
+    usercode: '',
+    getAccessToken: () => { },
+
 });
 
-
-export const userData = (prop) => {
-    let res = {
-        id: prop.info.id,
-        usercode: prop.info.usercode,
-        name: prop.info.name,
-        accessToken: prop.info.accessToken,
-        refreshToken: prop.info.refreshToken
-    }
-    return res
-}
-
-
-
-
-const user = userData()
-
 export const AuthProvider = ({ children }) => {
-
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [accessToken, setAccessToken] = useState("")
-    const [refreshToken, setRefreshToken] = useState("")
+    const [accessToken, setAccessToken] = useState("");
+    const [refreshToken, setRefreshToken] = useState("");
+    const [usercode, setUsercode] = useState("");
+
+
+
+
+    useEffect(() => {
+        // Recupera la información del usuario del localStorage
+        const storedUserInfo = localStorage.getItem('userInfo');
+        if (storedUserInfo) {
+            const userInfo = JSON.parse(storedUserInfo);
+            setAccessToken(userInfo.accessToken);
+            setRefreshToken(userInfo.refreshToken);
+            setUsercode(userInfo.usercode)
+            setIsAuthenticated(true);
+
+        }
+    }, []);
+
+
 
     const getAccessToken = () => {
-        return accessToken
+        return accessToken;
     }
 
-
-    // const saveUser = (user) => {
-    //     setAccessToken()
-    // }
-
-
-
     return (
-        <AuthContext.Provider value={{ isAuthenticated }}>
+        <AuthContext.Provider value={{ isAuthenticated, getAccessToken, usercode }}>
             {children}
         </AuthContext.Provider>
     );
 }
 
-// Necesito un hook que me permita acceder a las funciones de mi useContext
-// Con esto tengo acceso en cualquier componente a las propiedades de useContext
 export const useAuth = () => useContext(AuthContext);

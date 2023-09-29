@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { NavLink, Navigate, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../authAll/auth/AuthProvider";
 import Swal from 'sweetalert2';
 import style from '../login/Login.module.css'
@@ -11,7 +13,7 @@ import Footer from "../../components/footer/Footer";
 
 const Login = () => {
 
-    const goTo = useNavigate()
+    const navigate = useNavigate()
 
     const apiURL = 'http://localhost:3001/login'
 
@@ -39,104 +41,138 @@ const Login = () => {
             };
 
             if (usercodeToRoute.hasOwnProperty(usercodePrefix)) {
-                goTo(usercodeToRoute[usercodePrefix]);
+
+                const userInfo = {
+                    id: aux.info.id,
+                    usercode: aux.info.usercode,
+                    name: aux.info.name,
+                    accessToken: aux.info.accessToken,
+                    refreshToken: aux.info.refreshToken,
+                };
+                localStorage.setItem('userInfo', JSON.stringify(userInfo));
+                if (userInfo?.accessToken && userInfo?.refreshToken) {
+                    // auth.saveUser(userInfo)
+                }
+                // goTo(usercodeToRoute[usercodePrefix]);
+                navigate(usercodeToRoute[usercodePrefix]);
+
+
             } else {
                 Swal.fire({
                     icon: "error",
                     title: "Error de Logueo",
                     text: "Codigo de Usuario invalido",
-                  });
+                });
             }
         } catch (error) {
             Swal.fire({
                 icon: "error",
                 title: "Error",
                 text: "Error al procesar la solicitud",
-              });
+            });
         }
     }
 
     const toggleShowPassword = (field) => {
         if (field === "password") {
-          setShowPwd(!showPwd);
+            setShowPwd(!showPwd);
         } else if (field === "confirmPassword") {
-          setShowPwds(!showPwds);
+            setShowPwds(!showPwds);
         }
-      };
+    };
 
     //si el user ya esta autenticalo, lo hago pasar directamente
-    if (auth.isAuthenticated) {
-        return <Navigate to={'/user1'} />
-    }
+    useEffect(() => {
+        // Llama a navigate() dentro de un efecto de React
+        if (auth.isAuthenticated) {
+            const usercodePrefix = auth.usercode[0]; // Obtén el prefijo del código de usuario
+            console.log(usercodePrefix);
+            // Define un mapeo de prefijos de usuario a rutas
+            const usercodeToRoute = {
+                H: '/user1',
+                R: '/user2',
+                A: '/user3',
+                P: '/user4',
+            };
+
+            if (usercodeToRoute.hasOwnProperty(usercodePrefix)) {
+                const userRoute = usercodeToRoute[usercodePrefix];
+                navigate(userRoute); // Redirige al usuario a su ruta correspondiente
+            } else {
+
+                console.error(`Prefijo de usuario desconocido: ${usercodePrefix}`);
+            }
+        }
+    }, [auth.isAuthenticated])
 
 
     return (
         <div>
-        <Nav />
-        <div className={style.formcontainer}>
+            <Nav />
+            <div className={style.formcontainer}>
 
-        <form className={style.form} onSubmit={handleSubmit} >
+                <form className={style.form} onSubmit={handleSubmit} >
 
-            <div>
-                <NavLink to={'/signup'}>Signup</NavLink>
-            </div> 
-            {/* ESTE BOTON ES TEMPORAL, 
+                    <div>
+                        <NavLink to={'/signup'}>Signup</NavLink>
+                    </div>
+                    {/* ESTE BOTON ES TEMPORAL, 
             SOLO ANITA VA PODER REGISTRAR! */}
-        
-            <p className={style.title} >Login</p>
-            <p className={style.message}>Ingresá a tu cuenta</p>
+
+                    <p className={style.title} >Login</p>
+                    <p className={style.message}>Ingresá a tu cuenta</p>
 
 
-            <div className={style.flex}>
-            <label htmlFor="usercode">
-            <input className={style.input} type="text" id="usercode" value={usercode} onChange={(e) => setUsercode(e.target.value)} />
-                <span>Código de Usuario</span>
-            </label>
-            </div>
+                    <div className={style.flex}>
+                        <label htmlFor="usercode">
+                            <input className={style.input} type="text" id="usercode" value={usercode} onChange={(e) => setUsercode(e.target.value)} />
+                            <span>Código de Usuario</span>
+                        </label>
+                    </div>
 
-            <label htmlFor="password">
-            <input
-                className={style.input}
-                type={showPwd ? "text" : "password"} // Usa showPwd aquí
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            <span>Contraseña</span>
-            <button
-                type="button"
-                onClick={() => toggleShowPassword("password")}
-                className={style.eyeButton}
-            >
-                <FontAwesomeIcon icon={showPwd ? faEye : faEyeSlash} />
-            </button>
-        </label>
+                    <label htmlFor="password">
+                        <input
+                            className={style.input}
+                            type={showPwd ? "text" : "password"} // Usa showPwd aquí
+                            id="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <span>Contraseña</span>
+                        <button
+                            type="button"
+                            onClick={() => toggleShowPassword("password")}
+                            className={style.eyeButton}
+                        >
+                            <FontAwesomeIcon icon={showPwd ? faEye : faEyeSlash} />
+                        </button>
+                    </label>
 
-            <label htmlFor="confirmPassword">
-            <input
-                className={style.input}
-                type={showPwds ? "text" : "password"} // Usa showPwds aquí
-                id="confirmPassword"
-                value={confirmPassword}
-                onChange={(e) => SetConfirmPassword(e.target.value)}
-            />
-            <span>Confirmar Contraseña</span>
-            <button
-                type="button"
-                onClick={() => toggleShowPassword("confirmPassword")}
-                className={style.eyeButton}
-            >
-                <FontAwesomeIcon icon={showPwds ? faEye : faEyeSlash} />
-            </button>
-            </label>
-            
-          
-            <button className={style.loginButton}>Login</button>
+                    <label htmlFor="confirmPassword">
+                        <input
+                            className={style.input}
+                            type={showPwds ? "text" : "password"} // Usa showPwds aquí
+                            id="confirmPassword"
+                            value={confirmPassword}
+                            onChange={(e) => SetConfirmPassword(e.target.value)}
+                        />
+                        <span>Confirmar Contraseña</span>
+                        <button
+                            type="button"
+                            onClick={() => toggleShowPassword("confirmPassword")}
+                            className={style.eyeButton}
+                        >
+                            <FontAwesomeIcon icon={showPwds ? faEye : faEyeSlash} />
+                        </button>
+                    </label>
+
+
+                    <button className={style.loginButton}>Login</button>
                 </form>
             </div>
             <div>
-        <Footer />
-      </div>
+                <Footer />
+            </div>
         </div>
     )
 }

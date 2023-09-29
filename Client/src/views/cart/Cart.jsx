@@ -28,7 +28,7 @@ const Cart = () => {
 
     const idUser1 = profile[0]?.id
 
-    // console.log(idUser1);
+
 
     const [input, setInput] = useState({
         codeOrder: codeOrder,
@@ -37,7 +37,7 @@ const Cart = () => {
         userId: idUser1,
         prodId: prod_ID
     })
-    // console.log(input);
+
 
     const handleChange = (e) => {
         setInput({
