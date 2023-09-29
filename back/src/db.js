@@ -32,7 +32,7 @@ let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].s
 sequelize.models = Object.fromEntries(capsEntries);
 
 
-const { Entity, Orders, Prod, Review, User1, User2, User3, User4 } = sequelize.models;
+const { Entity, Orders, Prod, Review, User1, User2, User3, User4, Token } = sequelize.models;
 // console.log(sequelize.models);
 
 //--------------------Relaciones----------------------------------
