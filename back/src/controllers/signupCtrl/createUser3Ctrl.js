@@ -15,7 +15,7 @@ const createUser3 = async (name, email, password) => {
 
     await User3.create(userData)
 
-    return `Usuario Admin creado`
+    return `Código de usuario Administrador ${usercode}`
 }
 
 

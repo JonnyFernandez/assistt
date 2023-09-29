@@ -26,7 +26,7 @@ const createUser1 = async (name, email, password, entity) => {
 
     await User1.create(userData);
 
-    return `Usuario ${usercode} creado`;
+    return `Código de usuario cliente ${usercode}`;
 
 }
 

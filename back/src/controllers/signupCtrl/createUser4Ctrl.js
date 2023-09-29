@@ -14,7 +14,7 @@ const createUser4 = async (name, email, password) => {
     const userData = { usercode, name, email, password: passwordHash };
 
     await User4.create(userData)
-    return `Usuario Proveedor usercode: ${usercode} creado`
+    return `Código de usuario Proveedor ${usercode}`
 
 }
 

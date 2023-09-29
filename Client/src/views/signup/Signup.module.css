@@ -1,0 +1,217 @@
+.formcontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh; /* Ajustar la altura */
+    background-image: url('../../../public/FONDOASSIST.jpg'); /* Ruta de tu imagen de fondo formal */
+    background-size: cover; /* Ajustar la imagen al tamaño del contenedor */
+    background-position: center; /* Centrar la imagen */
+    background-color: #8ce4e0;
+    position: relative;
+  }
+
+  /* Agregar una superposición semitransparente */
+.formcontainer::before {
+  content: ""; /* Agregar contenido pseudo ::before */
+  background-color: rgba(0, 0, 0, 0.235); /* Color de fondo semitransparente */
+}
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.8);
+    gap: 10px; /* Reducir el espacio entre los elementos */
+    max-width: 800px; /* Reducir el ancho máximo */
+    padding: 15px; /* Reducir el relleno */
+    border-radius: 20px; /* Reducir la curvatura de los bordes */
+    position: relative;
+  }
+  
+  .title {
+    font-size: 24px; /* Reducir el tamaño de fuente */
+    color: royalblue;
+    font-weight: 700;
+    letter-spacing: -1px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 20px; /* Reducir el espacio izquierdo */
+    margin-bottom: 3px;
+  }
+  
+  .title::before, .title::after {
+    position: absolute;
+    content: "";
+    height: 12px; /* Reducir el tamaño */
+    width: 12px; /* Reducir el tamaño */
+    border-radius: 50%;
+    left: 0px;
+    background-color: royalblue;
+  }
+  
+  .title::before {
+    width: 16px; /* Reducir el tamaño */
+    height: 16px; /* Reducir el tamaño */
+    background-color: royalblue;
+  }
+  
+  .title::after {
+    width: 16px; /* Reducir el tamaño */
+    height: 16px; /* Reducir el tamaño */
+    animation: pulse 1s linear infinite;
+  }
+  
+  .message {
+    color: rgba(88, 87, 87, 0.822);
+    font-size: 12px; /* Reducir el tamaño de fuente */
+  }
+  
+  .flex {
+    display: flex;
+    width: 100%;
+    gap: 4px; /* Reducir el espacio entre los elementos */
+  }
+  
+  .form label {
+    position: relative;
+  }
+  
+  .form label .input { 
+    width: 80%; /* Reducir el ancho del campo de entrada */
+    padding: 10px; /* Reducir el relleno */
+    outline: 0;
+    border: 1px solid rgba(105, 105, 105, 0.397);
+    border-radius: 8px; /* Reducir la curvatura de los bordes */
+  }
+  
+  .form label .input + span {
+    position: absolute;
+    left: 8px; /* Reducir la distancia izquierda */
+    top: 5px; /* Ajustar la posición superior */
+    color: grey;
+    font-size: 0.8em; /* Reducir el tamaño de fuente */
+    cursor: text;
+    transition: 0.3s ease;
+  }
+  
+  .form label .input:focus + span, .form label .input:valid + span {
+    top: 25px; /* Ajustar la posición superior */
+    font-size: 0.6em; /* Reducir el tamaño de fuente */
+    font-weight: 600;
+  }
+  
+  .form label .input:valid + span {
+    color: green;
+  }
+  
+  .buttonContainer {
+    display: flex; /* Utilizamos flexbox para que los botones estén en línea */
+    gap: 10px; /* Espacio entre los botones (ajusta según tus preferencias) */
+    justify-content: flex-start; /* Alineación de los botones a la izquierda */
+  }
+  
+  .submit {
+    border: none;
+    outline: none;
+    background-color: royalblue;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit:hover {
+    background-color: rgb(56, 90, 194);
+  }
+    
+    @keyframes pulse {
+      from {
+        transform: scale(0.9);
+        opacity: 1;
+      }
+    
+      to {
+        transform: scale(1.8);
+        opacity: 0;
+      }
+    }
+  
+    /* Estilizar el elemento <select> */
+    .select {
+      width: 90%; /* Reducir el ancho del select */
+      padding: 9px; /* Reducir el relleno */
+      border: 1px solid #ccc;
+      border-radius: 8px; /* Reducir la curvatura de los bordes */
+      background-color: #fff;
+      color: #333;
+      font-size: 14px; /* Reducir el tamaño de fuente */
+      
+    }
+    
+  
+    /* Estilizar la lista de entidades seleccionadas */
+  ul.selected-entities {
+      list-style: none;
+      padding: 0;
+    }
+    
+    /* Estilizar los elementos <li> dentro de la lista */
+    ul.selected-entities li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px;
+      background-color: #f2f2f2;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    
+    /* Estilizar el botón "Eliminar" dentro de los elementos <li> */
+    ul.selected-entities li button {
+      background: none;
+      border: none;
+      color: red;
+      cursor: pointer;
+    }
+    
+    .eyeButton {
+      display: flex;
+      border: none;
+      background: none;
+      font-size: 12px;
+      cursor: pointer;
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+  /* Estilizar la lista de entidades seleccionadas */
+  ul.entitylist {
+      list-style: none;
+      padding: 0;
+    }
+  
+    /* styles.module.css */
+  .errormessage {
+    color: red; 
+    font-size: 0.7em; 
+    margin-top: 2px;
+  }
+
+  .loginButton {
+    background-color: #007bff; /* Color de fondo azul, puedes cambiarlo */
+    color: #fff; /* Color de texto blanco */
+    border: none;
+    padding: 10px 20px; /* Ajusta el relleno según tus preferencias */
+    border-radius: 5px; /* Redondea los bordes */
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .loginButton:hover {
+    background-color: #0056b3; 
+    transition: background-color 0.3s ease;
+  }
