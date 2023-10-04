@@ -15,8 +15,8 @@ const loginUser = async (email, password) => {
     const userDB = await User.findAll()
 
 
-    const user = userDB.find(u => u.email === email);
-
+    const user = await userDB.find(u => u.email === email);
+    console.log(user);
     if (!user) {
         throw new Error('Usuario no encontrado')
     };
@@ -31,10 +31,11 @@ const loginUser = async (email, password) => {
     await Token.create({ token: refreshToken })
 
     const result = {
+
         body: {
             id: user.id,
             email: user.email,
-            user_type: user.user_type,
+            type: user.type,
         },
 
         accessToken: token, // El token de acceso
