@@ -32,7 +32,7 @@ let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].s
 sequelize.models = Object.fromEntries(capsEntries);
 
 
-const { Entity, Orders, Prod, Review, User1, User2, User3, User4, Token } = sequelize.models;
+const { Orders, Prod, Review, User, Token } = sequelize.models;
 // console.log(sequelize.models);
 
 //--------------------Relaciones----------------------------------
@@ -47,98 +47,32 @@ Review.belongsTo(Orders, {
 //---------------------------------------------------------------
 
 //relacion usuario - > reseña
-User1.hasMany(Review, {           //user1
-  foreignKey: "user1Review",
-  as: "Review1",
+User.hasMany(Review, {
+  foreignKey: "userReview",
+  as: "Review",
 });
 
-Review.belongsTo(User1, {
-  foreignKey: "user1Review",
+Review.belongsTo(User, {
+  foreignKey: "userReview",
 });
-//-----------------------------------------------------------------
-User2.hasMany(Review, {            //user2
-  foreignKey: "user2Review",
-  as: "Review2",
-});
-
-Review.belongsTo(User2, {
-  foreignKey: "user2Review",
-});
-//-----------------------------------------------------------------
-User3.hasMany(Review, {          //user3
-  foreignKey: "user3Review",
-  as: "Review3",
-});
-
-Review.belongsTo(User3, {
-  foreignKey: "user3Review",
-});
-//-----------------------------------------------------------------
-User4.hasMany(Review, {          //user4
-  foreignKey: "user4Review",
-  as: "Review4",
-});
-
-Review.belongsTo(User4, {
-  foreignKey: "user4Review",
-});
-//-----------------------------------------------------------------
-
+//---------------------------------------------------------------
 
 
 // relacion orden de compra ---> prod
-
 Orders.belongsToMany(Prod, { through: 'ProdOrder' })
 Prod.belongsToMany(Orders, { through: 'ProdOrder' })
 
-//----------------------------------------------------------------
 
-
-//------------------------- relacion usuario1 con endidad---------------
-//                                    user1
-
-User1.belongsToMany(Entity, { through: 'UserEntity' })
-Entity.belongsToMany(User1, { through: 'UserEntity' })
-//-------------------relacion usuario1 con order------------------------
-
-User1.hasMany(Orders, {           //user1
+//---------------------------------------------------------------
+User.hasMany(Orders, {           //user
   foreignKey: "userOrder",
   as: "orders",
 });
 
-Orders.belongsTo(User1, {
+Orders.belongsTo(User, {
   foreignKey: "userOrder",
 });
-//------------------------------------------------------------------
-// User2.hasMany(Orders, {           //user2
-//   foreignKey: "userOrder",
-//   as: "Orders",
-// });
-
-// Orders.belongsTo(User2, {
-//   foreignKey: "userOrder",
-// });
-
-//---------------------------------USER 3---------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//---------------------------------------------------------------
 
 module.exports = {
   ...sequelize.models,
