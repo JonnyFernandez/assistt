@@ -32,10 +32,6 @@ module.exports = (sequelize) => {
             type: DataTypes.BOOLEAN,
             allowNull: true
         },
-        revisor2: {
-            type: DataTypes.BOOLEAN,
-            allowNull: true
-        },
         aprobado: {
             type: DataTypes.BOOLEAN,
             allowNull: true
@@ -44,6 +40,7 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: true
         }
+
 
 
 

@@ -1,36 +1,32 @@
-const { User1, Prod, Orders, Review } = require( '../../db' )
+const { User, Prod, Orders, Review } = require('../../db')
 
-const createOrder = async ( codeOrder, stimate_date, pay, userId, prodId ) => {
-    const user = await User1.findByPk( userId );
+const createOrder = async (codeOrder, stimate_date, pay, userId, prodId) => {
+    const user = await User.findByPk(userId);
+    const products = await Prod.findAll({ where: { id: prodId } });
 
-    if ( ! user ) 
-        throw new Error( `No existe usuario con este codigo "${ userId }"` );
-    
+    if (products.length < 1) throw new Error(`No existe producto con codigo "${prodId}"`);
+    if (!user) throw new Error(`No existe usuario con este codigo "${userId}"`);
 
-    const newOrder = await Orders.create( { codeOrder, stimate_date, pay } );
+
+    const newOrder = await Orders.create({ codeOrder, stimate_date, pay });
 
     // Asociar el usuario a la orden
-    await user.addOrders( newOrder );
-
-    const products = await Prod.findAll( {
-        where: {
-            id: prodId
-        }
-    } );
-
-    if ( products.length < 1 ) 
-        throw new Error( `No existe producto con codigo "${ prodId }"` );
-    
+    await user.addOrders(newOrder);
 
     // Asociar los productos a la orden
-    await newOrder.addProds( products );
+    await newOrder.addProds(products);
 
     return "Orden realizada";
 }
 
 
+
+
+
+
+
 const getOrder = async () => {
-    let getOrders = await Orders.findAll( {
+    let getOrders = await Orders.findAll({
         include: [
             {
                 model: Prod,
@@ -43,27 +39,35 @@ const getOrder = async () => {
             }, {
                 model: Review,
                 as: 'ReviewGeneral',
-                attributes: [ "review", "id" ]
+                attributes: ["review", "id"]
             }, {
-                model: User1,
-                attributes: [ "name", "usercode" ]
+                model: User,
+                attributes: ["name", "email"]
             },
         ]
-    } )
-    if ( getOrders.length < 1 ) 
-        throw new Error( 'Orden inexistente' )
-    
+    })
+    if (getOrders.length < 1)
+        throw new Error('Orden inexistente')
+
     return getOrders;
 }
 
-const getIdOrders = async ( id ) => {
+const getIdOrders = async (id) => {
 
-    let OrderDB = await getOrder()
-
-    let idOrder = OrderDB.find( el => el.id == id )
-
-    return idOrder;
+    const reviewsWithUserNames = await Review.findAll({
+        where: { id }, // Filtrar por el ID de la orden específica
+        include: [
+            {
+                model: User,
+                // as: 'Review', // El alias que tengas configurado en la relación entre Review y User
+                attributes: ['name'] // Seleccionar el atributo 'name' del modelo User
+            }
+        ]
+    });
+    return reviewsWithUserNames;
 }
+
+
 
 module.exports = {
     createOrder,
