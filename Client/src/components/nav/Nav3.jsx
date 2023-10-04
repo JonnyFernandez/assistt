@@ -13,26 +13,24 @@ const Nav3 = () => {
   return (
     <div className={p.nav1Container}>
       <div>
-        <SearchBar3 />
-      </div>
-      <div>
         <NavLink to={'/user3'}>Inicio</NavLink>
       </div>
       <div>
-        <NavLink className={p.perfil} to={'/Profile1'}>
-          Perfiles
+        <SearchBar3 />
+      </div>
+      <div>
+        <NavLink className={p.perfil} to={'/user3'}>
+          usuarios
         </NavLink>
       </div>
-     
-        <div>
-          <button
-            className={p.crearuser} // Utiliza la misma clase CSS
-            onClick={handleCreateUser}
-          >
-            Crear Usuarios
-          </button>
-        </div>
-    
+
+      <div>
+        <NavLink to={'/profile3'}>
+          perfil
+        </NavLink>
+      </div>
+
+
     </div>
   );
 };

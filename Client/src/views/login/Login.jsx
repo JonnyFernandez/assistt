@@ -15,11 +15,10 @@ const Login = () => {
 
     const navigate = useNavigate()
 
-    const apiURL = 'http://localhost:3001/login'
+    const apiURL = 'http://localhost:3001/api/login'
 
-    const [usercode, setUsercode] = useState("")
+    const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [confirmPassword, SetConfirmPassword] = useState("")
     const [showPwd, setShowPwd] = useState(false);
     const [showPwds, setShowPwds] = useState(false);
 
@@ -27,41 +26,34 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const res = await axios.post(apiURL, { email, password });
         try {
-            const res = await axios.post(apiURL, { usercode, password });
-
             const aux = res.data;
-            const usercodePrefix = aux.info.usercode[0];
+            const userType = aux.body.type;
 
-            const usercodeToRoute = {
-                H: '/user1',
-                R: '/user2',
-                A: '/user3',
-                P: '/user4',
+            const userTypeToRoute = {
+                client: '/user1',
+                supplier: '/user2',
+                admin: '/user3',
+                banned: '/login',
             };
 
-            if (usercodeToRoute.hasOwnProperty(usercodePrefix)) {
-
+            if (userTypeToRoute.hasOwnProperty(userType)) {
                 const userInfo = {
-                    id: aux.info.id,
-                    usercode: aux.info.usercode,
-                    name: aux.info.name,
-                    accessToken: aux.info.accessToken,
-                    refreshToken: aux.info.refreshToken,
+                    id: aux.body.id,
+                    type: aux.body.type,
+                    name: aux.body.name,
+                    accessToken: aux.accessToken,
+                    refreshToken: aux.refreshToken,
                 };
-                localStorage.setItem('userInfo', JSON.stringify(userInfo));
-                if (userInfo?.accessToken && userInfo?.refreshToken) {
-                    // auth.saveUser(userInfo)
-                }
-                // goTo(usercodeToRoute[usercodePrefix]);
-                navigate(usercodeToRoute[usercodePrefix]);
 
-
+                auth.saveUser(userInfo)
+                navigate(userTypeToRoute[userType]);
             } else {
                 Swal.fire({
                     icon: "error",
                     title: "Error de Logueo",
-                    text: "Codigo de Usuario invalido",
+                    text: "Tipo de Usuario inválido",
                 });
             }
         } catch (error) {
@@ -72,38 +64,39 @@ const Login = () => {
             });
         }
     }
-
     const toggleShowPassword = (field) => {
         if (field === "password") {
             setShowPwd(!showPwd);
-        } else if (field === "confirmPassword") {
-            setShowPwds(!showPwds);
         }
     };
+
+
+
+
 
     //si el user ya esta autenticalo, lo hago pasar directamente
     useEffect(() => {
         // Llama a navigate() dentro de un efecto de React
         if (auth.isAuthenticated) {
-            const usercodePrefix = auth.usercode[0]; // Obtén el prefijo del código de usuario
-            console.log(usercodePrefix);
-            // Define un mapeo de prefijos de usuario a rutas
-            const usercodeToRoute = {
-                H: '/user1',
-                R: '/user2',
-                A: '/user3',
-                P: '/user4',
+            const userType = auth.type; // Obtén el tipo de usuario
+            // Define un mapeo de tipos de usuario a rutas
+            const userTypeToRoute = {
+                client: '/user1',
+                banned: '/login',
+                admin: '/user3',
+                supplier: '/user4',
             };
-
-            if (usercodeToRoute.hasOwnProperty(usercodePrefix)) {
-                const userRoute = usercodeToRoute[usercodePrefix];
+            if (userTypeToRoute.hasOwnProperty(userType)) {
+                const userRoute = userTypeToRoute[userType];
                 navigate(userRoute); // Redirige al usuario a su ruta correspondiente
             } else {
-
-                console.error(`Prefijo de usuario desconocido: ${usercodePrefix}`);
+                console.error(`Tipo de usuario desconocido: ${userType}`);
             }
         }
-    }, [auth.isAuthenticated])
+    }, [auth.isAuthenticated, auth.type])
+
+
+
 
 
     return (
@@ -125,8 +118,8 @@ const Login = () => {
 
                     <div className={style.flex}>
                         <label htmlFor="usercode">
-                            <input className={style.input} type="text" id="usercode" value={usercode} onChange={(e) => setUsercode(e.target.value)} />
-                            <span>Código de Usuario</span>
+                            <input className={style.input} type="text" id="usercode" value={email} onChange={(e) => setEmail(e.target.value)} />
+                            <span>email de Usuario</span>
                         </label>
                     </div>
 
@@ -148,23 +141,7 @@ const Login = () => {
                         </button>
                     </label>
 
-                    <label htmlFor="confirmPassword">
-                        <input
-                            className={style.input}
-                            type={showPwds ? "text" : "password"} // Usa showPwds aquí
-                            id="confirmPassword"
-                            value={confirmPassword}
-                            onChange={(e) => SetConfirmPassword(e.target.value)}
-                        />
-                        <span>Confirmar Contraseña</span>
-                        <button
-                            type="button"
-                            onClick={() => toggleShowPassword("confirmPassword")}
-                            className={style.eyeButton}
-                        >
-                            <FontAwesomeIcon icon={showPwds ? faEye : faEyeSlash} />
-                        </button>
-                    </label>
+
 
 
                     <button className={style.loginButton}>Login</button>
