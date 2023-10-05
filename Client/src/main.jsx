@@ -19,6 +19,10 @@ const router = createBrowserRouter([
     element: <Login />
   },
   {
+    path: '/signup',
+    element: <Signup />
+  },
+  {
     path: '/',
     element: <ProtectedRoute />,
     children: [
@@ -78,13 +82,10 @@ const router = createBrowserRouter([
         path: '/user3',
         element: <User3 />
       },
-      {
-        path: '/signup',
-        element: <Signup />
-      },
+
       {
         path: '/detail/:id',
-        element: <OrderDetail />
+        element: <User3 />
       },
       {
         path: '/Profile3',
