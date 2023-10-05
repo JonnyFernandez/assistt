@@ -16,22 +16,26 @@
 
 /* Estilos para la información en el lado izquierdo */
 .bodyLeft {
-    background-color: #e9e3e3; /* Gris claro */
+    background-color: #e9e3e3;
+    /* Gris claro */
     border-radius: 5px;
     margin-right: 10px;
     padding: 20px;
     font-size: 12px;
-    color: #0d066d; /* Texto negro */
+    color: #0d066d;
+    /* Texto negro */
     /* Fuente alternativa */
 }
 
 /* Estilos para la información en el lado derecho */
 .bodyRight {
-    background-color: #6e8db2; /* Azul claro */
+    background-color: #6e8db2;
+    /* Azul claro */
     border-radius: 5px;
     color: #333;
     padding: 20px;
-    font-family: Arial, sans-serif; /* Fuente alternativa */
+    font-family: Arial, sans-serif;
+    /* Fuente alternativa */
 }
 
 .bodyLeft {
@@ -40,7 +44,8 @@
 }
 
 .bodyRight {
-    width: 70%; /* Distribuye el espacio de manera uniforme */
+    width: 70%;
+    /* Distribuye el espacio de manera uniforme */
     padding: 10px;
 }
 
@@ -54,13 +59,15 @@
     background-color: #f7f7f7;
     padding: 0 20px;
     box-sizing: border-box;
-    border-top: 1px solid #ddd; /* Línea superior */
+    border-top: 1px solid #ddd;
+    /* Línea superior */
 }
 
 /* Estilos para los títulos de sección */
 .sectionTitle {
     font-size: 1.5rem;
-    margin-bottom: 15px; /* Incrementado el margen inferior */
+    margin-bottom: 15px;
+    /* Incrementado el margen inferior */
     color: #333;
 }
 
@@ -79,13 +86,119 @@
     text-decoration: none;
     color: #4617c8;
     font-weight: bold;
-    transition: color 0.3s ease; /* Agregar una transición suave de color */
+    transition: color 0.3s ease;
+    /* Agregar una transición suave de color */
 }
 
 .customLink:hover {
-    color: #ed5924; /* Cambiar el color al pasar el cursor (por ejemplo, a naranja) */
+    color: #ed5924;
+    /* Cambiar el color al pasar el cursor (por ejemplo, a naranja) */
     /* Otros cambios de estilo que desees aplicar al pasar el cursor */
 }
 
 
 
+/* ------------------------------------------------------------- */
+
+.body {
+    background-color: burlywood;
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.left {
+    width: 15%;
+    height: 500px;
+    background-color: #e7dada;
+    display: flex;
+    flex-direction: column;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 500px;
+    background-color: #bedd6a;
+}
+
+.footer {
+    width: 100%;
+    height: 50px;
+    background-color: #6e8db2;
+}
+
+/* botones  */
+.botonera {
+    width: 100%;
+    height: 20px;
+    /* background-color: #05050355; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+/* informacion */
+.info {
+    width: 100%;
+    height: 460px;
+    background-color: #05050355;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.infoLeft {
+
+    height: auto;
+    width: 100%;
+    /* margin-top: 2rem; */
+    background-color: whitesmoke;
+    overflow-x: scroll;
+    font-size: xx-small;
+
+}
+
+.infoRight {
+    width: 20%;
+    height: 460px;
+    background-color: #6099da;
+    display: flex;
+    flex-direction: column;
+
+}
+
+/* modelo de practica */
+.pepe {
+    width: 100%;
+    height: 20px;
+    background-color: #ddd;
+    margin-top: 10px;
+}
+
+.infoRightHeader {
+    width: 100%;
+    height: 30px;
+    background-color: #766add;
+    display: flex;
+    justify-content: center;
+}
+
+.infoRightBody {
+    width: 100%;
+    height: 380px;
+    background-color: #c24470;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    justify-content: space-around;
+}
+
+.infoRightfooter {
+    width: 100%;
+    height: 50px;
+    background-color: brown;
+}

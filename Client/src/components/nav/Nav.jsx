@@ -1,14 +1,17 @@
 import { NavLink } from 'react-router-dom'
 import p from './Nav.module.css'
 
-import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { useAuth } from '../../authAll/auth/AuthProvider'
 
 const Nav = () => {
 
-    const dispatch = useDispatch()
-    const myProf = useSelector((state) => state.profile)
+    const auth = useAuth()
 
+    const [name, setName] = useState('')
+    useEffect(() => {
+        setName(auth.name)
+    }, [])
 
 
 
@@ -17,7 +20,9 @@ const Nav = () => {
             <NavLink className={p.logo} to={'/'} >
                 <img className={p.logo} to={'/'} src="/logo111.png" alt="logo" />
             </NavLink>
-
+            {
+                name ? <div>{name}</div> : <div>Perfil</div>
+            }
 
         </div>
     )

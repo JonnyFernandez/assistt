@@ -34,6 +34,7 @@ const loginUser = async (email, password) => {
 
         body: {
             id: user.id,
+            name: user.name,
             email: user.email,
             type: user.type,
         },

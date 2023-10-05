@@ -7,7 +7,7 @@ const Nav3 = () => {
   const navigate = useNavigate();
 
   const handleCreateUser = () => {
-    navigate('/signup');
+    // navigate('/signup');
   };
 
   return (
