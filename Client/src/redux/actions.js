@@ -12,7 +12,7 @@ import {
     BY_TYPE,
     QUANTITY,
     GET_REVIEWS,
-    PUT_REVISOR,
+    PUT_REVISOR1,
     POST_USER,
     GET_ENTITY,
     SUMA,
@@ -45,20 +45,19 @@ export const getOrders = () => {
 
 export const getOrderDetail = (id) => {
   return async (dispatch) => {
-      try {
-          if (!id) {
-              throw new Error('ID inválido');
-          }
-
-          let response = await axios(`/order/${id}`);
-         
-          dispatch({ type: ORDER_DETAIL, payload: response.data });
-      } catch (error) {
-          return error.message;
+    try {
+      if (!id) {
+        throw new Error('ID inválido');
       }
+
+      let response = await axios(`/order/${id}`);
+      console.log(response.data);
+      return dispatch({ type: ORDER_DETAIL, payload: response.data });
+    } catch (error) {
+      return error.message;
+    }
   };
 };
-
 
 export const cleanDetail = () => {
   return { type: CLEAN_DETAIL };
@@ -117,7 +116,7 @@ export const getUser1 = (userCode) => {
 
 //-------------------CREACION DE USUARIOS-------------------
 // Crea un nuevo usuario
-export const postUser = (newUser) => {
+export const postUser1 = (newUser) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.post('/user', newUser);
@@ -142,7 +141,77 @@ export const postUser = (newUser) => {
 };
 
 
+export const postUser2 = (newUser) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post('/user', newUser);
+      Swal.fire({
+        text: 'Usuario Creado',
+        icon: 'success',
+      });
 
+       dispatch({ type: POST_USER2, payload: data });
+
+      return data; // Retorna los datos del nuevo usuario si es necesario
+    } catch (error) {
+      console.error('Error desconocido al crear usuario:', error);
+      Swal.fire({
+        text: 'Error desconocido al crear usuario',
+        icon: 'error',
+      });
+      return null;
+
+    }
+  };
+};
+
+export const postUser3 = (newUser) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post('/user3', newUser);
+      Swal.fire({
+        text: 'Usuario Creado',
+        icon: 'success',
+      });
+
+       dispatch({ type: POST_USER3, payload: data });
+
+      return data; // Retorna los datos del nuevo usuario si es necesario
+    } catch (error) {
+      console.error('Error desconocido al crear usuario:', error);
+      Swal.fire({
+        text: 'Error desconocido al crear usuario',
+        icon: 'error',
+      });
+      return null;
+
+    }
+  };
+};
+
+export const postUser4 = (newUser) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post('/user4', newUser);
+      Swal.fire({
+        text: 'Usuario Creado',
+        icon: 'success',
+      });
+
+       dispatch({ type: POST_USER4, payload: data });
+
+      return data; // Retorna los datos del nuevo usuario si es necesario
+    } catch (error) {
+      console.error('Error desconocido al crear usuario:', error);
+      Swal.fire({
+        text: 'Error desconocido al crear usuario',
+        icon: 'error',
+      });
+      return null;
+
+    }
+  };
+};
 
 //--------------------Todas las entidades-------------------------
 
@@ -206,16 +275,19 @@ export const quantity = (id, input) => {
 
 
 //--------------------APROBACIONES DE ORDENES POR USUARIOS---------------------------
-
-
-export const putRevisor= (id, dataRevisor) => {
+export const putRevisor2 = (id, dataRevisor2) => {
   return async (dispatch) => {
-    const { data } = await axios.put(`/user/order/${id}`, dataRevisor);
-    return dispatch({ type: PUT_REVISOR, payload: data });
+    const { data } = await axios.put(`/user3/order/${id}`, dataRevisor2);
+    return dispatch({ type: PUT_REVISOR2, payload: data });
   };
 };
 
-
+export const putRevisor1 = (id, dataRevisor1) => {
+  return async (dispatch) => {
+    const { data } = await axios.put(`/user2/order/${id}`, dataRevisor1);
+    return dispatch({ type: PUT_REVISOR1, payload: data });
+  };
+};
 
 export const suma = (id) => {
   return { type: SUMA, payload: id }
