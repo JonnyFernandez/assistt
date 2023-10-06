@@ -16,6 +16,7 @@ import {
   SUMA,
   RESTA,
   CLEAN_CART,
+  SEARCH_PROD
 } from '../redux/actionsType';
 
 const InitialState = {
@@ -29,36 +30,7 @@ const InitialState = {
   allEntity: [],
   error: null,
   reviewsWithUserInfo: [],
-  profile: [
-    {
-      id: '14848a06-9c73-4c72-9333-0b4d3cc973cd',
-      usercode: 'CMSF01',
-      cuit: '20-98388665-5',
-      name: 'Toelida Giménez',
-      address: 'Ushuaia, Tierra del Fuego',
-      email: 'compras.centromedico@hotmail.com',
-      active: true,
-      phone: '2215047727',
-      password: '$2a$10$odgEgXZp9nrUrXcUoer4XeCbsjfQIEciL99nwee1l1e9eFVDklSV.',
-      Review1: [],
-      Entities: [
-        {
-          name: 'Laboratorio',
-        },
-        {
-          name: 'Hospital',
-        },
-      ],
-      Orders: [
-        {
-          codeOrder: '020',
-        },
-        {
-          codeOrder: '030',
-        },
-      ],
-    },
-  ],
+
 };
 
 const reducer = (state = InitialState, action) => {
@@ -107,7 +79,6 @@ const reducer = (state = InitialState, action) => {
       return {
         ...state,
       };
-
     case ADD_FAV:
       return {
         ...state,
@@ -169,6 +140,16 @@ const reducer = (state = InitialState, action) => {
         ...state,
         cart: [],
       };
+    case SEARCH_PROD:
+      const name = action.payload;
+      let searchByfilter = (name == null
+        ? state.Product = state.backupProduct
+        : state.Product.filter(products => products.name.toLowerCase().includes(name.toLowerCase()))
+      )
+      return {
+        ...state,
+        Product: searchByfilter
+      }
     default:
       return state;
   }
@@ -176,3 +157,10 @@ const reducer = (state = InitialState, action) => {
 
 export default reducer;
 
+// searchName: (state, action) => {
+//   const name = action.payload;
+//   if (name == null) {
+//     state.products = state.productsAll;
+//   } else {
+//     state.products = state.productsAll.filter(products => products.name.toLowerCase().includes(name.toLowerCase()))
+//   }
