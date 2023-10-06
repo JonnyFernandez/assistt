@@ -10,12 +10,8 @@ import {
   CLEAN_DETAIL,
   BY_TYPE,
   GET_REVIEWS,
-  PUT_REVISOR2,
-  PUT_REVISOR1,
-  POST_USER1,
-  POST_USER2,
-  POST_USER3,
-  POST_USER4,
+  PUT_REVISOR,
+  POST_USER,
   GET_ENTITY,
   SUMA,
   RESTA,
@@ -107,22 +103,11 @@ const reducer = (state = InitialState, action) => {
         ...state,
         orderDetail: {},
       };
-    case POST_USER1:
+    case POST_USER:
       return {
         ...state,
       };
-    case POST_USER2:
-        return {
-          ...state,
-        };
-    case POST_USER3:
-          return {
-            ...state,
-          };
-    case POST_USER4:
-          return {
-            ...state,
-          };
+
     case ADD_FAV:
       return {
         ...state,
@@ -159,11 +144,7 @@ const reducer = (state = InitialState, action) => {
         ...state,
         Product: typeSupplies,
       };
-    case PUT_REVISOR2:
-      return {
-        ...state,
-      };
-    case PUT_REVISOR1:
+    case PUT_REVISOR:
       return {
         ...state,
       };

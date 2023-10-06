@@ -1,34 +1,32 @@
-const { User } = require('../../db')
+const { User } = require('../../db');
 const bcrypt = require("bcryptjs");
-// const { generateCode } = require('../../utils/codeGenerator')
-
 
 const createUser = async (name, email, password, type) => {
-
-    const type_Validas = ["admin", "client", "supplier",];
+    const type_Validas = ["admin", "client", "supplier"];
 
     if (!type_Validas.includes(type)) {
         throw new Error(`La entidad ${type} no es válida. Las entidades disponibles son: ${type_Validas.join(', ')}`);
     }
+
     name = name.toUpperCase();
     email = email.toLowerCase();
 
+    // Verificar si el correo electrónico ya está registrado en la base de datos
+    const userExists = await User.findOne({ where: { email } });
 
-    const user1Exists = await User.findOne({ where: { email } });
-
-    if (user1Exists) throw new Error("Este correo electrónico ya está registrado");
+    if (userExists) {
+        const errorResponse = {
+            error: "Este correo electrónico ya está registrado"
+        };
+        return errorResponse; // Devuelve el objeto JSON de error
+    }
 
     const passwordHash = await bcrypt.hash(password, 10);
-
-    const userData = { name, email, password: passwordHash, type }
-
+    const userData = { name, email, password: passwordHash, type };
 
     await User.create(userData);
 
-    return `User ${name} created`;
+    return `Usuario ${name} creado`;
+};
 
-}
-
-
-
-module.exports = createUser
+module.exports = createUser;

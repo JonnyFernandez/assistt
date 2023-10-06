@@ -14,9 +14,3 @@ const userToDB = () => {
 }
 
 module.exports = userToDB;
-
-
-
-
-
-

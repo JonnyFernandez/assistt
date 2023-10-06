@@ -25,15 +25,13 @@ export const CLEAN_DETAIL = "CLEAN_DETAIL"
 export const GET_REVIEWS = "GET_REVIEWS"
 
 //----PARA QUE LOS USUARIOS APRUEBEN ORDENES----
-export const PUT_REVISOR1 = "PUT_REVISOR1"
-export const PUT_REVISOR2 = "PUT_REVISOR2"
+export const PUT_REVISOR = "PUT_REVISOR"
+
 
 
 //----------CREAR USUARIOS--------
-export const POST_USER1 = "POST_USER1"
-export const POST_USER2 = "POST_USER2"
-export const POST_USER3 = "POST_USER3"
-export const POST_USER4 = "POST_USER4"
+export const POST_USER = "POST_USER"
+
 
 //---------ENTIDAD-----------------------------
 export const GET_ENTITY = "GET_ENTITY"

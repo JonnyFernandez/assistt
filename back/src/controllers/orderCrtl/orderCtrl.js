@@ -21,10 +21,6 @@ const createOrder = async (codeOrder, stimate_date, pay, userId, prodId) => {
 
 
 
-
-
-
-
 const getOrder = async () => {
     let getOrders = await Orders.findAll({
         include: [
@@ -54,21 +50,12 @@ const getOrder = async () => {
 
 const getIdOrders = async (id) => {
 
-    const reviewsWithUserNames = await Review.findAll({
-        where: { id }, // Filtrar por el ID de la orden específica
-        include: [
-            {
-                model: User,
-                // as: 'Review', // El alias que tengas configurado en la relación entre Review y User
-                attributes: ['name'] // Seleccionar el atributo 'name' del modelo User
-            }
-        ]
-    });
-    return reviewsWithUserNames;
+const orderid = await getOrder()
+
+const idOrder = orderid.filter(el => el.id == id)
+return idOrder
+
 }
-
-
-
 module.exports = {
     createOrder,
     getOrder,

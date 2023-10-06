@@ -28,7 +28,6 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         // Recupera la información del usuario del localStorage
         const storedUserInfo = localStorage.getItem('userInfo');
-        console.log(storedUserInfo);
         if (storedUserInfo) {
             const userInfo = JSON.parse(storedUserInfo);
             setAccessToken(userInfo.accessToken);

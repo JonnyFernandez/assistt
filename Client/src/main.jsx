@@ -91,10 +91,7 @@ const router = createBrowserRouter([
         path: '/Profile3',
         element: <Profile3 />
       },
-      // {
-      //   path: '/orders',
-      //   element: <Orders />
-      // },
+    
     ]
   },
 
