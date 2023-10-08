@@ -1,0 +1,23 @@
+.formContainer {
+    margin-top: 30px;
+    /* background-color: #f1faee; */
+    font-family: Arial, Helvetica, sans-serif;
+    /* background-image: url('../../../image/muro.jpg'); */
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+}
+
+.form {
+
+    width: 300px;
+    height: 410px;
+    background-color: rgba(0, 0, 0, 0.404);
+    border: 1 px solid #000;
+    border-radius: 5px;
+    padding: 1em;
+    box-shadow: 3px 3px 3px #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}

@@ -34,6 +34,7 @@ const InitialState = {
   allEntity: [],
   error: null,
   reviewsWithUserInfo: [],
+  profile: {}
 
 };
 
@@ -121,7 +122,7 @@ const reducer = (state = InitialState, action) => {
     case GET_PROFILE:
       return {
         ...state,
-        // profile: action.payload
+        profile: action.payload
       };
     case BY_TYPE:
       const typeSupplies = state.backupProduct.filter(

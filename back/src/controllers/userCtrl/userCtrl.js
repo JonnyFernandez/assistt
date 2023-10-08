@@ -56,7 +56,18 @@ const getById = async (id) => {
 }
 
 
-const modify = (id, name) => { }
+const modify = async (id, company, address, phone) => {
+    const user = await User.findByPk(id)
+
+    company ? user.company = company : user.company;
+    address ? user.address = address : user.address;
+    phone ? user.phone = phone : user.phone;
+
+    await user.save()
+
+    return "Informacion agregada"
+
+}
 
 
 const banned = (id, active) => { }
