@@ -1,23 +1,28 @@
 
 import {
-    GET_PROD,
-    ADD_FAV,
-    REMOVE_FAV,
-    ADD_CART,
-    REMOVE_CART,
-    GET_PROFILE,
-    GET_ORDER,
-    CLEAN_DETAIL,
-    ORDER_DETAIL,
-    BY_TYPE,
-    QUANTITY,
-    GET_REVIEWS,
-    PUT_REVISOR1,
-    POST_USER,
-    GET_ENTITY,
-    SUMA,
-    RESTA,
-    CLEAN_CART,
+  GET_PROD,
+  ADD_FAV,
+  REMOVE_FAV,
+  ADD_CART,
+  REMOVE_CART,
+  GET_PROFILE,
+  GET_ORDER,
+  CLEAN_DETAIL,
+  ORDER_DETAIL,
+  BY_TYPE,
+  QUANTITY,
+  GET_REVIEWS,
+  PUT_REVISOR1,
+  PUT_REVISOR2,
+  POST_USER1,
+  POST_USER2,
+  POST_USER3,
+  POST_USER4,
+  GET_ENTITY,
+  SUMA,
+  RESTA,
+  CLEAN_CART,
+  SEARCH_PROD
 
 } from './actionsType'
 import axios from 'axios'
@@ -89,50 +94,33 @@ export const addCart = (payload) => {
 
 // ----------------------profile------------------
 
-export const getUser1 = (userCode) => {
+export const getUser1 = (id) => {
   return async (dispatch) => {
-    let res = await axios(`/user1?codeUser=${userCode}`)
+    let res = await axios(`http://localhost:3001/api/user/${id}`)
     return dispatch({ type: GET_PROFILE, payload: res.data })
   }
 }
-// export const getUser2 = (userCode) => {
-//     return async (dispatch) => {
-//         let res = await axios(`/user1?codeUser=${userCode}`)
-//         return dispatch({ type: GET_PROFILE, payload: res.data })
-//     }
-// }
-// export const getUser3 = (userCode) => {
-//     return async (dispatch) => {
-//         let res = await axios(`/user1?codeUser=${userCode}`)
-//         return dispatch({ type: GET_PROFILE, payload: res.data })
-//     }
-// }
-// export const getUser4 = (userCode) => {
-//     return async (dispatch) => {
-//         let res = await axios(`/user1?codeUser=${userCode}`)
-//         return dispatch({ type: GET_PROFILE, payload: res.data })
-//     }
-// }
 
-//-------------------CREACION DE USUARIOS-------------------
+
+//-------------------cargar datos de user-------------------
 // Crea un nuevo usuario
-export const postUser1 = (newUser) => {
+export const addInfo = (id, inputs) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.post('/user', newUser);
+      const { data } = await axios.put(`http://localhost:3001/api/user/${id}`, inputs);
       Swal.fire({
 
-        text: 'Usuario Creado',
+        text: 'Informacion Cargada',
         icon: 'success',
       });
 
-       dispatch({ type: POST_USER, payload: data });
+      // dispatch({ type: POST_USER1, payload: data });
 
       return data; // Retorna los datos del nuevo usuario si es necesario
     } catch (error) {
-      console.error('Error desconocido al crear usuario:', error);
+      console.error('Error al cargar datos:', error);
       Swal.fire({
-        text: 'Error desconocido al crear usuario',
+        text: 'Error al cargar datos',
         icon: 'error',
       });
       return null;
@@ -144,13 +132,13 @@ export const postUser1 = (newUser) => {
 export const postUser2 = (newUser) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.post('/user', newUser);
+      const { data } = await axios.post('/user2', newUser);
       Swal.fire({
         text: 'Usuario Creado',
         icon: 'success',
       });
 
-       dispatch({ type: POST_USER2, payload: data });
+      dispatch({ type: POST_USER2, payload: data });
 
       return data; // Retorna los datos del nuevo usuario si es necesario
     } catch (error) {
@@ -174,7 +162,7 @@ export const postUser3 = (newUser) => {
         icon: 'success',
       });
 
-       dispatch({ type: POST_USER3, payload: data });
+      dispatch({ type: POST_USER3, payload: data });
 
       return data; // Retorna los datos del nuevo usuario si es necesario
     } catch (error) {
@@ -198,7 +186,7 @@ export const postUser4 = (newUser) => {
         icon: 'success',
       });
 
-       dispatch({ type: POST_USER4, payload: data });
+      dispatch({ type: POST_USER4, payload: data });
 
       return data; // Retorna los datos del nuevo usuario si es necesario
     } catch (error) {
@@ -234,28 +222,28 @@ export const getEntity = () => {
 //------------------------REVIEW-----------------------------------
 
 export const getReviews = () => {
-    return async function (dispatch) {
-      try {
-        const res = await axios.get("/review");
+  return async function (dispatch) {
+    try {
+      const res = await axios.get("/review");
 
-        // Mapea las revisiones para agregar la información del usuario a cada una
-        const reviewsWithUserInfo = await Promise.all(
-          res.data.map(async (review) => {
-            // Suponemos que `userReviewId` es el ID del usuario que hizo la revisión
-            const user = await getUserInfo(review.userReviewId); // Debes implementar esta función
-            return {
-              ...review,
-              user, // Agregamos la información del usuario a la revisión
-            };
-          })
-        );
+      // Mapea las revisiones para agregar la información del usuario a cada una
+      const reviewsWithUserInfo = await Promise.all(
+        res.data.map(async (review) => {
+          // Suponemos que `userReviewId` es el ID del usuario que hizo la revisión
+          const user = await getUserInfo(review.userReviewId); // Debes implementar esta función
+          return {
+            ...review,
+            user, // Agregamos la información del usuario a la revisión
+          };
+        })
+      );
 
-        dispatch({ type: GET_REVIEWS, payload: reviewsWithUserInfo });
-      } catch (error) {
-        console.error("Error al obtener las reseñas:", error);
-      }
-    };
+      dispatch({ type: GET_REVIEWS, payload: reviewsWithUserInfo });
+    } catch (error) {
+      console.error("Error al obtener las reseñas:", error);
+    }
   };
+};
 
 
 //------------------------fliter by Sopplies type------------------
@@ -317,4 +305,7 @@ export const cleanCart = () => {
   return { type: CLEAN_CART }
 }
 
-//----------busaqueda de users----------
+//----------busqueda de pro en tiempo real----------
+export const searchByNameProd = (payload) => {
+  return { type: SEARCH_PROD, payload }
+}

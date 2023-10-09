@@ -42,3 +42,7 @@ export const RESTA = "RESTA"
 
 export const CLEAN_CART = "CLEAN_CART"
 
+//---------BUSQUEDA EN TIEMPO REAL-----------------------------
+
+export const SEARCH_PROD = "SEARCH_PROD"
+
