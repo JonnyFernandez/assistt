@@ -31,7 +31,8 @@ const Nav1 = () => {
 
             <SearchBar />
 
-            <NavLink to={'/profile1'} >Perfil</NavLink>
+
+
 
 
         </div>

@@ -53,7 +53,8 @@
         flex-direction: row;
         justify-content: space-around;
     }
-    .select{
+
+    .select {
         flex-direction: row;
         justify-content: space-around;
     }
@@ -73,12 +74,28 @@
 }
 
 .crearuser {
-    background-color: rgb(23, 99, 205);;
+    background-color: rgb(23, 99, 205);
+    ;
     color: whitesmoke;
     font-size: 16px;
     border: none;
     padding: 8px;
 }
+
 .crearuser:hover {
     text-shadow: 1px 1px 2px pink;
+}
+
+.linkProfile {
+    color: aliceblue;
+    border: 1px solid whitesmoke;
+    width: auto;
+    height: auto;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.linkProfile:hover {
+    /* border-radius: 5px; */
+    box-shadow: 0px 0px 8px wheat;
 }

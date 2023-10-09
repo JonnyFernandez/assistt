@@ -56,4 +56,15 @@
 }
 ```
 
+### **Cargar informacion de usuario:**
+
+**PUT en la ruta: http://localhost:3001/api/user/8b6a5a2f-f61a-4feb-bae6-a6d20a26803c**
+
+```javascript
+{
+  "company":"goodNight",
+  "address":"calle 44 numero 5214",
+  "phone":"221-504-7727"
+}
+```
 

@@ -92,17 +92,46 @@ export const addCart = (payload) => {
 
 // ----------------------profile------------------
 
-export const getUser1 = (userCode) => {
+export const getUser1 = (id) => {
   return async (dispatch) => {
-    let res = await axios(`/user1?codeUser=${userCode}`)
+    let res = await axios(`http://localhost:3001/api/user/${id}`)
     return dispatch({ type: GET_PROFILE, payload: res.data })
   }
 }
 
 
-//-------------------CREACION DE USUARIOS-------------------
+//-------------------cargar datos de user-------------------
 // Crea un nuevo usuario
+
 export const postUser = (newUser) => {
+
+export const addInfo = (id, inputs) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.put(`http://localhost:3001/api/user/${id}`, inputs);
+      Swal.fire({
+
+        text: 'Informacion Cargada',
+        icon: 'success',
+      });
+
+      // dispatch({ type: POST_USER1, payload: data });
+
+      return data; // Retorna los datos del nuevo usuario si es necesario
+    } catch (error) {
+      console.error('Error al cargar datos:', error);
+      Swal.fire({
+        text: 'Error al cargar datos',
+        icon: 'error',
+      });
+      return null;
+    }
+  };
+};
+
+
+export const postUser = (newUser) => {
+
   return async (dispatch) => {
     try {
       const { data } = await axios.post('/user', newUser);

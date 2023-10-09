@@ -7,7 +7,7 @@ import App from './App.jsx'
 
 import { store } from './redux/store.js'
 import { Landing, User1, User2, User3, User4, Profile1, Profile3, Cart, Orders, Fav, Login, Signup, OrderDetail } from './views/index.jsx'
-
+import CartProfile from './components/cartProfile/CartProfile.jsx'
 import ProtectedRoute from './authAll/ProtectedRoute.jsx'
 import { AuthProvider } from './authAll/auth/AuthProvider.jsx'
 
@@ -56,22 +56,7 @@ const router = createBrowserRouter([
         path: '/user2',
         element: <User2 />
       },
-      // {
-      //   path: '/fav',
-      //   element: <Fav />
-      // },
-      // {
-      //   path: '/cart',
-      //   element: <Cart />
-      // },
-      // {
-      //   path: '/Profile1',
-      //   element: <Profile1 />
-      // },
-      // {
-      //   path: '/orders',
-      //   element: <Orders />
-      // },
+
     ]
   },
   {
