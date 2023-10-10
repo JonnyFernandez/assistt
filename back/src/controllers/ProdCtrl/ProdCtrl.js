@@ -6,7 +6,6 @@ const createProd = async (code, name, description, supplie_type) => {
     const findExist = await Prod.findAll({ where: { code: code } })
 
 
-
     await Prod.findOrCreate({ where: { code, name, description, supplie_type } })
     // console.log(`producto ${name} ingresado`);
     return `producto ${name} ingresado`

@@ -10,13 +10,9 @@ import {
   CLEAN_DETAIL,
   BY_TYPE,
   GET_REVIEWS,
-  PUT_REVISOR2,
-  PUT_REVISOR1,
-  POST_USER1,
-  POST_USER2,
-  POST_USER3,
-  POST_USER4,
+  PUT_REVISOR,
   GET_ENTITY,
+  POST_USER,
   SUMA,
   RESTA,
   CLEAN_CART,
@@ -26,7 +22,6 @@ import {
 const InitialState = {
   Product: [],
   Orders: [],
-  orderDetail: {},
   backupProduct: [],
   favorite: [],
   cart: [],
@@ -34,7 +29,9 @@ const InitialState = {
   allEntity: [],
   error: null,
   reviewsWithUserInfo: [],
-  profile: {}
+  profile: {},
+  orderDetail: {},
+
 
 };
 
@@ -70,6 +67,10 @@ const reducer = (state = InitialState, action) => {
         ...state,
         Orders: action.payload,
       };
+
+    case POST_USER:
+      return {
+      };
     case ORDER_DETAIL:
       return {
         ...state,
@@ -80,22 +81,7 @@ const reducer = (state = InitialState, action) => {
         ...state,
         orderDetail: {},
       };
-    case POST_USER1:
-      return {
-        ...state,
-      };
-    case POST_USER2:
-      return {
-        ...state,
-      };
-    case POST_USER3:
-      return {
-        ...state,
-      };
-    case POST_USER4:
-      return {
-        ...state,
-      };
+
     case ADD_FAV:
       return {
         ...state,
@@ -132,13 +118,8 @@ const reducer = (state = InitialState, action) => {
         ...state,
         Product: typeSupplies,
       };
-    case PUT_REVISOR2:
+    case PUT_REVISOR:
       return {
-        ...state,
-      };
-    case PUT_REVISOR1:
-      return {
-        ...state,
       };
     case SUMA:
       const aux = state.cart;
@@ -184,4 +165,3 @@ export default reducer;
 //     state.products = state.productsAll;
 //   } else {
 //     state.products = state.productsAll.filter(products => products.name.toLowerCase().includes(name.toLowerCase()))
-//   }

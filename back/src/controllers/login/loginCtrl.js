@@ -6,8 +6,6 @@ const secretKey = process.env.ACCES_TOKEN_SECRET
 const refreshTokenSecretKey = process.env.REFRESH_TOKEN_SECRET;
 
 
-
-
 const loginUser = async (email, password) => {
     console.log(email);
     console.log(password);

@@ -20,52 +20,43 @@ const createOrder = async (codeOrder, userId, prodId) => {
 
 
 
-
-
-
-
 const getOrder = async () => {
-    let getOrders = await Orders.findAll({
-        include: [
-            {
-                model: Prod,
-                attributes: [
-                    "name", "price", "quanty"
-                ],
-                through: {
-                    attributes: []
-                }
-            }, {
-                model: Review,
-                as: 'ReviewGeneral',
-                attributes: ["review", "id"]
-            }, {
-                model: User,
-                attributes: ["name", "email"]
-            },
-        ]
-    })
-    if (getOrders.length < 1)
-        throw new Error('Orden inexistente')
+    try {
+        let getOrders = await Orders.findAll({
+            include: [
+                {
+                    model: Prod,
+                    attributes: ["name", "price", "quanty"],
+                    through: {
+                        attributes: []
+                    }
+                }, {
+                    model: Review,
+                    as: 'ReviewGeneral',
+                    attributes: ["review", "id"]
+                }, {
+                    model: User,
+                    attributes: ["name", "email"]
+                },
+            ]
+        });
 
-    return getOrders;
+        if (getOrders.length < 1) {
+            throw new Error('Orden inexistente');
+        }
+
+        return getOrders;
+    } catch (error) {
+        throw new Error('No se pudieron obtener las órdenes');
+    }
 }
 
 const getIdOrders = async (id) => {
+    const orderid = await getOrder();
 
-    const reviewsWithUserNames = await Review.findAll({
-        where: { id }, // Filtrar por el ID de la orden específica
-        include: [
-            {
-                model: User,
-                // as: 'Review', // El alias que tengas configurado en la relación entre Review y User
-                attributes: ['name'] // Seleccionar el atributo 'name' del modelo User
-            }
-        ]
-    });
-    return reviewsWithUserNames;
+    const idOrder = orderid.filter(el => el.id == id);
+    return idOrder;
 }
-
 
 
 module.exports = {

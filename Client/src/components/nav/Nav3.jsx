@@ -12,16 +12,9 @@ const Nav3 = () => {
 
   return (
     <div className={p.nav1Container}>
-      <div>
-        <NavLink to={'/user3'}>Inicio</NavLink>
-      </div>
+    
       <div>
         <SearchBar3 />
-      </div>
-      <div>
-        <NavLink className={p.perfil} to={'/user3'}>
-          usuarios
-        </NavLink>
       </div>
 
       <div>

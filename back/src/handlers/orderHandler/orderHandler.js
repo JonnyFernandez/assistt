@@ -13,8 +13,6 @@ const postOrder = async (req, res) => {
   }
 };
 
-
-
 const getAllOrder = async (req, res) => {
   try {
     const aux = await getOrder()
@@ -27,6 +25,7 @@ const getAllOrder = async (req, res) => {
 const getByIdOrder = async (req, res) => {
   try {
     const { id } = req.params;
+
     const getAllIdOrder = await getIdOrders(id)
     res.status(200).json(getAllIdOrder)
   } catch (error) {

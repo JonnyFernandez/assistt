@@ -1,75 +1,3 @@
-/* User3.module.css */
-
-/* Estilos para el contenedor principal de User3 */
-.user3Container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-}
-
-.contenedor1 {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-/* Estilos para la información en el lado izquierdo */
-.bodyLeft {
-    background-color: #e9e3e3;
-    /* Gris claro */
-    border-radius: 5px;
-    margin-right: 10px;
-    padding: 20px;
-    font-size: 12px;
-    color: #0d066d;
-    /* Texto negro */
-    /* Fuente alternativa */
-}
-
-/* Estilos para la información en el lado derecho */
-.bodyRight {
-    background-color: #6e8db2;
-    /* Azul claro */
-    border-radius: 5px;
-    color: #333;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    /* Fuente alternativa */
-}
-
-.bodyLeft {
-    width: 30%;
-    padding: 10px;
-}
-
-.bodyRight {
-    width: 70%;
-    /* Distribuye el espacio de manera uniforme */
-    padding: 10px;
-}
-
-/* Estilos para el pie de página */
-.footerUser3 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    background-color: #f7f7f7;
-    padding: 0 20px;
-    box-sizing: border-box;
-    border-top: 1px solid #ddd;
-    /* Línea superior */
-}
-
-/* Estilos para los títulos de sección */
-.sectionTitle {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    /* Incrementado el margen inferior */
-    color: #333;
-}
 
 .reviewList {
     list-style: none;
@@ -78,8 +6,11 @@
 
 .reviewListItem {
     border: 1px solid #ccc;
-    padding: 10px;
+    padding: 8px;
     margin: 10px 0;
+    font-size: 12px;
+    color: #333;
+    font-family: Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .customLink {
@@ -101,7 +32,7 @@
 /* ------------------------------------------------------------- */
 
 .body {
-    background-color: burlywood;
+    background-color: rgb(245 245 245);
     display: flex;
     flex-direction: row;
     height: auto;
@@ -110,19 +41,48 @@
 }
 
 .left {
+    display: flex;
     width: 15%;
     height: 500px;
-    background-color: #e7dada;
-    display: flex;
+    background-color: #6fbcdf;
     flex-direction: column;
+    border-bottom-right-radius: 50px;
+    overflow-y: scroll;
+    font-size: xx-small;
+}
+
+.infoLeft {
+    height: 480px;
+    width: 100%;
+    background-color: whitesmoke;
+   
+}
+
+/* Estilos para navegadores webkit (Chrome y Safari) */
+.left::-webkit-scrollbar{
+    width: 10px; /* Ancho del scrollbar */
+    background-color: #f1f1f1; /* Color de fondo del scrollbar */
+}
+
+.left{
+    scrollbar-width: thin; /* Ancho del scrollbar */
+}
+
+.left::-webkit-scrollbar-thumb {
+    background-color: #abb2ac; /* Color del thumb (barra de desplazamiento) */
+    border-radius: 5px; /* Bordes redondeados para el thumb */
+}
+
+.left::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Color de fondo del scrollbar */
 }
 
 .right {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 100%;
     height: 500px;
-    background-color: #bedd6a;
+    background-color: #cad4f5;
 }
 
 .footer {
@@ -134,14 +94,14 @@
 /* botones  */
 .botonera {
     width: 100%;
-    height: 20px;
+    height: 30px;
     /* background-color: #05050355; */
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-}
-
+    padding: 10px;
 /* informacion */
+}
 .info {
     width: 100%;
     height: 460px;
@@ -150,6 +110,7 @@
     flex-direction: row;
     justify-content: space-around;
 }
+
 
 .infoLeft {
 
@@ -163,6 +124,8 @@
 
 }
 
+
+
 .infoRight {
     width: 20%;
     height: 460px;
@@ -170,14 +133,6 @@
     display: flex;
     flex-direction: column;
 
-}
-
-/* modelo de practica */
-.pepe {
-    width: 100%;
-    height: 20px;
-    background-color: #ddd;
-    margin-top: 10px;
 }
 
 .infoRightHeader {
@@ -203,3 +158,74 @@
     height: 50px;
     background-color: brown;
 }
+
+.h1 {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    text-shadow: 2px 2px 2px #070505;
+    color: #b3daee;;
+    font-size: 15px; /* Tamaño de fuente reducido */
+    margin: 15px;/* Márgenes reducidos */
+}
+
+.button {
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(to bottom, #1b1c3f, #4a4e91);
+   /* Gradient background */
+    color: white;
+   /* White text color */
+    font-family: "Segoe UI", sans-serif;
+   /* Stylish and legible font */
+    font-weight: bold;
+    font-size: 12px;
+   /* Large font size */
+    border: none;
+   /* No border */
+    border-radius: 30px;
+   /* Rounded corners */
+    padding: 9px 24px;
+   /* Large padding */
+    cursor: pointer;
+   /* Cursor on hover */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+   /* Subtle shadow */
+    animation: button-shimmer 2s infinite;
+    transition: all 0.3s ease-in-out;
+   /* Smooth transition */
+  }
+  
+  /* Hover animation */
+  .button:hover {
+    background: linear-gradient(to bottom, #2c2f63, #5b67b7);
+    animation: button-particles 1s ease-in-out infinite;
+    transform: translateY(-2px);
+  }
+  
+  /* Click animation */
+  .button:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Shimmer animation */
+  @keyframes button-shimmer {
+    0% {
+      background-position: left top;
+    }
+  
+    100% {
+      background-position: right bottom;
+    }
+  }
+  
+  /* Particle animation */
+  @keyframes button-particles {
+    0% {
+      background-position: left top;
+    }
+  
+    100% {
+      background-position: right bottom;
+    }
+  }

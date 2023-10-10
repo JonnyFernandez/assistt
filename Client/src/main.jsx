@@ -67,19 +67,16 @@ const router = createBrowserRouter([
         path: '/user3',
         element: <User3 />
       },
-
-      {
-        path: '/detail/:id',
-        element: <User3 />
-      },
+      
       {
         path: '/Profile3',
         element: <Profile3 />
       },
-      // {
-      //   path: '/orders',
-      //   element: <Orders />
-      // },
+      {
+        path: '/detail/:id',
+        element: <User3 />
+      },
+    
     ]
   },
 
