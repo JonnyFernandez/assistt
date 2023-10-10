@@ -34,7 +34,9 @@ const updateProd = async (req, res) => {
 const updateQuantity = async (req, res) => {
     const { id } = req.params;
     const { quanty } = req.body
+
     console.log(id);
+    console.log(quanty);
     try {
         const cantidad = await updateCantidad(id, quanty)
         res.status(201).json(cantidad)

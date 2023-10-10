@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
         codeOrder: {
             type: DataTypes.STRING,
             unique: true,
-            allowNull: false
+            allowNull: true
         },
         stimate_date: {
             type: DataTypes.STRING,
@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
         pay: {
             type: DataTypes.ENUM,
             values: ['efectivo', 'tarjeta', 'cheque'],
-            allowNull: false
+            allowNull: true
         },
         monto: {
             type: DataTypes.DECIMAL(10, 2),

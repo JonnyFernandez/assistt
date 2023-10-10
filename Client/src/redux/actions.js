@@ -173,12 +173,24 @@ export const prodByType = (payload) => {
 
 
 // -----------------MODIFICAR CANTIDAD DE PROD-------------
-export const quantity = (id, input) => {
+export const quantityDB = (id, newQuantity) => {
   return async (dispatch) => {
-    await axios.put(`/prod/api/${id}`, input)
+    try {
+      const updatedData = {
+        quanty: newQuantity,
+      };
 
-  }
-}
+      // Realiza la solicitud PUT con el objeto actualizado
+      await axios.put(`/prod/api/${id}`, updatedData);
+
+      // Puedes despachar una acción de Redux aquí si es necesario
+      // dispatch(actualizarDatosEnRedux(updatedData));
+    } catch (error) {
+      // Maneja cualquier error que pueda ocurrir durante la solicitud
+      console.error('Error al actualizar la cantidad en la base de datos:', error);
+    }
+  };
+};
 
 
 //--------------------APROBACIONES DE ORDENES POR USUARIOS---------------------------
@@ -211,6 +223,7 @@ export const resta = (id) => {
 // --------------------------CREAR ORDEN DE COMPRAS-------------
 
 export const createOrder = (input) => {
+  console.log(input);
   return async (dispatch) => {
     try {
       await axios.post(`/order`, input)

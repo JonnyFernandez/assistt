@@ -16,7 +16,7 @@ const Nav = () => {
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     const type = userInfo?.type || '';
     const email = userInfo?.email || ''
-    // console.log(email);
+
 
     const userRoutes = {
         client: '/Profile1',
@@ -39,7 +39,7 @@ const Nav = () => {
             </NavLink>
             {
                 name
-                    ? <div onClick={handleProfile} className={p.linkProfile}>| {name} <br /> <small>{email}</small> </div>
+                    ? <div onClick={handleProfile} className={p.linkProfile}>🟢 {name} <br /> <small>{email}</small> </div>
 
                     : <div>| Ingresar</div>
             }

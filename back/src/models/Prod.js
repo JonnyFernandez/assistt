@@ -33,6 +33,10 @@ module.exports = (sequelize) => {
             type: DataTypes.INTEGER,
             defaultValue: 1
         },
+        stock: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0
+        },
         price: {
             type: DataTypes.DECIMAL(10, 2),
             allowNull: true,

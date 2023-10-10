@@ -1,0 +1,72 @@
+.cardContainer {
+    margin-top: 10px;
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: row;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-around; */
+    width: 32%;
+    height: 40px;
+    width: 70%;
+    border-bottom: 1px solid black;
+    margin-left: 20px;
+    /* background-color: red; */
+}
+
+.divCode {
+    height: 40px;
+    width: 300px;
+    /* background-color: red; */
+}
+
+.divCode1 {
+    height: 40px;
+    width: 100px;
+    /* background-color: rgb(23, 99, 203); */
+    margin-left: -1rem;
+    align-items: center;
+    /* display: grid; */
+    /* grid-template-columns: repeat(2, 1fr); */
+    column-gap: 2rem;
+}
+
+/* botones */
+
+.divBotones {
+    width: 250px;
+    height: 40px;
+    /* background-color: bisque; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+/* .buttoContainer {
+    width: 150px;
+    height: 40px;
+    background-color: bisque;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+} */
+
+.inputsNum {
+    display: flex;
+    flex-direction: row;
+}
+
+.input {
+    width: 60px;
+    height: 10px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.deleteCart {
+    width: 100%;
+}

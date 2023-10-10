@@ -1,14 +1,13 @@
 const { User, Prod, Orders, Review } = require('../../db')
 
-const createOrder = async (codeOrder, stimate_date, pay, userId, prodId) => {
+const createOrder = async (codeOrder, userId, prodId) => {
     const user = await User.findByPk(userId);
     const products = await Prod.findAll({ where: { id: prodId } });
-
+    // console.log(userId);
     if (products.length < 1) throw new Error(`No existe producto con codigo "${prodId}"`);
-    if (!user) throw new Error(`No existe usuario con este codigo "${userId}"`);
+    // if (!user) throw new Error(`No existe usuario con este codigo "${userId}"`);
 
-
-    const newOrder = await Orders.create({ codeOrder, stimate_date, pay });
+    const newOrder = await Orders.create({ codeOrder });
 
     // Asociar el usuario a la orden
     await user.addOrders(newOrder);

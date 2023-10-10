@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import Card2 from '../../components/card2/Card2'
 import { useState, useEffect } from 'react'
 import { codeToOrder } from '../../utils/codes'
-import { getUser1, createOrder, cleanCart } from '../../redux/actions'
+import { createOrder, cleanCart } from '../../redux/actions'
 import { useNavigate } from 'react-router-dom'
 
 const Cart = () => {
@@ -20,21 +20,11 @@ const Cart = () => {
 
     const prod_ID = myCart.map(item => item.id)
 
-    useEffect(() => {
-        // dispatch(getUser1("H3474")) //le mando el userCode de forma manual!!! hay que mejorar
-    }, [])
-
-    const profile = useSelector(state => state.profile)
-
-    // const idUser1 = profile[0]?.id
-
-
-
     const [input, setInput] = useState({
         codeOrder: codeOrder,
         stimate_date: "",
         pay: "efectivo",
-        userId: idUser1,
+        // userId: idUser1,
         prodId: prod_ID
     })
 
