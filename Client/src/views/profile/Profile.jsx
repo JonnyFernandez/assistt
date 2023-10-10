@@ -16,7 +16,7 @@ const Profile1 = () => {
     const dispatch = useDispatch()
 
     const Profile = useSelector((state) => state.profile)
-
+    const fav = useSelector((state) => state.favorite)
     const [showCartProfile, setShowCartProfile] = useState(false);
     const [showHistoryOrder, setShowHistoryOrder] = useState(false);
     const [showEditProfile, setShowEditProfile] = useState(false);
@@ -24,6 +24,7 @@ const Profile1 = () => {
 
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     const id = userInfo?.id || '';
+    console.log(id);
 
     useEffect(() => {
         dispatch(getUser1(id))
@@ -87,9 +88,9 @@ const Profile1 = () => {
 
                     </div>
                     <div className={p.bodyLeftBody}>
-                        <h3>dirección: <small>{Profile.address}</small> </h3>
-                        <h3>teléfono: <small> {Profile.phone}</small> </h3>
-                        <h3>Empresa: <small> {Profile.company}</small> </h3>
+                        <h3>dirección: <small>{Profile?.address}</small> </h3>
+                        <h3>teléfono: <small> {Profile?.phone}</small> </h3>
+                        <h3>Empresa: <small> {Profile?.company}</small> </h3>
 
                         <h3>Ordene: <small> {Profile.orders?.length}</small></h3>
                         <h3>Reseñas: <small> {Profile.Review?.length}</small></h3>
@@ -115,7 +116,7 @@ const Profile1 = () => {
 
                         <div onClick={toggleEditProfile}>Editar </div>
 
-                        <div onClick={toggleFav}>favoritos </div>
+                        <div onClick={toggleFav}>favoritos {fav && fav.length} </div>
 
                     </div>
 

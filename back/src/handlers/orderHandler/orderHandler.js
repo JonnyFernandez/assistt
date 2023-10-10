@@ -2,12 +2,11 @@ const { createOrder, getOrder, getIdOrders } = require('../../controllers/orderC
 // const generateRandomCode = require('../../utils/generateRandomCode')
 
 const postOrder = async (req, res) => {
-  // Genera un código aleatorio de 5 caracteres alfanuméricos
-  // const codeOrder = generateRandomCode(5);
-  const { codeOrder, stimate_date, pay, userId, prodId } = req.body;
+
+  const { codeOrder, userId, prodId } = req.body;
 
   try {
-    const aux = await createOrder(codeOrder, stimate_date, pay, userId, prodId);
+    const aux = await createOrder(codeOrder, userId, prodId);
     res.status(201).json(aux);
   } catch (error) {
     res.status(400).json({ error: error.message });

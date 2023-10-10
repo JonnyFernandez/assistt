@@ -13,7 +13,7 @@ const User1 = () => {
   const dispatch = useDispatch()
   let prod = useSelector(state => state.Product)
 
-
+  // console.log(prod);
 
   useEffect(() => {
     dispatch(getProd())
@@ -158,7 +158,7 @@ const User1 = () => {
           {
             prod && prod.map(item => {
               return (
-                <Card key={item.id} id={item.id} code={item.code} name={item.name} description={item.description} quanty={item.quanty} price={item.price} />
+                <Card key={item.id} id={item.id} code={item.code} name={item.name} description={item.description} quanty={item.quanty} price={item.price} stock={item.stock} />
               )
             })
           }

@@ -1,14 +1,12 @@
 import c from './Card2.module.css'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { addCart, removeCard, quantity, suma, resta } from '../../redux/actions'
-import { codeToOrder } from '../../utils/codes'
+import { addCart, removeCard, quantityDB, suma, resta } from '../../redux/actions'
 
 
 
 const Card2 = ({ id, code, name, description, quanty, price }) => {
 
-    const OrderCode = codeToOrder()
 
     const dispatch = useDispatch()
 
@@ -45,8 +43,8 @@ const Card2 = ({ id, code, name, description, quanty, price }) => {
 
 
     const sendUpdate = () => {
-        if (!inputs.quanty) return alert('poner cantidad')
-        dispatch(quantity(id, inputs))
+        // if (!inputs.quanty) return alert('poner cantidad')
+        dispatch(quantityDB(id, inputs))
 
 
     }
@@ -63,7 +61,8 @@ const Card2 = ({ id, code, name, description, quanty, price }) => {
     }
 
     const handlerIncrese = () => {
-        dispatch(suma(id))
+        // dispatch(suma(id))
+        dispatch(quantityDB(id, inputs))
 
     }
     const handlerDecrese = () => {
@@ -103,9 +102,9 @@ const Card2 = ({ id, code, name, description, quanty, price }) => {
                     {/* <input type="number" min={1} onChange={handleChange} name="quanty" value={inputs.quanty} placeholder='cantidad' /> */}
 
                     <div className={c.inputsNum}>
-                        <button onClick={handlerDecrese} >-</button>
-                        <span>{quanty}</span>
-                        <button onClick={handlerIncrese} >+</button>
+                        <button onChange={(e) => setInputs(e.target.value)} >-</button>
+                        <input type="text" onChange={(e) => setInputs(e.target.value)} />
+                        <button onChange={(e) => setInputs(e.target.value)}  >+</button>
 
                     </div>
 

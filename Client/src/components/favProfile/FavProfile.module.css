@@ -1,0 +1,19 @@
+.cart {
+    width: 100%;
+    height: 460px;
+    background-color: #05050355;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.cartContainer {
+
+    /* --------- */
+    height: auto;
+    width: 100%;
+    /* margin-top: 2rem; */
+    background-color: whitesmoke;
+    overflow-x: auto;
+    font-size: xx-small;
+}

@@ -58,6 +58,7 @@ const getById = async (id) => {
 
 const modify = async (id, company, address, phone) => {
     const user = await User.findByPk(id)
+    if (!user) throw new Error('No estas registrado')
 
     company ? user.company = company : user.company;
     address ? user.address = address : user.address;
