@@ -1,7 +1,6 @@
-
 import style from '../user3/User3.module.css';
-import Nav from "../../components/nav/Nav"
-import Nav3 from "../../components/nav/Nav3"
+import Nav from "../../components/nav/Nav";
+import Nav3 from "../../components/nav/Nav3";
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOrders } from '../../redux/actions'; // Importa tu acción
@@ -9,27 +8,23 @@ import { Link } from 'react-router-dom';
 import OrderDetail from '../orders/orderDetail';
 import Footer from '../../components/footer/Footer';
 
-
-
-
 const User3 = () => {
   const dispatch = useDispatch();
-  const orders = useSelector((state) => state.Orders);
+  const orders = useSelector((state) => state.Orders); // No es necesario establecer un valor predeterminado
 
   useEffect(() => {
     // Cuando el componente se monta, obtén las órdenes
     dispatch(getOrders());
   }, [dispatch]);
 
-
   return (
     <div>
       <Nav />
       <Nav3 />
-      <div className={style.body} >
-
+      <div className={style.body}>
         <div className={style.left}>
-        <h1 className={style.h1} >Órdenes de Compra</h1>
+          <h1 className={style.h1} >Órdenes de Compra</h1>
+          {Array.isArray(orders) && orders.length > 0 ? (
             <ul className={style.reviewList}>
               {orders.map((order) => (
                 <li className={style.reviewListItem} key={order.id}>
@@ -40,28 +35,28 @@ const User3 = () => {
                 </li>
               ))}
             </ul>
+          ) : null}
         </div>
         <div className={style.right}>
           <div className={style.botonera}>
-          <div><button className={style.button}>Cliente</button></div>
-          <div><button className={style.button}>Proveedor</button></div>
-          <div><button className={style.button}>Cotizaciones</button></div>
-          <div><button className={style.button}>Resumen de ventas</button></div>
+            <div><button className={style.button}>Cliente</button></div>
+            <div><button className={style.button}>Proveedor</button></div>
+            <div><button className={style.button}>Cotizaciones</button></div>
+            <div><button className={style.button}>Resumen de ventas</button></div>
           </div>
           <div className={style.info}>
             <div className={style.infoLeft}>
-           
-           <OrderDetail />
-
+              <OrderDetail />
             </div>
-       
-          </div>
           </div>
         </div>
-<div> <Footer/> </div>
+      </div>
+      <Footer />
     </div>
   );
 };
 
 export default User3;
+
+
 

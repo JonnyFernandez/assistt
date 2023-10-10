@@ -22,40 +22,44 @@ const createOrder = async (codeOrder, stimate_date, pay, userId, prodId) => {
 
 
 const getOrder = async () => {
-    let getOrders = await Orders.findAll({
-        include: [
-            {
-                model: Prod,
-                attributes: [
-                    "name", "price", "quanty"
-                ],
-                through: {
-                    attributes: []
-                }
-            }, {
-                model: Review,
-                as: 'ReviewGeneral',
-                attributes: ["review", "id"]
-            }, {
-                model: User,
-                attributes: ["name", "email"]
-            },
-        ]
-    })
-    if (getOrders.length < 1)
-        throw new Error('Orden inexistente')
+    try {
+        let getOrders = await Orders.findAll({
+            include: [
+                {
+                    model: Prod,
+                    attributes: ["name", "price", "quanty"],
+                    through: {
+                        attributes: []
+                    }
+                }, {
+                    model: Review,
+                    as: 'ReviewGeneral',
+                    attributes: ["review", "id"]
+                }, {
+                    model: User,
+                    attributes: ["name", "email"]
+                },
+            ]
+        });
 
-    return getOrders;
+        if (getOrders.length < 1) {
+            throw new Error('Orden inexistente');
+        }
+
+        return getOrders;
+    } catch (error) {
+        throw new Error('No se pudieron obtener las órdenes');
+    }
 }
 
 const getIdOrders = async (id) => {
+    const orderid = await getOrder();
 
-const orderid = await getOrder()
-
-const idOrder = orderid.filter(el => el.id == id)
-return idOrder
-
+    const idOrder = orderid.filter(el => el.id == id);
+    return idOrder;
 }
+
+
 module.exports = {
     createOrder,
     getOrder,

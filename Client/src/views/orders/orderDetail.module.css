@@ -1,20 +1,23 @@
 /* orderDetail.module.css */
 
 .contenedor {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px; 
-    height: 385px;
- 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  height: 35px;
+  background-color: #d0cccc;
+  margin: 10px 10px 0;/* 20px de margen izquierdo y derecho, puedes ajustar este valor según tus preferencias */
+  border-radius: 10px; /* Ajusta el valor según el radio de redondez deseado */
 }
 
+
 .h1 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-align: center;
-    text-shadow: 2px 2px 2px #070505;
-    color: #b3daee;;
-    font-size: 15px; /* Tamaño de fuente reducido */
+    text-shadow: 2px 2px 2px #f0f8f0;
+    color: #4484df;;
+    font-size: 25px; /* Tamaño de fuente reducido */
     margin: 10px 10px 10px 10px; /* Márgenes reducidos */
 }
 
@@ -45,6 +48,41 @@
     overflow-y: scroll;
     font-size: xx-small;
 }
+
+/* Estilos para navegadores webkit (Chrome y Safari) */
+.bodyRight::-webkit-scrollbar {
+    width: 10px; /* Ancho del scrollbar */
+    background-color: #f1f1f1; /* Color de fondo del scrollbar */
+}
+
+
+.bodyRight::-webkit-scrollbar-thumb {
+    background-color: #4CAF50; /* Color del thumb (barra de desplazamiento) */
+    border-radius: 5px; /* Bordes redondeados para el thumb */
+}
+
+
+.bodyRight::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Color de fondo de la pista del scrollbar */
+}
+
+/* Estilos para navegadores basados en Firefox */
+
+.bodyRight {
+    scrollbar-width: thin; /* Ancho del scrollbar */
+}
+
+
+.bodyRight::-webkit-scrollbar-thumb {
+    background-color: #abb2ac; /* Color del thumb (barra de desplazamiento) */
+    border-radius: 5px; /* Bordes redondeados para el thumb */
+}
+
+
+.bodyRight::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Color de fondo del scrollbar */
+}
+
 
 .bodyLeft > .div {
     background-color: #d3d3d3;
@@ -81,27 +119,50 @@
 .p {
     color: #333;
     margin: 3px 0; /* Márgenes reducidos */
-    font-size: 5px; /* Tamaño de fuente reducido */
+    font-size: 8px; /* Tamaño de fuente reducido */
 }
+
 
 
 .h2 {
-    font-weight: bold;
-    font-size: 12px; /* Tamaño de fuente reducido */
-    margin-top: 8px; /* Márgenes reducidos */
-    color: #2a4858;
+  font-weight: bold;
+  font-size: 15px; /* Tamaño de fuente reducido */
+  color: #cef8dc;
+  padding: 0px 10px;
 }
 
+.h2t {
+  font-weight: bold;
+  font-size: 10px; /* Aumentar el tamaño de fuente */
+  margin-top: 20px; /* Margen superior ligeramente mayor */
+  margin-bottom: 10px; /* Margen inferior para separación */
+  color: #333; /* Cambiar el color del texto */
+  text-transform: uppercase; /* Mayúsculas */
+  text-align: center; /* Centrar el texto (opcional) */
+}
+
+
 .productList {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: table;
+  width: 100%;
 }
 
 .productListItem {
-    border: 1px solid #ccc;
-    padding: 3px; /* Reducido el relleno */
-    margin: 3px 0; /* Márgenes reducidos */
+  display: table-row;
 }
+
+.pList {
+  display: table-cell;
+  padding: 8px;
+  border-bottom: 1px solid #ddd; /* Línea divisoria entre filas */
+  font-size: 14px;
+  font-weight: bold;
+  color: #f1f1f1;
+}
+
 
 .reviewList {
     list-style: none;
