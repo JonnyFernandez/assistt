@@ -47,10 +47,10 @@ export const getOrders = () => {
 
 export const getOrderDetail = (id) => {
   return async (dispatch) => {
-   
-      let res = await axios.get(`http://localhost:3001/order/${id}`);
-      //console.log(res.data);
-      return dispatch({ type: ORDER_DETAIL, payload: res.data });
+
+    let res = await axios.get(`http://localhost:3001/order/${id}`);
+    //console.log(res.data);
+    return dispatch({ type: ORDER_DETAIL, payload: res.data });
 
   };
 };
@@ -105,7 +105,7 @@ export const addInfo = (id, inputs) => {
         icon: 'success',
       });
 
-       dispatch({ type: POST_USER, payload: data });
+      dispatch({ type: POST_USER, payload: data });
 
       return data; // Retorna los datos del nuevo usuario si es necesario
     } catch (error) {
@@ -138,31 +138,6 @@ export const getEntity = () => {
   };
 };
 
-//------------------------REVIEW-----------------------------------
-
-export const getReviews = () => {
-  return async function (dispatch) {
-    try {
-      const res = await axios.get("/review");
-
-      // Mapea las revisiones para agregar la información del usuario a cada una
-      const reviewsWithUserInfo = await Promise.all(
-        res.data.map(async (review) => {
-          // Suponemos que `userReviewId` es el ID del usuario que hizo la revisión
-          const user = await getUserInfo(review.userReviewId); // Debes implementar esta función
-          return {
-            ...review,
-            user, // Agregamos la información del usuario a la revisión
-          };
-        })
-      );
-
-      dispatch({ type: GET_REVIEWS, payload: reviewsWithUserInfo });
-    } catch (error) {
-      console.error("Error al obtener las reseñas:", error);
-    }
-  };
-};
 
 
 //------------------------fliter by Sopplies type------------------
@@ -243,3 +218,101 @@ export const cleanCart = () => {
 export const searchByNameProd = (payload) => {
   return { type: SEARCH_PROD, payload }
 }
+
+//------------------------REVIEW-----------------------------------
+
+export const getReviews = () => {
+  return async function (dispatch) {
+    try {
+      const res = await axios.get("/review");
+
+      // Mapea las revisiones para agregar la información del usuario a cada una
+      const reviewsWithUserInfo = await Promise.all(
+        res.data.map(async (review) => {
+          // Suponemos que `userReviewId` es el ID del usuario que hizo la revisión
+          const user = await getUserInfo(review.userReviewId); // Debes implementar esta función
+          return {
+            ...review,
+            user, // Agregamos la información del usuario a la revisión
+          };
+        })
+      );
+
+      dispatch({ type: GET_REVIEWS, payload: reviewsWithUserInfo });
+    } catch (error) {
+      console.error("Error al obtener las reseñas:", error);
+    }
+  };
+};
+
+
+
+
+
+export const postReview = async (reseñas) => {
+  try {
+    const respuesta = await axios.post("http://localhost:3001/review", reseñas);
+    await Swal.fire({
+      title: `Reseña para la Orden ${reseñas.codeOrder} creada con éxito`,
+      // imageUrl: img2,
+      imageUrl: '',
+      imageWidth: 100,
+      imageHeight: 100,
+      confirmButtonText: "Aceptar",
+      background: "white",
+      width: "30%",
+      heightAuto: false,
+      height: "1%",
+      padding: "3rem",
+      buttonsStyling: false,
+      customClass: {
+        title: "mesageAlert",
+        confirmButton: "buttonAlert",
+      },
+    })
+    // .then((resultado) => {
+    //   if (resultado.isConfirmed) {
+
+    //   }
+    // });
+  } catch (error) {
+    if (error.response && error.response.data && error.response.data.error) {
+      Swal.fire({
+        title: "Error al crear la reseña",
+        text: error.response.data.error,
+        // imageUrl: img1,
+        imageWidth: 100,
+        imageHeight: 100,
+        background: "white",
+        width: "30%",
+        heightAuto: false,
+        height: "1%",
+        padding: "3rem",
+        buttonsStyling: false,
+        confirmButtonText: "Aceptar",
+        customClass: {
+          title: "mesageAlert",
+          confirmButton: "buttonAlert",
+        },
+      });
+    } else {
+      Swal.fire({
+        title: "Error al crear la reseña",
+        // imageUrl: img1,
+        imageWidth: 100,
+        imageHeight: 100,
+        background: "white",
+        width: "30%",
+        heightAuto: false,
+        height: "1%",
+        padding: "3rem",
+        buttonsStyling: false,
+        customClass: {
+          title: "mesageAlert",
+          confirmButton: "buttonAlert",
+        },
+      });
+    }
+
+  }
+};
