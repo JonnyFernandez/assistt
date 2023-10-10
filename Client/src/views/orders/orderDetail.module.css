@@ -1,31 +1,34 @@
 /* orderDetail.module.css */
 
 .contenedor {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px; /* Reducido el relleno */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  height: 35px;
+  background-color: #d0cccc;
+  margin: 10px 10px 0;/* 20px de margen izquierdo y derecho, puedes ajustar este valor según tus preferencias */
+  border-radius: 10px; /* Ajusta el valor según el radio de redondez deseado */
 }
 
+
 .h1 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-align: center;
-    text-shadow: 2px 2px 2px #333;
-    color: #d3dbdf;;
-    font-size: 24px; /* Tamaño de fuente reducido */
-    margin: 10px 0; /* Márgenes reducidos */
+    text-shadow: 2px 2px 2px #f0f8f0;
+    color: #4484df;;
+    font-size: 25px; /* Tamaño de fuente reducido */
+    margin: 10px 10px 10px 10px; /* Márgenes reducidos */
 }
 
 .contenedor1 {
     display: flex;
     justify-content: space-between;
-    width: 90%; /* Ancho reducido */
+    width: 95%; /* Ancho reducido */
+    height: 385px;
 }
 
-.bodyLeft, .bodyRight {
-    width: 45%; /* Reducido el ancho para dejar más espacio */
-    padding: 5px; /* Reducido el relleno */
-}
+
 
 .bodyLeft {
     background-color: #e9e3e3;
@@ -33,6 +36,7 @@
     margin-right: 5px; /* Márgenes reducidos */
     color: #000;
     font-family: Arial, sans-serif;
+    width: 25%;
 }
 
 .bodyRight {
@@ -40,28 +44,69 @@
     border-radius: 5px;
     color: #333;
     font-family: Arial, sans-serif;
+    width: 75%;
+    overflow-y: scroll;
+    font-size: xx-small;
 }
+
+/* Estilos para navegadores webkit (Chrome y Safari) */
+.bodyRight::-webkit-scrollbar {
+    width: 10px; /* Ancho del scrollbar */
+    background-color: #f1f1f1; /* Color de fondo del scrollbar */
+}
+
+
+.bodyRight::-webkit-scrollbar-thumb {
+    background-color: #4CAF50; /* Color del thumb (barra de desplazamiento) */
+    border-radius: 5px; /* Bordes redondeados para el thumb */
+}
+
+
+.bodyRight::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Color de fondo de la pista del scrollbar */
+}
+
+/* Estilos para navegadores basados en Firefox */
+
+.bodyRight {
+    scrollbar-width: thin; /* Ancho del scrollbar */
+}
+
+
+.bodyRight::-webkit-scrollbar-thumb {
+    background-color: #abb2ac; /* Color del thumb (barra de desplazamiento) */
+    border-radius: 5px; /* Bordes redondeados para el thumb */
+}
+
+
+.bodyRight::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Color de fondo del scrollbar */
+}
+
 
 .bodyLeft > .div {
     background-color: #d3d3d3;
     border-radius: 5px;
     color: #ccc;
     padding: 8px; /* Reducido el relleno */
-    margin-bottom: 10px; /* Márgenes reducidos */
-    font-family: Arial, sans-serif;
+    margin-bottom: 15px; /* Márgenes reducidos */
+    margin-top: px;
+    font-family: Calibri, 'Trebuchet MS', sans-serif;
+  
 }
 
 .bodyLeft h2 {
     font-weight: bold;
-    font-size: 18px; /* Tamaño de fuente reducido */
-    margin-top: 8px; /* Márgenes reducidos */
+    font-size: 13px; /* Tamaño de fuente reducido */
+    margin-top: 5px; /* Márgenes reducidos */
     color: #2a4858;
 }
 
 .bodyLeft p {
     color: #333;
     margin: 3px 0; /* Márgenes reducidos */
-    font-size: 14px; /* Tamaño de fuente reducido */
+    font-size: 12px;
+    font-family: Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .label {
@@ -74,27 +119,50 @@
 .p {
     color: #333;
     margin: 3px 0; /* Márgenes reducidos */
-    font-size: 14px; /* Tamaño de fuente reducido */
+    font-size: 8px; /* Tamaño de fuente reducido */
 }
+
 
 
 .h2 {
-    font-weight: bold;
-    font-size: 18px; /* Tamaño de fuente reducido */
-    margin-top: 8px; /* Márgenes reducidos */
-    color: #2a4858;
+  font-weight: bold;
+  font-size: 15px; /* Tamaño de fuente reducido */
+  color: #cef8dc;
+  padding: 0px 10px;
 }
 
+.h2t {
+  font-weight: bold;
+  font-size: 10px; /* Aumentar el tamaño de fuente */
+  margin-top: 20px; /* Margen superior ligeramente mayor */
+  margin-bottom: 10px; /* Margen inferior para separación */
+  color: #333; /* Cambiar el color del texto */
+  text-transform: uppercase; /* Mayúsculas */
+  text-align: center; /* Centrar el texto (opcional) */
+}
+
+
 .productList {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: table;
+  width: 100%;
 }
 
 .productListItem {
-    border: 1px solid #ccc;
-    padding: 5px; /* Reducido el relleno */
-    margin: 5px 0; /* Márgenes reducidos */
+  display: table-row;
 }
+
+.pList {
+  display: table-cell;
+  padding: 8px;
+  border-bottom: 1px solid #ddd; /* Línea divisoria entre filas */
+  font-size: 14px;
+  font-weight: bold;
+  color: #f1f1f1;
+}
+
 
 .reviewList {
     list-style: none;
@@ -116,36 +184,120 @@
     display: block;
 }
 
-.approveButton {
-    background-color: #3CB371; /* Color verde para aprobar */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    margin-right: 20px;
-    margin-top: 10px;
-    cursor: pointer;
-}
-
-.rejectButton {
-    background-color: #FF4500; /* Color naranja para desaprobar */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-/* Estilos personalizados para el cuadro de diálogo */
-.custom-popup {
-    width: 200px; /* Ancho personalizado */
-    max-width: 80%; /* Ancho máximo personalizado */
-    text-align: center; /* Centra el texto en el cuadro de diálogo */
-    margin: 0 auto; /* Centra horizontalmente */
-    padding: 10px; /* Espacio interior personalizado */
-    border-radius: 10px; /* Bordes redondeados para un aspecto más delicado */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Sombra suave */
-    background-color: #f5f5f5; /* Color de fondo */
+.toggler {
+    width: 50px;
+    margin: 30px auto;
   }
   
+  .toggler input {
+    display: none;
+  }
+  
+  .toggler label {
+    display: block;
+    position: relative;
+    width: 72px;
+    height: 36px;
+    border: 1px solid #d6d6d6;
+    border-radius: 36px;
+    background: #e4e8e8;
+    cursor: pointer;
+  }
+  
+  .toggler label::after {
+    display: block;
+    border-radius: 100%;
+    background-color: #d7062a;
+    content: '';
+    animation-name: toggler-size;
+    animation-duration: 0.15s;
+    animation-timing-function: ease-out;
+    animation-direction: forwards;
+    animation-iteration-count: 1;
+    animation-play-state: running;
+  }
+  
+  .toggler label::after, .toggler label .toggler-on, .toggler label .toggler-off {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    width: 26px;
+    height: 26px;
+    transform: translateY(-50%) translateX(-50%);
+    transition: left 0.15s ease-in-out, background-color 0.2s ease-out, width 0.15s ease-in-out, height 0.15s ease-in-out, opacity 0.15s ease-in-out;
+  }
+  
+  .toggler input:checked + label::after, .toggler input:checked + label .toggler-on, .toggler input:checked + label .toggler-off {
+    left: 75%;
+  }
+  
+  .toggler input:checked + label::after {
+    background-color: #50ac5d;
+    animation-name: toggler-size2;
+  }
+  
+  .toggler .toggler-on, .toggler .toggler-off {
+    opacity: 1;
+    z-index: 2;
+  }
+  
+  .toggler input:checked + label .toggler-off, .toggler input:not(:checked) + label .toggler-on {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  
+  .toggler .path {
+    fill: none;
+    stroke: #fefefe;
+    stroke-width: 7px;
+    stroke-linecap: round;
+    stroke-miterlimit: 10;
+  }
+  
+  @keyframes toggler-size {
+    0%, 100% {
+      width: 26px;
+      height: 26px;
+    }
+  
+    50% {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  
+  @keyframes toggler-size2 {
+    0%, 100% {
+      width: 26px;
+      height: 26px;
+    }
+  
+    50% {
+      width: 20px;
+      height: 20px;
+    }
+  }
+   
+@media (max-width: 768px) {
+    .contenedor1 {
+        flex-direction: column; /* Cambia a un diseño de columna en pantallas pequeñas */
+        align-items: center; /* Centra los elementos en pantallas pequeñas */
+    }
+
+    .bodyLeft {
+        width: 100%; /* Ocupa todo el ancho en pantallas pequeñas */
+        margin-right: 0; /* Elimina el margen derecho en pantallas pequeñas */
+        min-width: auto; /* Restaura el ancho mínimo en pantallas pequeñas */
+    }
+
+    .bodyRight {
+        width: 100%; /* Ocupa todo el ancho en pantallas pequeñas */
+        margin-right: 0; /* Elimina el margen derecho en pantallas pequeñas */
+        min-width: auto; /* Restaura el ancho mínimo en pantallas pequeñas */
+    }
+
+    /* Agrega otros estilos específicos para pantallas pequeñas aquí */
+}
+
 
