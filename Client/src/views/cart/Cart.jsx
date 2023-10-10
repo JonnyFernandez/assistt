@@ -21,12 +21,12 @@ const Cart = () => {
     const prod_ID = myCart.map(item => item.id)
 
     useEffect(() => {
-        dispatch(getUser1("H3474")) //le mando el userCode de forma manual!!! hay que mejorar
+        // dispatch(getUser1("H3474")) //le mando el userCode de forma manual!!! hay que mejorar
     }, [])
 
     const profile = useSelector(state => state.profile)
 
-    const idUser1 = profile[0]?.id
+    // const idUser1 = profile[0]?.id
 
 
 

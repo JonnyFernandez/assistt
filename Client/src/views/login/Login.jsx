@@ -26,8 +26,8 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const res = await axios.post(apiURL, { email, password });
         try {
+            const res = await axios.post(apiURL, { email, password });
             const aux = res.data;
             const userType = aux.body.type;
 
@@ -43,6 +43,7 @@ const Login = () => {
                     id: aux.body.id,
                     type: aux.body.type,
                     name: aux.body.name,
+                    email: aux.body.email,
                     accessToken: aux.accessToken,
                     refreshToken: aux.refreshToken,
                 };

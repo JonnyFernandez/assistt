@@ -32,6 +32,7 @@ const InitialState = {
   profile: {},
   orderDetail: {},
 
+
 };
 
 const reducer = (state = InitialState, action) => {
@@ -66,14 +67,19 @@ const reducer = (state = InitialState, action) => {
         ...state,
         Orders: action.payload,
       };
-      case ORDER_DETAIL:
-        console.log('Recibiendo datos en ORDER_DETAIL:', action.payload); // Agrega este console.log
-        return {
-          ...state,
-          orderDetail: action.payload,
-        };
+
     case POST_USER:
       return {
+      };
+    case ORDER_DETAIL:
+      return {
+        ...state,
+        orderDetail: action.payload,
+      };
+    case CLEAN_DETAIL:
+      return {
+        ...state,
+        orderDetail: {},
       };
 
     case ADD_FAV:
@@ -159,5 +165,3 @@ export default reducer;
 //     state.products = state.productsAll;
 //   } else {
 //     state.products = state.productsAll.filter(products => products.name.toLowerCase().includes(name.toLowerCase()))
-//   }
-
