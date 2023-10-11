@@ -36,7 +36,7 @@
     margin-right: 5px; /* Márgenes reducidos */
     color: #000;
     font-family: Arial, sans-serif;
-    width: 25%;
+    width: 20%;
 }
 
 .bodyRight {
@@ -144,11 +144,13 @@
 
 .productList {
   list-style: none;
+  font-family: Calibri, 'Trebuchet MS', sans-serif;
   padding: 0;
   margin: 0;
   display: table;
   width: 100%;
 }
+
 
 .productListItem {
   display: table-row;
@@ -169,10 +171,32 @@
     padding: 0;
 }
 
+/* CSS en orderDetail.module.css */
 .reviewListItem {
-    border: 1px solid #ccc;
-    padding: 5px; /* Reducido el relleno */
-    margin: 5px 0; /* Márgenes reducidos */
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #c0c3ed;
+  border-radius: 5px;
+  font-size: 12px;
+  width: 90%;
+  display: flex; /* Cambia el display a flex */
+  flex-direction: row; /* Cambia la dirección a fila */
+  justify-content: space-between; 
+  margin-left: 20px; 
+}
+
+.p {
+  font-size: 10px;
+  color: #9e9c9c;
+  margin: 5px 0;
+}
+.reviewText {
+  color: #5e5d5d;
+  font-family: 'Trebuchet MS', sans-serif;
+  font-weight: bold;
+  width: 80%;
+  margin: 0 12px;
 }
 
 .backLink {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { getOrderDetail, cleanDetail, putRevisor } from "../../redux/actions";
+import { getOrderDetail, cleanDetail, putRevisor, getOrders } from "../../redux/actions";
 import { useParams } from "react-router-dom";
 import style from "./orderDetail.module.css";
 import Swal from 'sweetalert2';
@@ -10,42 +10,60 @@ const OrderDetail = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
     const orderDetailState = useSelector((state) => state.orderDetail);
+    const [approvalStatus, setApprovalStatus] = useState(false);
 
-    // Obtener los datos de la orden cuando se monta el componente
-    useEffect(() => {
-        dispatch(getOrderDetail(id));  
-        return () => dispatch(cleanDetail());
-    }, [dispatch, id]);
-
-   
-    const [Approved, setApproved] = useState(false);
-
-    const handleCheckboxChange = () => {
-        const newApprovalStatus = !orderDetailState?.[0]?.revisor1;
+    // Obtener los datos de la orden y el estado de aprobación cuando se monta el componente
+useEffect(() => {
+    dispatch(getOrderDetail(id));
     
-        // Llama a la acción putRevisor para aprobar o desaprobar la orden según el nuevo estado
-        dispatch(putRevisor(id, { revisor1: newApprovalStatus }))
-            .then(() => {
-                const message = newApprovalStatus
-                    ? 'La orden ha sido aprobada.'
-                    : 'La orden ha sido desaprobada.';
+    // Intentar cargar el estado de aprobación desde LocalStorage
+    const storedApprovalStatus = localStorage.getItem(`approvalStatus_${id}`);
     
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Éxito',
-                    text: message,
-                    position: 'center',
-                    customClass: {
-                        popup: 'custom-popup',
-                    },
-                    timer: 3000,
-                });
-            })
-            .catch((error) => {
-                console.error("Error al aprobar/desaprobar la orden:", error);
+    // Si se encuentra el estado almacenado en LocalStorage, úsalo
+    if (storedApprovalStatus !== null) {
+        setApprovalStatus(JSON.parse(storedApprovalStatus));
+    }
+    
+    return () => dispatch(cleanDetail());
+}, [dispatch, id]);
+
+const handleCheckboxChange = () => {
+    const newApprovalStatus = !approvalStatus;
+    
+    dispatch(putRevisor(id, { aprobado: newApprovalStatus }))
+        .then(() => {
+            const message = newApprovalStatus
+                ? 'La orden ha sido aprobada.'
+                : 'La orden ha sido desaprobada.';
+            
+            dispatch(getOrders());
+            dispatch(getOrderDetail(id));
+            
+            // Actualiza el estado local de aprobación
+            setApprovalStatus(newApprovalStatus);
+            
+            // Almacena el estado de aprobación en LocalStorage
+            localStorage.setItem(`approvalStatus_${id}`, JSON.stringify(newApprovalStatus));
+            
+            Swal.fire({
+                icon: 'success',
+                title: 'Éxito',
+                text: message,
+                position: 'center',
+                timer: 3000,
             });
-    };
-    
+        })
+        .catch((error) => {
+            console.error('Error al aprobar/desaprobar la orden:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Ocurrió un error al aprobar/desaprobar la orden.',
+                position: 'center',
+                timer: 3000,
+            });
+        });
+};
 
     return (
         <div className={style.contenedor}>
@@ -54,31 +72,45 @@ const OrderDetail = () => {
                 <div className={style.bodyLeft}>
                     <h2 className={style.h2}>Usuario solicitante:</h2>
                     <div className={style.div}>
-                        <h2 className={style.h2}>Entrega estimada:</h2>
-                        <p className={style.p}>{orderDetailState?.[0]?.stimate_date}</p>
-                    </div>
-                    <div className={style.div}>
-                        <h2 className={style.h2}>Forma de pago:</h2>
-                        <p className={style.p}>{orderDetailState?.[0]?.pay}</p>
+                        <h2 className={style.h2}>Orden:</h2>
+                        <p className={style.p}>{orderDetailState?.[0]?.codeOrder}</p>
                     </div>
                     <div className={style.div}>
                         <h2 className={style.h2}>Usuario solicitante:</h2>
-                        <p className={style.productList}>Nombre: {orderDetailState?.[0]?.User?.name}</p>
-                        <p className={style.productList}>Email: {orderDetailState?.[0]?.User?.email}</p>
-                    </div>
+                        <p className={style.productList}>
+                            <span className={style.keyword}>Nombre:</span> {orderDetailState?.[0]?.User?.name}
+                        </p>
+                        <p className={style.productList}>
+                            <span className={style.keyword}>Email:</span> {orderDetailState?.[0]?.User?.email}
+                        </p>
+                        <p className={style.productList}>
+                            <span className={style.keyword}>Companía:</span> {orderDetailState?.[0]?.User?.company}
+                        </p>
+                        <p className={style.productList}>
+                            <span className={style.keyword}>Dirección:</span> {orderDetailState?.[0]?.User?.address}
+                        </p>
+                        <p className={style.productList}>
+                            <span className={style.keyword}>Teléfono:</span> {orderDetailState?.[0]?.User?.phone}
+                        </p>
+                        </div>
+
+                    {/* <div className={style.div}>
+                        <h2 className={style.h2}>Forma de pago:</h2>
+                        <p className={style.p}>{orderDetailState?.[0]?.pay}</p>
+                    </div> */}
                     <div className={style.toggler}>
                         <input
                             id="toggler-1"
                             name="toggler-1"
                             type="checkbox"
-                            checked={Approved}
+                            checked={approvalStatus}
                             onChange={handleCheckboxChange}
                         />
                         <label htmlFor="toggler-1">
-                            <svg className={`${style["toggler-on"]} ${Approved ? style["toggler-on-visible"] : ''}`} version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                            <svg className={`${style["toggler-on"]} ${approvalStatus ? style["toggler-on-visible"] : ''}`} version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
                                 <polyline className={style["path"]} points="100.2,40.2 51.5,88.8 29.8,67.5"></polyline>
                             </svg>
-                            <svg className={`${style["toggler-off"]} ${!Approved ? style["toggler-off-visible"] : ''}`} version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                            <svg className={`${style["toggler-off"]} ${!approvalStatus ? style["toggler-off-visible"] : ''}`} version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
                                 <line className={style["path"]} x1="34.4" y1="34.4" x2="95.8" y2="95.8"></line>
                                 <line className={style["path"]} x1="95.8" y1="34.4" x2="34.4" y2="95.8"></line>
                             </svg>
@@ -99,20 +131,22 @@ const OrderDetail = () => {
                             </ul>
                         </div>
                     )}
-                    {orderDetailState?.[0]?.ReviewGeneral?.length > 0 && (
+            {orderDetailState?.[0]?.ReviewGeneral?.length > 0 && (
+                <div>
+                    <h2 className={style.h2}>Reseñas</h2>
+                    <ul className={style.reviewList}>
+                    {orderDetailState[0].ReviewGeneral.map((review, index) => (
+                        <li key={index} className={style.reviewListItem}>
+                        <p className={style.reviewText}>{review.review}</p>
                         <div>
-                            <h2 className={style.h2}>Reseñas</h2>
-                            <ul className={style.reviewList}>
-                                {orderDetailState[0].ReviewGeneral.map((review, index) => (
-                                    <li key={index} className={style.reviewListItem}>
-                                        {review.review}
-                                        <p className={style.p}>Usuario: {review.user?.name}</p>
-                                        <p className={style.p}>Email de usuario: {review.user?.email}</p>
-                                    </li>
-                                ))}
-                            </ul>
+                            <p className={style.p}><strong>Usuario:</strong> {review.user?.name}</p>
+                            <p className={style.p}><strong>Email de usuario:</strong> {review.user?.email}</p>
                         </div>
-                    )}
+                        </li>
+                    ))}
+                    </ul>
+                </div>
+                )}
                 </div>
             </div>
         </div>
