@@ -43,7 +43,7 @@ const CardCart_Profile = ({ id, code, name, description, quanty, price, stock })
 
     const handlerIncrese = () => {
         const newQuantity = parseInt(inputs.quanty) + 1;
-        console.log(newQuantity);
+
         dispatch(quantityDB(id, newQuantity));
         setInputs({ ...inputs, quanty: newQuantity });
     }
