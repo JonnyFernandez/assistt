@@ -36,7 +36,7 @@
     margin-right: 5px; /* Márgenes reducidos */
     color: #000;
     font-family: Arial, sans-serif;
-    width: 25%;
+    width: 20%;
 }
 
 .bodyRight {
@@ -144,11 +144,13 @@
 
 .productList {
   list-style: none;
+  font-family: Calibri, 'Trebuchet MS', sans-serif;
   padding: 0;
   margin: 0;
   display: table;
   width: 100%;
 }
+
 
 .productListItem {
   display: table-row;

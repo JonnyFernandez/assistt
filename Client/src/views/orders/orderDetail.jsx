@@ -6,7 +6,7 @@ import style from "./orderDetail.module.css";
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css';
 
-const OrderDetail = ({ orderId }) => {
+const OrderDetail = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
     const orderDetailState = useSelector((state) => state.orderDetail);
@@ -72,18 +72,32 @@ const handleCheckboxChange = () => {
                 <div className={style.bodyLeft}>
                     <h2 className={style.h2}>Usuario solicitante:</h2>
                     <div className={style.div}>
-                        <h2 className={style.h2}>Entrega estimada:</h2>
-                        <p className={style.p}>{orderDetailState?.[0]?.stimate_date}</p>
-                    </div>
-                    <div className={style.div}>
-                        <h2 className={style.h2}>Forma de pago:</h2>
-                        <p className={style.p}>{orderDetailState?.[0]?.pay}</p>
+                        <h2 className={style.h2}>Orden:</h2>
+                        <p className={style.p}>{orderDetailState?.[0]?.codeOrder}</p>
                     </div>
                     <div className={style.div}>
                         <h2 className={style.h2}>Usuario solicitante:</h2>
-                        <p className={style.productList}>Nombre: {orderDetailState?.[0]?.User?.name}</p>
-                        <p className={style.productList}>Email: {orderDetailState?.[0]?.User?.email}</p>
-                    </div>
+                        <p className={style.productList}>
+                            <span className={style.keyword}>Nombre:</span> {orderDetailState?.[0]?.User?.name}
+                        </p>
+                        <p className={style.productList}>
+                            <span className={style.keyword}>Email:</span> {orderDetailState?.[0]?.User?.email}
+                        </p>
+                        <p className={style.productList}>
+                            <span className={style.keyword}>Companía:</span> {orderDetailState?.[0]?.User?.company}
+                        </p>
+                        <p className={style.productList}>
+                            <span className={style.keyword}>Dirección:</span> {orderDetailState?.[0]?.User?.address}
+                        </p>
+                        <p className={style.productList}>
+                            <span className={style.keyword}>Teléfono:</span> {orderDetailState?.[0]?.User?.phone}
+                        </p>
+                        </div>
+
+                    {/* <div className={style.div}>
+                        <h2 className={style.h2}>Forma de pago:</h2>
+                        <p className={style.p}>{orderDetailState?.[0]?.pay}</p>
+                    </div> */}
                     <div className={style.toggler}>
                         <input
                             id="toggler-1"
