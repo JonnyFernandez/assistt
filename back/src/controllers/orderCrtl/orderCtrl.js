@@ -58,9 +58,22 @@ const getIdOrders = async (id) => {
     return idOrder;
 }
 
+const  orderUpdate = async (id, aprobado) => {
+    const order = await Orders.findByPk(id);
+
+    if (!order) {
+        throw new Error(`No hay orden con id: ${id} para aprobar`)
+    }
+
+    // Actualiza la propiedad "aprobado" de la orden
+    order.aprobado = aprobado;
+    await order.save();
+}
+
 
 module.exports = {
     createOrder,
     getOrder,
-    getIdOrders
+    getIdOrders,
+    orderUpdate
 };

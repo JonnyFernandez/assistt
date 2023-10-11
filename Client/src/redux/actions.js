@@ -171,11 +171,14 @@ export const quantityDB = (id, newQuantity) => {
 //--------------------APROBACIONES DE ORDENES POR USUARIOS---------------------------
 
 
-export const putRevisor = (id, dataRevisor) => {
+export const putRevisor = (orderId, dataAprob) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.put(`/api/order/${id}`, dataRevisor);
-      dispatch({ type: PUT_REVISOR, payload: data });
+      const { data } = await axios.put(`/order/${orderId}`, dataAprob);
+      dispatch({ type: PUT_REVISOR, payload: {
+        orderId,
+        approvalStatus: data.aprobado,
+      }, });
     } catch (error) {
       console.error("Error al aprobar/desaprobar la orden:", error);
     }

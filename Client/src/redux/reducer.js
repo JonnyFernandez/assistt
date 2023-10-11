@@ -31,6 +31,7 @@ const InitialState = {
   reviewsWithUserInfo: [],
   profile: {},
   orderDetail: {},
+  approvalStatus: {},
 
 
 };
@@ -70,6 +71,7 @@ const reducer = (state = InitialState, action) => {
 
     case POST_USER:
       return {
+        ...state,
       };
     case ORDER_DETAIL:
       return {
@@ -120,6 +122,12 @@ const reducer = (state = InitialState, action) => {
       };
     case PUT_REVISOR:
       return {
+        ...state,
+        ...state,
+        approvalStatus: {
+          ...state.approvalStatus,
+          [action.payload.orderId]: action.payload.approvalStatus,
+        },
       };
     case SUMA:
       const aux = state.cart;
