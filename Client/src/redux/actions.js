@@ -19,7 +19,10 @@ import {
   SUMA,
   RESTA,
   CLEAN_CART,
-  SEARCH_PROD
+  SEARCH_PROD,
+  SEARCH_USER,
+  GET_USERS_NAME,
+  SET_SEARCH_RESULTS
 
 } from './actionsType'
 import axios from 'axios'
@@ -32,6 +35,8 @@ export const getProd = () => {
     return dispatch({ type: GET_PROD, payload: res.data })
   }
 }
+
+
 
 //-------------------ORDENES----------------------------------
 export const getOrders = () => {
@@ -91,6 +96,19 @@ export const getUser1 = (id) => {
     return dispatch({ type: GET_PROFILE, payload: res.data })
   }
 }
+
+export const getUserName = () => {
+    try {
+      return async function (dispatch) {
+        let res = await axios(`http://localhost:3001/api/user/`)
+        return dispatch({ type: GET_USERS_NAME, payload: res.data })
+      }
+    } catch (error) {
+      console.error("Error al obtener el usuario:", error);
+    }
+  }
+
+
 
 
 //-------------------cargar datos de user-------------------
@@ -221,6 +239,14 @@ export const cleanCart = () => {
 export const searchByNameProd = (payload) => {
   return { type: SEARCH_PROD, payload }
 }
+
+export const searchByNameUser = (searchQuery) => {
+  return { type: SEARCH_USER, payload: searchQuery };
+};
+
+// export const setSearchResults = (results) => {
+//   return { type: SET_SEARCH_RESULTS, payload: results };
+// };
 
 //------------------------REVIEW-----------------------------------
 

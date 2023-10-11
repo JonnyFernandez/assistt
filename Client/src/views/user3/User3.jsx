@@ -1,16 +1,19 @@
-import style from '../user3/User3.module.css';
+import style from './User3.module.css';
 import Nav from "../../components/nav/Nav";
 import Nav3 from "../../components/nav/Nav3";
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getOrders } from '../../redux/actions'; 
+import { getOrders, searchByNameUser } from '../../redux/actions'; // Importa la acción searchByNameUser
 import { Link } from 'react-router-dom';
 import OrderDetail from '../orders/orderDetail';
+import UserList from './userList'; // Importa el componente UserList
 import Footer from '../../components/footer/Footer';
 
 const User3 = () => {
   const dispatch = useDispatch();
   const orders = useSelector((state) => state.Orders);
+  const searchResults = useSelector((state) => state.allUsers);
+  const [selectedOrder, setSelectedOrder] = useState(null);
 
   useEffect(() => {
     // Cuando el componente se monta, obtén las órdenes
@@ -20,7 +23,11 @@ const User3 = () => {
   // Estado para el seguimiento de la aprobación de cada orden
   const [approvalStatus, setApprovalStatus] = useState({});
 
-  // Función para actualizar el estado de aprobación de una orden
+  const handleSearch = (searchQuery) => {
+    // Realiza una búsqueda y luego dispara la acción para actualizar los resultados de búsqueda
+    dispatch(searchByNameUser(searchQuery)); // Dispara la acción para buscar usuarios
+  };
+
   const updateApprovalStatus = (orderId, newStatus) => {
     setApprovalStatus({
       ...approvalStatus,
@@ -37,20 +44,16 @@ const User3 = () => {
           <h1 className={style.h1}>Órdenes de Compra</h1>
           {Array.isArray(orders) && orders.length > 0 ? (
             <ul className={style.reviewList}>
-              {orders?.map((order) => (
+              {orders.map((order) => (
                 <li className={style.reviewListItem} key={order.id}>
                   Código de Órden:{" "}
                   <Link
                     to={`/detail/${order.id}`}
                     className={`${style.orderLink} ${style.customLink}`}
+                    onClick={() => setSelectedOrder(order)}
                   >
                     {order.codeOrder}
                   </Link>
-                  {approvalStatus[order.id] !== undefined ? (
-                    <span>
-                      Orden {approvalStatus[order.id] ? 'Aprobada' : 'Desaprobada'}
-                    </span>
-                  ) : null}
                 </li>
               ))}
             </ul>
@@ -73,10 +76,14 @@ const User3 = () => {
           </div>
           <div className={style.info}>
             <div className={style.infoLeft}>
-              <OrderDetail
-                approvalStatus={approvalStatus}
-                updateApprovalStatus={updateApprovalStatus}
-              />
+              {selectedOrder ? (
+                <OrderDetail
+                  approvalStatus={approvalStatus}
+                  updateApprovalStatus={updateApprovalStatus}
+                />
+              ) : searchResults?.length > 0 ? (
+                <UserList users={searchResults} />
+              ) : null}
             </div>
           </div>
         </div>
@@ -87,6 +94,10 @@ const User3 = () => {
 };
 
 export default User3;
+
+
+
+
 
 
 
