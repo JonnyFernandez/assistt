@@ -3,12 +3,13 @@ import { getUserName, searchByNameUser } from "../../redux/actions";
 import { useState, useEffect } from "react";
 
 import Style from './SearchBar3.module.css';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const SearchBar3 = () => {
   const dispatch = useDispatch();
   const [search, setSearch] = useState('');
   const searchResults = useSelector((state) => state.allUsers);
+ 
 
   // Lógica para realizar la búsqueda cuando el usuario hace clic en el botón "Buscar"
   const handleSearch = () => {
@@ -56,10 +57,13 @@ const SearchBar3 = () => {
             autoComplete="off"
             title="Search"
             role="combobox"
-            placeholder="Buscar usuarios por nombre"
+            placeholder=" usuarios por nombre"
             value={search}
             onChange={handleChange}
           />
+          <Link to="/users">
+            <button onClick={handleSearch}>Buscar</button>
+          </Link>
         </div>
       </div>
     </div>

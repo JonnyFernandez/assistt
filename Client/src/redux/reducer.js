@@ -119,7 +119,6 @@ const reducer = ( state = InitialState, action ) => {
                 cart: newCart
             };
         case GET_USERS_NAME:
-            console.log( "Datos de usuarios actualizados:", action.payload ); // Agregar este console.log
             return {
                 ...state,
                 allUsers: action.payload,
@@ -175,20 +174,17 @@ const reducer = ( state = InitialState, action ) => {
                 Product: searchByfilter
             }
         case SEARCH_USER:
+            
             const userName = action.payload;
-            const searchByfilterUser = userName ? state.allUsers.filter( user => user.name && user.name.toLowerCase().includes( userName.toLowerCase() ) ) : state.backupUsers;
+            const searchByfilterUser = userName ? 
+            state.allUsers.filter( user => user.name && user.name.toLowerCase().includes( userName.toLowerCase() ) ) : state.backupUsers;
 
             return {
                 ...state,
                 allUsers: searchByfilterUser,
+                searchResults: searchByfilterUser,
             };
-            // case SET_SEARCH_RESULTS:
-            //   // Maneja la acción para establecer los resultados de búsqueda
-            //   return {
-            //     ...state,
-            //     searchResults: action.payload,
-            //   };    
-      
+         
      
         default:
             return state;

@@ -244,9 +244,7 @@ export const searchByNameUser = (searchQuery) => {
   return { type: SEARCH_USER, payload: searchQuery };
 };
 
-// export const setSearchResults = (results) => {
-//   return { type: SET_SEARCH_RESULTS, payload: results };
-// };
+
 
 //------------------------REVIEW-----------------------------------
 

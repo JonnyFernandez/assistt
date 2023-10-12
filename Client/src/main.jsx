@@ -11,6 +11,7 @@ import CartProfile from './components/cartProfile/CartProfile.jsx'
 import ProtectedRoute from './authAll/ProtectedRoute.jsx'
 import { AuthProvider } from './authAll/auth/AuthProvider.jsx'
 import SearchBar3 from './components/searchBar/SearchBar3.jsx'
+import UserList from './views/user3/userList.jsx'
 
 
 
@@ -82,8 +83,8 @@ const router = createBrowserRouter([
         element: <Orders />
       },
       {
-        path: '/searchBar3',
-        element: <SearchBar3 />
+        path: '/users',
+        element: <UserList />
       },
     
     ]
