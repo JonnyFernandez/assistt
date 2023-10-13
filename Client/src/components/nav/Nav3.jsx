@@ -1,29 +1,35 @@
-import React, { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import p from './Nav.module.css';
-import SearchBar3 from '../searchBar/SearchBar3';
+import { useDispatch, useSelector } from 'react-redux';
+import { searchByNameUser } from '../../redux/actions';
+import SearchBar3 from '../../components/searchBar/SearchBar3';
+import { NavLink } from 'react-router-dom';
 
 const Nav3 = () => {
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  //const [searchResults, setSearchResults] = useState([]);
+  const [search, setSearch] = useState('');
+  const users = useSelector((state) => state.allUsers);
 
-  const handleCreateUser = () => {
-    // navigate('/signup');
+  const handleSearch = () => {
+    if (search.trim() !== '') {
+      dispatch(searchByNameUser(search));
+    }
   };
 
-  return (
-    <div className={p.nav1Container}>
-    
-      <div>
-        <SearchBar3 />
-      </div>
+  // Escucha cambios en el estado global para los resultados de búsqueda
+  // useEffect(() => {
+  //   setSearchResults(users);
+  // }, []); // El segundo argumento debe ser un arreglo vacío si solo deseas que el efecto se ejecute una vez
 
+  return (
+    <div className={p.nav1Container}> 
+      <SearchBar3 onSearch={handleSearch} searchValue={search} setSearchValue={setSearch} />
       <div>
         <NavLink to={'/profile3'}>
           perfil
         </NavLink>
       </div>
-
-
     </div>
   );
 };

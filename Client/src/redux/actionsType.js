@@ -15,6 +15,9 @@ export const ADD_CART = "ADD_CART"
 
 //------------ USERS--------------------------
 export const GET_PROFILE = "GET_PROFILE"
+export const GET_USERS_NAME = "GET_USERS_NAME"
+export const SEARCH_USER = "SEARCH_USER"
+export const SET_SEARCH_RESULTS = "SET_SEARCH_RESULTS"
 
 //------------- ORDENES------------------------
 export const GET_ORDER = "GET_ORDER"

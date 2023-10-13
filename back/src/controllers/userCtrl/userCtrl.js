@@ -70,10 +70,21 @@ const modify = async (id, company, address, phone) => {
 
 }
 
+const banned = async (id, active) => {
+    console.log('Received ID:', id);
+    console.log('Received active:', active);
 
-const banned = (id, active) => { }
+    const userBanned = await User.findByPk(id);
+    console.log('User found:', userBanned);
 
+    userBanned.active = active;
+    await userBanned.save();
 
+    let aux = active === true ? `Activaste el user ${userBanned.name}` : `Baneaste el user ${userBanned.name}`;
+    console.log('Response:', aux);
+
+    return aux;
+}
 
 
 module.exports = { getByName, getAll, getById, modify, banned }
