@@ -1,7 +1,7 @@
 
 import { useSelector, useDispatch } from 'react-redux'
 import { useState, useEffect } from "react"
-import Card from "../card/Card"
+import Card from "../../card/Card"
 import s from './FavProfile.module.css'
 
 

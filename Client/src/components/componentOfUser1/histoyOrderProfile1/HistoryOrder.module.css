@@ -34,6 +34,21 @@
 
 }
 
+.listOrderHeader {
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+.listContainer {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+
+}
+
 .historyOrderBodyRight {
     height: 465px;
     width: 70%;

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import t from './EditProfile.module.css'
 import { useDispatch } from 'react-redux'
-import { addInfo } from '../../redux/actions'
+import { addInfo } from '../../../redux/actions'
 
 const EditProfile = () => {
     const dispatch = useDispatch()
