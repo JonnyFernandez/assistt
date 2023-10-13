@@ -2,7 +2,7 @@ import h from './HistoryOrder.module.css'
 import CardHistoryOrder from './CardHistoryOrder'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getOrderUserById } from '../../redux/actions'
+import { getOrderUserById } from '../../../redux/actions'
 import OrdersDetailProfile from './OrdersDelailProfile'
 import { useState } from 'react'
 
@@ -35,9 +35,13 @@ const HistoryOrder = () => {
 
             <div className={h.historyOrderBody}>
                 <div className={h.historyOrderBodyLeft}>
-                    <h3>Ordenes de compra</h3>
 
-                    <div>
+                    <div className={h.listOrderHeader}>
+                        <h3>Ordenes</h3>
+                    </div>
+
+
+                    <div className={h.listContainer}>
                         {
                             Orders && Orders.map(item => (
                                 <CardHistoryOrder

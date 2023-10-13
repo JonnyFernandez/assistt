@@ -5,10 +5,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useAuth } from '../../authAll/auth/AuthProvider'
 import { getUser1 } from '../../redux/actions'
 import { useEffect, useState } from 'react'
-import CartProfile from '../../components/cartProfile/CartProfile'
-import HistoryOrder from '../../components/histoyOrderProfile1/HistoryOrder'
-import EditProfile from '../../components/editProfile/EditProfile'
-import FavProfile from '../../components/favProfile/FavProfile'
+import CartProfile from '../../components/componentOfUser1/cartProfile/CartProfile'
+import HistoryOrder from '../../components/componentOfUser1/histoyOrderProfile1/HistoryOrder'
+import EditProfile from '../../components/componentOfUser1/editProfile/EditProfile'
+import FavProfile from '../../components/componentOfUser1/favProfile/FavProfile'
 
 const Profile1 = () => {
 
@@ -24,7 +24,7 @@ const Profile1 = () => {
 
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     const id = userInfo?.id || '';
-    console.log(id);
+    // console.log(id);
 
     useEffect(() => {
         dispatch(getUser1(id))

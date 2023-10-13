@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useState, useEffect } from "react"
 import CardCart_Profile from "./CardCart_Profile"
 import s from './CartProfile.module.css'
-import { codeToOrder } from "../../utils/codes"
-import { createOrder, cleanCart, getUser1, postReview } from "../../redux/actions"
+import { codeToOrder } from "../../../utils/codes"
+import { createOrder, cleanCart, getUser1, postReview } from "../../../redux/actions"
 
 
 
