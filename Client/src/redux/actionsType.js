@@ -44,5 +44,8 @@ export const CLEAN_CART = "CLEAN_CART"
 
 //---------BUSQUEDA EN TIEMPO REAL-----------------------------
 
+
 export const SEARCH_PROD = "SEARCH_PROD"
 
+//---------ORDENES DE UN USUARIO-----------------------------
+export const ORDER_BY_ID_USER = "ORDER_BY_ID_USER"

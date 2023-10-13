@@ -7,9 +7,10 @@ import App from './App.jsx'
 
 import { store } from './redux/store.js'
 import { Landing, User1, User2, User3, User4, Profile1, Profile3, Cart, Orders, Fav, Login, Signup, OrderDetail } from './views/index.jsx'
-import CartProfile from './components/cartProfile/CartProfile.jsx'
+// import CartProfile from './components/cartProfile/CartProfile.jsx'
 import ProtectedRoute from './authAll/ProtectedRoute.jsx'
 import { AuthProvider } from './authAll/auth/AuthProvider.jsx'
+import OrdersDetailProfile from './components/histoyOrderProfile1/OrdersDelailProfile.jsx'
 
 
 
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
         path: '/orders',
         element: <Orders />
       },
+      // {
+      //   path: '/profileOrder-details/:id',
+      //   element: <OrdersDetailProfile />
+      // },
     ]
   },
   {
@@ -67,7 +72,7 @@ const router = createBrowserRouter([
         path: '/user3',
         element: <User3 />
       },
-      
+
       {
         path: '/Profile3',
         element: <Profile3 />
@@ -80,7 +85,7 @@ const router = createBrowserRouter([
         path: '/orders',
         element: <Orders />
       },
-    
+
     ]
   },
 
