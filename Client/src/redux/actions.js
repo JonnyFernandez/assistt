@@ -1,35 +1,14 @@
 
 
 import {
-  GET_PROD,
-  ADD_FAV,
-  REMOVE_FAV,
-  ADD_CART,
-  REMOVE_CART,
-  GET_PROFILE,
-  GET_ORDER,
-  CLEAN_DETAIL,
-  ORDER_DETAIL,
-  BY_TYPE,
-  QUANTITY,
-  POST_USER,
-  GET_REVIEWS,
-  PUT_REVISOR,
-  GET_ENTITY,
-  SUMA,
-  RESTA,
-  CLEAN_CART,
-  SEARCH_PROD,
-
-  SEARCH_USER,
-  GET_USERS_NAME,
-  SET_SEARCH_RESULTS
-
-  ORDER_BY_ID_USER
-
-
+  GET_PROD, ADD_FAV, REMOVE_FAV, ADD_CART, REMOVE_CART, GET_PROFILE, GET_ORDER, CLEAN_DETAIL, ORDER_DETAIL, BY_TYPE, QUANTITY, POST_USER,
+  GET_REVIEWS, PUT_REVISOR, GET_ENTITY, SEARCH_PROD, SEARCH_USER, GET_USERS_NAME, SET_SEARCH_RESULTS, ORDER_BY_ID_USER,
 } from './actionsType'
+
+
 import axios from 'axios'
+
+
 import Swal from 'sweetalert2'
 
 
@@ -102,15 +81,15 @@ export const getUser1 = (id) => {
 }
 
 export const getUserName = () => {
-    try {
-      return async function (dispatch) {
-        let res = await axios(`http://localhost:3001/api/user/`)
-        return dispatch({ type: GET_USERS_NAME, payload: res.data })
-      }
-    } catch (error) {
-      console.error("Error al obtener el usuario:", error);
+  try {
+    return async function (dispatch) {
+      let res = await axios(`http://localhost:3001/api/user/`)
+      return dispatch({ type: GET_USERS_NAME, payload: res.data })
     }
+  } catch (error) {
+    console.error("Error al obtener el usuario:", error);
   }
+}
 
 
 

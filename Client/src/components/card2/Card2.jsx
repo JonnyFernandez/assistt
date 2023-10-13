@@ -1,7 +1,7 @@
 import c from './Card2.module.css'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { addCart, removeCard, quantityDB, suma, resta } from '../../redux/actions'
+import { addCart, removeCard, quantityDB } from '../../redux/actions'
 
 
 
@@ -60,17 +60,17 @@ const Card2 = ({ id, code, name, description, quanty, price }) => {
         }
     }
 
-    const handlerIncrese = () => {
-        // dispatch(suma(id))
-        dispatch(quantityDB(id, inputs))
+    // const handlerIncrese = () => {
+    //     // dispatch(suma(id))
+    //     dispatch(quantityDB(id, inputs))
 
-    }
-    const handlerDecrese = () => {
-        dispatch(resta(id))
+    // }
+    // const handlerDecrese = () => {
+    //     dispatch(resta(id))
 
 
 
-    }
+    // }
 
 
 
