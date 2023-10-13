@@ -191,14 +191,6 @@ export const putRevisor = (orderId, dataAprob) => {
 
 
 
-export const suma = (id) => {
-  return { type: SUMA, payload: id }
-}
-
-export const resta = (id) => {
-  return { type: RESTA, payload: id }
-}
-
 
 
 // --------------------------CREAR ORDEN DE COMPRAS-------------

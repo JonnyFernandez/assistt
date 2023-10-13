@@ -16,8 +16,8 @@ import {
   SUMA,
   RESTA,
   CLEAN_CART,
+  ORDER_BY_ID_USER,
   SEARCH_PROD,
-  ORDER_BY_ID_USER
 } from '../redux/actionsType';
 
 const InitialState = {
@@ -34,9 +34,9 @@ const InitialState = {
   profile: {},
   orderDetail: {},
   approvalStatus: {},
-
-
 };
+
+
 
 const reducer = (state = InitialState, action) => {
   switch (action.type) {
@@ -170,7 +170,7 @@ const reducer = (state = InitialState, action) => {
 
     default:
       return state;
-  }
+  };
 };
 
 export default reducer;
