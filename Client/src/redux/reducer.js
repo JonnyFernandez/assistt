@@ -1,4 +1,5 @@
 import {
+
     GET_PROD,
     GET_ORDER,
     ADD_FAV,
@@ -20,6 +21,7 @@ import {
     SEARCH_USER,
     GET_USERS_NAME,
     SET_SEARCH_RESULTS,
+   ORDER_BY_ID_USER
     
 } from '../redux/actionsType';
 
@@ -38,6 +40,24 @@ const InitialState = {
     profile: {},
     orderDetail: {},
     approvalStatus: {}
+
+
+
+const InitialState = {
+  Product: [],
+  Orders: [],
+  OrdersUser: [],
+  backupProduct: [],
+  favorite: [],
+  cart: [],
+  allUsers: [],
+  allEntity: [],
+  error: null,
+  reviewsWithUserInfo: [],
+  profile: {},
+  orderDetail: {},
+  approvalStatus: {},
+
 
 
 };
@@ -125,6 +145,7 @@ const reducer = ( state = InitialState, action ) => {
                 backupUsers: action.payload
             }
 
+
         case GET_PROFILE:
             return {
                 ...state,
@@ -189,13 +210,87 @@ const reducer = ( state = InitialState, action ) => {
         default:
             return state;
     }
+
+      return {
+        ...state,
+        favorite: fav,
+      };
+    case ADD_CART:
+      return {
+        ...state,
+        cart: [...state.cart, action.payload],
+      };
+    case REMOVE_CART:
+      const newCart = state.cart.filter((item) => item.id !== action.payload);
+      return {
+        ...state,
+        cart: newCart,
+      };
+    case GET_PROFILE:
+      return {
+        ...state,
+        profile: action.payload
+      };
+    case BY_TYPE:
+      const typeSupplies = state.backupProduct.filter(
+        (item) => item.supplie_type === action.payload
+      );
+      return {
+        ...state,
+        Product: typeSupplies,
+      };
+    case PUT_REVISOR:
+      return {
+        ...state,
+        ...state,
+        approvalStatus: {
+          ...state.approvalStatus,
+          [action.payload.orderId]: action.payload.approvalStatus,
+        },
+      };
+    case SUMA:
+      const aux = state.cart;
+      let source = aux.find((item) => item.id === action.payload);
+      source ? source.quanty++ : '';
+      return {
+        ...state,
+        cart: [...state.cart],
+      };
+    case RESTA:
+      const aux1 = state.cart;
+      let source1 = aux1.find((item) => item.id === action.payload);
+      source1 ? source1.quanty-- : '';
+      return {
+        ...state,
+        cart: [...state.cart],
+      };
+    case CLEAN_CART:
+      return {
+        ...state,
+        cart: [],
+      };
+    case SEARCH_PROD:
+      const name = action.payload;
+      let searchByfilter = (name == null
+        ? state.Product = state.backupProduct
+        : state.Product.filter(products => products.name.toLowerCase().includes(name.toLowerCase()))
+      )
+      return {
+        ...state,
+        Product: searchByfilter
+      }
+    case ORDER_BY_ID_USER:
+      return {
+        ...state,
+        OrdersUser: action.payload
+      }
+
+    default:
+      return state;
+  }
+
 };
 
 export default reducer;
 
-// searchName: (state, action) => {
-// const name = action.payload;
-// if (name == null) {
-//     state.products = state.productsAll;
-// } else {
-//     state.products = state.productsAll.filter(products => products.name.toLowerCase().includes(name.toLowerCase()))
+

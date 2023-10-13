@@ -58,7 +58,7 @@ const getIdOrders = async (id) => {
     return idOrder;
 }
 
-const  orderUpdate = async (id, aprobado) => {
+const orderUpdate = async (id, aprobado) => {
     const order = await Orders.findByPk(id);
 
     if (!order) {
@@ -70,10 +70,37 @@ const  orderUpdate = async (id, aprobado) => {
     await order.save();
 }
 
+const OrdersUserById = async (id) => {
+    const orderDB = await getOrder()
+    const user = await User.findByPk(id)
+    if (!user) throw new Error('You must be registered to make this request')
+
+    let aux = await orderDB.filter(item => item.userOrder === id)
+    if (aux.length === 0) throw new Error('this user has not placed Orders yet')
+
+    const data = aux.map(item => ({
+        id: item.id,
+        order_date: item.order_date.toString().slice(4, 15),
+        codeOrder: item.codeOrder,
+        monto: item.monto,
+        aprobado: item.aprobado,
+        providerCode: item.providerCode,
+        userOrder: item.userOrder,
+        Prods: item.Prods,
+        ReviewGeneral: item.ReviewGeneral,
+        User: item.User
+    }))
+
+
+    // console.log(aux);
+    return data
+
+}
 
 module.exports = {
     createOrder,
     getOrder,
     getIdOrders,
-    orderUpdate
+    orderUpdate,
+    OrdersUserById
 };
