@@ -16,12 +16,14 @@ import {
   SUMA,
   RESTA,
   CLEAN_CART,
-  SEARCH_PROD
+  SEARCH_PROD,
+  ORDER_BY_ID_USER
 } from '../redux/actionsType';
 
 const InitialState = {
   Product: [],
   Orders: [],
+  OrdersUser: [],
   backupProduct: [],
   favorite: [],
   cart: [],
@@ -160,6 +162,12 @@ const reducer = (state = InitialState, action) => {
         ...state,
         Product: searchByfilter
       }
+    case ORDER_BY_ID_USER:
+      return {
+        ...state,
+        OrdersUser: action.payload
+      }
+
     default:
       return state;
   }
@@ -167,9 +175,4 @@ const reducer = (state = InitialState, action) => {
 
 export default reducer;
 
-// searchName: (state, action) => {
-//   const name = action.payload;
-//   if (name == null) {
-//     state.products = state.productsAll;
-//   } else {
-//     state.products = state.productsAll.filter(products => products.name.toLowerCase().includes(name.toLowerCase()))
+

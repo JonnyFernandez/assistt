@@ -19,7 +19,8 @@ import {
   SUMA,
   RESTA,
   CLEAN_CART,
-  SEARCH_PROD
+  SEARCH_PROD,
+  ORDER_BY_ID_USER
 
 } from './actionsType'
 import axios from 'axios'
@@ -175,10 +176,12 @@ export const putRevisor = (orderId, dataAprob) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.put(`/order/${orderId}`, dataAprob);
-      dispatch({ type: PUT_REVISOR, payload: {
-        orderId,
-        approvalStatus: data.aprobado,
-      }, });
+      dispatch({
+        type: PUT_REVISOR, payload: {
+          orderId,
+          approvalStatus: data.aprobado,
+        },
+      });
     } catch (error) {
       console.error("Error al aprobar/desaprobar la orden:", error);
     }
@@ -319,3 +322,14 @@ export const postReview = async (reseñas) => {
 
   }
 };
+
+
+//---------------------ORDENES DE UN USUARIO-----------------------------------------
+
+export const getOrderUserById = (id) => {
+  return async (dispatch) => {
+    let res = await axios.get(`http://localhost:3001/order/api/${id}`);
+    return dispatch({ type: ORDER_BY_ID_USER, payload: res.data });
+  };
+};
+
