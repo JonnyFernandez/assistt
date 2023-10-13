@@ -27,43 +27,52 @@ useEffect(() => {
     return () => dispatch(cleanDetail());
 }, [dispatch, id]);
 
-const handleCheckboxChange = () => {
-    const newApprovalStatus = !approvalStatus;
-    
+const handleApprove = () => {
+    handleApproval(true);
+  };
+  
+  const handleDisapprove = () => {
+    handleApproval(false);
+  };
+  
+  const handleApproval = (isApproved) => {
+    const newApprovalStatus = isApproved;
+  
     dispatch(putRevisor(id, { aprobado: newApprovalStatus }))
-        .then(() => {
-            const message = newApprovalStatus
-                ? 'La orden ha sido aprobada.'
-                : 'La orden ha sido desaprobada.';
-            
-            dispatch(getOrders());
-            dispatch(getOrderDetail(id));
-            
-            // Actualiza el estado local de aprobación
-            setApprovalStatus(newApprovalStatus);
-            
-            // Almacena el estado de aprobación en LocalStorage
-            localStorage.setItem(`approvalStatus_${id}`, JSON.stringify(newApprovalStatus));
-            
-            Swal.fire({
-                icon: 'success',
-                title: 'Éxito',
-                text: message,
-                position: 'center',
-                timer: 3000,
-            });
-        })
-        .catch((error) => {
-            console.error('Error al aprobar/desaprobar la orden:', error);
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Ocurrió un error al aprobar/desaprobar la orden.',
-                position: 'center',
-                timer: 3000,
-            });
+      .then(() => {
+        const message = isApproved
+          ? 'La orden ha sido aprobada.'
+          : 'La orden ha sido desaprobada.';
+  
+        dispatch(getOrders());
+        dispatch(getOrderDetail(id));
+  
+        // Actualiza el estado local de aprobación
+        setApprovalStatus(newApprovalStatus);
+  
+        // Almacena el estado de aprobación en LocalStorage
+        localStorage.setItem(`approvalStatus_${id}`, JSON.stringify(newApprovalStatus));
+  
+        Swal.fire({
+          icon: 'success',
+          title: 'Éxito',
+          text: message,
+          position: 'center',
+          timer: 3000,
         });
-};
+      })
+      .catch((error) => {
+        console.error('Error al aprobar/desaprobar la orden:', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Ocurrió un error al aprobar/desaprobar la orden.',
+          position: 'center',
+          timer: 3000,
+        });
+      });
+  };
+  
 
     return (
         <div className={style.contenedor}>
@@ -99,23 +108,9 @@ const handleCheckboxChange = () => {
                         <p className={style.p}>{orderDetailState?.[0]?.pay}</p>
                     </div> */}
                     <div className={style.toggler}>
-                        <input
-                            id="toggler-1"
-                            name="toggler-1"
-                            type="checkbox"
-                            checked={approvalStatus}
-                            onChange={handleCheckboxChange}
-                        />
-                        <label htmlFor="toggler-1">
-                            <svg className={`${style["toggler-on"]} ${approvalStatus ? style["toggler-on-visible"] : ''}`} version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
-                                <polyline className={style["path"]} points="100.2,40.2 51.5,88.8 29.8,67.5"></polyline>
-                            </svg>
-                            <svg className={`${style["toggler-off"]} ${!approvalStatus ? style["toggler-off-visible"] : ''}`} version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
-                                <line className={style["path"]} x1="34.4" y1="34.4" x2="95.8" y2="95.8"></line>
-                                <line className={style["path"]} x1="95.8" y1="34.4" x2="34.4" y2="95.8"></line>
-                            </svg>
-                        </label>
-                    </div>
+                        <button className={style.approveButton} onClick={handleApprove}>Aprobar</button>
+                        <button className={style.disapproveButton} onClick={handleDisapprove}>Desaprobar</button>
+                        </div>
                 </div>
                 <div className={style.bodyRight}>
                     {orderDetailState?.[0] && (

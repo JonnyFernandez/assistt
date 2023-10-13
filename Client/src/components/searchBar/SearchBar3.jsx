@@ -1,7 +1,37 @@
-import React from 'react';
-import Style from '../searchBar/SearchBar3.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserName, searchByNameUser } from "../../redux/actions";
+import { useState, useEffect } from "react";
+
+import Style from './SearchBar3.module.css';
+import { Link } from 'react-router-dom';
 
 const SearchBar3 = () => {
+  const dispatch = useDispatch();
+  const [search, setSearch] = useState('');
+  const searchResults = useSelector((state) => state.allUsers);
+ 
+
+  // Lógica para realizar la búsqueda cuando el usuario hace clic en el botón "Buscar"
+  const handleSearch = () => {
+    dispatch(searchByNameUser(search.trim())); // Llama a tu acción para buscar por nombre
+  };
+
+  // Lógica para realizar la búsqueda en tiempo real mientras el usuario escribe
+  useEffect(() => {
+    if (search.trim() === '') {
+      // Si la búsqueda está vacía, obtén todos los usuarios
+      dispatch(getUserName());
+    } else {
+      // Realiza la búsqueda en tiempo real si hay texto en la búsqueda
+      dispatch(searchByNameUser(search.trim()));
+    }
+  }, [search, dispatch]);
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setSearch(value);
+  };
+
   return (
     <div className={Style.searchbar}>
       <div className={Style.searchbarWrapper}>
@@ -27,8 +57,13 @@ const SearchBar3 = () => {
             autoComplete="off"
             title="Search"
             role="combobox"
-            placeholder="Buscar usuarios por nombre"
+            placeholder=" usuarios por nombre"
+            value={search}
+            onChange={handleChange}
           />
+          <Link to="/users">
+            <button onClick={handleSearch}>Buscar</button>
+          </Link>
         </div>
       </div>
     </div>
@@ -36,3 +71,4 @@ const SearchBar3 = () => {
 };
 
 export default SearchBar3;
+
