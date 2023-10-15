@@ -12,24 +12,24 @@ function Footer() {
 
 
     <footer className={s.footerContainer}>
-      {/* <div className={s.footer}>
+      <div className={s.footer}>
         <NavLink className={s.logo} to="/">
-          <img src={logo} alt="assitt" style={logoStyle} />
+          {/* <img src={logo} alt="assitt" style={logoStyle} /> */}
         </NavLink>
-      </div> */}
+      </div>
       {/* <div className={s.footer}>
         <span>
-        <NavLink to="/faq" className={s.links}>
+          <NavLink to="/faq" className={s.links}>
             FAQ
           </NavLink>
         </span>
         <span>
-        <NavLink to="/contact" className={s.links}>
+          <NavLink to="/contact" className={s.links}>
             Contacto
           </NavLink>
         </span>
         <span>
-        <NavLink to="/eje1" className={s.links}>
+          <NavLink to="/eje1" className={s.links}>
             Ejemplo1
           </NavLink>
         </span>
