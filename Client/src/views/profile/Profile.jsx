@@ -106,21 +106,25 @@ const Profile1 = () => {
                 <div className={p.bodyRight}>
 
                     <div className={p.bodyRightHeader}>
-                        <NavLink to={'/user1'}>
-                            <div>Inicio</div>
+
+
+                        <NavLink className={p.button} to={'/user1'}>
+                            <small className={p.inicionButton}>Inicio</small>
                         </NavLink>
 
-                        <div onClick={toggleHistotyOrder}>Historial</div>
 
-                        <div onClick={toggleCartProfile}>Carrito</div>
+                        <div className={p.button} onClick={toggleHistotyOrder}> <small>Historial</small> </div>
 
-                        <div onClick={toggleEditProfile}>Editar </div>
+                        <div className={p.button} onClick={toggleCartProfile}> <small>Carrito</small></div>
 
-                        <div onClick={toggleFav}>favoritos {fav && fav.length} </div>
+                        <div className={p.button} onClick={toggleEditProfile}> <small>Editar</small> </div>
+
+                        <div className={p.button} onClick={toggleFav}><small>favoritos: </small> <small> {fav && fav.length}</small> </div>
 
                     </div>
 
                     <div className={p.bodyRightBody}>
+
                         {showCartProfile && <CartProfile />}
                         {showHistoryOrder && <HistoryOrder />}
                         {showEditProfile && <EditProfile />}

@@ -1,57 +1,66 @@
 /* Estilos para el Footer */
 .footerContainer {
-    max-width: 150rem;
-    height: 1rem;
-    background-color: rgba(226, 234, 241, 0.674);
-    display: flex;
-    flex-direction: row; 
-    justify-content: flex-start; /* Alinear los elementos a la izquierda */
-    align-items: center; /* Centrar verticalmente los elementos */
-    padding: 1.5rem;
-    border-radius: 10px 30px 0 0;
-  }
-  .footer {
-    border-radius: 10px 30px 0 0;
-  }
-  
-  .logo {
-    max-width: 100%;
-    display: block; /* Evitar estirar la imagen en pantallas pequeñas */
+  max-width: 150rem;
+  height: 1rem;
+  background-color: rgba(226, 234, 241, 0.674);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  /* Alinear los elementos a la izquierda */
+  align-items: center;
+  /* Centrar verticalmente los elementos */
+  padding: 1.5rem;
+  border-radius: 10px 30px 0 0;
+}
 
-  }
-  .logo:hover {
-    text-shadow: 1px 1px 2px pink;
-  }
-  
-  /* .links {
-    color: rgba(65, 62, 62, 0.974);
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-weight: 200;
-    text-decoration: none;
-    padding: 2rem;
-    margin-left: 50%;
+.footer {
+  border-radius: 10px 30px 0 0;
 }
-  
-  .links:hover {
-    text-shadow: 1px 1px 2px gray;
-  } */
-  
- /* Estilo para el texto de derechos de autor */
+
+.logo {
+  max-width: 100%;
+  display: block;
+  /* Evitar estirar la imagen en pantallas pequeñas */
+
+
+}
+
+.logo:hover {
+  text-shadow: 1px 1px 2px pink;
+}
+
+.links {
+  color: rgba(65, 62, 62, 0.974);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: 200;
+  text-decoration: none;
+  padding: 2rem;
+  margin-left: 50%;
+}
+
+.links:hover {
+  text-shadow: 1px 1px 2px gray;
+}
+
+/* Estilo para el texto de derechos de autor */
 .copyright {
-    margin-left: 21%;
-    justify-content: center;
-    color: #777; /* Color de texto gris */
+  margin-left: 21%;
+  justify-content: center;
+  color: #777;
+  /* Color de texto gris */
 }
-  
+
 @media (max-width: 768px) {
   .footerContainer {
-      flex-direction: column; /* Cambiar a una columna en pantallas pequeñas */
-      align-items: flex-start; /* Alinear elementos a la izquierda en pantallas pequeñas */
+    flex-direction: column;
+    /* Cambiar a una columna en pantallas pequeñas */
+    align-items: flex-start;
+    /* Alinear elementos a la izquierda en pantallas pequeñas */
   }
 
   .logo {
-      max-width: 70%; /* Reducir el tamaño de la imagen en pantallas pequeñas */
+    max-width: 70%;
+    /* Reducir el tamaño de la imagen en pantallas pequeñas */
+
   }
 }
-
-  
