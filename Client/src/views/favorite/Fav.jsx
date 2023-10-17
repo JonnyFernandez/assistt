@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux'
 import Card from '../../components/card/Card';
 import f from './Fav.module.css'
 import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 const Fav = () => {
 
@@ -17,32 +19,33 @@ const Fav = () => {
                     <Nav />
                 </div>
 
-                <div className={f.subDiv} >
+                <div className={f.backContainer} >
+                    <NavLink to={'/user1'} className={f.back}>Inicio</NavLink>
+                    <div className={f.title}>Favoritos</div>
+                    <NavLink to={'/cart'} className={f.back}>
+                        <FontAwesomeIcon icon={faShoppingCart} size="1.7x" color="#fff" />
+                    </NavLink>
+                </div>
 
-                    <NavLink to={'/user1'} className={f.inicio}>Inicio</NavLink>
 
-                    <h1 style={{ color: '#ffff' }}>Favorite</h1>
 
-                    <NavLink to={'/cart'} className={f.inicio}>Carrito</NavLink>
+
+            </div>
+
+            <div className={f.Container}>
+                <div className={f.bodyFav}>
+
+                    {
+                        fav && fav.map(item => {
+                            return (
+                                <Card key={item.id} id={item.id} code={item.code} name={item.name} description={item.description} quanty={item.quanty} price={item.price} />
+                            )
+                        })
+                    }
 
 
 
                 </div>
-
-
-            </div>
-            <div className="bodyFav">
-
-                {
-                    fav && fav.map(item => {
-                        return (
-                            <Card key={item.id} id={item.id} code={item.code} name={item.name} description={item.description} quanty={item.quanty} price={item.price} />
-                        )
-                    })
-                }
-
-
-
             </div>
             <div className="footerFav"></div>
 

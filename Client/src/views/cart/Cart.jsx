@@ -78,6 +78,8 @@ const Cart = () => {
                 </div>
                 <div className={L.backContainer} >
                     <NavLink className={L.back} to={'/user1'}>Inicio</NavLink>
+                    {/* <h1 className={L.title}>Carrito</h1> */}
+                    {/* <NavLink className={L.back} to={'/user1'}></NavLink> */}
                 </div>
 
             </div>

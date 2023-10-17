@@ -2,8 +2,8 @@ import c from './Card.module.css'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import { addFav, removeFav, addCart, removeCard } from '../../redux/actions'
-
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 const Card = ({ id, code, name, description, quanty, price, stock }) => {
 
@@ -80,25 +80,29 @@ const Card = ({ id, code, name, description, quanty, price, stock }) => {
 
 
 
-            </div>
+                <div className={c.divBotones}>
+                    <div className={c.buttoContainer}>
 
+                        {cart
+                            ? (<button className={c.classCart1} onClick={handleCart}>
+                                <FontAwesomeIcon className={c.cartButton} icon={faShoppingCart} size="1.7x" color="#fff" />
+                            </button>)
+                            : (<button className={c.classCart2} onClick={handleCart}>
+                                <FontAwesomeIcon className={c.cartButton} icon={faShoppingCart} size="1.5x" color="#fff" />
+                            </button>)}
+                        {fav
+                            ? (<button className={c.favButon} onClick={handleFav}>❤️
 
-            <div className={c.divBotones}>
-                <div className={c.buttoContainer}>
+                            </button>)
 
-                    {cart
-                        ? (<button className={c.classCart1} onClick={handleCart}> quitar </button>)
-                        : (<button className={c.classCart2} onClick={handleCart}> agregar </button>)}
-                    {fav
-                        ? (<button className={c.classCart1} onClick={handleFav}>❤️
+                            : (<button className={c.classCart2} onClick={handleFav}>🤍
 
-                        </button>)
-
-                        : (<button className={c.classCart2} onClick={handleFav}>🤍
-
-                        </button>)}
+                            </button>)}
+                    </div>
                 </div>
             </div>
+
+
 
 
         </div>
