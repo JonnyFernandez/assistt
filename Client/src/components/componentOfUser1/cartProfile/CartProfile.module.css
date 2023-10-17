@@ -10,7 +10,7 @@
 .cartProfileContainer {
     width: 100%;
     height: 430px;
-    background-color: aqua;
+    /* background-color: aqua; */
     overflow-x: auto;
     font-size: xx-small;
 }

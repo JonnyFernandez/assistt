@@ -1,58 +1,59 @@
 .cardContainer {
-    margin-top: 10px;
-    /* background-color: aqua; */
     display: flex;
     flex-direction: row;
-
+    justify-content: center;
+    flex-wrap: wrap;
 }
-
 
 .card {
     display: flex;
     flex-direction: row;
-    /* justify-content: space-around; */
-    width: 32%;
-    height: auto;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
-    border-bottom: 1px solid black;
-    margin-left: 20px;
+    max-width: 800px;
+    border: 1px solid black;
+    margin: 10px;
+    padding: 20px;
 }
-
-
-
-.divCode {
-    /* background-color: red; */
-    height: auto;
-    width: 400px;
-}
-
-.divCode1 {
-    height: auto;
-    width: 100px;
-    /* background-color: red; */
-    margin-left: -10px;
-}
-
-.divBotones {
-    background-color: red;
-    position: relative;
-    margin-right: 120px;
-
-}
-
 
 .buttoContainer {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
-
+    align-items: center;
+    margin-top: 20px;
 }
 
 .inputsNum {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+}
 
+input {
+    width: 70px;
+    margin: 0 15px;
+    text-align: center;
+}
+
+.deleteCart {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    /* Ajusta el relleno del botón según sea necesario */
+    cursor: pointer;
+}
+
+.divCode {
+    flex: 1;
+    padding: 0 10px;
+}
+
+h4 {
+    font-size: 14px;
+    /* Ajusta el tamaño de la fuente según sea necesario */
+    margin: 5px 0;
+    /* Ajusta el margen superior e inferior para separar los elementos */
 }
