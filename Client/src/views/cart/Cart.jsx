@@ -5,45 +5,68 @@ import { useSelector, useDispatch } from 'react-redux'
 import Card2 from '../../components/card2/Card2'
 import { useState, useEffect } from 'react'
 import { codeToOrder } from '../../utils/codes'
-import { createOrder, cleanCart } from '../../redux/actions'
-import { useNavigate } from 'react-router-dom'
+import { createOrder, cleanCart, getUser1, postReview } from '../../redux/actions'
+// import { useNavigate } from 'react-router-dom'
 
 const Cart = () => {
 
-    const navigate = useNavigate()
-
-    const codeOrder = codeToOrder()
-
     const dispatch = useDispatch()
+    const codeOrder = codeToOrder()
     const myCart = useSelector(state => state.cart)
-
-
     const prod_ID = myCart.map(item => item.id)
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    const id = userInfo?.id || ''
+
+    useEffect(() => {
+        dispatch(getUser1(id))
+    }, [id]);
+    const Profile = useSelector(state => state.profile)
 
     const [input, setInput] = useState({
         codeOrder: codeOrder,
-        stimate_date: "",
-        pay: "efectivo",
-        // userId: idUser1,
+        userId: Profile.id,
         prodId: prod_ID
+    });
+
+    const [reviews, setReviews] = useState({
+        review: '',
+        userId: Profile.id,
+        codeOrder: codeOrder
     })
+    const [showReviewForm, setShowReviewForm] = useState(false);
 
-
-    const handleChange = (e) => {
-        setInput({
-            ...input,
-            stimate_date: e.target.value
-        })
+    if (Profile.id === undefined) {
+        return <div>Error: Debes iniciar sesión para continuar.</div>;
     }
 
-    const sendInput = () => {
-        if (!input.stimate_date) return alert("poner fecha")
+
+    const sendOrder = () => {
         dispatch(createOrder(input))
         dispatch(cleanCart())
         alert(`${input.codeOrder}`)
-        navigate('/user1')
+        setShowReviewForm(true);
     }
 
+    const clean_Cart = () => {
+        dispatch(cleanCart())
+    }
+
+    const handleReviewChange = (e) => {
+        setReviews({
+            ...reviews,
+            review: e.target.value,
+        });
+    };
+
+    const submitReview = () => {
+        setShowReviewForm(false);
+        dispatch(postReview(reviews))
+        setReviews({
+            review: "",
+            userId: Profile.id,
+            codeOrder: codeOrder,
+        });
+    };
 
 
     return (
@@ -52,15 +75,7 @@ const Cart = () => {
                 <div>
                     <Nav />
                 </div>
-                <div className={L.subDiv}>
 
-                    <NavLink to={'/user1'} className={L.inicio} >Inicio</NavLink>
-
-                    <h1 style={{ color: '#ffff' }}>Pedidos</h1>
-
-                    <NavLink to={'/fav'} className={L.inicio} >Favoritos</NavLink>
-
-                </div>
             </div>
 
 
@@ -68,32 +83,57 @@ const Cart = () => {
 
             <div className={L.divBody}>
                 <div className={L.divBodyLeft}>
-
-                    {
-                        myCart && myCart.map(item => {
-                            return (
-                                <Card2 key={item.id} id={item.id} code={item.code} name={item.name} description={item.description} quanty={item.quanty} price={item.price} />
-                            )
-                        })
-                    }
+                    <div className={L.divCarts}>
+                        {
+                            myCart && myCart.map(item => {
+                                return (
+                                    <Card2
+                                        key={item.id}
+                                        id={item.id}
+                                        code={item.code}
+                                        name={item.name}
+                                        description={item.description}
+                                        quanty={item.quanty}
+                                        price={item.price}
+                                        stock={item.stock}
+                                    />
+                                )
+                            })
+                        }
+                    </div>
                 </div>
 
 
                 <div className={L.divBodyRight}>
 
+                    <h1>Orden de Compra</h1>
+                    <h3>Datos Solicitante</h3>
 
-                    <label htmlFor="">Codigo de Orden: </label>
+                    <h4>Nombre: {Profile.name}</h4>
+                    <h4>Email: {Profile.email}</h4>
+                    <h4>Empresa: {Profile.company}</h4>
+                    <h4>Dirección {Profile.address}</h4>
 
-                    <label htmlFor="">Fecha estimada</label>
-                    {/* <input type="text" value={input.stimate_date} onChange={HandlerChange} /> */}
-                    <input type="date" placeholder="dd/mm/aaaa..." value={input.stimate_date} onChange={handleChange} />
+                    <div className={L.cartProfileFooter}>
+                        {myCart.length > 0 && <div className={L.cartProfileFooter_Approve} onClick={() => sendOrder()}>Enviar</div>}
+                        {myCart.length > 0 && <div className={L.cartProfileFooter_disapprove} onClick={() => clean_Cart()}>Cancelar</div>}
+                    </div>
+
+                    {showReviewForm && (
+                        <div className={L.reviewForm}>
+                            <h2>Crear una reseña</h2>
+                            <textarea
+                                placeholder="Escribe tu reseña aquí"
+                                value={reviews.review}
+                                onChange={handleReviewChange}
+                            />
+                            <button onClick={() => submitReview()}>Enviar Reseña</button>
+                        </div>
+                    )}
 
 
-                    {/* <label htmlFor="">Comentario</label>
-                    <textarea /> */}
 
 
-                    <button onClick={() => sendInput()} >Crear</button>
 
 
                 </div>
@@ -108,9 +148,9 @@ const Cart = () => {
 
 
 
-            <div className='divFooter'>
+            {/* <div className='divFooter'>
                 <footer className={L.footer}>Assistt one - Todos los derechos reservados 2023</footer>
-            </div>
+            </div> */}
 
 
 

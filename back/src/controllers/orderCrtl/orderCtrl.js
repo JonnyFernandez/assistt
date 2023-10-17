@@ -16,7 +16,7 @@ const createOrder = async (codeOrder, userId, prodId) => {
     await newOrder.addProds(products);
 
     return "Orden realizada";
-}
+};
 
 
 
@@ -49,7 +49,7 @@ const getOrder = async () => {
     } catch (error) {
         throw new Error('No se pudieron obtener las órdenes');
     }
-}
+};
 
 const getIdOrders = async (id) => {
     const orderid = await getOrder();
