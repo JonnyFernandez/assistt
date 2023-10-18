@@ -21,20 +21,21 @@ import {
 } from '../redux/actionsType';
 
 const InitialState = {
-  Product: [],
-  Orders: [],
-  OrdersUser: [],
-  backupProduct: [],
-  favorite: [],
-  cart: [],
-  allUsers: [],
-  allEntity: [],
-  error: null,
-  reviewsWithUserInfo: [],
-  profile: {},
-  orderDetail: {},
-  approvalStatus: {},
-};
+    Product: [],
+    Orders: [],
+    backupProduct: [],
+    favorite: [],
+    cart: [],
+    allUsers: [],
+    backupUsers: [],
+    searchResults: [],
+    allEntity: [],
+    error: null,
+    reviewsWithUserInfo: [],
+    profile: {},
+    orderDetail: {},
+    approvalStatus: {}
+
 
 
 

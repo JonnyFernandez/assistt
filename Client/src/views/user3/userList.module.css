@@ -1,51 +1,63 @@
 /* Estilos generales para la lista y los elementos de la lista */
 .contenedor {
-    display: flex;
-    flex-direction: column;
     align-items: center;
     padding: 10px;
-    height: 35px;
+    height: 50px;
     background-color: #d0cccc;
-    margin: 10px 10px 0;/* 20px de margen izquierdo y derecho, puedes ajustar este valor según tus preferencias */
-    border-radius: 10px; /* Ajusta el valor según el radio de redondez deseado */
+    margin: 10px 50px 50px 50px;/* 20px de margen izquierdo y derecho, puedes ajustar este valor según tus preferencias */
+    border-radius: 10px; /*20px Ajusta el valor según el radio de redondez deseado */
   }
 
-  .contenedor1 {
-    display: flex;
-    justify-content: space-between;
-    width: 95%; /* Ancho reducido */
-    height: 385px;
-}
 
-.productList {
+  .productList {
     list-style: none;
     font-family: Calibri, 'Trebuchet MS', sans-serif;
     padding: 0;
     margin: 0;
-    display: table;
-    width: 100%;
+    display: flex; /* Utiliza flexbox para alinear elementos horizontalmente */
+    flex-direction: column;
   }
-  
-  
-  .productListItem {
-    display: table-row;
-  }
-  
   
   .productListItem {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
+    justify-content: space-between; /* Espacio entre los elementos en una fila */
+    align-items: center; /* Alinea verticalmente los elementos en el centro */
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-top: 2px;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    transition: background-color 0.3s;
   }
 
   .p {
     font-size: 15px;
     color: #424040;
-    margin: 5px 0;
+    margin: 0; /* Elimina el margen superior e inferior */
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    justify-content: center;
+    width: 50%; 
+    display: inline-block;
   }
+  
+  .email {
+    font-size: 15px;
+    color: #666;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: inline-block;
+    width: 50%; 
+  }
+  
+  
+
+.checkboxCon {
+  display: flex;
+  align-items: center;
+}
+
+/* Cambiar el color del fondo cuando se selecciona una fila */
+.productListItem:hover {
+  background-color: #e0e0e0;
+}
   
   .checkboxCon {
     margin: 10px;

@@ -3,10 +3,10 @@ import Nav from "../../components/nav/Nav";
 import Nav3 from "../../components/nav/Nav3";
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getOrders, searchByNameUser } from '../../redux/actions'; // Importa la acción searchByNameUser
+import { getOrders, searchByNameUser } from '../../redux/actions';
 import { Link } from 'react-router-dom';
 import OrderDetail from '../orders/orderDetail';
-import UserList from './userList'; // Importa el componente UserList
+import UserList from './userList';
 import Footer from '../../components/footer/Footer';
 
 const User3 = () => {
@@ -14,25 +14,25 @@ const User3 = () => {
   const orders = useSelector((state) => state.Orders);
   const searchResults = useSelector((state) => state.allUsers);
   const [selectedOrder, setSelectedOrder] = useState(null);
+  const [showUserList, setShowUserList] = useState(false);
 
   useEffect(() => {
-    // Cuando el componente se monta, obtén las órdenes
     dispatch(getOrders());
   }, [dispatch]);
 
-  // Estado para el seguimiento de la aprobación de cada orden
   const [approvalStatus, setApprovalStatus] = useState({});
-
-  const handleSearch = (searchQuery) => {
-    // Realiza una búsqueda y luego dispara la acción para actualizar los resultados de búsqueda
-    dispatch(searchByNameUser(searchQuery)); // Dispara la acción para buscar usuarios
-  };
 
   const updateApprovalStatus = (orderId, newStatus) => {
     setApprovalStatus({
       ...approvalStatus,
       [orderId]: newStatus,
     });
+  };
+
+  // Función para volver a la lista de usuarios
+  const goBackToList = () => {
+    setSelectedOrder(null); // Establece selectedOrder en null
+    setShowUserList(true); // Muestra la lista de usuarios
   };
 
   return (
@@ -61,12 +61,15 @@ const User3 = () => {
         </div>
         <div className={style.right}>
           <div className={style.botonera}>
-            <div>
-              <button className={style.button}>Cliente</button>
-            </div>
-            <div>
-              <button className={style.button}>Proveedor</button>
-            </div>
+            {selectedOrder ? (
+              <button className={style.button} onClick={goBackToList}>
+                Lista de Usuarios
+              </button>
+            ) : (
+              <button className={style.button} onClick={() => setShowUserList(true)}>
+                Lista de Usuarios
+              </button>
+            )}
             <div>
               <button className={style.button}>Cotizaciones</button>
             </div>
@@ -75,13 +78,13 @@ const User3 = () => {
             </div>
           </div>
           <div className={style.info}>
-            <div className={style.infoLeft}>
+          <div className={style.infoLeft}>
               {selectedOrder ? (
                 <OrderDetail
                   approvalStatus={approvalStatus}
                   updateApprovalStatus={updateApprovalStatus}
                 />
-              ) : searchResults?.length > 0 ? (
+              ) : showUserList ? (
                 <UserList users={searchResults} />
               ) : null}
             </div>
@@ -94,6 +97,7 @@ const User3 = () => {
 };
 
 export default User3;
+
 
 
 
