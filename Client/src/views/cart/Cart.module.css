@@ -1,7 +1,8 @@
-/* html {
+/* Estilos globales */
+html {
     box-sizing: border-box;
     font-size: 100%;
-} */
+}
 
 *,
 *:before,
@@ -14,77 +15,203 @@ body {
     font-size: 1rem;
 }
 
+/* Estilos específicos para el componente Cart */
 .cart {
     display: flex;
     flex-direction: column;
-    max-width: 99%;
-    height: 25rem;
-    background-color: white;
+    max-width: 100%;
+    height: 695px;
+
+    padding: 1rem;
 }
 
-@media (min-width: 480px) {
-    .subDiv {
-        flex-direction: row;
-        justify-content: space-around;
-    }
-}
-
-.subDiv {
-    min-width: 81.6rem;
-    background-color: rgb(23, 99, 205);
-    padding: 0.2rem;
-    margin: 0.5rem;
+/* back */
+.backContainer {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
     align-items: center;
+    justify-content: flex-start;
 }
 
-.inicio {
-    /* background-color: red; */
-    font-size: medium;
-    text-decoration: none;
+.back {
+    padding: 10px 20px;
+    background-color: #4CAF50;
     color: white;
-    justify-content: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    font-size: 16px;
 }
+
+
+
+.back:hover {
+    background-color: #45a049;
+}
+
+.back:active {
+    background-color: #3e8e41;
+}
+
+/* back */
+
+
+
 
 .divBody {
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 73rem;
+    margin-top: .5em;
 }
 
 .divBodyLeft {
-    margin-right: 0.5rem;
+    flex: 2;
+    /* Cambiado a 2 para ocupar más espacio en la izquierda */
     display: flex;
     flex-direction: column;
-    width: 70%;
-    height: 730px;
-    background-color: whitesmoke;
-    margin: 0.5rem;
+    height: 660px;
+    /* background-color: red; */
+}
 
-
+.divCarts {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow-x: auto;
+    /* Añadido para permitir el desplazamiento horizontal */
+    font-size: 0.8rem;
 }
 
 .divBodyRight {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    width: 30%;
-    height: 730px;
-    background-color: whitesmoke;
-    margin: 0.5rem;
+    padding: 1em;
 }
 
+.divBodyReview {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 20em;
+    background-color: rgb(234, 234, 234);
+    padding: 1em;
+    margin-top: 1em;
+    border-radius: 5px;
+}
+
+.reviewForm {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1em;
+}
+
+.reviewForm h2 {
+    margin-bottom: 0.5em;
+}
+
+
+.divBodyInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    margin-right: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.divBodyInfo h1,
+.divBodyInfo h3 {
+    margin-bottom: 0.5em;
+}
+
+.divBodyInfo h4 {
+    margin-bottom: 0.3em;
+}
+
+.Buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+}
+
+.cartProfileFooter_Approve,
+.cartProfileFooter_disapprove {
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.cartProfileFooter_Approve {
+    background-color: #4caf50;
+}
+
+.cartProfileFooter_disapprove {
+    background-color: #f44336;
+}
+
+.cartProfileFooter_Approve:hover,
+.cartProfileFooter_disapprove:hover {
+    opacity: 0.8;
+}
+
+.emptyCart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    background-color: #f3d8d8;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.emptyCart p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.backToHome {
+    color: rgb(29, 80, 233);
+    text-decoration: underline;
+}
+
+
+.reviewForm textarea {
+    width: 100%;
+    height: 8em;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.reviewForm button {
+    padding: 0.5em 1em;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
 .footer {
     max-width: 100%;
     display: flex;
     justify-content: center;
-    max-block-size: 100%;
-    height: 1rem;
+    height: 3rem;
+    /* Ajustado a 3rem para un tamaño más apropiado */
     background-color: rgb(23, 99, 203);
-    padding: 1.5rem;
+    padding: 0.5rem 1rem;
+    /* Ajustado el relleno para una apariencia más equilibrada */
     align-items: center;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;

@@ -1,8 +1,8 @@
 import p from './CardCart_Profile.module.css'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { addCart, removeCard, suma, resta } from '../../redux/actions'
-import { quantityDB } from '../../redux/actions'
+import { addCart, removeCard } from '../../../redux/actions'
+import { quantityDB } from '../../../redux/actions'
 
 
 const CardCart_Profile = ({ id, code, name, description, quanty, price, stock }) => {
@@ -43,7 +43,7 @@ const CardCart_Profile = ({ id, code, name, description, quanty, price, stock })
 
     const handlerIncrese = () => {
         const newQuantity = parseInt(inputs.quanty) + 1;
-        console.log(newQuantity);
+
         dispatch(quantityDB(id, newQuantity));
         setInputs({ ...inputs, quanty: newQuantity });
     }

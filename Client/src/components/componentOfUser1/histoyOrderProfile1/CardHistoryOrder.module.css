@@ -1,0 +1,15 @@
+.card {
+    display: flex;
+    flex-direction: row;
+    font-size: small;
+    height: auto;
+    width: 100%;
+    border: 1px solid black;
+    margin-bottom: 5px;
+}
+
+.item {
+    height: auto;
+    margin-right: 2em;
+    /* background-color: bisque; */
+}

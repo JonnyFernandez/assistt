@@ -1,0 +1,56 @@
+.historyOrder {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* background-color: rebeccapurple; */
+    width: 100%;
+    height: 490px;
+}
+
+.historyOrderHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* background-color: aqua; */
+}
+
+/* ojo cambiar la altura a "auto" mas adelante */
+.historyOrderBody {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* background-color: red; */
+    height: 470px;
+    width: 100%;
+}
+
+.historyOrderBodyLeft {
+    height: 465px;
+    width: 30%;
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+
+}
+
+.listOrderHeader {
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+.listContainer {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+
+}
+
+.historyOrderBodyRight {
+    height: 465px;
+    width: 70%;
+    /* background-color: rgba(40, 71, 71, 0.347); */
+}

@@ -1,31 +1,14 @@
 
 
 import {
-  GET_PROD,
-  ADD_FAV,
-  REMOVE_FAV,
-  ADD_CART,
-  REMOVE_CART,
-  GET_PROFILE,
-  GET_ORDER,
-  CLEAN_DETAIL,
-  ORDER_DETAIL,
-  BY_TYPE,
-  QUANTITY,
-  POST_USER,
-  GET_REVIEWS,
-  PUT_REVISOR,
-  GET_ENTITY,
-  SUMA,
-  RESTA,
-  CLEAN_CART,
-  SEARCH_PROD,
-  SEARCH_USER,
-  GET_USERS_NAME,
-  SET_SEARCH_RESULTS
-
+  GET_PROD, ADD_FAV, REMOVE_FAV, ADD_CART, REMOVE_CART, GET_PROFILE, GET_ORDER, CLEAN_DETAIL, ORDER_DETAIL, BY_TYPE, QUANTITY, POST_USER,
+  GET_REVIEWS, PUT_REVISOR, GET_ENTITY, SEARCH_PROD, SEARCH_USER, GET_USERS_NAME, SET_SEARCH_RESULTS, ORDER_BY_ID_USER, CLEAN_CART
 } from './actionsType'
+
+
 import axios from 'axios'
+
+
 import Swal from 'sweetalert2'
 
 
@@ -98,15 +81,15 @@ export const getUser1 = (id) => {
 }
 
 export const getUserName = () => {
-    try {
-      return async function (dispatch) {
-        let res = await axios(`http://localhost:3001/api/user/`)
-        return dispatch({ type: GET_USERS_NAME, payload: res.data })
-      }
-    } catch (error) {
-      console.error("Error al obtener el usuario:", error);
+  try {
+    return async function (dispatch) {
+      let res = await axios(`http://localhost:3001/api/user/`)
+      return dispatch({ type: GET_USERS_NAME, payload: res.data })
     }
+  } catch (error) {
+    console.error("Error al obtener el usuario:", error);
   }
+}
 
 
 
@@ -193,10 +176,12 @@ export const putRevisor = (orderId, dataAprob) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.put(`/order/${orderId}`, dataAprob);
-      dispatch({ type: PUT_REVISOR, payload: {
-        orderId,
-        approvalStatus: data.aprobado,
-      }, });
+      dispatch({
+        type: PUT_REVISOR, payload: {
+          orderId,
+          approvalStatus: data.aprobado,
+        },
+      });
     } catch (error) {
       console.error("Error al aprobar/desaprobar la orden:", error);
     }
@@ -205,14 +190,6 @@ export const putRevisor = (orderId, dataAprob) => {
 
 
 
-
-export const suma = (id) => {
-  return { type: SUMA, payload: id }
-}
-
-export const resta = (id) => {
-  return { type: RESTA, payload: id }
-}
 
 
 
@@ -343,3 +320,14 @@ export const postReview = async (reseñas) => {
 
   }
 };
+
+
+//---------------------ORDENES DE UN USUARIO-----------------------------------------
+
+export const getOrderUserById = (id) => {
+  return async (dispatch) => {
+    let res = await axios.get(`http://localhost:3001/order/api/${id}`);
+    return dispatch({ type: ORDER_BY_ID_USER, payload: res.data });
+  };
+};
+

@@ -1,6 +1,8 @@
 import { NavLink } from 'react-router-dom'
 import SearchBar from '../searchBar/SearchBar'
 import p from './Nav.module.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; //iconos
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';//carrito
 
 const Nav1 = () => {
     return (
@@ -9,27 +11,22 @@ const Nav1 = () => {
                 <a> Inicio </a>
             </div>
 
-            <div>
-                <NavLink to={'/orders'}>
-                    <a> Pedidos </a>
-                </NavLink>
-            </div>
 
+            <SearchBar />
 
-            <div>
-                <NavLink to={'/cart'}>
-                    <a href="#"> Carrito </a>
-                </NavLink>
-
-            </div>
             <div>
                 <NavLink to={'/fav'}>
                     🤍
                 </NavLink>
 
             </div>
+            <div>
+                <NavLink to={'/cart'}>
+                    <FontAwesomeIcon icon={faShoppingCart} size="1.5x" color="#fff" />
+                </NavLink>
 
-            <SearchBar />
+            </div>
+
 
 
 

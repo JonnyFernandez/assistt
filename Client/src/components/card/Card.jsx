@@ -2,10 +2,10 @@ import c from './Card.module.css'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import { addFav, removeFav, addCart, removeCard } from '../../redux/actions'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
-
-
-const Card = ({ id, code, name, description, quanty, price, stock }) => {
+const Card = ({ id, code, name, description, quanty, price, stock, type }) => {
 
 
     const dispatch = useDispatch()
@@ -42,7 +42,7 @@ const Card = ({ id, code, name, description, quanty, price, stock }) => {
             dispatch(removeFav(id))
         } else {
             setFav(true)
-            dispatch(addFav({ id, code, name, description, quanty, price, stock }))
+            dispatch(addFav({ id, code, name, description, quanty, price, stock, type }))
         }
     }
     const handleCart = () => {
@@ -51,7 +51,7 @@ const Card = ({ id, code, name, description, quanty, price, stock }) => {
             dispatch(removeCard(id))
         } else {
             setCart(true)
-            dispatch(addCart({ id, code, name, description, quanty, price, stock }))
+            dispatch(addCart({ id, code, name, description, quanty, price, stock, type }))
         }
     }
 
@@ -68,37 +68,45 @@ const Card = ({ id, code, name, description, quanty, price, stock }) => {
                     <h3 className={c.code}>Code: {code}</h3>
                 </div>
                 {/* tener en cuanta el manejo de stock */}
-                <div>Stock: {stock} </div>
+                <div>| Stock: {stock} </div>
 
                 <div className={c.divCode}>
-                    <h3 className={c.name}>Nombre: {name}</h3>
+                    <h3 className={c.name}>| Nombre: {name}</h3>
                 </div>
 
                 <div className={c.divCode}>
-                    <h3 className={c.descrip}>Descripcion: {description}</h3>
+                    <h3 className={c.descrip}>| Descripcion: {description}</h3>
+                </div>
+                <div className={c.divCode}>
+                    <h3 className={c.descrip}>| Rubro: {type} </h3>
                 </div>
 
 
 
+                <div className={c.divBotones}>
+                    <div className={c.buttoContainer}>
+
+                        {cart
+                            ? (<button className={c.classCart1} onClick={handleCart}>
+                                <FontAwesomeIcon className={c.cartButton} icon={faShoppingCart} size="1.7x" color="#fff" />
+                            </button>)
+                            : (<button className={c.classCart2} onClick={handleCart}>
+                                <FontAwesomeIcon className={c.cartButton} icon={faShoppingCart} size="1.5x" color="#fff" />
+                            </button>)}
+
+                        {fav
+                            ? (<button className={c.favButon} onClick={handleFav}>❤️
+
+                            </button>)
+
+                            : (<button className={c.classCart2} onClick={handleFav}>🤍
+
+                            </button>)}
+                    </div>
+                </div>
             </div>
 
 
-            <div className={c.divBotones}>
-                <div className={c.buttoContainer}>
-
-                    {cart
-                        ? (<button className={c.classCart1} onClick={handleCart}> quitar </button>)
-                        : (<button className={c.classCart2} onClick={handleCart}> agregar </button>)}
-                    {fav
-                        ? (<button className={c.classCart1} onClick={handleFav}>❤️
-
-                        </button>)
-
-                        : (<button className={c.classCart2} onClick={handleFav}>🤍
-
-                        </button>)}
-                </div>
-            </div>
 
 
         </div>

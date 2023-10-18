@@ -15,7 +15,6 @@
     height: auto;
     width: 100%;
     border-bottom: 1px solid black;
-    margin-left: 20px;
 }
 
 
@@ -23,12 +22,16 @@
 .divCode {
     height: auto;
     width: 400px;
+    margin-left: 80px;
+    /* background-color: red; */
+
 }
+
 .code {
     height: auto;
     width: 10px;
     display: grid;
-    grid-template-columns:  repeat(1, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     column-gap: 2rem;
     margin-left: 19px;
     justify-items: center;
@@ -42,7 +45,7 @@
     margin-left: -1rem;
     align-items: center;
     display: grid;
-    grid-template-columns:  repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     column-gap: 2rem;
 }
 
@@ -60,7 +63,13 @@
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin: auto 2.5rem;
+    background-color: red;
 
+
+}
+
+.classCart1 {
+    background-color: rgb(38, 157, 176);
 }

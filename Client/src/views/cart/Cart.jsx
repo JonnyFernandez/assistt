@@ -1,50 +1,74 @@
-import { NavLink } from 'react-router-dom'
-import Nav from '../../components/nav/Nav'
-import L from './Cart.module.css'
-import { useSelector, useDispatch } from 'react-redux'
-import Card2 from '../../components/card2/Card2'
-import { useState, useEffect } from 'react'
-import { codeToOrder } from '../../utils/codes'
-import { createOrder, cleanCart } from '../../redux/actions'
-import { useNavigate } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
+import Nav from '../../components/nav/Nav';
+import L from './Cart.module.css';
+import { useSelector, useDispatch } from 'react-redux';
+import Card2 from '../../components/card2/Card2';
+import { useState, useEffect } from 'react';
+import { codeToOrder } from '../../utils/codes';
+import { createOrder, cleanCart, getUser1, postReview } from '../../redux/actions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; //iconos
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';//carrito
 
 const Cart = () => {
+    const dispatch = useDispatch();
+    const codeOrder = codeToOrder();
+    const myCart = useSelector(state => state.cart);
+    const prod_ID = myCart.map(item => item.id);
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    const id = userInfo?.id || '';
 
-    const navigate = useNavigate()
+    useEffect(() => {
+        dispatch(getUser1(id));
+    }, [dispatch, id]);
 
-    const codeOrder = codeToOrder()
-
-    const dispatch = useDispatch()
-    const myCart = useSelector(state => state.cart)
-
-
-    const prod_ID = myCart.map(item => item.id)
+    const Profile = useSelector(state => state.profile);
 
     const [input, setInput] = useState({
         codeOrder: codeOrder,
-        stimate_date: "",
-        pay: "efectivo",
-        // userId: idUser1,
+        userId: Profile.id,
         prodId: prod_ID
-    })
+    });
 
+    const [reviews, setReviews] = useState({
+        review: '',
+        userId: Profile.id,
+        codeOrder: codeOrder
+    });
+    const [showReviewForm, setShowReviewForm] = useState(false);
 
-    const handleChange = (e) => {
-        setInput({
-            ...input,
-            stimate_date: e.target.value
-        })
+    const sendOrder = () => {
+        dispatch(createOrder(input));
+        // dispatch(cleanCart());
+        setShowReviewForm(true);
+    };
+
+    const clean_Cart = () => {
+        dispatch(cleanCart());
+    };
+
+    const handleReviewChange = (e) => {
+        setReviews({
+            ...reviews,
+            review: e.target.value
+        });
+    };
+
+    const submitReview = () => {
+        dispatch(cleanCart());
+        setShowReviewForm(false);
+
+        dispatch(postReview(reviews));
+        setReviews({
+            review: "",
+            userId: Profile.id,
+            codeOrder: codeOrder
+        });
+
+    };
+
+    if (Profile.id === undefined) {
+        return <div>Error: Debes iniciar sesión para continuar.</div>;
     }
-
-    const sendInput = () => {
-        if (!input.stimate_date) return alert("poner fecha")
-        dispatch(createOrder(input))
-        dispatch(cleanCart())
-        alert(`${input.codeOrder}`)
-        navigate('/user1')
-    }
-
-
 
     return (
         <div className={L.cart}>
@@ -52,71 +76,77 @@ const Cart = () => {
                 <div>
                     <Nav />
                 </div>
-                <div className={L.subDiv}>
-
-                    <NavLink to={'/user1'} className={L.inicio} >Inicio</NavLink>
-
-                    <h1 style={{ color: '#ffff' }}>Pedidos</h1>
-
-                    <NavLink to={'/fav'} className={L.inicio} >Favoritos</NavLink>
+                <div className={L.backContainer} >
+                    <NavLink className={L.back} to={'/user1'}>Inicio</NavLink>
 
                 </div>
+
             </div>
-
-
-
-
-            <div className={L.divBody}>
+            {/*  */}
+            {myCart.length > 0 ? (<div className={L.divBody}>
                 <div className={L.divBodyLeft}>
-
-                    {
-                        myCart && myCart.map(item => {
-                            return (
-                                <Card2 key={item.id} id={item.id} code={item.code} name={item.name} description={item.description} quanty={item.quanty} price={item.price} />
-                            )
-                        })
-                    }
+                    <div className={L.divCarts}>
+                        {myCart && myCart.map(item => (
+                            <Card2
+                                key={item.id}
+                                id={item.id}
+                                code={item.code}
+                                name={item.name}
+                                description={item.description}
+                                quanty={item.quanty}
+                                price={item.price}
+                                stock={item.stock}
+                            />
+                        ))}
+                    </div>
                 </div>
-
 
                 <div className={L.divBodyRight}>
 
+                    <div className={L.divBodyInfo}>
+                        <h1>Orden de Compra</h1>
+                        <h3>Datos Solicitante</h3>
+                        <h4>Nombre: {Profile.name}</h4>
+                        <h4>Email: {Profile.email}</h4>
+                        <h4>Empresa: {Profile.company}</h4>
+                        <h4>Dirección: {Profile.address}</h4>
+                        <div className={L.Buttons}>
+                            {myCart.length > 0 && (
+                                <button className={L.cartProfileFooter_Approve} onClick={() => sendOrder()}>Enviar</button>
+                            )}
+                            {myCart.length > 0 && (
+                                <button className={L.cartProfileFooter_disapprove} onClick={() => clean_Cart()}>Cancelar</button>
+                            )}
+                        </div>
+                    </div>
 
-                    <label htmlFor="">Codigo de Orden: </label>
+                    <div className={L.divBodyReview}>
+                        {showReviewForm && (
+                            <div className={L.reviewForm}>
+                                <h2>Crear una reseña</h2>
+                                <textarea
+                                    placeholder="Escribe tu reseña aquí"
+                                    value={reviews.review}
+                                    onChange={handleReviewChange}
+                                />
+                                <button onClick={() => submitReview()}>Enviar Reseña</button>
+                            </div>
+                        )}
+                    </div>
 
-                    <label htmlFor="">Fecha estimada</label>
-                    {/* <input type="text" value={input.stimate_date} onChange={HandlerChange} /> */}
-                    <input type="date" placeholder="dd/mm/aaaa..." value={input.stimate_date} onChange={handleChange} />
-
-
-                    {/* <label htmlFor="">Comentario</label>
-                    <textarea /> */}
-
-
-                    <button onClick={() => sendInput()} >Crear</button>
 
 
                 </div>
+            </div>) :
+                <div className={L.emptyCart}>
+                    <FontAwesomeIcon icon={faShoppingCart} size="3x" color="#555" />
+                    <p>Carrito vacío, dirígete a <NavLink className={L.backToHome} to={'/user1'}>Inicio</NavLink> para agregar productos</p>
+                </div>
+            }
 
-            </div>
-
-
-
-
-
-
-
-
-
-            <div className='divFooter'>
-                <footer className={L.footer}>Assistt one - Todos los derechos reservados 2023</footer>
-            </div>
-
-
-
+            {/*  */}
         </div>
-    )
-}
+    );
+};
 
-
-export default Cart
+export default Cart;

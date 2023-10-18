@@ -5,10 +5,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useAuth } from '../../authAll/auth/AuthProvider'
 import { getUser1 } from '../../redux/actions'
 import { useEffect, useState } from 'react'
-import CartProfile from '../../components/cartProfile/CartProfile'
-import HistoryOrder from '../../components/histoyOrderProfile1/HistoryOrder'
-import EditProfile from '../../components/editProfile/EditProfile'
-import FavProfile from '../../components/favProfile/FavProfile'
+import CartProfile from '../../components/componentOfUser1/cartProfile/CartProfile'
+import HistoryOrder from '../../components/componentOfUser1/histoyOrderProfile1/HistoryOrder'
+import EditProfile from '../../components/componentOfUser1/editProfile/EditProfile'
+import FavProfile from '../../components/componentOfUser1/favProfile/FavProfile'
 
 const Profile1 = () => {
 
@@ -24,7 +24,7 @@ const Profile1 = () => {
 
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     const id = userInfo?.id || '';
-    console.log(id);
+    // console.log(id);
 
     useEffect(() => {
         dispatch(getUser1(id))
@@ -106,21 +106,25 @@ const Profile1 = () => {
                 <div className={p.bodyRight}>
 
                     <div className={p.bodyRightHeader}>
-                        <NavLink to={'/user1'}>
-                            <div>Inicio</div>
+
+
+                        <NavLink className={p.button} to={'/user1'}>
+                            <small className={p.inicionButton}>Inicio</small>
                         </NavLink>
 
-                        <div onClick={toggleHistotyOrder}>Historial</div>
 
-                        <div onClick={toggleCartProfile}>Carrito</div>
+                        <div className={p.button} onClick={toggleHistotyOrder}> <small>Historial</small> </div>
 
-                        <div onClick={toggleEditProfile}>Editar </div>
+                        <div className={p.button} onClick={toggleCartProfile}> <small>Carrito</small></div>
 
-                        <div onClick={toggleFav}>favoritos {fav && fav.length} </div>
+                        <div className={p.button} onClick={toggleEditProfile}> <small>Editar</small> </div>
+
+                        <div className={p.button} onClick={toggleFav}><small>favoritos: </small> <small> {fav && fav.length}</small> </div>
 
                     </div>
 
                     <div className={p.bodyRightBody}>
+
                         {showCartProfile && <CartProfile />}
                         {showHistoryOrder && <HistoryOrder />}
                         {showEditProfile && <EditProfile />}
