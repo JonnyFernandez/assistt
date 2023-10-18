@@ -15,7 +15,6 @@
     height: auto;
     width: 100%;
     border-bottom: 1px solid black;
-    margin-left: 20px;
 }
 
 
@@ -23,6 +22,9 @@
 .divCode {
     height: auto;
     width: 400px;
+    margin-left: 80px;
+    /* background-color: red; */
+
 }
 
 .code {
@@ -70,7 +72,4 @@
 
 .classCart1 {
     background-color: rgb(38, 157, 176);
-
 }
-
-/* ---------- */

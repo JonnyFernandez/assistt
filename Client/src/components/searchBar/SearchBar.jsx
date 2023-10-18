@@ -2,17 +2,18 @@ import { searchByNameProd } from "../../redux/actions";
 import { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import { getProd } from "../../redux/actions";
+import s from './SearchBar.module.css'
 
 const SearchBar = () => {
    const dispatch = useDispatch();
    const [search, setSearch] = useState('');
 
    useEffect(() => {
-      // Si la búsqueda está vacía, obtén todos los productos en lugar de buscar
+
       if (search.trim() === '') {
-         dispatch(getProd()); // Utiliza una acción para obtener todos los productos
+         dispatch(getProd());
       } else {
-         dispatch(searchByNameProd(search)); // Realiza la búsqueda en tiempo real si hay texto en la búsqueda
+         dispatch(searchByNameProd(search));
       }
    }, [search, dispatch]);
 
@@ -24,9 +25,9 @@ const SearchBar = () => {
    return (
       <div>
          <input
-            className='nav_search_input'
+            className={s.nav_search_input}
             type='text'
-            placeholder='Buscar Producto'
+            placeholder='¿Que estas buscando?'
             value={search}
             onChange={handleChange}
          />

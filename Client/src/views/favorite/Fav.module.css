@@ -67,3 +67,25 @@
     justify-content: center;
     /* border: 0.5px solid black; */
 }
+
+.emptyFav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    width: 80%;
+    background-color: #f3d8d8;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 9rem;
+}
+
+.emptyFav p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.backToHome {
+    color: rgb(29, 80, 233);
+    text-decoration: underline;
+}
