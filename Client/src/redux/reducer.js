@@ -31,7 +31,7 @@ const InitialState = {
     cart: [],
     allUsers: [],
     backupUsers: [],
-    searchResults: null,
+    searchResults: [],
     allEntity: [],
     error: null,
     reviewsWithUserInfo: [],

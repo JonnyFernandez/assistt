@@ -19,7 +19,7 @@ function App() {
         <Route exact path="/cart" element={<Cart />} />
         <Route exact path="/orders" element={<Orders />} />
         <Route path="/detail/:id" element={<User3/>} />
-        <Route path="/users" element={<UserList />} />
+        <Route path="/usersList" element={<UserList />} />
         <Route exact path="/fav" element={<Fav />} />
       </Routes>
     </div>
