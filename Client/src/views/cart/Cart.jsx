@@ -78,8 +78,7 @@ const Cart = () => {
                 </div>
                 <div className={L.backContainer} >
                     <NavLink className={L.back} to={'/user1'}>Inicio</NavLink>
-                    {/* <h1 className={L.title}>Carrito</h1> */}
-                    {/* <NavLink className={L.back} to={'/user1'}></NavLink> */}
+
                 </div>
 
             </div>
@@ -121,9 +120,6 @@ const Cart = () => {
                         </div>
                     </div>
 
-
-
-
                     <div className={L.divBodyReview}>
                         {showReviewForm && (
                             <div className={L.reviewForm}>
@@ -137,6 +133,9 @@ const Cart = () => {
                             </div>
                         )}
                     </div>
+
+
+
                 </div>
             </div>) :
                 <div className={L.emptyCart}>
