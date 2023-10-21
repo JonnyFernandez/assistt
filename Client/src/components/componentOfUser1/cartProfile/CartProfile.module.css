@@ -1,7 +1,110 @@
 .cart {
+    display: flex;
+    justify-content: center;
     width: 100%;
     height: 490px;
+    /* background-color: rebeccapurple; */
+}
+
+.cartContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* background-color: rgba(0, 255, 255, 0.367); */
+    margin-top: 10px;
+    width: 95%;
+    height: 470px;
+    box-shadow: 0px 0px 10px rgba(235, 233, 233, 0.921);
+}
+
+.cartUp {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 80%;
     /* background-color: red; */
+    overflow-x: hidden;
+
+}
+
+
+.cartDown {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 20%;
+}
+
+.cartProfileFooter_Approve,
+.cartProfileFooter_disapprove {
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.cartProfileFooter_Approve {
+    background-color: #4caf50;
+}
+
+.cartProfileFooter_disapprove {
+    background-color: #f44336;
+}
+
+.cartProfileFooter_Approve:hover,
+.cartProfileFooter_disapprove:hover {
+    opacity: 0.8;
+}
+
+
+.cardStyle {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.emptyCart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    background-color: #f3d8d8;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.emptyCart p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.backToHome {
+    color: rgb(29, 80, 233);
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .cart {
+    width: 100%;
+    height: 490px;
+    background-color: red;
     display: flex;
     flex-direction: column;
 
@@ -10,7 +113,7 @@
 .cartProfileContainer {
     width: 100%;
     height: 430px;
-    /* background-color: aqua; */
+    background-color: aqua;
     overflow-x: auto;
     font-size: xx-small;
 }
@@ -31,4 +134,4 @@
     margin-right: 20px;
     border: 1px solid black;
     cursor: pointer;
-}
+} */

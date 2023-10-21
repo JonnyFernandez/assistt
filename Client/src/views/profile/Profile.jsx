@@ -21,6 +21,7 @@ const Profile1 = () => {
     const [showHistoryOrder, setShowHistoryOrder] = useState(false);
     const [showEditProfile, setShowEditProfile] = useState(false);
     const [showFav, setShowFav] = useState(false);
+    const [selectedButton, setSelectedButton] = useState('');
 
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     const id = userInfo?.id || '';
@@ -37,30 +38,37 @@ const Profile1 = () => {
     const getOut = () => {
         auth.exit()
     }
-    const toggleCartProfile = () => {
+    const toggleCartProfile = (data) => {
+        setSelectedButton(data)
         setShowCartProfile(true);
         setShowHistoryOrder(false);
         setShowEditProfile(false);
         setShowFav(false);
     };
-    const toggleHistotyOrder = () => {
+    const toggleHistotyOrder = (data) => {
+        setSelectedButton(data)
         setShowCartProfile(false);
         setShowHistoryOrder(true);
         setShowEditProfile(false);
         setShowFav(false);
     };
-    const toggleEditProfile = () => {
+    const toggleEditProfile = (data) => {
+        setSelectedButton(data)
         setShowCartProfile(false);
         setShowHistoryOrder(false);
         setShowEditProfile(true);
         setShowFav(false);
     };
-    const toggleFav = () => {
+    const toggleFav = (data) => {
+        setSelectedButton(data)
         setShowCartProfile(false);
         setShowHistoryOrder(false);
         setShowEditProfile(false);
         setShowFav(true);
     };
+    // const toggleButton = (data) => {
+    //     setSelectedButton(data)
+    // }
 
 
 
@@ -75,15 +83,6 @@ const Profile1 = () => {
             <div className={p.body}>
                 <div className={p.bodyLeft}>
                     <div className={p.bodyLeftHeader}>
-
-                        {/* <div className={p.inputLeft}>
-                            <label>Imagen</label> <br />
-                            <input className={`${p.inputs} ${p.inputs_file}`} type="file"
-                                name="image"
-                                // onChange={handlerUploadImage}
-                                autoComplete="off" />
-
-                        </div> */}
 
 
                     </div>
@@ -108,18 +107,22 @@ const Profile1 = () => {
                     <div className={p.bodyRightHeader}>
 
 
-                        <NavLink className={p.button} to={'/user1'}>
+                        <NavLink
+                            className={`${p.button} ${selectedButton === 'Inicio' ? p.active : ''}`}
+                            to={'/user1'}
+                        // onClick={() => toggleButton('Inicio')}
+                        >
                             <small className={p.inicionButton}>Inicio</small>
                         </NavLink>
 
 
-                        <div className={p.button} onClick={toggleHistotyOrder}> <small>Historial</small> </div>
+                        <div className={`${p.button} ${selectedButton === 'History' ? p.active : ''}`} onClick={() => toggleHistotyOrder('History')}> <small>Historial</small> </div>
 
-                        <div className={p.button} onClick={toggleCartProfile}> <small>Carrito</small></div>
+                        <div className={`${p.button} ${selectedButton === 'Carrito' ? p.active : ''}`} onClick={() => toggleCartProfile('Carrito')}> <small>Carrito</small></div>
 
-                        <div className={p.button} onClick={toggleEditProfile}> <small>Editar</small> </div>
+                        <div className={`${p.button} ${selectedButton === 'Editar' ? p.active : ''}`} onClick={() => toggleEditProfile('Editar')}> <small>Editar</small> </div>
 
-                        <div className={p.button} onClick={toggleFav}><small>favoritos: </small> <small> {fav && fav.length}</small> </div>
+                        <div className={`${p.button} ${selectedButton === 'favoritos' ? p.active : ''}`} onClick={() => toggleFav('favoritos')}><small>favoritos: </small> <small> {fav && fav.length}</small> </div>
 
                     </div>
 

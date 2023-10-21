@@ -28,8 +28,14 @@ const HistoryOrder = () => {
 
 
     return (
-        <div className={h.historyOrder}>
-            <div className={h.historyOrderHeader}>
+        <div className={h.history}>
+
+            <div className={h.historyContainer}>
+                <div className={h.historyLeft}></div>
+                <div className={h.historyRight}></div>
+            </div>
+
+            {/* <div className={h.historyOrderHeader}>
                 <div>HistoryOrder</div>
             </div>
 
@@ -37,7 +43,9 @@ const HistoryOrder = () => {
                 <div className={h.historyOrderBodyLeft}>
 
                     <div className={h.listOrderHeader}>
-                        <h3>Ordenes</h3>
+                        <h6>Ordenes</h6>
+                        <h6>Ordenes</h6>
+                        <h6>Ordenes</h6>
                     </div>
 
 
@@ -63,7 +71,7 @@ const HistoryOrder = () => {
 
             </div>
 
-
+ */}
 
         </div>
     )
