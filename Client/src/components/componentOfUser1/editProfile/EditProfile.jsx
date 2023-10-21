@@ -44,8 +44,18 @@ const EditProfile = () => {
 
 
     return (
-        <div >
-            <div className={t.formContainer} >
+        <div className={t.form}>
+            <div className={t.formContainer}>
+                <div className={t.formLeft}></div>
+                <div className={t.formRight}></div>
+            </div>
+
+
+
+
+
+
+            {/* <div className={t.formContainer} >
 
                 <form onSubmit={handleSubmit} className={t.form}>
                     <h2>Ingresar Informacion</h2> <br />
@@ -61,7 +71,7 @@ const EditProfile = () => {
                     <br />
                     <button type='submit'>Agregar</button>
                 </form>
-            </div>
+            </div> */}
 
         </div>
 
