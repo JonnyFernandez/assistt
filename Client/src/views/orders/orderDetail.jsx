@@ -11,7 +11,7 @@ const OrderDetail = () => {
     const { id } = useParams();
     const orderDetailState = useSelector((state) => state.orderDetail);
     const [approvalStatus, setApprovalStatus] = useState(false);
-
+    console.log(orderDetailState);
     // Obtener los datos de la orden y el estado de aprobación cuando se monta el componente
     useEffect(() => {
         dispatch(getOrderDetail(id));
@@ -85,21 +85,21 @@ const OrderDetail = () => {
                         <p className={style.p}>{orderDetailState?.[0]?.codeOrder}</p>
                     </div>
                     <div className={style.div}>
-                        <h2 className={style.h2}>Usuario solicitante:</h2>
+                        <h2 className={style.h2}>Usuario solicitante: </h2>
                         <p className={style.productList}>
-                            <span className={style.keyword}>Nombre:</span> {orderDetailState?.[0]?.User?.name}
+                            <span className={style.keyword}>Nombre: </span> {orderDetailState?.[0]?.User?.name}
                         </p>
                         <p className={style.productList}>
-                            <span className={style.keyword}>Email:</span> {orderDetailState?.[0]?.User?.email}
+                            <span className={style.keyword}>Email: </span> {orderDetailState?.[0]?.User?.email}
                         </p>
                         <p className={style.productList}>
-                            <span className={style.keyword}>Companía:</span> {orderDetailState?.[0]?.User?.company}
+                            <span className={style.keyword}>Companía: </span> {orderDetailState?.[0]?.User?.company}
                         </p>
                         <p className={style.productList}>
-                            <span className={style.keyword}>Dirección:</span> {orderDetailState?.[0]?.User?.address}
+                            <span className={style.keyword}>Dirección: </span> {orderDetailState?.[0]?.User?.address}
                         </p>
                         <p className={style.productList}>
-                            <span className={style.keyword}>Teléfono:</span> {orderDetailState?.[0]?.User?.phone}
+                            <span className={style.keyword}>Teléfono: </span> {orderDetailState?.[0]?.User?.phone}
                         </p>
                     </div>
 
