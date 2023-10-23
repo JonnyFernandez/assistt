@@ -27,7 +27,7 @@ route.use('/review', review)
 // login and signup
 route.use('/api/signup', signup)
 route.use('/api/login', loginR)
-route.use('/api/user', user)
+route.use('/user', user)
 
 route.use('/refresh-token', refresh_token)
 
