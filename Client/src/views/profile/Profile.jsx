@@ -25,7 +25,7 @@ const Profile1 = () => {
 
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     const id = userInfo?.id || '';
-    // console.log(id);
+
 
     useEffect(() => {
         dispatch(getUser1(id))
