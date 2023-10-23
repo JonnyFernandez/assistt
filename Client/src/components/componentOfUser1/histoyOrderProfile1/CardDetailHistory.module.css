@@ -1,4 +1,25 @@
 .card {
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
+    width: 80%;
+    height: auto;
+    /* background-color: antiquewhite; */
+    margin-top: 1rem;
+    margin-left: 5rem;
+    box-shadow: .5px .5px 0px whitesmoke;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+
+.name {
+    width: 25rem;
+    height: auto;
+    /* background-color: aqua; */
+}
+
+.quanty {
+    width: 10rem;
+    height: auto;
+    /* background-color: aqua; */
 }

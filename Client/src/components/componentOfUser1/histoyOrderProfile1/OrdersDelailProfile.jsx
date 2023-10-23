@@ -1,48 +1,64 @@
 import React from 'react';
-import CardDetails_list from './CardDetailHistory';
+import CardDetailsList from './CardDetailHistory';
+import d from './OrderDetail.module.css'
 
 const OrdersDetailProfile = ({ order }) => {
-    console.log(order);
-
+    let status = order.aprobado ? 'Aprobado' : order.aprobado === false ? 'Orden rechazada' : 'Pendiente';
+    // console.log(order);
     return (
-        <div className='orderDetail'>
-            <div className='orderDetailHeader'>
-                <div>{order.User.name}</div>
-                <div>{order.User.email}</div>
-                <div>{order.User.email}</div>
+        <div className={d.order}>
+
+            <div className={d.header}>
+
+                <div className={d.header1}>
+
+                    <div>Estado</div>
+                    <div>{status}</div>
+
+                    <select name="" id="">
+                        <option value="">administar</option>
+                        <option value="">Pausar</option>
+                        <option value="">reanudar</option>
+                        <option value="">Editar</option>
+                    </select>
+                </div>
+
+                <div className={d.header2}>
+                    <div>Codigo </div>
+                    <div>{order.codeOrder} </div>
+                </div>
+
+                <div className={d.header3}>
+                    <div>{order.User.name}</div>
+                    <div>{order.User.email}</div>
+                </div>
+
+
             </div>
 
-            <div className='detailContainer'>
 
 
-                {
-                    order && order.Prods.map(item => {
-                        return (
-                            <div>
-                                <CardDetails_list name={item.name} quanty={item.quanty} />
-                            </div>
-                        )
-                    })
-                }
-
-                {/* {order ? (
-                    <div>
-                        <h4>Detalles de la orden</h4>
-                        <p>ID de la orden: {order.id}</p>
-                        <p>{user}</p>
-
-                    </div>
-                ) : (
-                    <p>Selecciona una orden para ver los detalles.</p>
-                )} */}
+            <div className={d.body}>
+                <div>
+                    {order && order.Prods.map(item => (
+                        <div key={item.id}>
+                            <CardDetailsList name={item.name} quanty={item.quanty} />
+                        </div>
+                    ))}
+                </div>
             </div>
+
+
+
+
+
+
+
+            {/* 
+            <button>Eliminar</button>
+            <button>Editar</button> */}
         </div>
     );
 };
 
 export default OrdersDetailProfile;
-
-
-
-
-
