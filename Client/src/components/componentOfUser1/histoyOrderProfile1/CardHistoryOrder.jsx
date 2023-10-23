@@ -1,31 +1,23 @@
 import u from './CardHistoryOrder.module.css'
-import { NavLink, Link } from 'react-router-dom';
 
 
 
 
 const CardHistoryOrder = ({ id, code, date, status, providerC, OnClick }) => {
 
-    let Current_status = '';
-    if (status === null) Current_status = "Enviado";
-    if (status === true) Current_status = "Aprobado";
-    if (status === false) Current_status = "Desaprobado";
-    // console.log(id);
+    // let Current_status = status ? (status === true ? "Aprobado" : "Desaprobado") : "Enviado";
+
+    let Current_status = status === true ? "Aprobado" : status === false ? "Desaprobado" : status === null ? "Pendiente" : ''
+
+    // console.log(status);
 
     return (
-        <div className={u.card} onClick={OnClick}>
+        <div className={`${u.card} ${Current_status === "Aprobado" ? u.aprobado : Current_status === "Desaprobado" ? u.desaprobado : Current_status === "Pendiente" ? u.send : ''}`} onClick={OnClick}>
 
-            <div className={u.item} onClick={OnClick}>
+            <div key={id}>
                 <div>{code}</div>
             </div>
 
-            <div className={u.item} onClick={OnClick}>
-                <div>{date}</div>
-            </div>
-
-            <div className={u.item} onClick={OnClick}>
-                <div> {Current_status} </div>
-            </div>
 
 
 
