@@ -36,7 +36,7 @@ const getOrder = async () => {
                     attributes: ["review", "id"]
                 }, {
                     model: User,
-                    attributes: ["name", "email"]
+                    attributes: ["name", "email", "company", "address", "phone"]
                 },
             ]
         });
