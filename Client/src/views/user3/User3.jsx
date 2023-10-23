@@ -78,7 +78,7 @@ const User3 = () => {
             </div>
           </div>
           <div className={style.info}>
-          <div className={style.infoLeft}>
+            <div className={style.infoLeft}>
               {selectedOrder ? (
                 <OrderDetail
                   approvalStatus={approvalStatus}

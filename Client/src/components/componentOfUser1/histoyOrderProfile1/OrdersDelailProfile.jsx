@@ -4,7 +4,7 @@ import d from './OrderDetail.module.css'
 
 const OrdersDetailProfile = ({ order }) => {
     let status = order.aprobado ? 'Aprobado' : order.aprobado === false ? 'Orden rechazada' : 'Pendiente';
-    // console.log(order);
+    console.log(order);
     return (
         <div className={d.order}>
 
@@ -19,13 +19,13 @@ const OrdersDetailProfile = ({ order }) => {
                         <option value="">administar</option>
                         <option value="">Pausar</option>
                         <option value="">reanudar</option>
-                        <option value="">Editar</option>
+                        <option value="">Eliminar</option>
                     </select>
                 </div>
 
                 <div className={d.header2}>
-                    <div>Codigo </div>
-                    <div>{order.codeOrder} </div>
+                    <div>Cod: {order.codeOrder} </div>
+                    <div> <small>{order.order_date}</small> </div>
                 </div>
 
                 <div className={d.header3}>
