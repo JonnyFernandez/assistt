@@ -75,7 +75,7 @@ export const addCart = (payload) => {
 
 export const getUser1 = (id) => {
   return async (dispatch) => {
-    let res = await axios(`http://localhost:3001/api/user/${id}`)
+    let res = await axios(`http://localhost:3001/user/${id}`)
     return dispatch({ type: GET_PROFILE, payload: res.data })
   }
 }
@@ -327,7 +327,7 @@ export const postReview = async (reseñas) => {
 export const getOrderUserById = (id) => {
   return async (dispatch) => {
     let res = await axios.get(`http://localhost:3001/order/api/${id}`);
-
+    // console.log(res.data);
     return dispatch({ type: ORDER_BY_ID_USER, payload: res.data });
   };
 };
