@@ -83,7 +83,7 @@ export const getUser1 = (id) => {
 export const getUserName = () => {
   try {
     return async function (dispatch) {
-      let res = await axios(`http://localhost:3001/api/user/`)
+      let res = await axios(`http://localhost:3001/user/`)
       return dispatch({ type: GET_USERS_NAME, payload: res.data })
     }
   } catch (error) {
@@ -99,7 +99,7 @@ export const getUserName = () => {
 export const addInfo = (id, inputs) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.put(`http://localhost:3001/api/user/${id}`, inputs);
+      const { data } = await axios.put(`http://localhost:3001/user/${id}`, inputs);
       Swal.fire({
 
         text: 'Informacion Cargada',
