@@ -6,23 +6,25 @@
 
 .reviewListItem {
     border: 1px solid #ccc;
+    font-weight: bold;
     padding: 8px;
-    margin: 10px 0;
-    font-size: 12px;
-    color: #333;
+    margin: 12px 0;
+    font-size: 13px;
+    color: #f6f0f0;
+    text-align: center;
     font-family: Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .customLink {
     text-decoration: none;
-    color: #4617c8;
+    color: #0af8f0;
     font-weight: bold;
     transition: color 0.3s ease;
     /* Agregar una transición suave de color */
 }
 
 .customLink:hover {
-    color: #ed5924;
+    color: #19191a;
     /* Cambiar el color al pasar el cursor (por ejemplo, a naranja) */
     /* Otros cambios de estilo que desees aplicar al pasar el cursor */
 }
@@ -38,13 +40,14 @@
     height: auto;
     width: 100%;
     justify-content: space-around;
+   
 }
 
 .left {
     display: flex;
     width: 15%;
     height: 500px;
-    background-color: #6fbcdf;
+    background-color: rgb(53, 135, 249);
     flex-direction: column;
     border-bottom-right-radius: 50px;
     overflow-y: scroll;
@@ -54,7 +57,9 @@
 .infoLeft {
     height: 480px;
     width: 100%;
-    background-color: whitesmoke;
+    background-image: url('../../assets/imageLogo/FONDOASSIST.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat;
    
 }
 
@@ -94,7 +99,7 @@
 /* botones  */
 .botonera {
     width: 100%;
-    height: 50px;
+    height: 60px;
     /* background-color: #05050355; */
     display: flex;
     flex-direction: row;
@@ -114,11 +119,11 @@
 
 .infoLeft {
 
-    height: auto;
+    height: 100%;
     width: 100%;
     /* margin-top: 2rem; */
     background-color: whitesmoke;
-    overflow-x: scroll;
+   
     font-size: xx-small;
     /* background-color: red; */
 
@@ -127,8 +132,7 @@
 
 
 .infoRight {
-    width: 20%;
-    height: 460px;
+    width: 30%;
     background-color: #6099da;
     display: flex;
     flex-direction: column;
@@ -146,7 +150,7 @@
 .infoRightBody {
     width: 100%;
     height: 380px;
-    background-color: #c24470;
+    background-color: #fceaea;
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
@@ -160,12 +164,11 @@
 }
 
 .h1 {
-    font-family: 'Montserrat', sans-serif;
-    text-align: center;
-    text-shadow: 2px 2px 2px #070505;
-    color: #b3daee;;
-    font-size: 15px; /* Tamaño de fuente reducido */
-    margin: 15px;/* Márgenes reducidos */
+  font-weight: bold;
+  font-size: 15px;
+  color: #cef8dc;
+  justify-content: center;
+  margin-top: 25px;
 }
 
 .button {
@@ -229,3 +232,44 @@
       background-position: right bottom;
     }
   }
+
+  /* Estilos generales que no dependen del tamaño de la pantalla */
+
+/* Media query para pantallas pequeñas (menos de 768px de ancho) */
+@media screen and (max-width: 768px) {
+    .body {
+      flex-direction: column; /* Cambia la dirección de flexión a columna */
+    }
+  
+    .left {
+      width: 100%; /* Ocupa todo el ancho de la pantalla */
+      border-bottom-right-radius: 0; /* Elimina el redondeo en la parte inferior derecha */
+      overflow-y: auto; /* Agrega desplazamiento vertical */
+    }
+  
+    .infoLeft {
+      height: auto; /* Ajusta la altura automáticamente */
+    }
+  }
+  
+  /* Media query para pantallas medianas (entre 769px y 1024px de ancho) */
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    .infoLeft {
+      font-size: small; /* Ajusta el tamaño de fuente para pantallas medianas */
+    }
+  }
+  
+  /* Media query para pantallas grandes (más de 1024px de ancho) */
+  @media screen and (min-width: 1025px) {
+    .body {
+      justify-content: space-between; /* Vuelve a justificar el contenido alrededor */
+    }
+  }
+  
+  /* Media query para pantallas extra grandes (más de 1440px de ancho) */
+  @media screen and (min-width: 1441px) {
+    .info {
+      height: 600px; /* Ajusta la altura del área de información */
+    }
+  }
+  

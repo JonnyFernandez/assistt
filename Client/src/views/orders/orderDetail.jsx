@@ -76,30 +76,33 @@ const handleApprove = () => {
 
     return (
         <div className={style.contenedor}>
-            <h1 className={style.h1}>Detalles de la Orden</h1>
+                    <div className={style.header}>
+        <h2 className={style.h2}>Usuario solicitante</h2>
+        <h1 className={style.h1}>Detalles de la Orden</h1>
+    </div>
             <div className={style.contenedor1}>
                 <div className={style.bodyLeft}>
-                    <h2 className={style.h2}>Usuario solicitante:</h2>
                     <div className={style.div}>
-                        <h2 className={style.h2}>Orden:</h2>
-                        <p className={style.p}>{orderDetailState?.[0]?.codeOrder}</p>
+                      <p className={style.productList}>
+                            <span className={style.keyword}>Orden: </span> {orderDetailState?.[0]?.codeOrder}
+                        </p>
                     </div>
                     <div className={style.div}>
-                        <h2 className={style.h2}>Usuario solicitante:</h2>
+                       
                         <p className={style.productList}>
-                            <span className={style.keyword}>Nombre:</span> {orderDetailState?.[0]?.User?.name}
+                            <span className={style.keyword}>Nombre: </span> {orderDetailState?.[0]?.User?.name}
                         </p>
                         <p className={style.productList}>
-                            <span className={style.keyword}>Email:</span> {orderDetailState?.[0]?.User?.email}
+                            <span className={style.keyword}>Email: </span> {orderDetailState?.[0]?.User?.email}
                         </p>
                         <p className={style.productList}>
-                            <span className={style.keyword}>Companía:</span> {orderDetailState?.[0]?.User?.company}
+                            <span className={style.keyword}>Companía: </span> {orderDetailState?.[0]?.User?.company}
                         </p>
                         <p className={style.productList}>
-                            <span className={style.keyword}>Dirección:</span> {orderDetailState?.[0]?.User?.address}
+                            <span className={style.keyword}>Dirección: </span> {orderDetailState?.[0]?.User?.address}
                         </p>
                         <p className={style.productList}>
-                            <span className={style.keyword}>Teléfono:</span> {orderDetailState?.[0]?.User?.phone}
+                            <span className={style.keyword}>Teléfono: </span> {orderDetailState?.[0]?.User?.phone}
                         </p>
                         </div>
 
@@ -115,7 +118,7 @@ const handleApprove = () => {
                 <div className={style.bodyRight}>
                     {orderDetailState?.[0] && (
                         <div>
-                            <h2 className={style.h2}>Productos solicitados:</h2>
+                            <h2 className={style.h2t}>Productos solicitados:</h2>
                             <ul className={style.productList}>
                                 {orderDetailState[0]?.Prods?.map((producto, index) => (
                                     <li key={index} className={style.productListItem}>

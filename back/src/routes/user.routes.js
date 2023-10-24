@@ -5,7 +5,7 @@ const user = Router()
 
 user.get('/', getAllUsers)
 user.get('/:id', getUserById)
-user.put('/:id', modifyUser)
 user.put('/banned/:id', bannedUser);
+user.put('/:id', modifyUser)
 
 module.exports = user

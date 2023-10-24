@@ -1,66 +1,58 @@
-/* Estilos para el Footer */
+
 .footerContainer {
-  max-width: 150rem;
-  height: 1rem;
-  background-color: rgba(226, 234, 241, 0.674);
+  max-width: 100%;
+  background-color: #cbc2c2;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  /* Alinear los elementos a la izquierda */
+  justify-content: center;
   align-items: center;
-  /* Centrar verticalmente los elementos */
-  padding: 1.5rem;
-  border-radius: 10px 30px 0 0;
+  margin-top: 5px;
+  padding: 0.2rem;
 }
 
 .footer {
-  border-radius: 10px 30px 0 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .logo {
   max-width: 100%;
   display: block;
-  /* Evitar estirar la imagen en pantallas pequeñas */
-
-
 }
 
 .logo:hover {
-  text-shadow: 1px 1px 2px pink;
+  opacity: 0.7;
+  /* Opacidad reducida al pasar el cursor */
 }
 
 .links {
-  color: rgba(65, 62, 62, 0.974);
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font-weight: 200;
+  color: #777474;
+  font-family: 'Helvetica', Arial, sans-serif;
+  font-weight: 100;
   text-decoration: none;
-  padding: 2rem;
-  margin-left: 50%;
+  margin: 0 1rem;
 }
 
 .links:hover {
-  text-shadow: 1px 1px 2px gray;
+  text-decoration: underline;
 }
 
 /* Estilo para el texto de derechos de autor */
 .copyright {
-  margin-left: 21%;
-  justify-content: center;
-  color: #777;
-  /* Color de texto gris */
+  color: #4d4848c2;
+  text-align: center;
+  font-size: 12px;
 }
 
 @media (max-width: 768px) {
   .footerContainer {
     flex-direction: column;
-    /* Cambiar a una columna en pantallas pequeñas */
-    align-items: flex-start;
-    /* Alinear elementos a la izquierda en pantallas pequeñas */
+    align-items: center;
   }
 
   .logo {
     max-width: 70%;
-    /* Reducir el tamaño de la imagen en pantallas pequeñas */
-
   }
 }

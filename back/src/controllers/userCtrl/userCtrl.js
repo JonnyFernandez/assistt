@@ -71,9 +71,6 @@ const modify = async (id, company, address, phone) => {
 }
 
 const banned = async (id, active) => {
-    console.log('Received ID:', id);
-    console.log('Received active:', active);
-
     const userBanned = await User.findByPk(id);
     console.log('User found:', userBanned);
 

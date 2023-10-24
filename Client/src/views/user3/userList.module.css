@@ -2,10 +2,10 @@
 .contenedor {
     align-items: center;
     padding: 10px;
-    height: 58px;
-    background-color: #d0cccc;
+    background-color: #d0cccc77;
     margin: 10px 50px 50px 50px;/* 20px de margen izquierdo y derecho, puedes ajustar este valor según tus preferencias */
     border-radius: 10px; /*20px Ajusta el valor según el radio de redondez deseado */
+   
   }
 
 
@@ -13,7 +13,7 @@
     list-style: none;
     font-family: Calibri, 'Trebuchet MS', sans-serif;
     padding: 0;
-    margin: 0;
+    margin-bottom: 10px;
     display: flex; /* Utiliza flexbox para alinear elementos horizontalmente */
     flex-direction: column;
   }
@@ -23,7 +23,7 @@
     justify-content: space-between; /* Espacio entre los elementos en una fila */
     align-items: center; /* Alinea verticalmente los elementos en el centro */
     border: 1px solid #ddd;
-    padding: 10px;
+    padding: 2px;
     margin-top: 2px;
     border-radius: 5px;
     background-color: #f8f8f8;
