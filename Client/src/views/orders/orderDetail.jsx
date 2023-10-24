@@ -106,10 +106,6 @@ const handleApprove = () => {
                         </p>
                         </div>
 
-                    {/* <div className={style.div}>
-                        <h2 className={style.h2}>Forma de pago:</h2>
-                        <p className={style.p}>{orderDetailState?.[0]?.pay}</p>
-                    </div> */}
                     <div className={style.toggler}>
                         <button className={style.approveButton} onClick={handleApprove}>Aprobar</button>
                         <button className={style.disapproveButton} onClick={handleDisapprove}>Desaprobar</button>
@@ -152,7 +148,6 @@ const handleApprove = () => {
 }
 
 export default OrderDetail;
-
 
 
 

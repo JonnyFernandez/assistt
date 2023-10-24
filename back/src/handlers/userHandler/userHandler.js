@@ -35,7 +35,6 @@ const bannedUser = async (req, res) => {
     try {
         const { id } = req.params;
         const { active } = req.body;
-        
         const userStatus = await banned(id, active);
         res.status(200).json(userStatus);
     } catch (error) {

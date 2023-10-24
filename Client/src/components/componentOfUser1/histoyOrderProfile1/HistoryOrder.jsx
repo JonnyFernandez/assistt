@@ -12,6 +12,7 @@ const HistoryOrder = () => {
     const dispatch = useDispatch()
     const Profile = useSelector((state) => state.profile)
     const id = Profile.id
+
     useEffect(() => {
         dispatch(getOrderUserById(id))
     }, [])

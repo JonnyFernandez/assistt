@@ -5,7 +5,6 @@ import u from './CardHistoryOrder.module.css'
 
 const CardHistoryOrder = ({ id, code, date, status, providerC, OnClick }) => {
 
-    // let Current_status = status ? (status === true ? "Aprobado" : "Desaprobado") : "Enviado";
 
     let Current_status = status === true ? "Aprobado" : status === false ? "Desaprobado" : status === null ? "Pendiente" : ''
 

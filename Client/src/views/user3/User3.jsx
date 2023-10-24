@@ -1,6 +1,5 @@
 import style from './User3.module.css';
 import Nav from "../../components/nav/Nav";
-import Nav3 from "../../components/nav/Nav3";
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOrders } from '../../redux/actions';

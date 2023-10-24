@@ -39,7 +39,7 @@ const Nav = () => {
             </NavLink>
             {
                 name
-                    ? <div onClick={handleProfile} className={p.linkProfile}>🟢 {name} <br /> <small>{email}</small> </div>
+                    ? <div onClick={handleProfile} className={p.linkProfile}> {name} <br /> <small>{email}</small> </div>
 
                     : <div>| Ingresar</div>
             }
