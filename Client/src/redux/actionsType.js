@@ -53,3 +53,6 @@ export const SEARCH_PROD = "SEARCH_PROD";
 
 //---------ORDENES DE UN USUARIO-----------------------------
 export const ORDER_BY_ID_USER = "ORDER_BY_ID_USER"
+
+
+export const PAUSE_ORDER = "PAUSE_ORDER"
