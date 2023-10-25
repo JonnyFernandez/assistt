@@ -9,23 +9,46 @@ import { useState } from 'react'
 
 
 const HistoryOrder = () => {
-    const dispatch = useDispatch()
-    const Profile = useSelector((state) => state.profile)
-    const id = Profile.id
-
-    useEffect(() => {
-        dispatch(getOrderUserById(id))
-    }, [])
-
-    const Orders = useSelector((state) => state.OrdersUser)
-
+    const dispatch = useDispatch();
+    const Profile = useSelector((state) => state.profile);
+    const Orders = useSelector((state) => state.OrdersUser);
     const [showOrderDetail, setShowOrderDetail] = useState(false);
     const [selectedOrder, setSelectedOrder] = useState(null);
+    const [updatedOrders, setUpdatedOrders] = useState([]);
+
+    useEffect(() => {
+        dispatch(getOrderUserById(Profile.id));
+    }, [dispatch, Profile.id, updatedOrders]);
+
+    const handleUpdateOrders = () => {
+        dispatch(getOrderUserById(Profile.id));
+        setUpdatedOrders([]);
+    };
+
+    const ordersToShow = Orders.filter(
+        (el) => el.revisor1 === null || el.revisor1 === true
+    ).filter((el) => el.active !== false);
+
+    // logica para los fintrados
+    const ordersApprove = Orders.filter(
+        (el) => el.revisor1 === null || el.revisor1 === true
+    ).filter((el) => el.active !== false);
+
+    const ordersDisapprove = Orders.filter(
+        (el) => el.revisor1 === null || el.revisor1 === true
+    ).filter((el) => el.active !== false);
+
+    const ordersPause = Orders.filter(
+        (el) => el.revisor1 === null || el.revisor1 === true
+    ).filter((el) => el.active !== false);
+    // logica para los fintrados
+
 
     const handleCardClick = (order) => {
         setSelectedOrder(order);
         setShowOrderDetail(true);
     };
+
 
 
     return (
@@ -38,8 +61,8 @@ const HistoryOrder = () => {
 
                     <select>
                         <option>Filtrar por Estado</option>
-                        <option>Aprobado</option>
                         <option>Pausadas</option>
+                        <option>Aprobado</option>
                         <option>Desaprobado</option>
                     </select>
 
@@ -61,7 +84,7 @@ const HistoryOrder = () => {
                     <div className={h.BodyLeft}>
                         <div className={h.listContainer}>
                             {
-                                Orders && Orders.map(item => (
+                                ordersToShow && ordersToShow.map(item => (
                                     <CardHistoryOrder
                                         key={item.id}
                                         id={item.id}
@@ -76,50 +99,13 @@ const HistoryOrder = () => {
                         </div>
                     </div>
                     <div className={h.BodyRight}>
-                        {showOrderDetail && <OrdersDetailProfile order={selectedOrder} />}
+                        {showOrderDetail && <OrdersDetailProfile order={selectedOrder} onUpdate={handleUpdateOrders} />}
                     </div>
                 </div>
 
 
             </div>
-            {/* -------------------------------------------------------- */}
-            {/* <div className={h.historyOrderHeader}>
-                <div>HistoryOrder</div>
-            </div>
 
-            <div className={h.historyOrderBody}>
-                <div className={h.historyOrderBodyLeft}>
-
-                    <div className={h.listOrderHeader}>
-                        <h6>Ordenes</h6>
-                        <h6>Ordenes</h6>
-                        <h6>Ordenes</h6>
-                    </div>
-
-
-                    <div className={h.listContainer}>
-                        {
-                            Orders && Orders.map(item => (
-                                <CardHistoryOrder
-                                    key={item.id}
-                                    id={item.id}
-                                    code={item.codeOrder}
-                                    date={item.order_date}
-                                    status={item.aprobado}
-                                    providerC={item.providerCode}
-                                    OnClick={() => handleCardClick(item)}
-                                />
-                            ))
-                        }
-                    </div>
-                </div>
-                <div className={h.historyOrderBodyRight}>
-                    {showOrderDetail && <OrdersDetailProfile order={selectedOrder} />}
-                </div>
-
-            </div>
-
- */}
 
         </div>
     )

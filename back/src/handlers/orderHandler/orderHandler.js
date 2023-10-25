@@ -1,4 +1,4 @@
-const { createOrder, getOrder, getIdOrders, orderUpdate, OrdersUserById } = require('../../controllers/orderCrtl/orderCtrl')
+const { createOrder, getOrder, getIdOrders, orderUpdate, OrdersUserById, setPauseOrder } = require('../../controllers/orderCrtl/orderCtrl')
 // const generateRandomCode = require('../../utils/generateRandomCode')
 
 const postOrder = async (req, res) => {
@@ -56,6 +56,17 @@ const getOrdersByIdUser = async (req, res) => {
   }
 }
 
+const setPause = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { pause } = req.body;
+    const aux5 = await setPauseOrder(id, pause)
+    res.status(200).json(aux5)
+  } catch (error) {
+    res.status(400).json({ error: error.message })
+  }
+}
 
-module.exports = { postOrder, getAllOrder, getByIdOrder, updateOrder, getOrdersByIdUser }
+
+module.exports = { postOrder, getAllOrder, getByIdOrder, updateOrder, getOrdersByIdUser, setPause }
 
