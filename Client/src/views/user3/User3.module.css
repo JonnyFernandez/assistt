@@ -1,3 +1,4 @@
+
 .reviewList {
     list-style: none;
     padding: 0;
@@ -5,23 +6,25 @@
 
 .reviewListItem {
     border: 1px solid #ccc;
+    font-weight: bold;
     padding: 8px;
-    margin: 10px 0;
-    font-size: 12px;
-    color: #333;
+    margin: 12px 0;
+    font-size: 13px;
+    color: #f6f0f0;
+    text-align: center;
     font-family: Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .customLink {
     text-decoration: none;
-    color: #4617c8;
+    color: #0af8f0;
     font-weight: bold;
     transition: color 0.3s ease;
     /* Agregar una transición suave de color */
 }
 
 .customLink:hover {
-    color: #ed5924;
+    color: #19191a;
     /* Cambiar el color al pasar el cursor (por ejemplo, a naranja) */
     /* Otros cambios de estilo que desees aplicar al pasar el cursor */
 }
@@ -37,14 +40,14 @@
     height: auto;
     width: 100%;
     justify-content: space-around;
-    margin-top: 10px;
+   
 }
 
 .left {
     display: flex;
     width: 15%;
     height: 500px;
-    background-color: #6fbcdf;
+    background-color: rgb(53, 135, 249);
     flex-direction: column;
     border-bottom-right-radius: 50px;
     overflow-y: scroll;
@@ -54,33 +57,29 @@
 .infoLeft {
     height: 480px;
     width: 100%;
-    background-color: whitesmoke;
-
+    background-image: url('../../assets/imageLogo/FONDOASSIST.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat;
+   
 }
 
 /* Estilos para navegadores webkit (Chrome y Safari) */
-.left::-webkit-scrollbar {
-    width: 10px;
-    /* Ancho del scrollbar */
-    background-color: #f1f1f1;
-    /* Color de fondo del scrollbar */
+.left::-webkit-scrollbar{
+    width: 10px; /* Ancho del scrollbar */
+    background-color: #f1f1f1; /* Color de fondo del scrollbar */
 }
 
-.left {
-    scrollbar-width: thin;
-    /* Ancho del scrollbar */
+.left{
+    scrollbar-width: thin; /* Ancho del scrollbar */
 }
 
 .left::-webkit-scrollbar-thumb {
-    background-color: #abb2ac;
-    /* Color del thumb (barra de desplazamiento) */
-    border-radius: 5px;
-    /* Bordes redondeados para el thumb */
+    background-color: #abb2ac; /* Color del thumb (barra de desplazamiento) */
+    border-radius: 5px; /* Bordes redondeados para el thumb */
 }
 
 .left::-webkit-scrollbar-track {
-    background-color: #f1f1f1;
-    /* Color de fondo del scrollbar */
+    background-color: #f1f1f1; /* Color de fondo del scrollbar */
 }
 
 .right {
@@ -100,15 +99,14 @@
 /* botones  */
 .botonera {
     width: 100%;
-    height: 50px;
+    height: 60px;
     /* background-color: #05050355; */
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     padding: 10px;
-    /* informacion */
+/* informacion */
 }
-
 .info {
     width: 100%;
     height: 460px;
@@ -121,21 +119,34 @@
 
 .infoLeft {
 
-    height: auto;
+    height: 100%;
     width: 100%;
     /* margin-top: 2rem; */
     background-color: whitesmoke;
-    overflow-x: scroll;
+   
     font-size: xx-small;
     /* background-color: red; */
 
 }
 
+.informativeMessage {
+  background-color: #f0e7e7;
+  border: 1px solid #ccc;
+  width: 95%;
+  margin-left:4px;
+  padding: 10px;
+  margin-top: 20px;
+  text-align: center;
+  color: #666;
+  font-size: 16px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
 
 
 .infoRight {
-    width: 20%;
-    height: 460px;
+    width: 30%;
     background-color: #6099da;
     display: flex;
     flex-direction: column;
@@ -153,7 +164,7 @@
 .infoRightBody {
     width: 100%;
     height: 380px;
-    background-color: #c24470;
+    background-color: #fceaea;
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
@@ -167,75 +178,111 @@
 }
 
 .h1 {
-    font-family: 'Montserrat', sans-serif;
-    text-align: center;
-    text-shadow: 2px 2px 2px #070505;
-    color: #b3daee;
-    ;
-    font-size: 15px;
-    /* Tamaño de fuente reducido */
-    margin: 15px;
-    /* Márgenes reducidos */
+  font-weight: bold;
+  font-size: 15px;
+  color: #cef8dc;
+  justify-content: center;
+  margin-top: 25px;
 }
 
 .button {
     position: relative;
     display: inline-block;
     background: linear-gradient(to bottom, #1b1c3f, #4a4e91);
-    /* Gradient background */
+   /* Gradient background */
     color: white;
-    /* White text color */
+   /* White text color */
     font-family: "Segoe UI", sans-serif;
-    /* Stylish and legible font */
+   /* Stylish and legible font */
     font-weight: bold;
     font-size: 12px;
-    /* Large font size */
+   /* Large font size */
     border: none;
-    /* No border */
+   /* No border */
     border-radius: 30px;
-    /* Rounded corners */
+   /* Rounded corners */
     padding: 9px 24px;
-    /* Large padding */
+   /* Large padding */
     cursor: pointer;
-    /* Cursor on hover */
+   /* Cursor on hover */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    /* Subtle shadow */
+   /* Subtle shadow */
     animation: button-shimmer 2s infinite;
     transition: all 0.3s ease-in-out;
-    /* Smooth transition */
-}
-
-/* Hover animation */
-.button:hover {
+   /* Smooth transition */
+  }
+  
+  /* Hover animation */
+  .button:hover {
     background: linear-gradient(to bottom, #2c2f63, #5b67b7);
     animation: button-particles 1s ease-in-out infinite;
     transform: translateY(-2px);
-}
-
-/* Click animation */
-.button:active {
+  }
+  
+  /* Click animation */
+  .button:active {
     transform: scale(0.95);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-/* Shimmer animation */
-@keyframes button-shimmer {
+  }
+  
+  /* Shimmer animation */
+  @keyframes button-shimmer {
     0% {
-        background-position: left top;
+      background-position: left top;
     }
-
+  
     100% {
-        background-position: right bottom;
+      background-position: right bottom;
     }
-}
-
-/* Particle animation */
-@keyframes button-particles {
+  }
+  
+  /* Particle animation */
+  @keyframes button-particles {
     0% {
-        background-position: left top;
+      background-position: left top;
     }
-
+  
     100% {
-        background-position: right bottom;
+      background-position: right bottom;
     }
-}
+  }
+
+  /* Estilos generales que no dependen del tamaño de la pantalla */
+
+/* Media query para pantallas pequeñas (menos de 768px de ancho) */
+@media screen and (max-width: 768px) {
+    .body {
+      flex-direction: column; /* Cambia la dirección de flexión a columna */
+    }
+  
+    .left {
+      width: 100%; /* Ocupa todo el ancho de la pantalla */
+      border-bottom-right-radius: 0; /* Elimina el redondeo en la parte inferior derecha */
+      overflow-y: auto; /* Agrega desplazamiento vertical */
+    }
+  
+    .infoLeft {
+      height: auto; /* Ajusta la altura automáticamente */
+    }
+  }
+  
+  /* Media query para pantallas medianas (entre 769px y 1024px de ancho) */
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    .infoLeft {
+      font-size: small; /* Ajusta el tamaño de fuente para pantallas medianas */
+    }
+  }
+  
+  /* Media query para pantallas grandes (más de 1024px de ancho) */
+  @media screen and (min-width: 1025px) {
+    .body {
+      justify-content: space-between; /* Vuelve a justificar el contenido alrededor */
+    }
+  }
+  
+  /* Media query para pantallas extra grandes (más de 1440px de ancho) */
+  @media screen and (min-width: 1441px) {
+    .info {
+      height: 600px; /* Ajusta la altura del área de información */
+    }
+  }

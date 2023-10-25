@@ -20,7 +20,9 @@ import {
     SEARCH_USER,
     GET_USERS_NAME,
     SET_SEARCH_RESULTS,
-    ORDER_BY_ID_USER
+    ORDER_BY_ID_USER,
+    PUT_USER_BANNED,
+    DELETE_USER
 
 } from '../redux/actionsType';
 
@@ -85,6 +87,15 @@ const reducer = (state = InitialState, action) => {
             return {
                 ...state
             };
+        case PUT_USER_BANNED:
+                return {
+                  ...state,
+                  allUsers: state.allUsers.map((user) =>
+                    user.id === action.payload.id
+                      ? { ...user, active: action.payload.active }
+                      : user
+                  ),
+                };
         case ORDER_DETAIL:
             return {
                 ...state,

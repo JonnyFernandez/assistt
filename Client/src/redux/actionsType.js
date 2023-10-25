@@ -18,6 +18,15 @@ export const GET_PROFILE = "GET_PROFILE"
 export const GET_USERS_NAME = "GET_USERS_NAME"
 export const SEARCH_USER = "SEARCH_USER"
 export const SET_SEARCH_RESULTS = "SET_SEARCH_RESULTS"
+export const PUT_USER_BANNED = "PUT_USER_BANNED"
+export const DELETE_USER = "DELETE_USER"
+
+
+//----PARA QUE LOS USUARIOS APRUEBEN ORDENES----
+export const PUT_REVISOR = "PUT_REVISOR"
+
+//----------CREAR USUARIOS--------
+export const POST_USER = "POST_USER"
 
 //------------- ORDENES------------------------
 export const GET_ORDER = "GET_ORDER"
@@ -27,28 +36,15 @@ export const CLEAN_DETAIL = "CLEAN_DETAIL"
 //-----------RESEÑAS A LAS ORDENES--------------
 export const GET_REVIEWS = "GET_REVIEWS"
 
-//----PARA QUE LOS USUARIOS APRUEBEN ORDENES----
-export const PUT_REVISOR = "PUT_REVISOR"
-
-
-
-//----------CREAR USUARIOS--------
-export const POST_USER = "POST_USER"
-
-
 //---------ENTIDAD-----------------------------
 export const GET_ENTITY = "GET_ENTITY"
 
 export const SUMA = "SUMA"
 export const RESTA = "RESTA"
-
-
 export const CLEAN_CART = "CLEAN_CART"
 
 
 //---------BUSQUEDA EN TIEMPO REAL-----------------------------
-
-
 export const SEARCH_PROD = "SEARCH_PROD";
 
 //---------ORDENES DE UN USUARIO-----------------------------

@@ -2,7 +2,10 @@
 
 import {
   GET_PROD, ADD_FAV, REMOVE_FAV, ADD_CART, REMOVE_CART, GET_PROFILE, GET_ORDER, CLEAN_DETAIL, ORDER_DETAIL, BY_TYPE, QUANTITY, POST_USER,
-  GET_REVIEWS, PUT_REVISOR, GET_ENTITY, SEARCH_PROD, SEARCH_USER, GET_USERS_NAME, SET_SEARCH_RESULTS, ORDER_BY_ID_USER, CLEAN_CART, PAUSE_ORDER
+
+
+  GET_REVIEWS, PUT_REVISOR, GET_ENTITY, SEARCH_PROD, SEARCH_USER, GET_USERS_NAME, SET_SEARCH_RESULTS, ORDER_BY_ID_USER, CLEAN_CART, PUT_USER_BANNED
+
 } from './actionsType'
 
 
@@ -83,7 +86,7 @@ export const getUser1 = (id) => {
 export const getUserName = () => {
   try {
     return async function (dispatch) {
-      let res = await axios(`http://localhost:3001/api/user/`)
+      let res = await axios(`http://localhost:3001/user/`)
       return dispatch({ type: GET_USERS_NAME, payload: res.data })
     }
   } catch (error) {
@@ -99,7 +102,7 @@ export const getUserName = () => {
 export const addInfo = (id, inputs) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.put(`http://localhost:3001/api/user/${id}`, inputs);
+      const { data } = await axios.put(`http://localhost:3001/user/${id}`, inputs);
       Swal.fire({
 
         text: 'Informacion Cargada',
@@ -119,6 +122,31 @@ export const addInfo = (id, inputs) => {
     }
   };
 };
+
+//--------------BANNEAR USUARIO-----------------------------
+
+export function bannedUsers(id, active) {
+ // Agrega este log
+  return async (dispatch) => {
+    try {
+   
+      const { data } = await axios.put(`/user/banned/${id}`, active); // Corregida la ruta
+      dispatch({
+        type: PUT_USER_BANNED,
+        payload: {
+          id,
+          active: data.active,
+        },
+      });
+
+      return data;  // Asegúrate de que la función devuelva una promesa
+    } catch (error) {
+      // Imprime información sobre el error en la consola
+      console.error("Error en la solicitud HTTP:", error);
+      throw error;  // Propaga el error para que pueda ser manejado donde se llama la función
+    }
+  };
+}
 
 
 //--------------------Todas las entidades-------------------------

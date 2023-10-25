@@ -5,27 +5,31 @@
   flex-direction: column;
   align-items: center;
   padding: 10px;
-  height: 50px;
-  background-color: #d0cccc;
-  margin: 10px 10px 0;/* 20px de margen izquierdo y derecho, puedes ajustar este valor según tus preferencias */
+  background-color: #30324f96;
+  margin: 10px 10px 10px;/* 20px de margen izquierdo y derecho, puedes ajustar este valor según tus preferencias */
   border-radius: 10px; /* Ajusta el valor según el radio de redondez deseado */
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 90%; /* Ocupa todo el ancho disponible */
+  align-items: center;
 }
 
 
 .h1 {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    text-align: center;
-    text-shadow: 2px 2px 2px #f0f8f0;
-    color: #4484df;;
-    font-size: 25px; /* Tamaño de fuente reducido */
-    margin: 10px 10px 10px 10px; /* Márgenes reducidos */
+  font-weight: bold;
+  font-size: 20px;
+  color: #cef8dc;
+  margin-right: 270px;
 }
 
 .contenedor1 {
     display: flex;
     justify-content: space-between;
     width: 95%; /* Ancho reducido */
-    height: 385px;
+    height: 350px;
 }
 
 
@@ -37,6 +41,8 @@
     color: #000;
     font-family: Arial, sans-serif;
     width: 20%;
+    height: 100%;
+    
 }
 
 .bodyRight {
@@ -44,7 +50,7 @@
     border-radius: 5px;
     color: #333;
     font-family: Arial, sans-serif;
-    width: 75%;
+    width: 80%;
     overflow-y: scroll;
     font-size: xx-small;
 }
@@ -88,9 +94,13 @@
     background-color: #d3d3d3;
     border-radius: 5px;
     color: #ccc;
-    padding: 8px; /* Reducido el relleno */
-    margin-bottom: 15px; /* Márgenes reducidos */
-    margin-top: px;
+    padding: 10px; /* Reducido el relleno */
+    height: auto;
+    width: 95%;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 25px; /* Márgenes reducidos */
     font-family: Calibri, 'Trebuchet MS', sans-serif;
   
 }
@@ -100,6 +110,13 @@
     font-size: 13px; /* Tamaño de fuente reducido */
     margin-top: 5px; /* Márgenes reducidos */
     color: #2a4858;
+}
+
+.keyword {
+  font-weight: bold;
+  font-size: 13px; /* Tamaño de fuente reducido */
+  margin-top: 5px; /* Márgenes reducidos */
+  color: #2a4858;
 }
 
 .bodyLeft p {
@@ -117,29 +134,31 @@
 }
 
 .p {
-    color: #333;
-    margin: 3px 0; /* Márgenes reducidos */
-    font-size: 8px; /* Tamaño de fuente reducido */
+  color: #333; /* Color de texto oscuro */
+  font-size: 16px; /* Tamaño de fuente más grande */
+  font-family: "Arial", sans-serif; /* Fuente elegante, o elige una fuente que te guste */
+  line-height: 1.5; /* Espaciado entre líneas para una mejor legibilidad */
+  text-align: justify; /* Alineación justificada para un aspecto más pulido */
+  margin: 0; /* Elimina los márgenes predeterminados */
+ 
 }
-
 
 
 .h2 {
   font-weight: bold;
-  font-size: 15px; /* Tamaño de fuente reducido */
+  font-size: 15px;
   color: #cef8dc;
-  padding: 0px 10px;
+  margin-right: 90px; /* Elimina los márgenes predeterminados del h2 */
 }
 
 .h2t {
   font-weight: bold;
-  font-size: 10px; /* Aumentar el tamaño de fuente */
-  margin-top: 20px; /* Margen superior ligeramente mayor */
-  margin-bottom: 10px; /* Margen inferior para separación */
-  color: #333; /* Cambiar el color del texto */
-  text-transform: uppercase; /* Mayúsculas */
-  text-align: center; /* Centrar el texto (opcional) */
+  font-size: 20px;
+  color: #cef8dc;
+  margin-left: 10px; /* Elimina los márgenes predeterminados del h2 */
 }
+
+
 
 
 .productList {
@@ -149,6 +168,7 @@
   margin: 0;
   display: table;
   width: 100%;
+  justify-content: center;
 }
 
 
@@ -176,7 +196,7 @@
   border: 1px solid #ccc;
   padding: 10px;
   margin: 10px 0;
-  background-color: #c0c3ed;
+  background-color: #b2b6e9;
   border-radius: 5px;
   font-size: 12px;
   width: 90%;
@@ -191,6 +211,8 @@
   color: #9e9c9c;
   margin: 5px 0;
 }
+
+
 .reviewText {
   color: #5e5d5d;
   font-family: 'Trebuchet MS', sans-serif;
@@ -229,6 +251,11 @@
   background-color: #cc0000c4; /* Botón de Desaprobar (rojo) */
 }
   
+@media screen and (max-width: 768px) {
+  .toggler button {
+    padding: 5px;
+  }
+}
    
 @media (max-width: 768px) {
     .contenedor1 {
@@ -248,7 +275,67 @@
         min-width: auto; /* Restaura el ancho mínimo en pantallas pequeñas */
     }
 
-    /* Agrega otros estilos específicos para pantallas pequeñas aquí */
 }
+
+@media screen and (max-width: 768px) {
+  .h1 {
+    font-size: 18px; /* Tamaño de fuente más grande para h1 en pantallas pequeñas */
+    margin-right: 0; /* Elimina el margen derecho en h1 en pantallas pequeñas */
+  }
+
+  .h2 {
+    margin-right: 0; /* Elimina el margen derecho en h2 en pantallas pequeñas */
+  }
+
+  .bodyLeft {
+    width: 100%; /* Ocupa todo el ancho en pantallas pequeñas */
+    margin-right: 0; /* Elimina el margen derecho en pantallas pequeñas */
+  }
+
+  .bodyRight {
+    width: 100%; /* Ocupa todo el ancho en pantallas pequeñas */
+    margin-right: 0; /* Elimina el margen derecho en pantallas pequeñas */
+    min-width: auto; /* Restaura el ancho mínimo en pantallas pequeñas */
+  }
+
+  .productList {
+    display: flex; /* Cambia a un diseño de columna en pantallas pequeñas */
+    flex-direction: column;
+    align-items: center; /* Centra los elementos en pantallas pequeñas */
+  }
+
+  .productListItem {
+    display: flex; /* Cambia a un diseño de columna en pantallas pequeñas */
+    flex-direction: column;
+  }
+
+  .pList {
+    text-align: center; /* Centra el texto en pantallas pequeñas */
+    margin: 5px 0; /* Ajusta los márgenes en pantallas pequeñas */
+  }
+
+  .reviewList {
+    display: flex; /* Cambia a un diseño de columna en pantallas pequeñas */
+    flex-direction: column;
+    align-items: center; /* Centra los elementos en pantallas pequeñas */
+  }
+
+  .reviewListItem {
+    display: flex; /* Cambia a un diseño de columna en pantallas pequeñas */
+    flex-direction: column;
+    text-align: center; /* Centra el texto en pantallas pequeñas */
+  }
+
+  .p {
+    font-size: 12px; /* Ajusta el tamaño de fuente en pantallas pequeñas */
+    text-align: center; /* Centra el texto en pantallas pequeñas */
+  }
+
+  .reviewText {
+    font-size: 14px; /* Ajusta el tamaño de fuente en pantallas pequeñas */
+    text-align: center; /* Centra el texto en pantallas pequeñas */
+  }
+}
+
 
 
