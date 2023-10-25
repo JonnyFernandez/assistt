@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import OrderDetail from '../orders/orderDetail';
 import UserList from './userList';
 import Footer from '../../components/footer/Footer';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 const User3 = () => {
@@ -14,7 +15,7 @@ const User3 = () => {
   const orders = useSelector((state) => state.Orders);
   const searchResults = useSelector((state) => state.allUsers);
   const [selectedOrder, setSelectedOrder] = useState(null);
-  const [showUserList, setShowUserList] = useState(false); 
+  const [showUserList, setShowUserList] = useState(false);
   const [showOrdersList, setShowOrdersList] = useState(false);
 
   useEffect(() => {
@@ -31,16 +32,19 @@ const User3 = () => {
   };
 
   const showUserListOnClick = () => {
-    setShowUserList(true); // Cuando el usuario selecciona "Lista de Usuarios", mostramos la lista de usuarios
+    setShowUserList(true);
     setShowOrdersList(false);
     setSelectedOrder(null);
   };
 
   const showOrdersListOnClick = () => {
     setShowUserList(false);
-    setShowOrdersList(true); // Cuando el usuario selecciona "Órdenes de Compra", mostramos las órdenes de compra
+    setShowOrdersList(true);
     setSelectedOrder(null);
   };
+
+  // Filtrar órdenes que tienen la propiedad "aprobado" en null
+  const pendingOrders = orders.filter((order) => order.aprobado === null);
 
   return (
     <div>
@@ -48,10 +52,10 @@ const User3 = () => {
       <div className={style.body}>
         {showOrdersList && (
           <div className={style.left}>
-            <h1 className={style.h1}>Órdenes de Compra</h1>
-            {Array.isArray(orders) && orders.length > 0 ? (
+            <h1 className={style.h1}>Órdenes de Compra Pendientes</h1>
+            {Array.isArray(pendingOrders) && pendingOrders.length > 0 ? (
               <ul className={style.reviewList}>
-                {orders.map((order) => (
+                {pendingOrders.map((order) => (
                   <li className={style.reviewListItem} key={order.id}>
                     Órden:  {" "}
                     <Link
@@ -64,7 +68,11 @@ const User3 = () => {
                   </li>
                 ))}
               </ul>
-            ) : null}
+            ) : (
+              <p className={style.informativeMessage}>
+             <FontAwesomeIcon icon="info-circle" />   No hay órdenes pendientes de aprobación.
+            </p>
+            )}
           </div>
         )}
         <div className={style.right}>
@@ -110,6 +118,7 @@ const User3 = () => {
 };
 
 export default User3;
+
 
 
 
