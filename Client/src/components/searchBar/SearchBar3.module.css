@@ -1,16 +1,16 @@
 .searchbar {
   font-size: 14px;
   font-family: arial, sans-serif;
-  color: #202124;
+  color: #202124b0;
   display: flex;
   z-index: 3;
-  height: 44px;
+  height: 50px;
   background: white;
   border: 1px solid #dfe1e5;
   box-shadow: none;
   border-radius: 24px;
   margin: 0 auto; /* Esto centra horizontalmente */
-  width: 400px;
+  width: 350px;
   max-width: 224px;
 }
 

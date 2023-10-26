@@ -1,0 +1,186 @@
+
+.reviewList {
+    list-style: none;
+    padding: 0;
+}
+
+.reviewListItem {
+    border: 1px solid #ccc;
+    font-weight: bold;
+    padding: 8px;
+    margin: 12px 0;
+    font-size: 13px;
+    color: #f6f0f0;
+    text-align: center;
+    font-family: Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.customLink {
+    text-decoration: none;
+    color: #0af8f0;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    /* Agregar una transición suave de color */
+}
+
+.customLink:hover {
+    color: #19191a;
+    /* Cambiar el color al pasar el cursor (por ejemplo, a naranja) */
+    /* Otros cambios de estilo que desees aplicar al pasar el cursor */
+}
+
+
+.body {
+    background-color: rgb(245 245 245);
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    width: 100%;
+    justify-content: space-around;
+   
+}
+
+.left {
+    display: flex;
+    width: 15%;
+    height: 500px;
+    background-color: rgba(110, 114, 114, 0.812);
+    flex-direction: column;
+    border-bottom-right-radius: 50px;
+    overflow-y: scroll;
+    font-size: xx-small;
+}
+
+
+/* Estilos para navegadores webkit (Chrome y Safari) */
+.left::-webkit-scrollbar{
+    width: 10px; /* Ancho del scrollbar */
+    background-color: #f1f1f1; /* Color de fondo del scrollbar */
+}
+
+.left{
+    scrollbar-width: thin; /* Ancho del scrollbar */
+}
+
+.left::-webkit-scrollbar-thumb {
+    background-color: #abb2ac; /* Color del thumb (barra de desplazamiento) */
+    border-radius: 5px; /* Bordes redondeados para el thumb */
+}
+
+.left::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Color de fondo del scrollbar */
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 500px;
+    background-color: #cad4f5;
+    background-image: url('../../../assets/imageLogo/FONDOASSIST.jpg');
+}
+
+.footer {
+    width: 100%;
+    height: 50px;
+    background-color: #6e8db2;
+}
+
+.informativeMessage {
+  background-color: #f0e7e7;
+  border: 1px solid #ccc;
+  width: 95%;
+  margin-left:4px;
+  padding: 10px;
+  margin-top: 20px;
+  text-align: center;
+  color: #666;
+  font-size: 16px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para el contenedor del select */
+.selectContainer {
+  display: flex;
+  height: 80px;
+  background-color: #1b1c3f;
+}
+
+/* Estilo para el select */
+.selectContainer select {
+  padding: 5px;
+  font-size: 14px;
+  font-family: cursive;
+  border: 1px solid #fff6f6;
+  background-color: #0b9ba0b2;
+  color: white;
+  border-radius: 5px;
+  appearance: none; /* Elimina las flechas de selección predeterminadas en algunos navegadores */
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  margin-left: 10%;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+
+.h1 {
+  font-weight: bold;
+  font-size: 20px;
+  color: #cef8dc;
+ margin-left: 10%;
+  margin-top: 25px;
+}
+
+.approved {
+  background-color: #4caf4fcd; /* Verde para órdenes aprobadas */
+  color: #fff;
+}
+
+.disapproved {
+  background-color: #f44336ae; /* Rojo para órdenes desaprobadas */
+  color: #fff;
+}
+
+
+  /* Estilos generales que no dependen del tamaño de la pantalla */
+
+/* Media query para pantallas pequeñas (menos de 768px de ancho) */
+@media screen and (max-width: 768px) {
+    .body {
+      flex-direction: column; /* Cambia la dirección de flexión a columna */
+    }
+  
+    .left {
+      width: 100%; /* Ocupa todo el ancho de la pantalla */
+      border-bottom-right-radius: 0; /* Elimina el redondeo en la parte inferior derecha */
+      overflow-y: auto; /* Agrega desplazamiento vertical */
+    }
+  
+    .infoLeft {
+      height: auto; /* Ajusta la altura automáticamente */
+    }
+  }
+  
+  /* Media query para pantallas medianas (entre 769px y 1024px de ancho) */
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    .infoLeft {
+      font-size: small; /* Ajusta el tamaño de fuente para pantallas medianas */
+    }
+  }
+  
+  /* Media query para pantallas grandes (más de 1024px de ancho) */
+  @media screen and (min-width: 1025px) {
+    .body {
+      justify-content: space-between; /* Vuelve a justificar el contenido alrededor */
+    }
+  }
+  
+  /* Media query para pantallas extra grandes (más de 1440px de ancho) */
+  @media screen and (min-width: 1441px) {
+    .info {
+      height: 600px; /* Ajusta la altura del área de información */
+    }
+  }

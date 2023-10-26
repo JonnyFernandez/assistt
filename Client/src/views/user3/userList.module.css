@@ -29,14 +29,23 @@
     background-color: #f8f8f8;
     transition: background-color 0.3s;
   }
-
+  
   .p {
     font-size: 15px;
     color: #424040;
-    margin: 0; /* Elimina el margen superior e inferior */
+    margin: 0;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    width: 50%; 
+    width: 30%;
     display: inline-block;
+    vertical-align: middle; /* Alineación vertical en el medio */
+  }
+  
+  .pedidos {
+    display: inline-block;
+    font-size: 14px;
+    color: #07b527;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    vertical-align: middle; /* Alineación vertical en el medio */
   }
   
   .email {
@@ -44,9 +53,32 @@
     color: #666;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     display: inline-block;
-    width: 50%; 
+    width: 50%;
+    vertical-align: middle; /* Alineación vertical en el medio */
+  }
+
+  .selectContainer select {
+    padding: 5px;
+    font-size: 14px;
+    font-family: cursive;
+    border: 1px solid #fff6f6;
+    background-color: #0b9ba0b2;
+    color: white;
+    border-radius: 5px;
+    appearance: none; /* Elimina las flechas de selección predeterminadas en algunos navegadores */
+    width: 80px;
+    height: 30px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    justify-content: center;
   }
   
+  .tipo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #f0e8e8;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
   
 
 .checkboxCon {

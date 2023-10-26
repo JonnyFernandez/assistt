@@ -49,7 +49,7 @@ const SearchBar3 = () => {
             autoComplete="off"
             title="Search"
             role="combobox"
-            placeholder=" usuarios por nombre"
+            placeholder="Buscar usuario por nombre"
             value={search}
             onChange={handleChange}
           />
