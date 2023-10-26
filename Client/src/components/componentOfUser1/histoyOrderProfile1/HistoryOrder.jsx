@@ -15,11 +15,11 @@ const HistoryOrder = () => {
     const [showOrderDetail, setShowOrderDetail] = useState(false);
     const [selectedOrder, setSelectedOrder] = useState(null);
 
-    const [orderType, setOrderType] = useState('')
+    const [orderType, setOrderType] = useState('all')
 
     useEffect(() => {
         dispatch(getOrderUserById(Profile.id));
-        // setOrderType('all')
+
     }, [dispatch, Profile.id, orderType]);
 
     const handleUpdateOrders = () => {
@@ -34,9 +34,13 @@ const HistoryOrder = () => {
     const ordersDisapprove = Orders.filter((el) => el.aprobado === false).filter((el) => el.active !== false);
 
     const ordersPause = Orders.filter((el) => el.revisor1 === false).filter((el) => el.active !== false);
+
+    const ordersPendding = Orders.filter((el) => el.revisor1 === null && el.aprobado === null).filter((el) => el.active !== false);
     // logica para los fintrados
 
-    let info = orderType === 'all' ? ordersToShow : orderType === 'pause' ? ordersPause : orderType === 'approv' ? ordersApprove : orderType === 'disApprov' ? ordersDisapprove : ''
+    let info = orderType === 'all' ? ordersToShow : orderType === 'pause' ? ordersPause : orderType === 'approv' ? ordersApprove : orderType === 'disApprov' ? ordersDisapprove : orderType === 'pendding' ? ordersPendding : ''
+
+
 
     const handleOrder = (event) => {
         setOrderType(event.target.value)
@@ -60,22 +64,19 @@ const HistoryOrder = () => {
                 <div className={h.historyHeader}>
 
                     <select onChange={handleOrder}>
-                        <option value={'all'} >Filtrar por Estado</option>
+                        <option value={'all'} >FILTRAR POR ESTADO</option>
+
                         <option value={'pause'}>Pausadas</option>
-                        <option value={'approv'}>Aprobado</option>
-                        <option value={'disApprov'}>Desaprobado</option>
+                        <option value={'pendding'}>Pendiente</option>
+
                     </select>
-                    {/* -------------------------------------------------------------------------------------------------------------------------- */}
-                    {/* <input type="text" name="" id="" placeholder='Buscar por Code' /> */}
+
                     <SearchByCode />
 
-                    <select>
-                        <option> Filtrar por Rubro</option>
-                        <option>Almacen</option>
-                        <option>Libreria</option>
-                        <option>medico</option>
-                        <option>Limpieza</option>
-                        <option>otros</option>
+                    <select onChange={handleOrder}>
+                        <option> Revisadas</option>
+                        <option value={'approv'}>Aprobado</option>
+                        <option value={'disApprov'}>Desaprobado</option>
                     </select>
 
                 </div>
