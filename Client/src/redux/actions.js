@@ -2,7 +2,10 @@
 
 import {
   GET_PROD, ADD_FAV, REMOVE_FAV, ADD_CART, REMOVE_CART, GET_PROFILE, GET_ORDER, CLEAN_DETAIL, ORDER_DETAIL, BY_TYPE, QUANTITY, POST_USER,
+
+
   GET_REVIEWS, PUT_REVISOR, GET_ENTITY, SEARCH_PROD, SEARCH_USER, GET_USERS_NAME, SET_SEARCH_RESULTS, ORDER_BY_ID_USER, CLEAN_CART, PUT_USER_BANNED
+
 } from './actionsType'
 
 
@@ -236,7 +239,7 @@ export const putRevisor = (orderId, dataAprob) => {
 // --------------------------CREAR ORDEN DE COMPRAS-------------
 
 export const createOrder = (input) => {
-  console.log(input);
+  // console.log(input);
   return async (dispatch) => {
     try {
       await axios.post(`/order`, input)
@@ -314,11 +317,7 @@ export const postReview = async (reseñas) => {
         confirmButton: "buttonAlert",
       },
     })
-    // .then((resultado) => {
-    //   if (resultado.isConfirmed) {
 
-    //   }
-    // });
   } catch (error) {
     if (error.response && error.response.data && error.response.data.error) {
       Swal.fire({
@@ -372,4 +371,56 @@ export const getOrderUserById = (id) => {
   };
 };
 
+
+
+export const pause_order = (id, pause) => {
+  return async (dispatch) => {
+    try {
+      const data = { pause }
+      await axios.put(`/order/api/${id}`, data);
+      const message = pause === 'pause' ? "Orden Pausada" : pause === 'resume' ? "Orden Reanudada" : 'Orden eliminada';
+
+      Swal.fire({
+        title: message,
+        imageUrl: '',
+        imageWidth: 100,
+        imageHeight: 100,
+        confirmButtonText: "Aceptar",
+        background: "white",
+        width: "30%",
+        heightAuto: false,
+        height: "1%",
+        padding: "3rem",
+        buttonsStyling: false,
+        customClass: {
+          title: "mesageAlert",
+          confirmButton: "buttonAlert",
+        },
+      });
+    } catch (error) {
+      console.error("Error al aprobar/desaprobar la orden:", error);
+      const errorMessage = error.response && error.response.data && error.response.data.error
+        ? error.response.data.error
+        : "Error al pausar la orden";
+
+      Swal.fire({
+        title: "Error al pausar la orden",
+        text: errorMessage,
+        imageWidth: 100,
+        imageHeight: 100,
+        background: "white",
+        width: "30%",
+        heightAuto: false,
+        height: "1%",
+        padding: "3rem",
+        buttonsStyling: false,
+        confirmButtonText: "Aceptar",
+        customClass: {
+          title: "mesageAlert",
+          confirmButton: "buttonAlert",
+        },
+      });
+    }
+  };
+};
 

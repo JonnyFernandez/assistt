@@ -68,3 +68,14 @@
 }
 ```
 
+### **pausar Ordenes:**
+
+**PUT en la ruta: http://localhost:3001/order/api/1**
+
+```javascript
+{
+    "pause":true
+}
+ 
+```
+

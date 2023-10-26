@@ -72,7 +72,9 @@ const orderUpdate = async (id, aprobado) => {
 
 const OrdersUserById = async (id) => {
     const orderDB = await getOrder()
+
     const user = await User.findByPk(id)
+
     if (!user) throw new Error('You must be registered to make this request')
 
     let aux = await orderDB.filter(item => item.userOrder === id)
@@ -84,6 +86,8 @@ const OrdersUserById = async (id) => {
         codeOrder: item.codeOrder,
         monto: item.monto,
         aprobado: item.aprobado,
+        revisor1: item.revisor1,
+        active: item.active,
         providerCode: item.providerCode,
         userOrder: item.userOrder,
         Prods: item.Prods,
@@ -97,10 +101,38 @@ const OrdersUserById = async (id) => {
 
 }
 
+const setPauseOrder = async (id, pause) => {
+    const order = await Orders.findByPk(id);
+    let message = '';
+
+    if (pause === 'delete') {
+        order.active = false;
+        message = `Orden ${order.codeOrder} eliminada`;
+    } else if (pause === 'activeOrder') {
+        order.active = true;
+        message = `Orden ${order.codeOrder} Reanudada`;
+    } else if (pause === 'pause') {
+        order.revisor1 = false;
+        message = `Orden ${order.codeOrder} Desactivada`;
+    } else if (pause === 'resume') {
+        order.revisor1 = true;
+        message = `Orden ${order.codeOrder} Activada`;
+    } else {
+        console.log("hola");
+    }
+
+    await order.save();
+    return message;
+};
+
+
+
+
 module.exports = {
     createOrder,
     getOrder,
     getIdOrders,
     orderUpdate,
-    OrdersUserById
+    OrdersUserById,
+    setPauseOrder
 };
