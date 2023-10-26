@@ -52,3 +52,7 @@ export const ORDER_BY_ID_USER = "ORDER_BY_ID_USER"
 
 
 export const PAUSE_ORDER = "PAUSE_ORDER"
+
+
+// ------------Search By Code----------------------
+export const SEARCH_BY_CODE = "SEARCH_BY_CODE"

@@ -18,11 +18,12 @@ import {
     CLEAN_CART,
     SEARCH_PROD,
     SEARCH_USER,
+    SEARCH_BY_CODE,
     GET_USERS_NAME,
     SET_SEARCH_RESULTS,
     ORDER_BY_ID_USER,
     PUT_USER_BANNED,
-    DELETE_USER
+    DELETE_USER,
 
 } from '../redux/actionsType';
 
@@ -88,14 +89,14 @@ const reducer = (state = InitialState, action) => {
                 ...state
             };
         case PUT_USER_BANNED:
-                return {
-                  ...state,
-                  allUsers: state.allUsers.map((user) =>
+            return {
+                ...state,
+                allUsers: state.allUsers.map((user) =>
                     user.id === action.payload.id
-                      ? { ...user, active: action.payload.active }
-                      : user
-                  ),
-                };
+                        ? { ...user, active: action.payload.active }
+                        : user
+                ),
+            };
         case ORDER_DETAIL:
             return {
                 ...state,
@@ -190,6 +191,13 @@ const reducer = (state = InitialState, action) => {
             return {
                 ...state,
                 Product: searchByfilter
+            }
+        case SEARCH_BY_CODE:
+            const code = action.payload;
+            let filterCode = (code == null ? state.OrdersUser : state.OrdersUser.filter(ord => ord.codeOrder.toLowerCase().includes(code.toLowerCase())))
+            return {
+                ...state,
+                OrdersUser: filterCode
             }
         case SEARCH_USER:
 
