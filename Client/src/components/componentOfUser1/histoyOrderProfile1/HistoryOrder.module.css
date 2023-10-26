@@ -94,14 +94,15 @@
 .BodyRight {
     width: 85%;
     height: 100%;
-    background-color: rgba(245, 245, 245, 0.155);
+    /* background-color: rgba(245, 245, 245, 0.155); */
 }
 
 .listContainer {
     width: 100%;
-    height: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
+    /* background-color: red; */
 
 }

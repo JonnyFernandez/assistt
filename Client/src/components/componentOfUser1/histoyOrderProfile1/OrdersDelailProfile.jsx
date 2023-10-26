@@ -8,13 +8,9 @@ const OrdersDetailProfile = ({ order, onUpdate }) => {
     const dispatch = useDispatch();
 
 
-    let status = order.aprobado
-        ? 'Aprobado'
-        : order.aprobado === false
-            ? 'Orden rechazada'
-            : 'Pendiente';
 
 
+    let status = order.revisor1 === false ? 'Pausada' : order.aprobado ? 'Aprobado' : order.aprobado === false ? 'Orden rechazada' : order.revisor1 === null ? 'Pendiente' : order.revisor1 === true ? 'Reactivada' : ''
 
     const handleRevisor1 = (e) => {
         if (order.aprobado === true && e.target.value === 'pause') {
@@ -23,7 +19,6 @@ const OrdersDetailProfile = ({ order, onUpdate }) => {
         dispatch(pause_order(order.id, e.target.value)).then(() => {
             onUpdate();
         });
-        // remove(order.id)
     };
 
 
