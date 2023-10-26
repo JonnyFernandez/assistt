@@ -1,19 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-// import ReactDOM from 'react-dom';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { Provider } from 'react-redux'
-import App from './App.jsx'
-
-import { store } from './redux/store.js'
-import { Landing, User1, User2, User3, User4, Profile1, Profile3, Cart, Orders, Fav, Login, Signup, OrderDetail } from './views/index.jsx'
-// import CartProfile from './components/cartProfile/CartProfile.jsx'
-import ProtectedRoute from './authAll/ProtectedRoute.jsx'
-import { AuthProvider } from './authAll/auth/AuthProvider.jsx'
-import SearchBar3 from './components/searchBar/SearchBar3.jsx'
-import UserList from './views/user3/userList.jsx'
-
-
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import App from './App.jsx';
+import { store } from './redux/store.js';
+import { Landing, User1, User2, User3, User4, Profile1, Profile3, Cart, Orders, Fav, Login, Signup, OrderDetail } from './views/index.jsx';
+import ProtectedRoute from './authAll/ProtectedRoute.jsx';
+import { AuthProvider } from './authAll/auth/AuthProvider.jsx';
+import AllOrderHistory from './components/componentUser3/AllOrders/AllOrderHistory.jsx';
+import UserList from './views/user3/userList.jsx';
 
 const router = createBrowserRouter([
   {
@@ -76,6 +71,10 @@ const router = createBrowserRouter([
         element: <Profile3 />
       },
       {
+        path: '/user/:id/order',
+        element: <AllOrderHistory />
+      },
+      {
         path: '/detail/:id',
         element: <User3 />
       },
@@ -88,7 +87,6 @@ const router = createBrowserRouter([
         path: '/usersList',
         element: <UserList />
       },
-  
     ]
   },
 

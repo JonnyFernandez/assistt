@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import Nav from '../../components/nav/Nav'
 import p from './Profile3.module.css'
-
+import Footer from '../../components/footer/Footer'
 import { useSelector } from 'react-redux'
 import { useAuth } from '../../authAll/auth/AuthProvider'
 
@@ -28,11 +28,7 @@ const Profile3 = () => {
                     <NavLink to={'/user3'}> <button>Inicio</button> </NavLink>
                     <NavLink to={'/orders'}> <button>Pedidos</button> </NavLink>
                     <button onClick={handleSingOut}>Salir</button>
-
-
-
-
-                </div>
+               </div>
             </div>
 
             <div className={p.prodileBody}>
@@ -51,25 +47,11 @@ const Profile3 = () => {
 
 
 
-
-
-
                 <div className={p.profileBodyRight}></div>
 
-
-
-
-
             </div>
-            <div className={p.prodileFooter}> Assistt one - Todos los de derechos reservados 2023</div>
 
-
-
-
-
-
-
-
+                <Footer />
         </div>
     )
 }

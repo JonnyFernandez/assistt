@@ -1,14 +1,15 @@
+import React, { useEffect, useState } from 'react';
 import style from './User3.module.css';
 import Nav from "../../components/nav/Nav";
-import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOrders } from '../../redux/actions';
 import { Link } from 'react-router-dom';
 import OrderDetail from '../orders/orderDetail';
 import UserList from './userList';
+import MoreSeller from '../../components/componentUser3/moreSeller/MoreSeller';
+import Price from '../../components/componentUser3/price/Price';
 import Footer from '../../components/footer/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 
 const User3 = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,8 @@ const User3 = () => {
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [showUserList, setShowUserList] = useState(false);
   const [showOrdersList, setShowOrdersList] = useState(false);
+  const [showMoreSeller, setShowMoreSeller] = useState(false);
+  const [showPrice, setShowPrice] = useState(false);
 
   useEffect(() => {
     dispatch(getOrders());
@@ -34,13 +37,31 @@ const User3 = () => {
   const showUserListOnClick = () => {
     setShowUserList(true);
     setShowOrdersList(false);
+    setShowMoreSeller(false);
+    setShowPrice(false);
     setSelectedOrder(null);
   };
 
   const showOrdersListOnClick = () => {
     setShowUserList(false);
     setShowOrdersList(true);
+    setShowMoreSeller(false);
+    setShowPrice(false);
     setSelectedOrder(null);
+  };
+
+  const showMoreSellerOnClick = () => {
+    setShowMoreSeller(true);
+    setShowPrice(false);
+    setShowUserList(false);
+    setShowOrdersList(false);
+  };
+
+  const showPriceOnClick = () => {
+    setShowMoreSeller(false);
+    setShowPrice(true);
+    setShowUserList(false);
+    setShowOrdersList(false);
   };
 
   // Filtrar órdenes que tienen la propiedad "aprobado" en null
@@ -92,14 +113,18 @@ const User3 = () => {
               </button>
             </div>
             <div>
-              <button className={style.button}>Cotizaciones</button>
+              <button className={style.button} onClick={showMoreSellerOnClick}>
+                Más Vendido
+              </button>
             </div>
             <div>
-              <button className={style.button}>Resumen de ventas</button>
+              <button className={style.button} onClick={showPriceOnClick}>
+                Cotización
+              </button>
             </div>
           </div>
           <div className={style.info}>
-            <div className={style.infoLeft}>
+          <div className={style.infoLeft}>
               {selectedOrder ? (
                 <OrderDetail
                   approvalStatus={approvalStatus}
@@ -107,6 +132,10 @@ const User3 = () => {
                 />
               ) : showUserList ? (
                 <UserList users={searchResults} />
+              ) : showMoreSeller ? (
+                <MoreSeller />
+              ) : showPrice ? (
+                <Price />
               ) : null}
             </div>
           </div>

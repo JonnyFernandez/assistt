@@ -80,6 +80,7 @@ export const getUser1 = (id) => {
   }
 }
 
+
 export const getUserName = () => {
   try {
     return async function (dispatch) {
@@ -90,6 +91,20 @@ export const getUserName = () => {
     console.error("Error al obtener el usuario:", error);
   }
 }
+
+
+export const getUser = (userId) => {
+  return async (dispatch) => {
+    try {
+      // Simulamos la obtención de datos del usuario
+      const user = { id: userId, name: "Nombre del Usuario", email: "usuario@example.com" };
+      dispatch({ type: "SET_USER", user });
+      return user;
+    } catch (error) {
+      throw error;
+    }
+  };
+};
 
 
 
@@ -352,8 +367,9 @@ export const postReview = async (reseñas) => {
 export const getOrderUserById = (id) => {
   return async (dispatch) => {
     let res = await axios.get(`http://localhost:3001/order/api/${id}`);
-    // console.log(res.data);
+     console.log(res.data);
     return dispatch({ type: ORDER_BY_ID_USER, payload: res.data });
   };
 };
+
 

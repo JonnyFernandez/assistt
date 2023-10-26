@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import style from './userList.module.css';
+import { Link, useParams } from 'react-router-dom';
 import SearchBar3 from '../../components/searchBar/SearchBar3';
 import { bannedUsers } from '../../redux/actions';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const UserList = () => {
+  const { id } = useParams();
   const users = useSelector((state) => state.allUsers);
   const [filteredUsers, setFilteredUsers] = useState(users);
   const [searchValue, setSearchValue] = useState('');
+  const [selectedType, setSelectedType] = useState('all'); // Estado para el tipo de usuario seleccionado
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,6 +33,16 @@ const UserList = () => {
       }
     });
   }, [users]);
+
+  useEffect(() => {
+    // Filtrar la lista de usuarios cuando cambia el tipo seleccionado
+    if (selectedType === 'all') {
+      setFilteredUsers(users);
+    } else {
+      const filteredResults = users.filter((user) => user.type === selectedType);
+      setFilteredUsers(filteredResults);
+    }
+  }, [selectedType, users]);
 
   const handleSearch = (searchValue) => {
     setSearchValue(searchValue);
@@ -75,6 +88,24 @@ const UserList = () => {
   return (
     <div className={style.contenedor}>
       <SearchBar3 onSearch={handleSearch} />
+
+      {/* Agrega un selector para el tipo de usuario */}
+      <div className={style.selectContainer}>
+
+        <label className={style.tipo} >Filtrar por tipo:  </label>
+        <select
+          id="typeFilter"
+          onChange={(e) => setSelectedType(e.target.value)}
+          value={selectedType}
+        >
+          <option value="all">Todos</option>
+          <option value="client">Cliente</option>
+          <option value="admin">Admin</option>
+          <option value="supplier">Proveedor</option>
+          
+        </select>
+      </div>
+
       <div className={style.contenedor1}>
         <ul className={style.productList}>
           {Array.isArray(filteredUsers) &&
@@ -83,6 +114,14 @@ const UserList = () => {
                 <p className={style.p}>{user.name}</p>
                 <p className={style.p}>{user.type}</p>
                 <p className={`${style.p} ${style.email}`}>{user.email}</p>
+                {user.type === "client" && ( 
+                    <p>
+                      <Link to={`/user/${user.id}/order`} className={style.pedidos}>
+                        Historial de Compras
+                      </Link>
+                    </p>
+                  )}
+
                 <div className={style.checkboxCon}>
                   <input
                     id={`toggler-${user.id}`}
@@ -105,6 +144,7 @@ const UserList = () => {
     </div>
   );
 };
+
 
 export default UserList;
 

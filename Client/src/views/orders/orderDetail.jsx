@@ -125,16 +125,16 @@ const handleApprove = () => {
                             </ul>
                         </div>
                     )}
-            {orderDetailState?.[0]?.ReviewGeneral?.length > 0 && (
+          {orderDetailState[0]?.ReviewGeneral?.length > 0 && (
                 <div>
-                    <h2 className={style.h2}>Reseñas</h2>
+                    <h2 className={style.h2t}>Reseñas</h2>
                     <ul className={style.reviewList}>
                     {orderDetailState[0].ReviewGeneral.map((review, index) => (
                         <li key={index} className={style.reviewListItem}>
                         <p className={style.reviewText}>{review.review}</p>
                         <div>
-                            <p className={style.p}><strong>Usuario:</strong> {review.user?.name}</p>
-                            <p className={style.p}><strong>Email de usuario:</strong> {review.user?.email}</p>
+                            <p className={style.p}><strong>Usuario:</strong> {orderDetailState[0].User.name}</p>
+                            <p className={style.p}><strong>Email: </strong> {orderDetailState[0].User.email}</p>
                         </div>
                         </li>
                     ))}
