@@ -14,34 +14,34 @@ const HistoryOrder = () => {
     const Orders = useSelector((state) => state.OrdersUser);
     const [showOrderDetail, setShowOrderDetail] = useState(false);
     const [selectedOrder, setSelectedOrder] = useState(null);
-    const [updatedOrders, setUpdatedOrders] = useState([]);
+
+    const [orderType, setOrderType] = useState('')
 
     useEffect(() => {
         dispatch(getOrderUserById(Profile.id));
-    }, [dispatch, Profile.id, updatedOrders]);
+        // setOrderType('all')
+    }, [dispatch, Profile.id, orderType]);
 
     const handleUpdateOrders = () => {
         dispatch(getOrderUserById(Profile.id));
-        setUpdatedOrders([]);
     };
 
-    const ordersToShow = Orders.filter(
-        (el) => el.revisor1 === null || el.revisor1 === true
-    ).filter((el) => el.active !== false);
+    const ordersToShow = Orders.filter((el) => el.active !== false);
 
     // logica para los fintrados
-    const ordersApprove = Orders.filter(
-        (el) => el.revisor1 === null || el.revisor1 === true
-    ).filter((el) => el.active !== false);
+    const ordersApprove = Orders.filter((el) => el.aprobado === true).filter((el) => el.active !== false);
 
-    const ordersDisapprove = Orders.filter(
-        (el) => el.revisor1 === null || el.revisor1 === true
-    ).filter((el) => el.active !== false);
+    const ordersDisapprove = Orders.filter((el) => el.aprobado === false).filter((el) => el.active !== false);
 
-    const ordersPause = Orders.filter(
-        (el) => el.revisor1 === null || el.revisor1 === true
-    ).filter((el) => el.active !== false);
+    const ordersPause = Orders.filter((el) => el.revisor1 === false).filter((el) => el.active !== false);
     // logica para los fintrados
+
+    let info = orderType === 'all' ? ordersToShow : orderType === 'pause' ? ordersPause : orderType === 'approv' ? ordersApprove : orderType === 'disApprov' ? ordersDisapprove : ''
+
+    const handleOrder = (event) => {
+        setOrderType(event.target.value)
+    }
+
 
 
     const handleCardClick = (order) => {
@@ -59,13 +59,13 @@ const HistoryOrder = () => {
 
                 <div className={h.historyHeader}>
 
-                    <select>
-                        <option>Filtrar por Estado</option>
-                        <option>Pausadas</option>
-                        <option>Aprobado</option>
-                        <option>Desaprobado</option>
+                    <select onChange={handleOrder}>
+                        <option value={'all'} >Filtrar por Estado</option>
+                        <option value={'pause'}>Pausadas</option>
+                        <option value={'approv'}>Aprobado</option>
+                        <option value={'disApprov'}>Desaprobado</option>
                     </select>
-
+                    {/* -------------------------------------------------------------------------------------------------------------------------- */}
                     <input type="text" name="" id="" placeholder='Buscar por Code' />
 
                     <select>
@@ -84,7 +84,7 @@ const HistoryOrder = () => {
                     <div className={h.BodyLeft}>
                         <div className={h.listContainer}>
                             {
-                                ordersToShow && ordersToShow.map(item => (
+                                info && info.map(item => (
                                     <CardHistoryOrder
                                         key={item.id}
                                         id={item.id}

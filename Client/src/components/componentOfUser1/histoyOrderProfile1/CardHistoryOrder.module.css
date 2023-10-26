@@ -8,11 +8,15 @@
     margin-bottom: 5px;
     cursor: pointer;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    background-color: #2754C9;
+    /* background-color: #2754C9; */
+    border-radius: 7px;
+
 }
 
 .card:hover {
     background-color: #fff;
+    border-radius: 0px;
+    box-shadow: 1px 1px 5px whitesmoke;
 }
 
 /* Estilos para diferentes estados */
@@ -25,5 +29,12 @@
 }
 
 .send {
-    background-color: rgba(128, 128, 128, 0.823);
+    /* background-color: rgb(113, 248, 225); */
+    /* background-color: #2755c9ad; */
+    background-color: rgba(148, 144, 144, 0.6);
+
+}
+
+.pause {
+    background-color: rgb(190, 165, 165);
 }
