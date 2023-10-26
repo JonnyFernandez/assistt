@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getOrderUserById } from '../../../redux/actions'
 import OrdersDetailProfile from './OrdersDelailProfile'
 import { useState } from 'react'
-
+import SearchByCode from './searchBycode/SearchByCode'
 
 
 const HistoryOrder = () => {
@@ -66,7 +66,8 @@ const HistoryOrder = () => {
                         <option value={'disApprov'}>Desaprobado</option>
                     </select>
                     {/* -------------------------------------------------------------------------------------------------------------------------- */}
-                    <input type="text" name="" id="" placeholder='Buscar por Code' />
+                    {/* <input type="text" name="" id="" placeholder='Buscar por Code' /> */}
+                    <SearchByCode />
 
                     <select>
                         <option> Filtrar por Rubro</option>
