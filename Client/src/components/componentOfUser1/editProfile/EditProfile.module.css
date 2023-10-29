@@ -3,14 +3,14 @@
     justify-content: center;
     width: 100%;
     height: 490px;
-    /* background-color: rebeccapurple; */
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .formContainer {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    /* background-color: aqua; */
+    background-color: rgba(245, 245, 245, 0.115);
     margin-top: 10px;
     width: 95%;
     height: 470px;
@@ -18,27 +18,91 @@
     box-shadow: 0px 0px 10px rgba(235, 233, 233, 0.921);
 }
 
+.form1 {
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    justify-content: space-evenly;
+}
 
+.divs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* background-color: rebeccapurple; */
+}
 
+.inputs {
+    width: 80%;
+    padding: 5px 5px;
+    border: 0px;
+    outline: none;
+    background-color: transparent;
+    border-bottom: 1px solid rgb(166, 161, 161);
+    font-family: 'Poppins', sans-serif;
+    transition: border-bottom .5s;
+    margin-left: 4rem;
+    color: white;
+    font-size: small;
+}
 
-/* .formContainer {
-    margin-top: 30px;
-    font-family: Arial, Helvetica, sans-serif;
-    background-size: cover;
+.inputs::placeholder {
+    color: white;
+}
+
+.inputs:hover,
+.inputs:focus {
+    border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+.inputs_file {
+    width: 80%;
+    padding: 5px 5px;
+    border: 0px;
+    outline: none;
+    background-color: transparent;
+    border-bottom: 1px solid rgb(166, 161, 161);
+    font-family: 'Poppins', sans-serif;
+    transition: border-bottom .5s;
+    margin-top: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.divSubmit {
+    width: 100%;
+    height: 2rem;
+    /* background-color: rgba(255, 235, 205, 0.266); */
     display: flex;
     justify-content: center;
 }
 
-.form {
+.submit {
+    font-family: 'Poppins', sans-serif;
+    width: 10rem;
+    border-radius: .5em;
+}
 
-    width: 300px;
-    height: 410px;
-    background-color: rgba(0, 0, 0, 0.404);
-    border: 1 px solid #000;
-    border-radius: 5px;
-    padding: 1em;
-    box-shadow: 3px 3px 3px #000;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-} */
+.submit:hover,
+.submit:focus {
+    border-radius: 0em;
+    border: 1 px solid white;
+}
+
+.divSubmit:hover {
+    border-bottom: 1px solid white;
+}
+
+.error {
+    color: rgb(255, 0, 0);
+    text-align: center;
+    margin: 0px;
+    font-size: 11px;
+    width: 100%;
+    height: 2.5vh;
+    margin-left: 0px;
+    font-family: 'Poppins', sans-serif;
+}

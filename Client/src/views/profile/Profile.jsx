@@ -9,7 +9,7 @@ import CartProfile from '../../components/componentOfUser1/cartProfile/CartProfi
 import HistoryOrder from '../../components/componentOfUser1/histoyOrderProfile1/HistoryOrder'
 import EditProfile from '../../components/componentOfUser1/editProfile/EditProfile'
 import FavProfile from '../../components/componentOfUser1/favProfile/FavProfile'
-
+import Footer from '../../components/footer/Footer'
 const Profile1 = () => {
 
     const auth = useAuth()
@@ -135,11 +135,18 @@ const Profile1 = () => {
                     </div>
                     <div className={p.bodyRightFooter}>
 
+                        <img src='../../../src/assets/imageLogo/LOGO5.PNG' alt="" />
+
+                        <div className={`${p.footer} ${p.copyright}`}>
+                            <p>Todos los derechos reservados © 2023 <b>| Assist</b> </p>
+                        </div>
                     </div>
                 </div>
 
             </div>
-            <div className={p.footer}></div>
+            <div className={p.footer}>
+
+            </div>
 
         </div>
 
