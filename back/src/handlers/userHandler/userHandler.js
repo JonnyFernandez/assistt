@@ -23,7 +23,7 @@ const modifyUser = async (req, res) => {
     try {
         const { id } = req.params;
         const { company, address, phone, image } = req.body;
-        // const image = req.file;
+
 
         const aux_update = await modify(id, company, address, phone, image)
         res.status(200).json(aux_update)
