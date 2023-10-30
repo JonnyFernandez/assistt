@@ -1,10 +1,11 @@
 const { User, Review, Orders } = require('../../db')
 const { Op } = require('sequelize')
 
+const { uploadImage } = require('../../utils/cloudinary/Cloudinary')
+
 const getAll = async () => {
     const aux = await User.findAll({
         include: [
-
             {
                 model: Review,
                 as: 'Review',
@@ -15,6 +16,7 @@ const getAll = async () => {
                 as: 'orders',
                 attributes: ["codeOrder", "monto"]
             },
+
         ],
         attributes: { exclude: ['password'] }
     })
@@ -56,10 +58,14 @@ const getById = async (id) => {
 }
 
 
-const modify = async (id, company, address, phone) => {
+const modify = async (id, company, address, phone, image) => {
+
     const user = await User.findByPk(id)
     if (!user) throw new Error('No estas registrado')
 
+    const aux = await uploadImage(image, "Assistt")
+
+    image ? user.image = aux.secure_url : user.image
     company ? user.company = company : user.company;
     address ? user.address = address : user.address;
     phone ? user.phone = phone : user.phone;

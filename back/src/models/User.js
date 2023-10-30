@@ -21,6 +21,10 @@ module.exports = (sequelize) => { // defino el modelo
             type: DataTypes.TEXT,
             allowNull: true
         },
+        image: {
+            type: DataTypes.TEXT,
+            allowNull: true
+        },
         email: {
             type: DataTypes.STRING,
             unique: true,
