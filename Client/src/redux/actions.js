@@ -368,7 +368,7 @@ export const postReview = async (reseñas) => {
 export const getOrderUserById = (id) => {
   return async (dispatch) => {
     let res = await axios.get(`http://localhost:3001/order/api/${id}`);
-     console.log(res.data);
+    console.log(res.data);
     return dispatch({ type: ORDER_BY_ID_USER, payload: res.data });
   };
 };

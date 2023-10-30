@@ -83,7 +83,7 @@ const Profile1 = () => {
             <div className={p.body}>
                 <div className={p.bodyLeft}>
                     <div className={p.bodyLeftHeader}>
-
+                        <img src={Profile.image} alt="" />
 
                     </div>
                     <div className={p.bodyLeftBody}>
@@ -107,13 +107,13 @@ const Profile1 = () => {
                     <div className={p.bodyRightHeader}>
 
 
-                        <NavLink
+                        {/* <NavLink
                             className={`${p.button} ${selectedButton === 'Inicio' ? p.active : ''}`}
                             to={'/user1'}
                         // onClick={() => toggleButton('Inicio')}
                         >
                             <small className={p.inicionButton}>Inicio</small>
-                        </NavLink>
+                        </NavLink> */}
 
 
                         <div className={`${p.button} ${selectedButton === 'History' ? p.active : ''}`} onClick={() => toggleHistotyOrder('History')}> <small>Historial</small> </div>

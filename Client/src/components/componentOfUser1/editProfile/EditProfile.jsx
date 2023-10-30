@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux'
 import { addInfo } from '../../../redux/actions'
 import Validation from './Validations'
 import axios from 'axios'
+import cloudinary from 'cloudinary-core';
+
 
 const EditProfile = () => {
     const dispatch = useDispatch()
@@ -18,15 +20,14 @@ const EditProfile = () => {
         image: ''
     })
 
+
     const [errors, setErrors] = useState({
         company: '',
         address: '',
         phone: ''
     })
 
-    // console.log(inputs.company);
-    // console.log(inputs.address);
-    // console.log(inputs.phone);
+
 
     const handleChange = (event) => {
         let property = event.target.name;
@@ -42,23 +43,15 @@ const EditProfile = () => {
     }
 
     // -------------------------------------------------------------------------
-    const preset_key = "szmwmrsq";
-    const cloud_name = "dvu3hvpzu";
-    const URL = `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`;
 
-    const handlerUploadImage = (event) => {
-        const file = event.target.files[0];
-        const formData = new FormData();
-        formData.append("file", file);
-        formData.append("upload_preset", preset_key);
-        axios.post(URL, formData)
-            .then((response) => {
-                setInputs({ ...inputs, image: response.data.secure_url });
-            })
-            .catch((err) => alert(err));
-    }
+
+
+    // const handleImageChange = (event) => {
+    //     const file = event.target.files[0];
+    //     setInputs({ ...inputs, image: file });
+    // };
+
     // -------------------------------------------------------------------------
-    //    importart cloudinary en client y terminar de configurar
 
 
 
@@ -68,11 +61,14 @@ const EditProfile = () => {
         if (!inputs.company && !inputs.address && !inputs.phone) {
             return alert('ingesar informacion')
         }
+
+
         dispatch(addInfo(id, inputs))
         setInputs({
             company: '',
             address: '',
             phone: '',
+            image: ''
 
         });
         setErrors({
@@ -93,10 +89,12 @@ const EditProfile = () => {
 
                     <div className={t.divs}>
                         <label>Imagen </label>
-                        <input className={`${t.inputs} ${t.inputs_file}`} type="file"
+                        <input className={`${t.inputs} ${t.inputs_file}`} type="text"
                             name="image"
-                            onChange={handlerUploadImage}
-                            autoComplete="off" />
+                            value={inputs.image}
+                            onChange={handleChange}
+                            placeholder='Ingresar imagen (Opcional)'
+                        />
 
                     </div>
 
