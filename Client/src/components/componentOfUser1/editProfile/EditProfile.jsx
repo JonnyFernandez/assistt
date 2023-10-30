@@ -19,7 +19,7 @@ const EditProfile = () => {
         phone: '',
         image: ''
     })
-
+    console.log(inputs.image);
 
     const [errors, setErrors] = useState({
         company: '',
@@ -42,16 +42,35 @@ const EditProfile = () => {
         )
     }
 
+    // -----------------CODIGO CLOUDINARY--------------------------------------------------------
+
+
+    const cloud_name = "dkx6y2e2z";
+    const URL = `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`;
+    const CLOUDINARI_PRESET = 'assistt_file'
+
+
+    function handleUploadImage(event) {
+        const file = event.target.files[0];
+
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", CLOUDINARI_PRESET);
+
+        axios.post(URL, formData, {
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
+        })
+            .then((response) => {
+                setInputs({ ...inputs, image: response.data.secure_url });
+            })
+            .catch((err) => alert(err));
+    }
+
+
     // -------------------------------------------------------------------------
 
-
-
-    // const handleImageChange = (event) => {
-    //     const file = event.target.files[0];
-    //     setInputs({ ...inputs, image: file });
-    // };
-
-    // -------------------------------------------------------------------------
 
 
 
@@ -89,10 +108,10 @@ const EditProfile = () => {
 
                     <div className={t.divs}>
                         <label>Imagen </label>
-                        <input className={`${t.inputs} ${t.inputs_file}`} type="text"
+                        <input className={`${t.inputs} ${t.inputs_file}`} type="file"
                             name="image"
-                            value={inputs.image}
-                            onChange={handleChange}
+
+                            onChange={handleUploadImage}
                             placeholder='Ingresar imagen (Opcional)'
                         />
 

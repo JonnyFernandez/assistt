@@ -66,9 +66,6 @@ const Profile1 = () => {
         setShowEditProfile(false);
         setShowFav(true);
     };
-    // const toggleButton = (data) => {
-    //     setSelectedButton(data)
-    // }
 
 
 
@@ -83,21 +80,22 @@ const Profile1 = () => {
             <div className={p.body}>
                 <div className={p.bodyLeft}>
                     <div className={p.bodyLeftHeader}>
-                        <img src={Profile.image} alt="" />
+                        <img src={Profile.image} alt="image" />
 
                     </div>
                     <div className={p.bodyLeftBody}>
-                        <h3>dirección: <small>{Profile?.address}</small> </h3>
-                        <h3>teléfono: <small> {Profile?.phone}</small> </h3>
-                        <h3>Empresa: <small> {Profile?.company}</small> </h3>
+                        <h3><small> {Profile.name}</small></h3>
+                        <h3><small> {Profile.email}</small></h3>
 
-                        <h3>Ordene: <small> {Profile.orders?.length}</small></h3>
-                        <h3>Reseñas: <small> {Profile.Review?.length}</small></h3>
+                        <h3> <small>{Profile?.address}</small> </h3>
+                        <h3><small> {Profile?.phone}</small> </h3>
+                        <h3><small> {Profile?.company}</small> </h3>
+
 
                     </div>
                     <div>
-                        <button onClick={getOut} >salir</button>
-                        <button onClick={handleSingOut}>cerra cuenta</button>
+                        {/* <button onClick={getOut} >salir</button> */}
+                        <button onClick={handleSingOut}>Log Out</button>
                     </div>
                 </div>
 
