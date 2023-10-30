@@ -1,22 +1,153 @@
 .form {
     display: flex;
     justify-content: center;
-    width: 100%;
-    height: 490px;
-    /* background-color: rebeccapurple; */
+    align-items: center; /* Alinea los elementos verticalmente en el centro */
+    width: 150%;
+    height: 150%; /* Puedes cambiar a la altura que desees */
+    padding: 20px; /* Agrega relleno para separar el contenido del borde */
+   
+}
+
+.titulo {
+    color: #444;
+    text-align: center;
+    margin-left: 250px;
+    font-family: Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 300;
+}
+
+.subtitulo {
+    color: #444;
+    text-align: center;
+    font-family: Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 300;
 }
 
 .formContainer {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    /* background-color: aqua; */
     margin-top: 10px;
-    width: 95%;
-    height: 470px;
-    /* box-shadow: 0px 0px 7px black; */
+    width: 100%;
+    max-width: 900px; /* Ancho máximo del contenedor */
+    padding: 20px; /* Agrega relleno alrededor del contenido */
+    border-radius: 8px; /* Añade bordes redondeados */
     box-shadow: 0px 0px 10px rgba(235, 233, 233, 0.921);
+    background-color: #f9f9f9; /* Cambia el color de fondo según tu diseño */
 }
+
+.formLeft, .formRight {
+    flex: 1; /* Hace que ocupen el mismo ancho */
+    padding: 20px; /* Agrega relleno dentro de cada sección */
+}
+
+.formLeft {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Alinea el contenido al centro verticalmente */
+}
+
+.profileImage {
+    width: 200px;
+    height: 200px;
+    object-fit: cover; /* Ajusta la imagen para llenar el contenedor */
+    border-radius: 50%; /* Para hacer un círculo con la imagen */
+}
+
+.defaultProfileImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    border: 2px dashed #ccc; /* Borde punteado para la imagen predeterminada */
+    border-radius: 50%; /* Hace un círculo */
+    color: #999; /* Color del texto */
+}
+
+.defaultProfileImage::before {
+    content: "Imagen predeterminada"; /* Texto para la imagen predeterminada */
+}
+
+.formRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Alinea verticalmente en el centro */
+    padding: 0 20px; /* Añade relleno a los lados */
+}
+
+/* Ajustes para el formulario dentro de .formRight */
+.form form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilos para los inputs del formulario */
+.form input {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+/* Estilos para el botón del formulario */
+.form button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Estilo para el botón de carga de imagen */
+.form input[type="file"] {
+    margin-top: 10px;
+}
+
+
+
+
+
+.formLeft {
+    flex: 1;
+    padding: 20px;
+    background-color: #f5f5f5; /* Cambia el color de fondo según tu diseño */
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.formLeft h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.profileInfo {
+    color: #444;
+}
+
+.profileInfo p {
+    margin-bottom: 10px;
+}
+
+.formRight {
+    flex: 1;
+    padding: 20px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background-color: #fff; /* Cambia el color de fondo según tu diseño */
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

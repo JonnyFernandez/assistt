@@ -2,7 +2,7 @@
 
 import {
   GET_PROD, ADD_FAV, REMOVE_FAV, ADD_CART, REMOVE_CART, GET_PROFILE, GET_ORDER, CLEAN_DETAIL, ORDER_DETAIL, BY_TYPE, QUANTITY, POST_USER,
-  GET_REVIEWS, PUT_REVISOR, GET_ENTITY, SEARCH_PROD, SEARCH_USER, GET_USERS_NAME, SET_SEARCH_RESULTS, ORDER_BY_ID_USER, CLEAN_CART, PUT_USER_BANNED
+  GET_REVIEWS, PUT_REVISOR, GET_ENTITY, SEARCH_PROD, SEARCH_USER, GET_USERS_NAME, SET_SEARCH_RESULTS, ORDER_BY_ID_USER, CLEAN_CART, PUT_USER_BANNED, 
 } from './actionsType'
 
 
@@ -93,31 +93,24 @@ export const getUserName = () => {
 }
 
 
-export const getUser = (userId) => {
-  return async (dispatch) => {
-    try {
-      // Simulamos la obtención de datos del usuario
-      const user = { id: userId, name: "Nombre del Usuario", email: "usuario@example.com" };
-      dispatch({ type: "SET_USER", user });
-      return user;
-    } catch (error) {
-      throw error;
-    }
-  };
-};
-
 
 
 
 //-------------------cargar datos de user-------------------
-// Crea un nuevo usuario
-export const addInfo = (id, inputs) => {
+
+export const addInfo = (formData) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.put(`http://localhost:3001/user/${id}`, inputs);
-      Swal.fire({
+      const config = {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      };
 
-        text: 'Informacion Cargada',
+      const { data } = await axios.put(`http://localhost:3001/user/${formData.get('id')}`, formData, config);
+
+      Swal.fire({
+        text: 'Información cargada',
         icon: 'success',
       });
 
@@ -134,6 +127,7 @@ export const addInfo = (id, inputs) => {
     }
   };
 };
+
 
 //--------------BANNEAR USUARIO-----------------------------
 

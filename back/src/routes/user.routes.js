@@ -3,9 +3,6 @@ const { getAllUsers, getUserById, modifyUser, bannedUser } = require('../handler
 
 const user = Router()
 
-
-
-
 user.get('/', getAllUsers)
 user.put('/banned/:id', bannedUser);
 user.get('/:id', getUserById)
