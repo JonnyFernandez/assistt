@@ -6,7 +6,7 @@ import { useAuth } from '../../authAll/auth/AuthProvider';
 import { useEffect } from 'react';
 import { getUser1 } from '../../redux/actions'
 import Footer from '../../components/footer/Footer'
-import EditProfile from '../../components/componentOfUser1/editProfile/EditProfile'; // Importa el componente para editar el perfil del usuario
+import EditProfile3 from '../../components/componentUser3/editProfile3/EditProfile3';
 
 const Profile3 = () => {
     const auth = useAuth();
@@ -25,14 +25,7 @@ const Profile3 = () => {
     };
 
     const saveProfileChanges = (updatedProfileData) => {
-        // Aquí se debe realizar la acción para guardar los cambios en el perfil del usuario en el estado de Redux
-        // Supongamos que tienes una acción `updateUserProfile` en tu archivo de acciones Redux
-        dispatch(updateUserProfile(updatedProfileData));
-        // Ajusta 'updateUserProfile' según el nombre de tu acción Redux y cómo interactúas con tu backend
-
-        // Si no estás utilizando Redux y en su lugar estás realizando llamadas directas al backend:
-        // Puedes llamar a tu API aquí para actualizar la información del perfil del usuario con updatedProfileData
-        // Por ejemplo, podrías usar axios.put para enviar los datos actualizados al servidor
+        dispatch(updateUserProfile(updatedProfileData)); 
     };
 
     return (
@@ -55,7 +48,7 @@ const Profile3 = () => {
                 </div>
                 <div className={p.bodyRight}>
                     <div className={p.bodyRightHeader}>
-                        <EditProfile
+                        <EditProfile3
                             userProfile={Profile}
                             saveProfileChanges={saveProfileChanges}
                         />

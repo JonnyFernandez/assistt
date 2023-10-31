@@ -98,19 +98,14 @@ export const getUserName = () => {
 
 //-------------------cargar datos de user-------------------
 
-export const addInfo = (formData) => {
+
+export const addInfo = (id, inputs) => {
   return async (dispatch) => {
     try {
-      const config = {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      };
-
-      const { data } = await axios.put(`http://localhost:3001/user/${formData.get('id')}`, formData, config);
-
+      const { data } = await axios.put(`http://localhost:3001/user/${id}`, inputs);
       Swal.fire({
-        text: 'Información cargada',
+
+        text: 'Informacion Cargada',
         icon: 'success',
       });
 
@@ -127,6 +122,8 @@ export const addInfo = (formData) => {
     }
   };
 };
+
+
 
 
 //--------------BANNEAR USUARIO-----------------------------

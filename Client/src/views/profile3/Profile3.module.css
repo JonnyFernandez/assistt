@@ -70,7 +70,10 @@
     object-fit: cover; /* Ajusta la imagen dentro del contenedor */
     border: 2px solid #fff; /* Borde blanco con 2px de grosor */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    display: block; /* Hace que la imagen sea un bloque para aplicar márgenes */
+    margin: 0 auto; /* Aplica márgenes automáticos para centrar horizontalmente */
     margin-bottom: 50px;
+    
   }
   
   .subtitulo {

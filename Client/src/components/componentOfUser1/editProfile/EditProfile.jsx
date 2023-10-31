@@ -1,10 +1,14 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addInfo } from '../../../redux/actions';
-import t from './EditProfile.module.css';
+import { useState } from 'react'
+import t from './EditProfile.module.css'
+import { useDispatch } from 'react-redux'
+import { addInfo } from '../../../redux/actions'
+import Validation from './Validations'
+import axios from 'axios'
+import cloudinary from 'cloudinary-core';
+
 
 const EditProfile = () => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
 
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     const id = userInfo?.id || '';
@@ -13,117 +17,126 @@ const EditProfile = () => {
         company: '',
         address: '',
         phone: '',
-    });
+        image: ''
+    })
 
-    const [profileImage, setProfileImage] = useState(null); // Estado para la imagen del perfil
+
+    const [errors, setErrors] = useState({
+        company: '',
+        address: '',
+        phone: ''
+    })
+
+
 
     const handleChange = (event) => {
-        const { name, value } = event.target;
-        setInputs({ ...inputs, [name]: value });
-    };
+        let property = event.target.name;
+        let value = event.target.value
+        setInputs({ ...inputs, [property]: value })
 
-    const handleImageChange = (event) => {
-        const file = event.target.files[0];
-        const reader = new FileReader();
+        setErrors(
+            Validation({
+                ...inputs,
+                [event.target.name]: event.target.value,
+            })
+        )
+    }
 
-        reader.onloadend = () => {
-            setProfileImage(reader.result);
-        };
+    // -------------------------------------------------------------------------
 
-        if (file) {
-            reader.readAsDataURL(file);
-        }
-    };
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
+
+    // const handleImageChange = (event) => {
+    //     const file = event.target.files[0];
+    //     setInputs({ ...inputs, image: file });
+    // };
+
+    // -------------------------------------------------------------------------
+
+
+
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
         if (!inputs.company && !inputs.address && !inputs.phone) {
-            return alert('Ingrese la información solicitada');
+            return alert('ingesar informacion')
         }
 
-        const formData = new FormData();
-        formData.append('id', id);
-        formData.append('company', inputs.company);
-        formData.append('address', inputs.address);
-        formData.append('phone', inputs.phone);
-        formData.append('image', profileImage);
 
-        try {
-            await dispatch(addInfo(formData)); // Envia el formData a la acción addInfo
+        dispatch(addInfo(id, inputs))
+        setInputs({
+            company: '',
+            address: '',
+            phone: '',
+            image: ''
 
-            // Actualizar el estado local tras el envío exitoso
-            setInputs({
-                company: '',
-                address: '',
-                phone: '',
-            });
-            setProfileImage(null);
-        } catch (error) {
-            console.error('Error al enviar los datos:', error);
-            // Aquí podrías manejar errores o mostrar un mensaje de error al usuario
-        }
-    };
+        });
+        setErrors({
+            company: '',
+            address: '',
+            phone: '',
+        })
+
+    }
 
     return (
-        <div>
-            <h2 className={t.titulo}>Editar datos de tu Perfil</h2>
-            <div className={t.form}>
-                <div className={t.formContainer}>
-                    <div className={t.formLeft}>
-                        {profileImage ? (
-                            <img src={profileImage} alt="Profile" className={t.profileImage} />
-                        ) : (
-                            <div className={t.defaultProfileImage}>Imagen predeterminada</div>
-                        )}
-                        <input type="file" onChange={handleImageChange} accept="image/*" />
-                    </div>
-                    <div className={t.formRight}>
-                        <form onSubmit={handleSubmit} className={t.form1}>
-                            <div className={t.divs}>
-                                <h2>Ingresar Datos / Editar Datos</h2>
-                            </div>
-                            <div className={t.divs}>
-                                <input
-                                    type="text"
-                                    name="company"
-                                    onChange={handleChange}
-                                    value={inputs.company}
-                                    placeholder="Ingresar Empresa"
-                                    className={`${t.inputs} ${t.inputs_file}`}
-                                />
-                            </div>
-                            <div className={t.divs}>
-                                <input
-                                    type="text"
-                                    name="address"
-                                    onChange={handleChange}
-                                    value={inputs.address}
-                                    placeholder="Ingresar Domicilio Fiscal"
-                                    className={`${t.inputs} ${t.inputs_file}`}
-                                />
-                            </div>
-                            <div className={t.divs}>
-                                <input
-                                    type="text"
-                                    name="phone"
-                                    onChange={handleChange}
-                                    value={inputs.phone}
-                                    placeholder="Ingresar Telefono"
-                                    className={`${t.inputs} ${t.inputs_file}`}
-                                />
-                            </div>
-                            <div className={t.divSubmit}>
-                                <button type="submit" className={t.submit}>Agregar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-};
+        <div className={t.form}>
+            <div className={t.formContainer}>
 
-export default EditProfile;
+                <form onSubmit={handleSubmit} className={t.form1}>
+
+                    <div className={t.divs} > <h2>Ingresar Datos / Editar Datos</h2> </div>
+
+                    <div className={t.divs}>
+                        <label>Imagen </label>
+                        <input className={`${t.inputs} ${t.inputs_file}`} type="text"
+                            name="image"
+                            value={inputs.image}
+                            onChange={handleChange}
+                            placeholder='Ingresar imagen (Opcional)'
+                        />
+
+                    </div>
+
+                    <div className={t.divs}>
+                        <label htmlFor="">Empresa *</label>
+                        <input className={`${t.inputs} ${t.inputs_file}`}
+                            type="text" name='company' onChange={handleChange} value={inputs.company} placeholder='Ingresar Empresa' />
+                        <p className={t.error}>{errors.company}</p>
+                    </div>
+
+
+                    <div className={t.divs}>
+                        <label htmlFor="">Dirección *</label>
+                        <input className={`${t.inputs} ${t.inputs_file}`} type="text" name='address' onChange={handleChange} value={inputs.address} placeholder='Ingresar Domicilio Fiscal' />
+                        <p className={t.error}>{errors.address}</p>
+
+                    </div>
+
+                    <div className={t.divs}>
+                        <label htmlFor="">Telefono *</label>
+                        <input className={`${t.inputs} ${t.inputs_file}`} type="text" name='phone' onChange={handleChange} value={inputs.phone} placeholder='Ingresar Telefono' />
+                        <p className={t.error}>{errors.phone}</p>
+
+                    </div>
+
+
+                    <div className={t.divSubmit}>
+                        <button className={t.submit} type='submit'>Agregar</button>
+                    </div>
+
+
+                </form>
+
+            </div>
+
+
+        </div>
+
+    )
+}
+export default EditProfile
+
 
 
 
