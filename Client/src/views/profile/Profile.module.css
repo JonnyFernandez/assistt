@@ -7,18 +7,114 @@
     margin-top: 15px;
     justify-content: space-around;
     background-image: url('../../assets/imageLogo/FONDOASSIST.jpg');
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+/* Estilo para la parte izquierda del cuerpo (imagen y datos del usuario) */
 .bodyLeft {
     width: 20%;
     height: 610px;
-    background-color: white;
+    /* background-color: rgba(245, 245, 245, 0); */
     display: flex;
     flex-direction: column;
-    /* border: 1px solid black; */
+    align-items: center;
     box-shadow: 0px 0px 5px black;
+    padding: 20px;
+    /* Agrega un poco de espacio alrededor de los elementos internos */
+}
+
+
+
+.bodyLeftHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+    width: 300px;
+    height: 200px;
 
 }
+
+.bodyLeftHeader img {
+    width: 150px;
+    /* Tamaño de la imagen de perfil */
+    height: 150px;
+    border-radius: 50%;
+    /* Hace que la imagen sea redonda */
+    object-fit: cover;
+    box-shadow: 1px 1px 10px snow;
+    /* Escala la imagen para cubrir el contenedor manteniendo su relación de aspecto */
+}
+
+.bodyLeftBody {
+    width: 100%;
+    height: 420px;
+    /* background-color: #e60000; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.divInfo {
+    display: flex;
+    flex-direction: column;
+    /* background-color: red; */
+    /* height: auto; */
+    /* width: 16rem; */
+    height: 2.5rem;
+    box-shadow: 1px 1px 1px white;
+}
+
+
+
+/* Estilo para el botón de cierre de sesión */
+.logOut button {
+    background-color: #ff4d4d;
+    /* Color de fondo rojo */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.logOut button:hover {
+    background-color: #e60000;
+    /* Cambia el color de fondo al pasar el ratón */
+}
+
+/* Media queries para hacer el diseño responsive */
+@media (max-width: 768px) {
+    .bodyLeft {
+        width: 100%;
+        /* Ocupa todo el ancho en dispositivos pequeños */
+    }
+
+    .bodyLeftHeader img {
+        width: 100px;
+        /* Tamaño de la imagen de perfil en dispositivos pequeños */
+        height: 100px;
+    }
+
+    .bodyLeftBody h3 {
+        font-size: 14px;
+        /* Tamaño de fuente más pequeño en dispositivos pequeños */
+    }
+
+    .divInfo {
+        /* width: auto; */
+        display: none;
+    }
+
+    .bodyLeft {
+        display: none;
+    }
+
+
+}
+
 
 .bodyRight {
     width: 70%;
@@ -51,34 +147,7 @@
 
 }
 
-/* profile left side */
-.bodyLeftHeader {
-    width: 100%;
-    height: 200px;
-    /* background-color: rgb(66, 203, 203); */
-    display: flex;
-    flex-direction: column;
-}
 
-.bodyLeftBody {
-    width: 100%;
-    height: 420px;
-    /* background-color: rgb(4, 78, 78); */
-    display: flex;
-    flex-direction: column;
-}
-
-/* imagen */
-
-.inputLeft {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 50%;
-    min-height: 90%;
-    font-size: 15px;
-}
 
 .inputs {
     width: 80%;
