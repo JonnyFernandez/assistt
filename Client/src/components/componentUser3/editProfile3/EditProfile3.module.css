@@ -20,7 +20,7 @@
     color: #444;
     text-align: center;
     font-family: Calibri, 'Trebuchet MS', sans-serif;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 .formContainer {
@@ -83,7 +83,7 @@
 
 /* Estilos para los inputs del formulario */
 .form input {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -98,11 +98,14 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    margin-top: 12px;
 }
+
+
 
 /* Estilo para el botón de carga de imagen */
 .form input[type="file"] {
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 

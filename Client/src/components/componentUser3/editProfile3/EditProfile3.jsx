@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addInfo } from '../../../redux/actions';
-import t from './EditProfile3.module.css'; // Asegúrate de importar tus estilos
+import t from './EditProfile3.module.css';
+import axios from 'axios';
 
 const EditProfile3 = () => {
   const dispatch = useDispatch();
@@ -10,62 +11,93 @@ const EditProfile3 = () => {
   const id = userInfo?.id || '';
 
   const [inputs, setInputs] = useState({
-    company: '',
-    address: '',
-    phone: '',
+    company: userInfo?.company || '',
+    address: userInfo?.address || '',
+    phone: userInfo?.phone || '',
+    image: userInfo?.image || '', // Estado para la imagen
   });
 
-  const [profileImage, setProfileImage] = useState(null);
+  const [uploadedImage, setUploadedImage] = useState(userInfo?.image || null); // Estado para la vista previa de la imagen
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setInputs({ ...inputs, [name]: value });
   };
 
-  const handleImageChange = (event) => {
+  const cloud_name = 'dhyqgl7ie'; 
+  const upload_preset = 'a2i0wk5f'; 
+  const URL = `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`;
+
+  const [selectedImage, setSelectedImage] = useState(null); // Estado para la imagen seleccionada
+
+  // Función para manejar la selección de la imagen
+  const handleImageSelection = (event) => {
     const file = event.target.files[0];
+    setSelectedImage(file);
+
     const reader = new FileReader();
-
-    reader.onloadend = () => {
-      setProfileImage(reader.result);
+    reader.onload = (e) => {
+      setUploadedImage(e.target.result); // Establece la vista previa de la imagen
     };
-
-    if (file) {
-      reader.readAsDataURL(file);
-    }
+    reader.readAsDataURL(file);
   };
 
+  // Función para manejar el envío del formulario
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!inputs.company && !inputs.address && !inputs.phone) {
+    if (!inputs.company || !inputs.address || !inputs.phone) {
       alert('Ingrese la información solicitada');
       return;
     }
 
     try {
-      const response = await dispatch(addInfo(id, {
-        company: inputs.company,
-        address: inputs.address,
-        phone: inputs.phone,
-        image: profileImage,
-      }));
+      if (selectedImage) {
+        const formData = new FormData();
+        formData.append('file', selectedImage);
+        formData.append('upload_preset', upload_preset);
+
+        const response = await axios.post(URL, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        });
+
+        const updatedUserData = {
+          ...inputs,
+          image: response.data.secure_url
+        };
+
+        // Actualiza el estado local de userInfo
+        const updatedUserInfo = { ...userInfo, ...updatedUserData };
+        localStorage.setItem('userInfo', JSON.stringify(updatedUserInfo));
+
+        setInputs(updatedUserData);
+        setUploadedImage(response.data.secure_url);
+      }
+
+      const response = await dispatch(addInfo(id, inputs));
 
       if (response) {
-        setInputs({
-          company: '',
-          address: '',
-          phone: '',
-        });
-        setProfileImage(null);
+        setInputs({ company: '', address: '', phone: '', image: '' });
+        setUploadedImage(null);
       }
     } catch (error) {
       console.error('Error al enviar los datos:', error);
     }
+  }
+
+  // Función para manejar la eliminación de la imagen seleccionada
+  const handleImageRemoval = () => {
+    setSelectedImage(null);
+    setUploadedImage(null);
   };
 
-  const handleImageRemoval = () => {
-    setProfileImage(null);
-  };
+  // Se ejecuta cuando se monta el componente
+  useEffect(() => {
+    if (userInfo?.image) {
+      setUploadedImage(userInfo.image);
+    }
+  }, []);
 
   return (
     <div>
@@ -73,20 +105,23 @@ const EditProfile3 = () => {
       <div className={t.form}>
         <div className={t.formContainer}>
           <div className={t.formLeft}>
-            {profileImage ? (
-              <div>
-                <img src={profileImage} alt="Profile" className={t.profileImage} />
-                <button onClick={handleImageRemoval} className={t.removeImage}>Eliminar imagen</button>
+            {(selectedImage || uploadedImage) && (
+              <div className={t.uploadedImageContainer}>
+                <h3 className={t.subtitulo}>Vista previa de la imagen:</h3>
+                <img src={uploadedImage || selectedImage} alt="Preview" className={t.profileImage} />
+                <button onClick={handleImageRemoval}>
+                  Modificar imagen
+                </button>
               </div>
-            ) : (
-              <div className={t.defaultProfileImage}>Imagen predeterminada</div>
             )}
-            <input type="file" onChange={handleImageChange} accept="image/*" />
+            {!selectedImage && !uploadedImage && (
+              <input type="file" onChange={handleImageSelection} accept="image/*" />
+            )}
           </div>
           <div className={t.formRight}>
             <form onSubmit={handleSubmit} className={t.form1}>
               <div className={t.divs}>
-                <h2>Ingresar Datos / Editar Datos</h2>
+                <h2 className={t.subtitulo}>Ingreso/ Edición de Datos</h2>
               </div>
               <div className={t.divs}>
                 <input
@@ -130,6 +165,8 @@ const EditProfile3 = () => {
 };
 
 export default EditProfile3;
+
+
 
 
 
