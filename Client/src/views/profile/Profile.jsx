@@ -9,7 +9,7 @@ import CartProfile from '../../components/componentOfUser1/cartProfile/CartProfi
 import HistoryOrder from '../../components/componentOfUser1/histoyOrderProfile1/HistoryOrder'
 import EditProfile from '../../components/componentOfUser1/editProfile/EditProfile'
 import FavProfile from '../../components/componentOfUser1/favProfile/FavProfile'
-
+import Footer from '../../components/footer/Footer'
 const Profile1 = () => {
 
     const auth = useAuth()
@@ -66,9 +66,6 @@ const Profile1 = () => {
         setShowEditProfile(false);
         setShowFav(true);
     };
-    // const toggleButton = (data) => {
-    //     setSelectedButton(data)
-    // }
 
 
 
@@ -80,21 +77,22 @@ const Profile1 = () => {
             <div className={p.body}>
                 <div className={p.bodyLeft}>
                     <div className={p.bodyLeftHeader}>
-
+                        <img src={Profile.image} alt="image" />
 
                     </div>
                     <div className={p.bodyLeftBody}>
-                        <h3>dirección: <small>{Profile?.address}</small> </h3>
-                        <h3>teléfono: <small> {Profile?.phone}</small> </h3>
-                        <h3>Empresa: <small> {Profile?.company}</small> </h3>
+                        <h3><small> {Profile.name}</small></h3>
+                        <h3><small> {Profile.email}</small></h3>
 
-                        <h3>Ordene: <small> {Profile.orders?.length}</small></h3>
-                        <h3>Reseñas: <small> {Profile.Review?.length}</small></h3>
+                        <h3> <small>{Profile?.address}</small> </h3>
+                        <h3><small> {Profile?.phone}</small> </h3>
+                        <h3><small> {Profile?.company}</small> </h3>
+
 
                     </div>
                     <div>
-                        <button onClick={getOut} >salir</button>
-                        <button onClick={handleSingOut}>cerra cuenta</button>
+                        {/* <button onClick={getOut} >salir</button> */}
+                        <button onClick={handleSingOut}>Log Out</button>
                     </div>
                 </div>
 
@@ -104,13 +102,13 @@ const Profile1 = () => {
                     <div className={p.bodyRightHeader}>
 
 
-                        <NavLink
+                        {/* <NavLink
                             className={`${p.button} ${selectedButton === 'Inicio' ? p.active : ''}`}
                             to={'/user1'}
                         // onClick={() => toggleButton('Inicio')}
                         >
                             <small className={p.inicionButton}>Inicio</small>
-                        </NavLink>
+                        </NavLink> */}
 
 
                         <div className={`${p.button} ${selectedButton === 'History' ? p.active : ''}`} onClick={() => toggleHistotyOrder('History')}> <small>Historial</small> </div>
@@ -132,11 +130,18 @@ const Profile1 = () => {
                     </div>
                     <div className={p.bodyRightFooter}>
 
+                        <img src='../../../src/assets/imageLogo/LOGO5.PNG' alt="" />
+
+                        <div className={`${p.footer} ${p.copyright}`}>
+                            <p>Todos los derechos reservados © 2023 <b>| Assist</b> </p>
+                        </div>
                     </div>
                 </div>
 
             </div>
-            <div className={p.footer}></div>
+            <div className={p.footer}>
+
+            </div>
 
         </div>
 

@@ -20,6 +20,8 @@ const EditProfile = () => {
         image: ''
     })
 
+    console.log(inputs.image);
+
 
     const [errors, setErrors] = useState({
         company: '',
@@ -40,6 +42,7 @@ const EditProfile = () => {
                 [event.target.name]: event.target.value,
             })
         )
+
     }
 
     // -------------------------------------------------------------------------
@@ -53,6 +56,39 @@ const EditProfile = () => {
 
     // -------------------------------------------------------------------------
 
+
+
+
+    }
+
+    // -----------------CODIGO CLOUDINARY--------------------------------------------------------
+
+
+    const cloud_name = "dkx6y2e2z";
+    const URL = `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`;
+    const CLOUDINARI_PRESET = 'assistt_file'
+
+
+    function handleUploadImage(event) {
+        const file = event.target.files[0];
+
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", CLOUDINARI_PRESET);
+
+        axios.post(URL, formData, {
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
+        })
+            .then((response) => {
+                setInputs({ ...inputs, image: response.data.secure_url });
+            })
+            .catch((err) => alert(err));
+    }
+
+
+    // -------------------------------------------------------------------------
 
 
 
@@ -87,12 +123,14 @@ const EditProfile = () => {
 
                     <div className={t.divs} > <h2>Ingresar Datos / Editar Datos</h2> </div>
 
+
                     <div className={t.divs}>
                         <label>Imagen </label>
                         <input className={`${t.inputs} ${t.inputs_file}`} type="text"
                             name="image"
                             value={inputs.image}
                             onChange={handleChange}
+
                             placeholder='Ingresar imagen (Opcional)'
                         />
 
@@ -136,7 +174,5 @@ const EditProfile = () => {
     )
 }
 export default EditProfile
-
-
 
 

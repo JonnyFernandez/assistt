@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { postOrder, getAllOrder, getByIdOrder, updateOrder, getOrdersByIdUser } = require('../handlers/orderHandler/orderHandler')
+const { postOrder, getAllOrder, getByIdOrder, updateOrder, getOrdersByIdUser, setPause } = require('../handlers/orderHandler/orderHandler')
 
 const order = Router()
 
@@ -11,7 +11,8 @@ order.get('/:id', getByIdOrder)
 
 order.get('/api/:id', getOrdersByIdUser) //traer orden por el id del user que la creo
 
-order.put('/:id', updateOrder)
+order.put('/api/:id', setPause)
 
+order.put('/:id', updateOrder)
 
 module.exports = order;

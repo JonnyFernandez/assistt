@@ -1,10 +1,11 @@
 const { User, Review, Orders } = require('../../db')
 const { Op } = require('sequelize')
 
+// const { uploadImage } = require('../../utils/cloudinary/Cloudinary')
+
 const getAll = async () => {
     const aux = await User.findAll({
         include: [
-
             {
                 model: Review,
                 as: 'Review',
@@ -15,6 +16,7 @@ const getAll = async () => {
                 as: 'orders',
                 attributes: ["codeOrder", "monto"]
             },
+
         ],
         attributes: { exclude: ['password'] }
     })
