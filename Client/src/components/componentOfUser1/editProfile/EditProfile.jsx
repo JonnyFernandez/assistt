@@ -19,7 +19,9 @@ const EditProfile = () => {
         phone: '',
         image: ''
     })
+
     console.log(inputs.image);
+
 
     const [errors, setErrors] = useState({
         company: '',
@@ -40,6 +42,23 @@ const EditProfile = () => {
                 [event.target.name]: event.target.value,
             })
         )
+
+    }
+
+    // -------------------------------------------------------------------------
+
+
+
+    // const handleImageChange = (event) => {
+    //     const file = event.target.files[0];
+    //     setInputs({ ...inputs, image: file });
+    // };
+
+    // -------------------------------------------------------------------------
+
+
+
+
     }
 
     // -----------------CODIGO CLOUDINARY--------------------------------------------------------
@@ -70,8 +89,6 @@ const EditProfile = () => {
 
 
     // -------------------------------------------------------------------------
-
-
 
 
 
@@ -106,12 +123,14 @@ const EditProfile = () => {
 
                     <div className={t.divs} > <h2>Ingresar Datos / Editar Datos</h2> </div>
 
+
                     <div className={t.divs}>
                         <label>Imagen </label>
-                        <input className={`${t.inputs} ${t.inputs_file}`} type="file"
+                        <input className={`${t.inputs} ${t.inputs_file}`} type="text"
                             name="image"
+                            value={inputs.image}
+                            onChange={handleChange}
 
-                            onChange={handleUploadImage}
                             placeholder='Ingresar imagen (Opcional)'
                         />
 
@@ -155,12 +174,5 @@ const EditProfile = () => {
     )
 }
 export default EditProfile
-
-
-
-
-
-
-
 
 

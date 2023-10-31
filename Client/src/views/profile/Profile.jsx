@@ -71,6 +71,7 @@ const Profile1 = () => {
 
 
 
+
     function handleSingOut() {
         Swal.fire({
             title: '¿Estás seguro?',
@@ -86,6 +87,7 @@ const Profile1 = () => {
             }
         });
     }
+
 
 
 

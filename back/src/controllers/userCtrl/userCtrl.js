@@ -58,13 +58,11 @@ const getById = async (id) => {
 }
 
 
-const modify = async (id, company, address, phone, image) => {
-
+const modify = async (id, image, company, address, phone) => {
     const user = await User.findByPk(id)
     if (!user) throw new Error('No estas registrado')
-
-
-    image ? user.image = image : user.image
+    
+    image ? user.image = image : user.image;
     company ? user.company = company : user.company;
     address ? user.address = address : user.address;
     phone ? user.phone = phone : user.phone;
