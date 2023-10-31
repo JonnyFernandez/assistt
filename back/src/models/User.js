@@ -13,6 +13,10 @@ module.exports = (sequelize) => { // defino el modelo
             type: DataTypes.STRING,
             allowNull: true
         },
+        image: {
+            type: DataTypes.STRING,
+            defaultValue: "https://cdn-icons-png.flaticon.com/512/666/666201.png",
+          },
         company: {
             type: DataTypes.STRING,
             allowNull: true

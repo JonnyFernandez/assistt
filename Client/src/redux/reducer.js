@@ -20,11 +20,9 @@ import {
     SEARCH_USER,
     SEARCH_BY_CODE,
     GET_USERS_NAME,
-    SET_SEARCH_RESULTS,
     ORDER_BY_ID_USER,
     PUT_USER_BANNED,
     DELETE_USER,
-
 } from '../redux/actionsType';
 
 const InitialState = {
@@ -86,7 +84,7 @@ const reducer = (state = InitialState, action) => {
             };
         case POST_USER:
             return {
-                ...state
+                ...state,
             };
         case PUT_USER_BANNED:
             return {
@@ -149,6 +147,7 @@ const reducer = (state = InitialState, action) => {
                 ...state,
                 profile: action.payload
             };
+          
         case BY_TYPE:
             const typeSupplies = state.backupProduct.filter((item) => item.supplie_type === action.payload);
             return {
