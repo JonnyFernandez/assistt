@@ -2,12 +2,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh; /* Ajustar la altura */
+    height: 82vh; /* Ajustar la altura */
     background-image: url('../../../public/FONDOASSIST.jpg'); /* Ruta de tu imagen de fondo formal */
     background-size: cover; /* Ajustar la imagen al tamaño del contenedor */
     background-position: center; /* Centrar la imagen */
     background-color: #8ce4e0;
     position: relative;
+             
   }
 
   /* Agregar una superposición semitransparente */
@@ -20,11 +21,12 @@
     display: flex;
     flex-direction: column;
     background-color: rgba(255, 255, 255, 0.8);
-    gap: 10px; /* Reducir el espacio entre los elementos */
-    max-width: 800px; /* Reducir el ancho máximo */
-    padding: 15px; /* Reducir el relleno */
+    gap: 5px; /* Reducir el espacio entre los elementos */
+    width: 400px; /* Reducir el ancho máximo */
+    padding: 10px; /* Reducir el relleno */
     border-radius: 20px; /* Reducir la curvatura de los bordes */
     position: relative;
+  
   }
   
   .title {
@@ -77,7 +79,7 @@
   }
   
   .form label .input { 
-    width: 80%; /* Reducir el ancho del campo de entrada */
+    width: 155px;
     padding: 10px; /* Reducir el relleno */
     color: rgb(92, 83, 83);
     font-family:Tahoma, Geneva, Verdana, sans-serif;
@@ -87,7 +89,7 @@
   
   .form label .input + span {
     position: absolute;
-    left: 8px; /* Reducir la distancia izquierda */
+    left: 20px; /* Reducir la distancia izquierda */
     top: 5px; /* Ajustar la posición superior */
     font-size: 0.8em; /* Reducir el tamaño de fuente */
     cursor: text;
@@ -147,6 +149,7 @@
       background-color: #fff;
       color: #333;
       font-size: 14px; /* Reducir el tamaño de fuente */
+      margin-left: 15px;
       
     }
     
@@ -183,7 +186,7 @@
       font-size: 12px;
       cursor: pointer;
       position: absolute;
-      right: 20px;
+      right: 15px;
       top: 50%;
       transform: translateY(-50%);
     }
@@ -215,3 +218,40 @@
     background-color: #0056b3; 
     transition: background-color 0.3s ease;
   }
+
+  .imageLabel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+    height: 110px;
+  }
+  
+  .message {
+    margin-bottom: 10px;
+  }
+  
+  .imagePreview {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 5px;
+  }
+  
+  .inputImage {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: none;
+    display: none;
+  }
+  
+
+/* Estilo para la imagen redonda */
+.roundedImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

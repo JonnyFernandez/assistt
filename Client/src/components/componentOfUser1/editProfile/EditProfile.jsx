@@ -113,7 +113,6 @@ const EditProfile = () => {
             phone: '',
         })
 
-    }
 
     return (
         <div className={t.form}>

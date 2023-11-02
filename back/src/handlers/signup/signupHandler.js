@@ -1,16 +1,13 @@
-const createUser = require('../../controllers/signupCtrl/signupCtrl')
+const createUser = require('../../controllers/signupCtrl/signupCtrl');
 
 const signupHandle = async (req, res) => {
-    const { name, email, password, type } = req.body;
+    const { name, email, password, type, image } = req.body;
     try {
-        const newUser1 = await createUser(name, email, password, type)
-        return res.status(201).json(newUser1)
+        const newUser = await createUser(name, email, password, type, image);
+        return res.status(201).json(newUser);
     } catch (error) {
-        return res.status(400).json({ error: error.message })
+        return res.status(400).json({ error: error.message });
     }
-}
+};
 
-
-
-
-module.exports = signupHandle 
+module.exports = signupHandle;

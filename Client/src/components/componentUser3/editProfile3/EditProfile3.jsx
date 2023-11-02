@@ -4,45 +4,80 @@ import { addInfo } from '../../../redux/actions';
 import t from './EditProfile3.module.css';
 import axios from 'axios';
 
+
 const EditProfile3 = () => {
   const dispatch = useDispatch();
 
   const userInfo = JSON.parse(localStorage.getItem('userInfo'));
   const id = userInfo?.id || '';
 
-  const [inputs, setInputs] = useState({
-    company: userInfo?.company || '',
-    address: userInfo?.address || '',
-    phone: userInfo?.phone || '',
-    image: userInfo?.image || '', // Estado para la imagen
-  });
+  let initialInputs;
+  let initialUploadedImage;
+  
+  if (userInfo) {
+    initialInputs = {
+      company: userInfo.company,
+      address: userInfo.address,
+      phone: userInfo.phone,
+      image: userInfo.image
+    };
+    initialUploadedImage = userInfo.image;
+  } else {
+    initialInputs = {
+      company: '',
+      address: '',
+      phone: '',
+      image: image
+    };
+    initialUploadedImage = null;
+  }
+  
 
-  const [uploadedImage, setUploadedImage] = useState(userInfo?.image || null); // Estado para la vista previa de la imagen
+  const [inputs, setInputs] = useState(initialInputs);
+  const [uploadedImage, setUploadedImage] = useState(initialUploadedImage);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setInputs({ ...inputs, [name]: value });
   };
 
-  const cloud_name = 'dhyqgl7ie'; 
-  const upload_preset = 'a2i0wk5f'; 
+
+  const cloud_name = 'dhyqgl7ie';
+  const upload_preset = 'a2i0wk5f';
   const URL = `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`;
 
-  const [selectedImage, setSelectedImage] = useState(null); // Estado para la imagen seleccionada
+  // Función para manejar la selección de la imagen y su carga a Cloudinary
+  const handleImageSelection = async (event) => {
+    try {
+      const file = event.target.files[0];
 
-  // Función para manejar la selección de la imagen
-  const handleImageSelection = (event) => {
-    const file = event.target.files[0];
-    setSelectedImage(file);
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('upload_preset', upload_preset);
 
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      setUploadedImage(e.target.result); // Establece la vista previa de la imagen
-    };
-    reader.readAsDataURL(file);
+      const response = await axios.post(URL, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+
+      setInputs({ ...inputs, image: response.data.secure_url });
+      setUploadedImage(response.data.secure_url);
+    } catch (error) {
+      console.error('Error uploading image:', error);
+    }
   };
 
-  // Función para manejar el envío del formulario
+  const resetForm = () => {
+    setInputs({
+      company: '',
+      address: '',
+      phone: '',
+      image: ''
+    });
+    setUploadedImage(null);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!inputs.company || !inputs.address || !inputs.phone) {
@@ -51,48 +86,22 @@ const EditProfile3 = () => {
     }
 
     try {
-      if (selectedImage) {
-        const formData = new FormData();
-        formData.append('file', selectedImage);
-        formData.append('upload_preset', upload_preset);
-
-        const response = await axios.post(URL, formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        });
-
-        const updatedUserData = {
-          ...inputs,
-          image: response.data.secure_url
-        };
-
-        // Actualiza el estado local de userInfo
-        const updatedUserInfo = { ...userInfo, ...updatedUserData };
-        localStorage.setItem('userInfo', JSON.stringify(updatedUserInfo));
-
-        setInputs(updatedUserData);
-        setUploadedImage(response.data.secure_url);
-      }
-
       const response = await dispatch(addInfo(id, inputs));
 
       if (response) {
-        setInputs({ company: '', address: '', phone: '', image: '' });
-        setUploadedImage(null);
+        resetForm(); // Llama a la función para limpiar los campos
       }
     } catch (error) {
       console.error('Error al enviar los datos:', error);
     }
-  }
+  };
 
   // Función para manejar la eliminación de la imagen seleccionada
   const handleImageRemoval = () => {
-    setSelectedImage(null);
+    setInputs({ ...inputs, image: '' });
     setUploadedImage(null);
   };
 
-  // Se ejecuta cuando se monta el componente
   useEffect(() => {
     if (userInfo?.image) {
       setUploadedImage(userInfo.image);
@@ -105,16 +114,20 @@ const EditProfile3 = () => {
       <div className={t.form}>
         <div className={t.formContainer}>
           <div className={t.formLeft}>
-            {(selectedImage || uploadedImage) && (
-              <div className={t.uploadedImageContainer}>
-                <h3 className={t.subtitulo}>Vista previa de la imagen:</h3>
-                <img src={uploadedImage || selectedImage} alt="Preview" className={t.profileImage} />
-                <button onClick={handleImageRemoval}>
-                  Modificar imagen
-                </button>
+            <div className={t.uploadedImageContainer}>
+              <h3 className={t.subtitulo}>Vista previa de la imagen:</h3>
+              <div className={t.profileImageContainer}>
+                <img
+                  src={inputs.image || uploadedImage  }
+                  alt="Preview"
+                  className={`${t.profileImage} ${!inputs.image && t.defaultImage}`}
+                />
               </div>
-            )}
-            {!selectedImage && !uploadedImage && (
+              <button onClick={handleImageRemoval}>
+                Modificar imagen
+              </button>
+            </div>
+            {!inputs.image && !uploadedImage && (
               <input type="file" onChange={handleImageSelection} accept="image/*" />
             )}
           </div>
@@ -165,6 +178,8 @@ const EditProfile3 = () => {
 };
 
 export default EditProfile3;
+
+
 
 
 

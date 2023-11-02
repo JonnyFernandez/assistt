@@ -18,8 +18,6 @@ server.use(cors());
 
 
 
-
-
 server.use(route)
 
 
