@@ -65,11 +65,17 @@
     display: flex;
     flex-direction: row;
     margin: auto 2.5rem;
-    background-color: red;
+    /* background-color: red; */
 
 
 }
 
 .classCart1 {
-    background-color: rgb(38, 157, 176);
+    /* background-color: rgb(100, 229, 100); */
+    border: transparent;
+}
+
+.favButon {
+    border: transparent;
+
 }

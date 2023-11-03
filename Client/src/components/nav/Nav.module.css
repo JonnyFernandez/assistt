@@ -100,3 +100,18 @@
     /* border-radius: 5px; */
     box-shadow: 0px 0px 8px wheat;
 }
+
+/* CartIcon.module.css */
+.greenDot {
+    width: 8px;
+    height: 8px;
+    background-color: rgb(100, 229, 100);
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.favColor {
+    color: red;
+}

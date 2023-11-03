@@ -23,6 +23,8 @@ import {
     ORDER_BY_ID_USER,
     PUT_USER_BANNED,
     DELETE_USER,
+    SET_CART,
+    SET_FAV,
 } from '../redux/actionsType';
 
 const InitialState = {
@@ -147,7 +149,7 @@ const reducer = (state = InitialState, action) => {
                 ...state,
                 profile: action.payload
             };
-          
+
         case BY_TYPE:
             const typeSupplies = state.backupProduct.filter((item) => item.supplie_type === action.payload);
             return {
@@ -203,13 +205,21 @@ const reducer = (state = InitialState, action) => {
             const userName = action.payload;
             const searchByfilterUser = userName ?
                 state.allUsers.filter(user => user.name && user.name.toLowerCase().includes(userName.toLowerCase())) : state.backupUsers;
-
             return {
                 ...state,
                 allUsers: searchByfilterUser,
                 searchResults: searchByfilterUser,
             };
-
+        case SET_CART:
+            return {
+                ...state,
+                cart: action.payload
+            }
+        case SET_FAV:
+            return {
+                ...state,
+                favorite: action.payload
+            }
 
         default:
             return state;

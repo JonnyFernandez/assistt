@@ -1,23 +1,26 @@
 import Nav from "../../components/nav/Nav"
 import Nav1 from "../../components/nav/Nav1"
 import s from './User1.module.css'
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux'
-import { getProd, prodByType } from '../../redux/actions'
+import { getProd, prodByType, setCartItems, setFavItems } from '../../redux/actions'
 import Card from "../../components/card/Card"
-// import { NavLink } from "react-router-dom"
-
+import Footer from '../../components/footer/Footer'
 
 const User1 = () => {
 
   const dispatch = useDispatch()
   let prod = useSelector(state => state.Product)
 
-  // console.log(prod);
+
 
   useEffect(() => {
     dispatch(getProd())
-  }, [])
+    const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+    const storedFav = JSON.parse(localStorage.getItem('fav')) || [];
+    dispatch(setCartItems(storedCart));
+    dispatch(setFavItems(storedFav))
+  }, [dispatch])
 
 
   const handlerchange = (e) => {
@@ -58,20 +61,7 @@ const User1 = () => {
 
             </div>
 
-            <div className={s.entradablog}  >
-              <div className={s.icono2}>
-                <svg className={s.icono} xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-access-point" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" strokeLinejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M12 12l0 .01" />
-                  <path d="M14.828 9.172a4 4 0 0 1 0 5.656" />
-                  <path d="M17.657 6.343a8 8 0 0 1 0 11.314" />
-                  <path d="M9.168 14.828a4 4 0 0 1 0 -5.656" />
-                  <path d="M6.337 17.657a8 8 0 0 1 0 -11.314" />
-                </svg>
-              </div>
-              {/* <a >Editar Pedido</a> */}
-              <button className={s.insuboton}>Editar Pedido</button>
-            </div>
+
 
             <div className={s.entradablog} onClick={handlerchange} value='almacen'>
 
@@ -171,7 +161,7 @@ const User1 = () => {
 
       </div>
       <div className={s.footerUser1}>
-        <footer> Assistt one - Todos los derechos reservados 2023®.</footer>
+        <Footer />
       </div>
     </div>
   )
