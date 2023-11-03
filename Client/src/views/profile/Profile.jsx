@@ -105,7 +105,7 @@ const Profile1 = () => {
 
 
                     <div className={p.bodyLeftHeader}>
-                        <img src={Profile.image} alt="image" />
+                        <img src={!Profile.image ? "https://cdn-icons-png.flaticon.com/512/666/666201.png" : Profile.image} alt="image" />
 
                     </div>
 
@@ -147,12 +147,12 @@ const Profile1 = () => {
                     <div className={p.bodyRightHeader}>
 
 
-                        <NavLink
+                        {/* <NavLink
                             className={`${p.button} ${selectedButton === 'Inicio' ? p.active : ''}`}
                             to={'/user1'}
                         >
                             <small className={p.inicionButton}>Inicio</small>
-                        </NavLink>
+                        </NavLink> */}
 
 
                         <div className={`${p.button} ${selectedButton === 'History' ? p.active : ''}`} onClick={() => toggleHistotyOrder('History')}> <small>Historial</small> </div>

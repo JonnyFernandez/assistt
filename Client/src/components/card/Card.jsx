@@ -7,6 +7,9 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 const Card = ({ id, code, name, description, quanty, price, stock, type }) => {
 
+    const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+    const storedFav = JSON.parse(localStorage.getItem('fav')) || [];
+
 
     const dispatch = useDispatch()
     const myFav = useSelector((state) => state.favorite)
@@ -43,16 +46,34 @@ const Card = ({ id, code, name, description, quanty, price, stock, type }) => {
         } else {
             setFav(true)
             dispatch(addFav({ id, code, name, description, quanty, price, stock, type }))
-        }
-    }
+        };
+        const updatedFav = fav
+            ? storedFav.filter(item => item.id !== id)
+            : [...storedFav, { id, code, name, description, quanty, price, stock, type }];
+
+        localStorage.setItem('fav', JSON.stringify(updatedFav));
+    };
+
+
+
     const handleCart = () => {
         if (cart) {
             setCart(false)
             dispatch(removeCard(id))
+
         } else {
             setCart(true)
             dispatch(addCart({ id, code, name, description, quanty, price, stock, type }))
         }
+
+        const updatedCart = cart
+            ? storedCart.filter(item => item.id !== id)
+            : [...storedCart, { id, code, name, description, quanty, price, stock, type }];
+
+        localStorage.setItem('cart', JSON.stringify(updatedCart));
+
+
+
     }
 
 
@@ -88,7 +109,7 @@ const Card = ({ id, code, name, description, quanty, price, stock, type }) => {
 
                         {cart
                             ? (<button className={c.classCart1} onClick={handleCart}>
-                                <FontAwesomeIcon className={c.cartButton} icon={faShoppingCart} size="1.7x" color="#fff" />
+                                <FontAwesomeIcon className={c.cartButton} icon={faShoppingCart} size="1.7x" color="rgb(100, 229, 100)" />
                             </button>)
                             : (<button className={c.classCart2} onClick={handleCart}>
                                 <FontAwesomeIcon className={c.cartButton} icon={faShoppingCart} size="1.5x" color="#fff" />

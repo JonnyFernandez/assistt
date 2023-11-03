@@ -57,3 +57,7 @@ export const PAUSE_ORDER = "PAUSE_ORDER"
 
 // ------------Search By Code----------------------
 export const SEARCH_BY_CODE = "SEARCH_BY_CODE"
+
+
+export const SET_CART = "SET_CART"
+export const SET_FAV = "SET_FAV"

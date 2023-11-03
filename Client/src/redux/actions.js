@@ -2,7 +2,7 @@
 
 import {
   GET_PROD, ADD_FAV, REMOVE_FAV, ADD_CART, REMOVE_CART, GET_PROFILE, GET_ORDER, CLEAN_DETAIL, ORDER_DETAIL, BY_TYPE, QUANTITY, POST_USER,
-  GET_REVIEWS, PUT_REVISOR, GET_ENTITY, SEARCH_PROD, SEARCH_USER, GET_USERS_NAME, SET_SEARCH_RESULTS, ORDER_BY_ID_USER, CLEAN_CART, PUT_USER_BANNED, SEARCH_BY_CODE
+  GET_REVIEWS, PUT_REVISOR, GET_ENTITY, SEARCH_PROD, SEARCH_USER, GET_USERS_NAME, SET_SEARCH_RESULTS, ORDER_BY_ID_USER, CLEAN_CART, PUT_USER_BANNED, SEARCH_BY_CODE, SET_CART, SET_FAV
 
 
 } from './actionsType'
@@ -290,65 +290,13 @@ export const getReviews = () => {
 
 export const postReview = async (reseñas) => {
   try {
-    const respuesta = await axios.post("http://localhost:3001/review", reseñas);
-    await Swal.fire({
-      title: `Reseña para la Orden ${reseñas.codeOrder} creada con éxito`,
-      // imageUrl: img2,
-      imageUrl: '',
-      imageWidth: 100,
-      imageHeight: 100,
-      confirmButtonText: "Aceptar",
-      background: "white",
-      width: "30%",
-      heightAuto: false,
-      height: "1%",
-      padding: "3rem",
-      buttonsStyling: false,
-      customClass: {
-        title: "mesageAlert",
-        confirmButton: "buttonAlert",
-      },
-    })
+    await axios.post("http://localhost:3001/review", reseñas);
 
   } catch (error) {
-    if (error.response && error.response.data && error.response.data.error) {
-      Swal.fire({
-        title: "Error al crear la reseña",
-        text: error.response.data.error,
-        // imageUrl: img1,
-        imageWidth: 100,
-        imageHeight: 100,
-        background: "white",
-        width: "30%",
-        heightAuto: false,
-        height: "1%",
-        padding: "3rem",
-        buttonsStyling: false,
-        confirmButtonText: "Aceptar",
-        customClass: {
-          title: "mesageAlert",
-          confirmButton: "buttonAlert",
-        },
-      });
-    } else {
-      Swal.fire({
-        title: "Error al crear la reseña",
-        // imageUrl: img1,
-        imageWidth: 100,
-        imageHeight: 100,
-        background: "white",
-        width: "30%",
-        heightAuto: false,
-        height: "1%",
-        padding: "3rem",
-        buttonsStyling: false,
-        customClass: {
-          title: "mesageAlert",
-          confirmButton: "buttonAlert",
-        },
-      });
-    }
 
+    console.error("Error al crear la reseña:", error);
+
+    throw error;
   }
 };
 
@@ -416,3 +364,13 @@ export const pause_order = (id, pause) => {
   };
 };
 
+
+// ----------setear carrito con el localStorage-----
+
+export const setCartItems = (storeCart) => {
+  return { type: SET_CART, payload: storeCart }
+}
+
+export const setFavItems = (storedFav) => {
+  return { type: SET_FAV, payload: storedFav }
+}
