@@ -10,6 +10,7 @@ import HistoryOrder from '../../components/componentOfUser1/histoyOrderProfile1/
 import EditProfile from '../../components/componentOfUser1/editProfile/EditProfile'
 import FavProfile from '../../components/componentOfUser1/favProfile/FavProfile'
 import Swal from 'sweetalert2';
+import Footer from '../../components/footer/Footer'
 
 
 const Profile1 = () => {
@@ -172,19 +173,19 @@ const Profile1 = () => {
                         {showEditProfile && <EditProfile />}
                         {showFav && <FavProfile />}
                     </div>
-                    <div className={p.bodyRightFooter}>
+                    {/* <div className={p.bodyRightFooter}> */}
 
-                        <img src='../../../src/assets/imageLogo/LOGO5.PNG' alt="" />
-
-                        <div className={`${p.footer} ${p.copyright}`}>
+                    {/* <img src='../../../src/assets/imageLogo/LOGO5.PNG' alt="" /> */}
+                    {/* {Profile?.company} */}
+                    {/* <div className={`${p.footer} ${p.copyright}`}>
                             <p>Todos los derechos reservados © 2023 <b>| Assist</b> </p>
-                        </div>
-                    </div>
+                        </div> */}
+                    {/* </div> */}
                 </div>
 
             </div>
             <div className={p.footer}>
-
+                <Footer />
             </div>
 
         </div>
