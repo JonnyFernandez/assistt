@@ -129,7 +129,6 @@ const EditProfile = () => {
                             name="image"
                             value={inputs.image}
                             onChange={handleChange}
-
                             placeholder='Ingresar imagen (Opcional)'
                         />
 
