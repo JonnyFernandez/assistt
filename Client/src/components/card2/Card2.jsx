@@ -6,6 +6,7 @@ import { addCart, removeCard, quantityDB } from '../../redux/actions'
 
 
 const Card2 = ({ id, code, name, description, quanty, price, stock }) => {
+    const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
 
     const dispatch = useDispatch()
     const myList = useSelector((state) => state.cart)
@@ -33,6 +34,11 @@ const Card2 = ({ id, code, name, description, quanty, price, stock }) => {
             setCart(true)
             dispatch(addCart({ id, code, name, description, price }))
         }
+        const updatedCart = cart
+            ? storedCart.filter(item => item.id !== id)
+            : [...storedCart, { id, code, name, description, quanty, price, stock, type }];
+
+        localStorage.setItem('cart', JSON.stringify(updatedCart));
     };
 
     const handlerIncrese = () => {

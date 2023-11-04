@@ -9,7 +9,10 @@ import CartProfile from '../../components/componentOfUser1/cartProfile/CartProfi
 import HistoryOrder from '../../components/componentOfUser1/histoyOrderProfile1/HistoryOrder'
 import EditProfile from '../../components/componentOfUser1/editProfile/EditProfile'
 import FavProfile from '../../components/componentOfUser1/favProfile/FavProfile'
+import Swal from 'sweetalert2';
 import Footer from '../../components/footer/Footer'
+
+
 const Profile1 = () => {
 
     const auth = useAuth()
@@ -32,9 +35,9 @@ const Profile1 = () => {
     }, [])
 
 
-    const handleSingOut = () => {
-        auth.signOut()
-    }
+    // const handleSingOut = () => {
+    //     auth.signOut()
+    // }
     const getOut = () => {
         auth.exit()
     }
@@ -69,31 +72,74 @@ const Profile1 = () => {
 
 
 
+
+    function handleSingOut() {
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: '¡Tu sesión actual se cerrará!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sí, cerrar sesión',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                auth.signOut()
+                Swal.fire('¡Sesión cerrada!', 'Tu sesión ha sido cerrada correctamente.', 'success');
+            }
+        });
+    }
+
+
+
+
+
+
     return (
         <div className={p.profile}>
             <div >
                 <Nav />
             </div>
             <div className={p.body}>
+
+
                 <div className={p.bodyLeft}>
+
+
                     <div className={p.bodyLeftHeader}>
-                        <img src={Profile.image} alt="image" />
+                        <img src={!Profile.image ? "https://cdn-icons-png.flaticon.com/512/666/666201.png" : Profile.image} alt="image" />
 
                     </div>
+
                     <div className={p.bodyLeftBody}>
-                        <h3><small> {Profile.name}</small></h3>
-                        <h3><small> {Profile.email}</small></h3>
+                        <div className={p.divInfo}>
+                            <label htmlFor="">User: </label>
+                            <small> {Profile?.name}</small>
+                        </div>
 
-                        <h3> <small>{Profile?.address}</small> </h3>
-                        <h3><small> {Profile?.phone}</small> </h3>
-                        <h3><small> {Profile?.company}</small> </h3>
-
+                        <div className={p.divInfo}>
+                            <label htmlFor="">Email: </label>
+                            <small> {Profile?.email}</small>
+                        </div>
+                        <div className={p.divInfo}>
+                            <label htmlFor="">Direccion: </label>
+                            <small>{Profile?.address}</small>
+                        </div>
+                        <div className={p.divInfo}>
+                            <label htmlFor="">Tel: </label>
+                            <small> {Profile?.phone}</small>
+                        </div>
+                        <div className={p.divInfo}>
+                            <label htmlFor="">Empresa: </label>
+                            <small> {Profile?.company}</small>
+                        </div>
 
                     </div>
-                    <div>
-                        {/* <button onClick={getOut} >salir</button> */}
+
+
+                    <div className={p.logOut}>
                         <button onClick={handleSingOut}>Log Out</button>
                     </div>
+
                 </div>
 
 
@@ -105,7 +151,6 @@ const Profile1 = () => {
                         {/* <NavLink
                             className={`${p.button} ${selectedButton === 'Inicio' ? p.active : ''}`}
                             to={'/user1'}
-                        // onClick={() => toggleButton('Inicio')}
                         >
                             <small className={p.inicionButton}>Inicio</small>
                         </NavLink> */}
@@ -128,19 +173,19 @@ const Profile1 = () => {
                         {showEditProfile && <EditProfile />}
                         {showFav && <FavProfile />}
                     </div>
-                    <div className={p.bodyRightFooter}>
+                    {/* <div className={p.bodyRightFooter}> */}
 
-                        <img src='../../../src/assets/imageLogo/LOGO5.PNG' alt="" />
-
-                        <div className={`${p.footer} ${p.copyright}`}>
+                    {/* <img src='../../../src/assets/imageLogo/LOGO5.PNG' alt="" /> */}
+                    {/* {Profile?.company} */}
+                    {/* <div className={`${p.footer} ${p.copyright}`}>
                             <p>Todos los derechos reservados © 2023 <b>| Assist</b> </p>
-                        </div>
-                    </div>
+                        </div> */}
+                    {/* </div> */}
                 </div>
 
             </div>
             <div className={p.footer}>
-
+                <Footer />
             </div>
 
         </div>
