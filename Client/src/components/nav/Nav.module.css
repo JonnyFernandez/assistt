@@ -101,6 +101,7 @@
     box-shadow: 0px 0px 8px wheat;
 }
 
+
 /* Estilos para el contenedor de la imagen de perfil */
 .userImageContainer {
     width: 50px; /* Tamaño del contenedor circular */
@@ -138,3 +139,18 @@
 .userText small {
     font-size: x-small; /* Ajustar el tamaño de la etiqueta <small> */
 }
+
+.greenDot {
+    width: 8px;
+    height: 8px;
+    background-color: rgb(100, 229, 100);
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.favColor {
+    color: red;
+}
+ 

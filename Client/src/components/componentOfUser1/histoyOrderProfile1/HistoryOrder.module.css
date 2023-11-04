@@ -2,8 +2,10 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 490px;
+    height: 560px;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    /* background-color: red; */
+
 
 }
 
@@ -14,7 +16,7 @@
     /* background-color: aqua; */
     margin-top: 10px;
     width: 95%;
-    height: 470px;
+    height: 530px;
     box-shadow: 0px 0px 10px rgba(235, 233, 233, 0.921);
 }
 

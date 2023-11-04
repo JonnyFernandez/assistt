@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import Nav from '../../components/nav/Nav';
 import L from './Cart.module.css';
 import { useSelector, useDispatch } from 'react-redux';
@@ -8,8 +8,14 @@ import { codeToOrder } from '../../utils/codes';
 import { createOrder, cleanCart, getUser1, postReview } from '../../redux/actions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; //iconos
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';//carrito
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
+
 
 const Cart = () => {
+
+
+    const navigate = useNavigate()
     const dispatch = useDispatch();
     const codeOrder = codeToOrder();
     const myCart = useSelector(state => state.cart);
@@ -37,13 +43,54 @@ const Cart = () => {
     const [showReviewForm, setShowReviewForm] = useState(false);
 
     const sendOrder = () => {
-        dispatch(createOrder(input));
-        // dispatch(cleanCart());
-        setShowReviewForm(true);
+        // Muestra una alerta de confirmación
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: `¿Quieres generar esta orden: ${input.codeOrder}?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, generar orden',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            // Si el usuario confirma la orden
+            if (result.isConfirmed) {
+                // Despacha la acción para crear la orden
+                dispatch(createOrder(input));
+
+                // Muestra un nuevo SweetAlert para opciones adicionales después de crear la orden
+                Swal.fire({
+                    title: `Orden ${input.codeOrder} creada`,
+                    text: '¿Qué quieres hacer a continuación??',
+                    showDenyButton: true,
+                    // showCancelButton: true,
+                    confirmButtonText: 'Abrir reseña',
+                    denyButtonText: 'Terminar operación',
+                    // cancelButtonText: 'Cancelar'
+                }).then((innerResult) => {
+                    // Si el usuario elige abrir la reseña
+                    if (innerResult.isConfirmed) {
+                        // Muestra el formulario de revisión
+                        setShowReviewForm(true);
+                    } else if (innerResult.isDenied) {
+                        // Si el usuario elige terminar la operación
+                        // Limpia el carrito
+                        dispatch(cleanCart());
+                        localStorage.removeItem('cart');
+
+
+                    }
+                });
+            }
+        });
     };
+
 
     const clean_Cart = () => {
         dispatch(cleanCart());
+        localStorage.removeItem('cart');
+
     };
 
     const handleReviewChange = (e) => {
@@ -54,17 +101,38 @@ const Cart = () => {
     };
 
     const submitReview = () => {
-        dispatch(cleanCart());
-        setShowReviewForm(false);
+        try {
+            (postReview(reviews));
 
-        dispatch(postReview(reviews));
-        setReviews({
-            review: "",
-            userId: Profile.id,
-            codeOrder: codeOrder
-        });
+            dispatch(cleanCart());
+            localStorage.removeItem('cart');
 
+            // Crea una alerta utilizando SweetAlert para informar al usuario que la revisión se ha creado con éxito
+            Swal.fire({
+                title: `¡La reseña se creó con éxito!`,
+                icon: 'success',
+                confirmButtonText: 'Inicio'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Redirige al usuario a la página '/user1' después de hacer clic en el botón "Volver a User1"
+                    navigate('/user1');
+
+                    // Limpia el estado de las reseñas
+                    setReviews({
+                        review: "",
+                        userId: Profile.id,
+                        codeOrder: codeOrder
+                    });
+                }
+            });
+        } catch (error) {
+            // Maneja cualquier error que pueda ocurrir durante la creación de la revisión
+            console.error('Error al crear la revisión:', error);
+        }
     };
+
+
+
 
     if (Profile.id === undefined) {
         return <div>Error: Debes iniciar sesión para continuar.</div>;
@@ -115,7 +183,7 @@ const Cart = () => {
                                 <button className={L.cartProfileFooter_Approve} onClick={() => sendOrder()}>Enviar</button>
                             )}
                             {myCart.length > 0 && (
-                                <button className={L.cartProfileFooter_disapprove} onClick={() => clean_Cart()}>Cancelar</button>
+                                <button className={L.cartProfileFooter_disapprove} onClick={() => clean_Cart()}>Vaciar carrito</button>
                             )}
                         </div>
                     </div>
@@ -129,7 +197,7 @@ const Cart = () => {
                                     value={reviews.review}
                                     onChange={handleReviewChange}
                                 />
-                                <button onClick={() => submitReview()}>Enviar Reseña</button>
+                                <button onClick={() => submitReview()}>Enviar Pedido</button>
                             </div>
                         )}
                     </div>
