@@ -21,9 +21,8 @@ const Landing = () => {
 
         <div className={h.linkContainer} >
           <NavLink className={h.link} to="/user1">Unidad</NavLink>
-          <NavLink className={h.link} to="/user2">Autorizante</NavLink>
+          <NavLink className={h.link} to="/user2">Proveedor</NavLink>
           <NavLink className={h.link} to="/user3">Administrador</NavLink>
-          <NavLink className={h.link} to="/user4">Proveedor</NavLink>
         </div>
 
       </div>
