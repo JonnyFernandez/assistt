@@ -14,7 +14,7 @@ const Signup = () => {
         user1: 'http://localhost:3001/api/signup1',
         user2: 'http://localhost:3001/api/signup2',
         user3: 'http://localhost:3001/api/signup3',
-        user4: 'http://localhost:3001/api/signup4',
+
     };
 
     const [name, setName] = useState("")

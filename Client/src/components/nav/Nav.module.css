@@ -115,3 +115,21 @@
 .favColor {
     color: red;
 }
+
+.nav2Container {
+    width: 100%;
+    height: 4.5rem;
+    background-color: rgb(106, 146, 202);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 5px;
+}
+
+@media (max-width: 400px) {
+    .nav2Container {
+        flex-direction: column;
+        height: auto;
+    }
+}
