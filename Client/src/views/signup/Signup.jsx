@@ -10,6 +10,7 @@ import { faEye, faEyeSlash, faUserCircle } from "@fortawesome/free-solid-svg-ico
 import Validations from '../../components/componentOfUser1/editProfile/Validations';
 
 const Signup = () => {
+
     const apiURL = 'http://localhost:3001/api/signup';
 
     const [name, setName] = useState("");
@@ -18,6 +19,20 @@ const Signup = () => {
     const [confirmPassword, SetConfirmPassword] = useState("");
     const [entity, setEntity] = useState("Hospital");
     const [type, setType] = useState("admin");
+
+    const apiURLs = {
+        user1: 'http://localhost:3001/api/signup1',
+        user2: 'http://localhost:3001/api/signup2',
+        user3: 'http://localhost:3001/api/signup3',
+
+    };
+
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [confirmPassword, SetConfirmPassword] = useState("")
+    const [entity, setEntity] = useState("Hospital") // Establece un valor predeterminado
+    const [userNumber, setUserNumber] = useState(1) // Número de usuario, comienza con 1
     const [showPwd, setShowPwd] = useState(false);
     const [showPwds, setShowPwds] = useState(false);
     const [image, setImage] = useState(null);
