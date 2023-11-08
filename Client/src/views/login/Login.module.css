@@ -1,25 +1,22 @@
+/* styles.css */
+
+/* Secciones */
 .formcontainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 75vh;
-  /* Ajustar la altura */
+  height: 70vh;
   background-image: url('../../../FONDOASSIST.jpg');
-  /* Ruta de tu imagen de fondo formal */
   background-size: cover;
-  /* Ajustar la imagen al tamaño del contenedor */
   background-position: center;
-  /* Centrar la imagen */
   background-color: #8ce4e0;
   position: relative;
 }
 
-/* Agregar una superposición semitransparente */
+/* Capa superpuesta semitransparente */
 .formcontainer::before {
   content: "";
-  /* Agregar contenido pseudo ::before */
   background-color: rgba(0, 0, 0, 0.235);
-  /* Color de fondo semitransparente */
 }
 
 .form {
@@ -27,19 +24,15 @@
   flex-direction: column;
   background-color: rgba(255, 255, 255, 0.8);
   gap: 10px;
-  /* Reducir el espacio entre los elementos */
   max-width: 1000px;
-  /* Reducir el ancho máximo */
   padding: 20px;
-  /* Reducir el relleno */
   border-radius: 20px;
-  /* Reducir la curvatura de los bordes */
   position: relative;
 }
 
+/* Títulos */
 .title {
   font-size: 24px;
-  /* Reducir el tamaño de fuente */
   color: royalblue;
   font-weight: 700;
   letter-spacing: -1px;
@@ -47,7 +40,6 @@
   display: flex;
   align-items: center;
   padding-left: 20px;
-  /* Reducir el espacio izquierdo */
   margin-bottom: 10px;
 }
 
@@ -56,41 +48,34 @@
   position: absolute;
   content: "";
   height: 12px;
-  /* Reducir el tamaño */
   width: 12px;
-  /* Reducir el tamaño */
   border-radius: 50%;
   left: 0px;
   background-color: royalblue;
 }
 
-.title::before {
+.title::before,
+.title::after {
   width: 16px;
-  /* Reducir el tamaño */
   height: 16px;
-  /* Reducir el tamaño */
   background-color: royalblue;
 }
 
 .title::after {
-  width: 16px;
-  /* Reducir el tamaño */
-  height: 16px;
-  /* Reducir el tamaño */
   animation: pulse 1s linear infinite;
 }
 
+/* Mensaje de texto */
 .message {
   color: rgba(88, 87, 87, 0.822);
   font-size: 12px;
-  /* Reducir el tamaño de fuente */
 }
 
+/* Formulario */
 .flex {
   display: flex;
   width: 100%;
   gap: 4px;
-  /* Reducir el espacio entre los elementos */
 }
 
 .form label {
@@ -99,24 +84,18 @@
 
 .form label .input {
   width: 90%;
-  /* Reducir el ancho del campo de entrada */
   padding: 10px;
-  /* Reducir el relleno */
   color: rgb(92, 83, 83);
   font-family: Tahoma, Geneva, Verdana, sans-serif;
   border: 1px solid rgba(105, 105, 105, 0.397);
   border-radius: 8px;
-  /* Reducir la curvatura de los bordes */
 }
 
 .form label .input+span {
   position: absolute;
-  left: 8px;
-  /* Reducir la distancia izquierda */
+  left: 20px;
   top: 5px;
-  /* Ajustar la posición superior */
   font-size: 0.8em;
-  /* Reducir el tamaño de fuente */
   cursor: text;
   transition: 0.3s ease;
 }
@@ -124,9 +103,7 @@
 .form label .input:focus+span,
 .form label .input:valid+span {
   top: 26px;
-  /* Ajustar la posición superior */
   font-size: 0.6em;
-  /* Reducir el tamaño de fuente */
   font-weight: 600;
 }
 
@@ -134,37 +111,40 @@
   color: green;
 }
 
-
 .eyeButton {
   display: flex;
   border: none;
-  background: none;
+  background: transparent;
   font-size: 12px;
   cursor: pointer;
   position: absolute;
-  right: 3px;
+  right: 8px;
   top: 50%;
   transform: translateY(-50%);
 }
 
-
-/* styles.module.css */
-.errormessage {
-  color: red;
-  font-size: 0.7em;
-  margin-top: 2px;
+.eyeButton.error {
+  border: none;
+  background: transparent;
+  top: calc(50% - 10px);
+  right: 9px; /* Ajusta la posición cuando aparece el mensaje de error */
 }
 
+
+.error {
+color: red; 
+font-size: 0.7em; 
+margin-top: 2px;
+margin-left: 15px;
+}
+
+/* Estilo para el botón de inicio de sesión */
 .loginButton {
   background-color: #007bff;
-  /* Color de fondo azul, puedes cambiarlo */
   color: #fff;
-  /* Color de texto blanco */
   border: none;
   padding: 10px 20px;
-  /* Ajusta el relleno según tus preferencias */
   border-radius: 5px;
-  /* Redondea los bordes */
   cursor: pointer;
   font-size: 16px;
   margin-top: 10px;

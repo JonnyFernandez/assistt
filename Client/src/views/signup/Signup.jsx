@@ -1,15 +1,25 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import Nav from "../../components/nav/Nav";
 import Footer from "../../components/footer/Footer";
-import style from '../signup/Signup.module.css'
+import style from '../signup/Signup.module.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-
+import { faEye, faEyeSlash, faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import Validations from '../../components/componentOfUser1/editProfile/Validations';
 
 const Signup = () => {
+
+    const apiURL = 'http://localhost:3001/api/signup';
+
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, SetConfirmPassword] = useState("");
+    const [entity, setEntity] = useState("Hospital");
+    const [type, setType] = useState("admin");
+
     const apiURLs = {
         user1: 'http://localhost:3001/api/signup1',
         user2: 'http://localhost:3001/api/signup2',
@@ -25,16 +35,103 @@ const Signup = () => {
     const [userNumber, setUserNumber] = useState(1) // Número de usuario, comienza con 1
     const [showPwd, setShowPwd] = useState(false);
     const [showPwds, setShowPwds] = useState(false);
+    const [image, setImage] = useState(null);
+    const [errors, setErrors] = useState({
+        name: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+    })
 
-    const handleChange = (e) => {
-        const value = e.target.value
-        setEntity(value)
-    }
+    const cloud_name = 'dhyqgl7ie';
+    const upload_preset = 'a2i0wk5f'; 
+    const URL = `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`;
 
-    const handleUserNumberChange = (e) => {
-        const value = parseInt(e.target.value, 10)
-        setUserNumber(value)
-    }
+    const handleImageUpload = async (event) => {
+        try {
+            const file = event.target.files[0];
+            const formData = new FormData();
+            formData.append('file', file); // Asegúrate de adjuntar el archivo con la clave 'file'
+            formData.append('upload_preset', upload_preset);
+    
+            const response = await axios.post(URL, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+    
+            setImage(response.data.secure_url);
+            console.log('Imagen subida:', response.data.secure_url);
+        } catch (error) {
+            console.error('Error al subir la imagen:', error);
+        }
+    };
+    
+    
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const inputErrors = Validations({ name, email, password, confirmPassword });
+
+        setErrors(inputErrors);
+        if (Object.keys(inputErrors).length > 0) {
+            return;
+        }
+        
+        try {
+            const userData = { name, email, password, type };
+            console.log('Datos del usuario:', userData); 
+
+            if (image !== null) {
+                userData.image = image;
+              }
+    
+            const res = await axios.post(apiURL, userData);
+    
+            if (res.status === 201) {
+                localStorage.setItem('userInfo', JSON.stringify({ name, email, type }));
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Usuario Creado Exitosamente',
+                    text: 'Usuario registrado con éxito.'
+                });
+            }
+        } catch (error) {
+            if (error.response && error.response.data.error === 'Este correo electrónico ya está registrado') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Correo Electrónico ya Existe',
+                    text: 'Por favor, inicia sesión en lugar de registrarte.',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error en el registro',
+                    text: 'Ha ocurrido un error durante el registro. Inténtalo nuevamente más tarde.',
+                });
+            }
+            console.error('Error:', error);
+        }
+    };
+    
+
+    const renderEntitySelect = () => {
+        if (type === 'client') {
+            return (
+                <div className={style.selectContainer}>
+                    <label htmlFor="entity">
+                        <p className={style.message}>Seleccionar Entidad:</p>
+                        <select className={style.select} id="entity" value={entity} onChange={(e) => setEntity(e.target.value)}>
+                            <option value="Hospital">Hospital</option>
+                            <option value="Sanatorio">Sanatorio</option>
+                            <option value="Laboratorio">Laboratorio</option>
+                            <option value="Obra Social">Obra Social</option>
+                        </select>
+                    </label>
+                </div>
+            );
+        }
+    };
 
     const toggleShowPassword = (field) => {
         if (field === "password") {
@@ -43,150 +140,109 @@ const Signup = () => {
             setShowPwds(!showPwds);
         }
     };
-
-
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        try {
-            const apiURL = apiURLs[`user${userNumber}`]
-            const res = await axios.post(apiURL, { name, email, password, entity })
-            console.log(res.data);
-
-            if (!res.ok) {
-                // Muestra una notificación de éxito con el usercode de la respuesta del servidor
-                const usercode = res.data; // Accede al usercode en el primer elemento del array
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Usuario Creado Exitosamente',
-                    text: `${usercode}`,
-                });
-            } else {
-                // Muestra una notificación de error
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Algo Salió Mal',
-                    text: `No se pudo crear el usuario. Respuesta del servidor: ${res.data}`,
-                });
-            }
-        } catch (error) {
-            // Muestra una notificación de error en caso de error de red u otro error
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Ha ocurrido un error. Por favor, inténtalo de nuevo más tarde.',
-            });
-            console.log(error);
-        }
-    }
-
-    const generateUserNumberOptions = () => {
-        const userTypes = ["Cliente", "Revisor", "Admin.", "Proveedor"];
-        const options = userTypes.map((userType, index) => (
-            <option key={index} value={index + 1}>{userType}</option>
-        ));
-        return options;
-    }
-
-    // Renderiza el campo de selección de entidad solo para el primer usuario
-    const renderEntitySelect = () => {
-        if (userNumber === 1) {
-            return (
-                <div className={style.selectContainer}>
-                    <label htmlFor="entity">
-                        <p className={style.message}>Seleccionar Entidad:</p>
-                        <select className={style.select} id="entity" onChange={handleChange}>
-                            <option value="Hospital">Hospital</option>
-                            <option value="Sanatorio">Sanatorio</option>
-                            <option value="Laboratorio">Laboratorio</option>
-                            <option value="Obra Social">Obra Social</option>
-                        </select><br />
-                    </label>
-                </div>
-            );
-        }
-    }
+    
 
     return (
         <div>
             <Nav />
             <div className={style.formcontainer}>
-                <form className={style.form} onSubmit={handleSubmit} >
-                    <p className={style.title} >Regístrate</p>
+                <form className={style.form} onSubmit={handleSubmit}>
+                    <p className={style.title}>Regístrate</p>
                     <p className={style.message}>Crea una cuenta nueva</p>
 
                     <div className={style.flex}>
-                        <label htmlFor="name">
-                            <input className={style.input} type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
-                            <span>Nombre</span>
-                        </label>
+                    <label htmlFor="name">
+                        <input className={style.input} type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
+                        <span>Nombre</span>
+                        {errors.name && <p className={style.error}>{errors.name}</p>}
+                    </label>
 
                         <label htmlFor="email">
                             <input className={style.input} type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                             <span>Email</span>
+                            {errors.email && <p className={style.error}>{errors.email}</p>}
                         </label>
                     </div>
-
 
                     <div className={style.flex}>
-                        <label htmlFor="password">
-                            <input
-                                className={style.input}
-                                type={showPwd ? "text" : "password"} // Usa showPwd aquí
-                                id="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
-                            <span>Contraseña</span>
-                            <button
-                                type="button"
-                                onClick={() => toggleShowPassword("password")}
-                                className={style.eyeButton}
-                            >
-                                <FontAwesomeIcon icon={showPwd ? faEye : faEyeSlash} />
-                            </button>
-                        </label>
+    <label htmlFor="password">
+        <input
+            className={style.input}
+            type={showPwd ? "text" : "password"}
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+        />
+        <span>Contraseña</span>
+        <div className={`${style.eyeButton} ${errors.password ? style.error : ''}`}>
+            <button className={style.eyeButton}
+                type="button"
+                onClick={() => toggleShowPassword("password")}
+            >
+                <FontAwesomeIcon icon={showPwd ? faEye : faEyeSlash} />
+            </button>
+        </div>
+        {errors.password && <p className={style.error}>{errors.password}</p>}
+    </label>
 
-                        <label htmlFor="confirmPassword">
-                            <input
-                                className={style.input}
-                                type={showPwds ? "text" : "password"} // Usa showPwds aquí
-                                id="confirmPassword"
-                                value={confirmPassword}
-                                onChange={(e) => SetConfirmPassword(e.target.value)}
-                            />
-                            <span>Confirmar Contraseña</span>
-                            <button
-                                type="button"
-                                onClick={() => toggleShowPassword("confirmPassword")}
-                                className={style.eyeButton}
-                            >
-                                <FontAwesomeIcon icon={showPwds ? faEye : faEyeSlash} />
-                            </button>
-                        </label>
-                    </div>
+    <label htmlFor="confirmPassword">
+        <input
+            className={style.input}
+            type={showPwds ? "text" : "password"}
+            id="confirmPassword"
+            value={confirmPassword}
+            onChange={(e) => SetConfirmPassword(e.target.value)}
+        />
+        <span>Confirmar Contraseña</span>
+        <div className={`${style.eyeButton} ${errors.confirmPassword ? style.error : ''}`}>
+            <button className={style.eyeButton}
+                type="button"
+                onClick={() => toggleShowPassword("confirmPassword")}
+            >
+                <FontAwesomeIcon icon={showPwds ? faEye : faEyeSlash} />
+            </button>
+        </div>
+        {errors.confirmPassword && <p className={style.error}>{errors.confirmPassword}</p>}
+    </label>
+</div>
+
 
                     <label htmlFor="typeUser">
                         <p className={style.message}>Tipo de Usuario:</p>
-                        <select className={style.select} id="typeUser"
-                            onChange={handleUserNumberChange}>
-                            {generateUserNumberOptions()}
+                        <select className={style.select} id="typeUser" onChange={(e) => setType(e.target.value)}>
+                            <option value="admin">Admin</option>
+                            <option value="client">Cliente</option>
+                            <option value="supplier">Proveedor</option>
                         </select>
                     </label>
 
-
-                    {/* Renderiza el campo de selección de entidad solo para el primer usuario */}
                     {renderEntitySelect()}
+
+                    <label htmlFor="image" className={style.imageLabel}>
+                        <p className={style.message}>Imagen de perfil: (opcional)</p>
+                        <div className={style.imagePreview}>
+                            {image ? (
+                                <img src={image} alt="Imagen de perfil" className={style.roundedImage} />
+                            ) : (
+                                <FontAwesomeIcon icon={faUserCircle} size="5x" color="#888" />
+                            )}
+                        </div>
+                        <input type="file" accept="image/*" id="image" onChange={handleImageUpload} className={style.inputImage} />
+                    </label>
+
                     <div className={style.buttonContainer}>
                         <button className={style.submit} type="submit">Registrarse</button>
                         <Link className={style.submit} to={'/'}>Login</Link>
                     </div>
                 </form>
             </div>
-            <div>
-                <Footer />
-            </div>
+            <Footer />
         </div>
-    )
-}
+    );
+};
 
 export default Signup;
+
+
+
+

@@ -101,6 +101,45 @@
     box-shadow: 0px 0px 8px wheat;
 }
 
+
+/* Estilos para el contenedor de la imagen de perfil */
+.userImageContainer {
+    width: 50px; /* Tamaño del contenedor circular */
+    height: 50px; /* Tamaño del contenedor circular */
+    border-radius: 50%; /* Hacer un círculo */
+    overflow: hidden; /* Ocultar cualquier contenido que se desborde */
+}
+
+.userImage {
+    width: 100%; /* Ocupar todo el ancho del contenedor */
+    height: 100%; /* Ocupar toda la altura del contenedor */
+    object-fit: cover; /* Ajustar la imagen para cubrir el contenedor */
+}
+
+.userInitials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #ccc; /* Color de fondo para las iniciales si no hay imagen */
+    border-radius: 50%; /* Hacer un círculo */
+    font-size: 20px; /* Tamaño de las iniciales */
+    color: #fff; /* Color de las iniciales */
+    text-transform: uppercase; /* Mostrar las iniciales en mayúsculas */
+}
+/* Estilos para el contenedor de la imagen de perfil */
+.userText {
+    margin-left: 10px; /* Ajustar el espacio entre la imagen y el texto */
+    display: flex;
+    align-items: center;
+    font-size: smaller; /* Ajustar el tamaño del texto */
+}
+
+.userText small {
+    font-size: x-small; /* Ajustar el tamaño de la etiqueta <small> */
+}
+
 /* CartIcon.module.css */
 .greenDot {
     width: 8px;
@@ -133,3 +172,4 @@
         height: auto;
     }
 }
+

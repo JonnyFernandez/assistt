@@ -8,7 +8,6 @@
    
   }
 
-
   .productList {
     list-style: none;
     font-family: Calibri, 'Trebuchet MS', sans-serif;
@@ -16,6 +15,9 @@
     margin-bottom: 10px;
     display: flex; /* Utiliza flexbox para alinear elementos horizontalmente */
     flex-direction: column;
+    overflow-y: scroll;
+    font-size: xx-small;
+    height: 310px;
   }
   
   .productListItem {

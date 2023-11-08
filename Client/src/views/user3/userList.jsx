@@ -52,37 +52,42 @@ const UserList = () => {
     setFilteredUsers(filteredResults);
   };
 
-  const toggleActive = (id) => {
-    const updatedUsers = filteredUsers.map((user) => {
-      if (user.id === id) {
-        const updatedUser = { ...user, active: !user.active };
-        return updatedUser;
-      }
-      return user;
-    });
-
-    const active = updatedUsers.find((user) => user.id === id).active;
-
-    // Llamar a la acción para actualizar el estado global y el servidor
-    dispatch(bannedUsers(id, { active }))
-      .then((response) => {
-        const message = `Usuario ${active ? 'activado' : 'desactivado'}`;
-        const icon = active ? '🟢' : '🔴'; // Ícono para identificar la activación o desactivación
-        toast.success(
-          <div>
-            {icon} {message}
-          </div>
-        );
-      })
-      .catch((error) => {
-        console.error("Error en la llamada a bannedUsers:", error);
-        toast.error("Hubo un error al actualizar el usuario");
+  const toggleActive = async (id) => {
+    try {
+      const userToToggle = filteredUsers.find((user) => user.id === id);
+      const active = !userToToggle.active;
+  
+      // Llamar a la acción para actualizar el estado global y el servidor
+      await dispatch(bannedUsers(id, { active }));
+  
+      // Una vez que la acción asincrónica se completa con éxito, actualiza el estado local
+      const updatedUsers = filteredUsers.map((user) => {
+        if (user.id === id) {
+          return { ...user, active };
+        }
+        return user;
       });
-
-    localStorage.setItem(`userActive_${id}`, active);
-
-    setFilteredUsers(updatedUsers);
+  
+      // Actualizar el estado local
+      setFilteredUsers(updatedUsers);
+  
+      // Actualizar el estado en localStorage
+      localStorage.setItem(`userActive_${id}`, active);
+  
+      // Muestra la notificación de éxito
+      const message = `Usuario ${active ? 'activado' : 'desactivado'}`;
+      const icon = active ? '🟢' : '🔴'; // Icono para identificar la activación o desactivación
+      toast.success(
+        <div>
+          {icon} {message}
+        </div>
+      );
+    } catch (error) {
+      console.error("Error en la llamada a bannedUsers:", error);
+      toast.error("Hubo un error al actualizar el usuario");
+    }
   };
+  
   
 
   return (
