@@ -1,75 +1,82 @@
 .cardContainer {
-    margin-top: 10px;
-    /* background-color: aqua; */
+    width: 100%;
+    height: 80px;
     display: flex;
-    flex-direction: row;
-
+    border: 1px solid black;
+    margin-bottom: 10px;
+    justify-content: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 
 .card {
+
     display: flex;
-    flex-direction: row;
-    /* justify-content: space-around; */
-    width: 32%;
-    height: auto;
-    width: 100%;
-    border-bottom: 1px solid black;
+    height: 80px;
+    width: 95%;
 }
 
+.divCode1 {
+    width: 100px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 
+}
 
 .divCode {
     height: auto;
     width: 400px;
-    margin-left: 80px;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
     /* background-color: red; */
 
 }
 
-.code {
+.divCodeType {
     height: auto;
-    width: 10px;
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    column-gap: 2rem;
-    margin-left: 19px;
-    justify-items: center;
-
-}
-
-.divCode1 {
-    height: auto;
-    width: 100px;
-    /* background-color: rgb(23, 99, 203); */
-    margin-left: -1rem;
-    align-items: center;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 2rem;
-}
-
-.divBotones {
-    background-color: rgb(25, 2, 2);
-    position: relative;
-    margin-right: 120px;
-
-}
-
-
-.buttoContainer {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width: 150px;
+    margin-left: 20px;
     display: flex;
-    flex-direction: row;
-    margin: auto 2.5rem;
-    background-color: red;
+    align-items: center;
+    /* background-color: rgb(41, 132, 244); */
+}
+
+.divCodeStock {
+    height: auto;
+    width: 150px;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.botones {
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    /* background-color: aliceblue; */
+}
+
+.cartButton {
+    /* background-color: blue; */
+    width: 100%;
+    height: 50%;
+    /* font-size: x-large; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 
 }
 
-.classCart1 {
-    background-color: rgb(38, 157, 176);
+.favButton {
+    /* background-color: red; */
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

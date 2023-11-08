@@ -1,14 +1,12 @@
-import { useState } from 'react'
-import t from './EditProfile.module.css'
-import { useDispatch } from 'react-redux'
-import { addInfo } from '../../../redux/actions'
-import Validation from './Validations'
-import axios from 'axios'
-import cloudinary from 'cloudinary-core';
-
+import { useState } from 'react';
+import t from './EditProfile.module.css';
+import { useDispatch } from 'react-redux';
+import { addInfo } from '../../../redux/actions';
+import Validation from './Validations';
+import axios from 'axios';
 
 const EditProfile = () => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     const id = userInfo?.id || '';
@@ -17,101 +15,61 @@ const EditProfile = () => {
         company: '',
         address: '',
         phone: '',
-        image: ''
-    })
-
-    console.log(inputs.image);
-
+        image: '', // Guarda la URL de la imagen, no el objeto de archivo
+    });
 
     const [errors, setErrors] = useState({
         company: '',
         address: '',
-        phone: ''
-    })
-
-
+        phone: '',
+    });
 
     const handleChange = (event) => {
-        let property = event.target.name;
-        let value = event.target.value
-        setInputs({ ...inputs, [property]: value })
+        const { name, value } = event.target;
+        setInputs({ ...inputs, [name]: value });
+        setErrors(Validation({ ...inputs, [name]: value }));
+    };
 
-        setErrors(
-            Validation({
-                ...inputs,
-                [event.target.name]: event.target.value,
-            })
-        )
-
-    }
-
-    // -------------------------------------------------------------------------
-
-
-
-    // const handleImageChange = (event) => {
-    //     const file = event.target.files[0];
-    //     setInputs({ ...inputs, image: file });
-    // };
-
-    // -------------------------------------------------------------------------
-
-
-
-
-    }
-
-    // -----------------CODIGO CLOUDINARY--------------------------------------------------------
-
-
-    const cloud_name = "dkx6y2e2z";
-    const URL = `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`;
-    const CLOUDINARI_PRESET = 'assistt_file'
-
-
-    function handleUploadImage(event) {
+    const handleUploadImage = async (event) => {
         const file = event.target.files[0];
 
         const formData = new FormData();
-        formData.append("file", file);
-        formData.append("upload_preset", CLOUDINARI_PRESET);
+        formData.append('file', file);
+        formData.append('upload_preset', 'assistt_file'); // Cambiado el nombre del preset aquí
 
-        axios.post(URL, formData, {
-            headers: {
-                "Content-Type": "multipart/form-data"
-            }
-        })
-            .then((response) => {
-                setInputs({ ...inputs, image: response.data.secure_url });
-            })
-            .catch((err) => alert(err));
-    }
-
-
-    // -------------------------------------------------------------------------
-
-
+        try {
+            const response = await axios.post('https://api.cloudinary.com/v1_1/dkx6y2e2z/image/upload', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+            setInputs({ ...inputs, image: response.data.secure_url });
+        } catch (error) {
+            console.error('Error al cargar la imagen:', error);
+            // Trata el error aquí (muestra un mensaje de error, etc.)
+        }
+    };
 
     const handleSubmit = (event) => {
-        event.preventDefault()
-        if (!inputs.company && !inputs.address && !inputs.phone) {
-            return alert('ingesar informacion')
+        event.preventDefault();
+        if (!inputs.company || !inputs.address || !inputs.phone || !inputs.image) {
+            return alert('Por favor, completa todos los campos y sube una imagen.');
         }
 
-
-        dispatch(addInfo(id, inputs))
+        dispatch(addInfo(id, inputs));
         setInputs({
             company: '',
             address: '',
             phone: '',
-            image: ''
-
+            image: '',
         });
         setErrors({
             company: '',
             address: '',
             phone: '',
-        })
+
+        });
+    };
 
 
     return (
@@ -125,11 +83,13 @@ const EditProfile = () => {
 
                     <div className={t.divs}>
                         <label>Imagen </label>
-                        <input className={`${t.inputs} ${t.inputs_file}`} type="text"
+                        <input className={`${t.inputs} ${t.inputs_file}`} type="file"
                             name="image"
+
                             value={inputs.image}
                             onChange={handleChange}
                             placeholder='Ingresar imagen (Opcional)'
+                            onChange={handleUploadImage}
                         />
 
                     </div>

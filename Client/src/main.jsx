@@ -4,9 +4,11 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import App from './App.jsx';
 import { store } from './redux/store.js';
+
 import { Landing, User1, User2, User3, User4, Profile1, Profile3, Cart, Orders, Fav, Login, Signup, OrderDetail, AllOrderHistory } from './views/index.jsx';
 import ProtectedRoute from './authAll/ProtectedRoute.jsx';
 import { AuthProvider } from './authAll/auth/AuthProvider.jsx';
+
 
 import UserList from './views/user3/userList.jsx';
 
@@ -53,6 +55,10 @@ const router = createBrowserRouter([
       {
         path: '/user2',
         element: <User2 />
+      },
+      {
+        path: '/Profile2',
+        element: <Profile2 />
       },
 
     ]
