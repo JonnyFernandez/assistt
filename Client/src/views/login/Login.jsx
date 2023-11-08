@@ -85,7 +85,7 @@ const Login = () => {
                 client: '/user1',
                 banned: '/login',
                 admin: '/user3',
-                supplier: '/user2',
+                supplier: '/user4',
             };
             if (userTypeToRoute.hasOwnProperty(userType)) {
                 const userRoute = userTypeToRoute[userType];
