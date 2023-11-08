@@ -182,27 +182,36 @@
     .eyeButton {
       display: flex;
       border: none;
-      background: none;
+      background: transparent;
       font-size: 12px;
       cursor: pointer;
       position: absolute;
-      right: 15px;
+      right: 8px;
       top: 50%;
       transform: translateY(-50%);
-    }
-    
+  }
+  
+  .eyeButton.error {
+      border: none;
+      background: transparent;
+      top: calc(50% - 20px);
+      right: 9px; /* Ajusta la posición cuando aparece el mensaje de error */
+  }
+
+
+.error {
+  color: red; 
+  font-size: 0.7em; 
+  margin-top: 2px;
+  margin-left: 15px;
+}
+
   /* Estilizar la lista de entidades seleccionadas */
   ul.entitylist {
       list-style: none;
       padding: 0;
     }
   
-    /* styles.module.css */
-  .errormessage {
-    color: red; 
-    font-size: 0.7em; 
-    margin-top: 2px;
-  }
 
   .loginButton {
     background-color: #007bff; /* Color de fondo azul, puedes cambiarlo */
@@ -222,8 +231,7 @@
   .imageLabel {
     display: flex;
     flex-direction: column;
-    align-items: center;
-   
+    align-items: center;  
     height: 110px;
   }
   
@@ -255,3 +263,4 @@
   height: 100%;
   object-fit: cover;
 }
+

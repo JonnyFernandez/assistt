@@ -7,9 +7,9 @@ import Footer from "../../components/footer/Footer";
 import style from '../signup/Signup.module.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash, faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import Validations from '../../components/componentOfUser1/editProfile/Validations';
 
 const Signup = () => {
-
     const apiURL = 'http://localhost:3001/api/signup';
 
     const [name, setName] = useState("");
@@ -18,23 +18,15 @@ const Signup = () => {
     const [confirmPassword, SetConfirmPassword] = useState("");
     const [entity, setEntity] = useState("Hospital");
     const [type, setType] = useState("admin");
-
-    const apiURLs = {
-        user1: 'http://localhost:3001/api/signup1',
-        user2: 'http://localhost:3001/api/signup2',
-        user3: 'http://localhost:3001/api/signup3',
-
-    };
-
-    const [name, setName] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [confirmPassword, SetConfirmPassword] = useState("")
-    const [entity, setEntity] = useState("Hospital") // Establece un valor predeterminado
-    const [userNumber, setUserNumber] = useState(1) // Número de usuario, comienza con 1
     const [showPwd, setShowPwd] = useState(false);
     const [showPwds, setShowPwds] = useState(false);
     const [image, setImage] = useState(null);
+    const [errors, setErrors] = useState({
+        name: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+    })
 
     const cloud_name = 'dhyqgl7ie';
     const upload_preset = 'a2i0wk5f'; 
@@ -63,6 +55,14 @@ const Signup = () => {
     
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const inputErrors = Validations({ name, email, password, confirmPassword });
+
+        setErrors(inputErrors);
+        if (Object.keys(inputErrors).length > 0) {
+            return;
+        }
+        
         try {
             const userData = { name, email, password, type };
             console.log('Datos del usuario:', userData); 
@@ -74,7 +74,7 @@ const Signup = () => {
             const res = await axios.post(apiURL, userData);
     
             if (res.status === 201) {
-                localStorage.setItem('userInfo', JSON.stringify({ name, image, email, type }));
+                localStorage.setItem('userInfo', JSON.stringify({ name, email, type }));
                 Swal.fire({
                     icon: 'success',
                     title: 'Usuario Creado Exitosamente',
@@ -82,7 +82,7 @@ const Signup = () => {
                 });
             }
         } catch (error) {
-            if (error.response === 'Este correo electrónico ya está registrado') {
+            if (error.response && error.response.data.error === 'Este correo electrónico ya está registrado') {
                 Swal.fire({
                     icon: 'error',
                     title: 'Correo Electrónico ya Existe',
@@ -136,54 +136,61 @@ const Signup = () => {
                     <p className={style.message}>Crea una cuenta nueva</p>
 
                     <div className={style.flex}>
-                        <label htmlFor="name">
-                            <input className={style.input} type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
-                            <span>Nombre</span>
-                        </label>
+                    <label htmlFor="name">
+                        <input className={style.input} type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
+                        <span>Nombre</span>
+                        {errors.name && <p className={style.error}>{errors.name}</p>}
+                    </label>
 
                         <label htmlFor="email">
                             <input className={style.input} type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                             <span>Email</span>
+                            {errors.email && <p className={style.error}>{errors.email}</p>}
                         </label>
                     </div>
 
                     <div className={style.flex}>
-                        <label htmlFor="password">
-                            <input
-                                className={style.input}
-                                type={showPwd ? "text" : "password"}
-                                id="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
-                            <span>Contraseña</span>
-                            <button
-                                type="button"
-                                onClick={() => toggleShowPassword("password")}
-                                className={style.eyeButton}
-                            >
-                                <FontAwesomeIcon icon={showPwd ? faEye : faEyeSlash} />
-                            </button>
-                        </label>
+    <label htmlFor="password">
+        <input
+            className={style.input}
+            type={showPwd ? "text" : "password"}
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+        />
+        <span>Contraseña</span>
+        <div className={`${style.eyeButton} ${errors.password ? style.error : ''}`}>
+            <button className={style.eyeButton}
+                type="button"
+                onClick={() => toggleShowPassword("password")}
+            >
+                <FontAwesomeIcon icon={showPwd ? faEye : faEyeSlash} />
+            </button>
+        </div>
+        {errors.password && <p className={style.error}>{errors.password}</p>}
+    </label>
 
-                        <label htmlFor="confirmPassword">
-                            <input
-                                className={style.input}
-                                type={showPwds ? "text" : "password"}
-                                id="confirmPassword"
-                                value={confirmPassword}
-                                onChange={(e) => SetConfirmPassword(e.target.value)}
-                            />
-                            <span>Confirmar Contraseña</span>
-                            <button
-                                type="button"
-                                onClick={() => toggleShowPassword("confirmPassword")}
-                                className={style.eyeButton}
-                            >
-                                <FontAwesomeIcon icon={showPwds ? faEye : faEyeSlash} />
-                            </button>
-                        </label>
-                    </div>
+    <label htmlFor="confirmPassword">
+        <input
+            className={style.input}
+            type={showPwds ? "text" : "password"}
+            id="confirmPassword"
+            value={confirmPassword}
+            onChange={(e) => SetConfirmPassword(e.target.value)}
+        />
+        <span>Confirmar Contraseña</span>
+        <div className={`${style.eyeButton} ${errors.confirmPassword ? style.error : ''}`}>
+            <button className={style.eyeButton}
+                type="button"
+                onClick={() => toggleShowPassword("confirmPassword")}
+            >
+                <FontAwesomeIcon icon={showPwds ? faEye : faEyeSlash} />
+            </button>
+        </div>
+        {errors.confirmPassword && <p className={style.error}>{errors.confirmPassword}</p>}
+    </label>
+</div>
+
 
                     <label htmlFor="typeUser">
                         <p className={style.message}>Tipo de Usuario:</p>

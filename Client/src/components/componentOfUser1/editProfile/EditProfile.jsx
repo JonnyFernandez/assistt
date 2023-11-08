@@ -67,6 +67,7 @@ const EditProfile = () => {
             company: '',
             address: '',
             phone: '',
+
         });
     };
 
@@ -85,9 +86,10 @@ const EditProfile = () => {
                         <input className={`${t.inputs} ${t.inputs_file}`} type="file"
                             name="image"
 
+                            value={inputs.image}
+                            onChange={handleChange}
+                            placeholder='Ingresar imagen (Opcional)'
                             onChange={handleUploadImage}
-
-
                         />
 
                     </div>

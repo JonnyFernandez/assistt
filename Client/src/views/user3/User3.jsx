@@ -10,6 +10,7 @@ import MoreSeller from '../../components/componentUser3/moreSeller/MoreSeller';
 import Price from '../../components/componentUser3/price/Price';
 import Footer from '../../components/footer/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import DashboardEntry from '../../components/componentUser3/DashboardEntry';
 
 const User3 = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,8 @@ const User3 = () => {
   const [showOrdersList, setShowOrdersList] = useState(false);
   const [showMoreSeller, setShowMoreSeller] = useState(false);
   const [showPrice, setShowPrice] = useState(false);
+  const [showDashboard, setShowDashboard] = useState(true);
+
 
   useEffect(() => {
     dispatch(getOrders());
@@ -34,12 +37,17 @@ const User3 = () => {
     });
   };
 
+  useEffect(() => {
+    setShowDashboard(true); // Hacer que el DashboardEntry se muestre al principio
+  }, []);
+
   const showUserListOnClick = () => {
     setShowUserList(true);
     setShowOrdersList(false);
     setShowMoreSeller(false);
     setShowPrice(false);
     setSelectedOrder(null);
+    setShowDashboard(false);
   };
 
   const showOrdersListOnClick = () => {
@@ -48,6 +56,7 @@ const User3 = () => {
     setShowMoreSeller(false);
     setShowPrice(false);
     setSelectedOrder(null);
+    setShowDashboard(false);
   };
 
   const showMoreSellerOnClick = () => {
@@ -55,6 +64,7 @@ const User3 = () => {
     setShowPrice(false);
     setShowUserList(false);
     setShowOrdersList(false);
+    setShowDashboard(false);
   };
 
   const showPriceOnClick = () => {
@@ -62,14 +72,18 @@ const User3 = () => {
     setShowPrice(true);
     setShowUserList(false);
     setShowOrdersList(false);
+    setShowDashboard(false);
   };
 
   // Filtrar órdenes que tienen la propiedad "aprobado" en null
   const pendingOrders = orders.filter((order) => order.aprobado === null);
 
+  
+
   return (
     <div>
       <Nav />
+  
       <div className={style.body}>
         {showOrdersList && (
           <div className={style.left}>
@@ -123,27 +137,40 @@ const User3 = () => {
               </button>
             </div>
           </div>
+
           <div className={style.info}>
           <div className={style.infoLeft}>
-              {selectedOrder ? (
-                <OrderDetail
-                  approvalStatus={approvalStatus}
-                  updateApprovalStatus={updateApprovalStatus}
-                />
-              ) : showUserList ? (
-                <UserList users={searchResults} />
-              ) : showMoreSeller ? (
-                <MoreSeller />
-              ) : showPrice ? (
-                <Price />
-              ) : null}
-            </div>
+          <div className={style.infoLeft}>
+            {showDashboard ? (
+                <DashboardEntry
+                title="Panel de Control"
+                description="¡Bienvenido! Este panel proporciona una visión general de tus datos más importantes, permitiéndote supervisar, analizar y tomar decisiones fundamentadas basadas en la información presentada."
+                image="https://img.freepik.com/fotos-premium/fondo-borroso-diseno-interior-oficina-moderna-espacio-trabajo-contemporaneo-negocios-creativos_31965-68135.jpg" // Aquí colocas la URL de la imagen
+              />
+            ) : (
+              <>
+                {selectedOrder ? (
+                  <OrderDetail
+                    approvalStatus={approvalStatus}
+                    updateApprovalStatus={updateApprovalStatus}
+                  />
+                ) : showUserList ? (
+                  <UserList users={searchResults} />
+                ) : showMoreSeller ? (
+                  <MoreSeller />
+                ) : showPrice ? (
+                  <Price />
+                ) : null}
+              </>
+            )}
           </div>
         </div>
       </div>
+    </div>
+    </div>
       <Footer />
     </div>
-  );
+  )
 };
 
 export default User3;

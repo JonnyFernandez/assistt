@@ -45,7 +45,6 @@ module.exports = (sequelize) => { // defino el modelo
         phone: {
             type: DataTypes.STRING,
             allowNull: true,
-            unique: true
         },
         type: {
             type: DataTypes.ENUM,

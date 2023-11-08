@@ -9,6 +9,7 @@ import Nav from "../../components/nav/Nav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../../components/footer/Footer";
+import LoginValidation from "./LoginValidations";
 
 const Login = () => {
     const navigate = useNavigate();
@@ -17,11 +18,22 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPwd, setShowPwd] = useState(false);
+    const [errors, setErrors] = useState({
+        email: '',
+        password: '',
+    })
 
     const auth = useAuth();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const inputErrors = LoginValidation({ email, password });
+
+        setErrors(inputErrors);
+        if (Object.keys(inputErrors).length > 0) {
+            return;
+        }
         try {
             const res = await axios.post(apiURL, { email, password });
             const aux = res.data;
@@ -73,7 +85,7 @@ const Login = () => {
                 client: '/user1',
                 banned: '/login',
                 admin: '/user3',
-                supplier: '/user2',
+                supplier: '/user4',
             };
             if (userTypeToRoute.hasOwnProperty(userType)) {
                 const userRoute = userTypeToRoute[userType];
@@ -95,17 +107,24 @@ const Login = () => {
                     <p className={style.title}>Login</p>
                     <p className={style.message}>Ingresá a tu cuenta</p>
                     <div className={style.flex}>
-                        <label htmlFor="usercode">
-                            <input className={style.input} type="text" id="usercode" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <label htmlFor="email">
+                            <input className={style.input} type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                             <span>Email</span>
+                            {errors.email && <p className={style.error}>{errors.email}</p>}
                         </label>
                     </div>
                     <label htmlFor="password">
                         <input className={style.input} type={showPwd ? "text" : "password"} id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                         <span>Contraseña</span>
-                        <button type="button" onClick={toggleShowPassword} className={style.eyeButton}>
-                            <FontAwesomeIcon icon={showPwd ? faEye : faEyeSlash} />
-                        </button>
+                        <div className={`${style.eyeButton} ${errors.password ? style.error : ''}`}>
+                            <button className={style.eyeButton}
+                                type="button"
+                                onClick={() => toggleShowPassword("password")}
+                            >
+                                <FontAwesomeIcon icon={showPwd ? faEye : faEyeSlash} />
+                            </button>
+                        </div>
+                            {errors.password && <p className={style.error}>{errors.password}</p>}
                     </label>
                     <button className={style.loginButton}>Login</button>
                 </form>
