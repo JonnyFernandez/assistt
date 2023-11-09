@@ -3,6 +3,8 @@ import style from './DashboardEntry.module.css';
 
 const DashboardEntry = ({ title, description, image }) => {
   return (
+      <div className="">
+        
     <div className={style.dashboardEntry}>
       <div className={style.entryImage}>
         <img src={image} alt="Entry" className={style.entryImage} />
@@ -12,6 +14,7 @@ const DashboardEntry = ({ title, description, image }) => {
         <p className={style.entryDescription}>{description}</p>
       </div>
     </div>
+      </div>
   );
 };
 
