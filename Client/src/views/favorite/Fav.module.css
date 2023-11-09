@@ -1,71 +1,43 @@
 .Fav {
+    width: 100%;
+    height: 705px;
+    background-color: #f5ebe0;
+}
+
+.headerFav {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    height: 700px;
-    /* align-items: center; */
-    /* background-color: #45a049; */
 }
 
-.backContainer {
+.SubNav {
+    width: 100%;
+    height: 4.5rem;
+    background-color: rgb(23, 99, 203);
     display: flex;
-    align-items: center;
+    margin-bottom: 5px;
     justify-content: space-around;
-    /* background-color: red; */
-    margin-top: 1rem;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
 }
 
-.back {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    text-decoration: none;
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.back:hover {
-    background-color: #45a049;
-    opacity: 0.7;
-    color: whitesmoke;
-}
-
-.Container {
-    height: 78%;
-    width: 100%;
-    margin-top: 2rem;
-    background-color: whitesmoke;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.588);
-    display: flex;
-    justify-content: center;
-    border-radius: 2rem;
-
-}
 
 .bodyFav {
-    height: auto;
-    width: 1100px;
-    margin-top: 1rem;
-    background-color: whitesmoke;
-    overflow-x: hidden;
-    font-size: xx-small;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.588);
-
-}
-
-/* ----------- */
-.title {
-    font-family: sans-serif;
-    width: 10rem;
-    height: 2.7rem;
-    font-size: xx-large;
-    background-color: whitesmoke;
+    width: 100%;
+    height: 465px;
     display: flex;
     justify-content: center;
-    /* border: 0.5px solid black; */
+    align-items: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.FavContainer {
+    width: 80%;
+    height: 454px;
+    background-color: rgba(0, 0, 0, 0.067);
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
 }
 
 .emptyFav {
@@ -73,9 +45,9 @@
     align-items: center;
     justify-content: center;
     height: 200px;
-    width: 80%;
+    width: 100%;
     background-color: #f3d8d8;
-    border: 1px solid #ddd;
+    border: 1px solid #e1b6b6;
     border-radius: 5px;
     margin-top: 9rem;
 }
@@ -85,7 +57,25 @@
     color: #555;
 }
 
-.backToHome {
-    color: rgb(29, 80, 233);
-    text-decoration: underline;
+
+.title {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 20rem;
+    height: 2.7rem;
+    font-size: xx-large;
+    /* background-color: whitesmoke; */
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.back_cart {
+    width: auto;
+    height: auto;
+    border-radius: 50%;
+    /* background-color: red; */
+}
+
+.back_cart:hover {
+    box-shadow: 0px 0px 10px whitesmoke;
 }
