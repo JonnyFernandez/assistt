@@ -57,55 +57,53 @@ const HistoryOrder = () => {
     return (
         <div className={h.history}>
 
-            <div className={h.historyContainer}>
 
 
-                <div className={h.historyHeader}>
-
-                    <select onChange={handleOrder}>
-                        <option value={'all'} >FILTRAR POR ESTADO</option>
-
-                        <option value={'pause'}>Pausadas</option>
-                        <option value={'pendding'}>Pendiente</option>
-
-                    </select>
-
-                    <SearchByCode />
-
-                    <select onChange={handleOrder}>
-                        <option> Revisadas</option>
-                        <option value={'approv'}>Aprobado</option>
-                        <option value={'disApprov'}>Desaprobado</option>
-                    </select>
-
-                </div>
-
-
-                <div className={h.historyBody}>
-                    <div className={h.BodyLeft}>
-                        <div className={h.listContainer}>
-                            {
-                                info && info.map(item => (
-                                    <CardHistoryOrder
-                                        key={item.id}
-                                        id={item.id}
-                                        code={item.codeOrder}
-                                        date={item.order_date}
-                                        status={item.aprobado}
-                                        providerC={item.providerCode}
-                                        OnClick={() => handleCardClick(item)}
-                                    />
-                                ))
-                            }
-                        </div>
-                    </div>
-                    <div className={h.BodyRight}>
-                        {showOrderDetail && <OrdersDetailProfile order={selectedOrder} onUpdate={handleUpdateOrders} />}
-                    </div>
-                </div>
-
-
+            <div className={h.historyHeader}>
+                <select onChange={handleOrder}>
+                    <option value={'all'} >FILTRAR POR ESTADO</option>
+                    <option value={'pause'}>Pausadas</option>
+                    <option value={'pendding'}>Pendiente</option>
+                </select>
+                <SearchByCode />
+                <select onChange={handleOrder}>
+                    <option> Revisadas</option>
+                    <option value={'approv'}>Aprobado</option>
+                    <option value={'disApprov'}>Desaprobado</option>
+                </select>
             </div>
+
+
+
+
+
+
+
+
+            <div className={h.historyBody}>
+                <div className={h.BodyLeft}>
+                    <div className={h.listContainer}>
+                        {
+                            info && info.map(item => (
+                                <CardHistoryOrder
+                                    key={item.id}
+                                    id={item.id}
+                                    code={item.codeOrder}
+                                    date={item.order_date}
+                                    status={item.aprobado}
+                                    providerC={item.providerCode}
+                                    OnClick={() => handleCardClick(item)}
+                                />
+                            ))
+                        }
+                    </div>
+                </div>
+                <div className={h.BodyRight}>
+                    {showOrderDetail && <OrdersDetailProfile order={selectedOrder} onUpdate={handleUpdateOrders} />}
+                </div>
+            </div>
+
+
 
 
         </div>
