@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
-import OrderDetail from '../../../views/orders/orderDetail';
-import Footer from '../../footer/Footer';
-import { getOrderUserById } from '../../../redux/actions';
-import style from '../../componentUser3/AllOrders/AllOrderHistory.module.css';
-import Nav from '../../nav/Nav';
+import OrderDetail from '../orders/orderDetail';
+import Footer from '../../components/footer/Footer';
+import { getOrderUserById } from '../../redux/actions';
+import style from './AllOrderHistory.module.css';
+import Nav from '../../components/nav/Nav';
 
 const AllOrderHistory = () => {
   const { id } = useParams();
