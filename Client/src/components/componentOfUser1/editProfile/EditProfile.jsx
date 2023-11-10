@@ -1,15 +1,26 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import t from './EditProfile.module.css';
-import { useDispatch } from 'react-redux';
-import { addInfo } from '../../../redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { addInfo, getUser1 } from '../../../redux/actions';
 import Validation from './Validations';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const EditProfile = () => {
     const dispatch = useDispatch();
-
+    const Profile = useSelector(state => state.profile)
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     const id = userInfo?.id || '';
+
+    const [edit, setEdit] = useState(false);
+    const [showProfile, setShowProfile] = useState(true);
+    const [profileUpdated, setProfileUpdated] = useState(false); // Nuevo estado local para indicar si el perfil se ha actualizado
+    // console.log(profileUpdated);
+    useEffect(() => {
+        // Se obtiene la información del perfil cuando se carga el componente y cuando profileUpdated cambia a true
+        dispatch(getUser1(id));
+    }, [dispatch, id, profileUpdated]);
+
 
     const [inputs, setInputs] = useState({
         company: '',
@@ -68,61 +79,109 @@ const EditProfile = () => {
             address: '',
             phone: '',
         });
+        setProfileUpdated(true);
     };
+    const toggleProfile = () => {
+        setEdit(false)
+        setShowProfile(true)
+    }
+    const toggleEdit = () => {
+        setEdit(true)
+        setShowProfile(false)
+    }
+    function handleSingOut() {
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: '¡Tu sesión actual se cerrará!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sí, cerrar sesión',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                auth.signOut()
+                Swal.fire('¡Sesión cerrada!', 'Tu sesión ha sido cerrada correctamente.', 'success');
+            }
+        });
+    }
 
     return (
         <div className={t.form}>
-            <div className={t.formContainer}>
+            <div className={t.header}> <div className={t.divs} > <h2>Perfil de usuario</h2> </div></div>
+            <div className={t.body}>
+                {edit && <div className={t.formContainer}>
+                    {/* -----------------------Editar........................---------------------------------------------- */}
+                    <form onSubmit={handleSubmit} className={t.form1}>
+                        <div className={t.divs}>
+                            <label>Imagen </label>
+                            <input className={`${t.inputs} ${t.inputs_file}`} type="file"
+                                name="image"
+                                onChange={handleUploadImage}
+                            />
+                        </div>
+                        <div className={t.divs}>
+                            <label htmlFor="">Empresa *</label>
+                            <input className={`${t.inputs} ${t.inputs_file}`}
+                                type="text" name='company' onChange={handleChange} value={inputs.company} placeholder='Ingresar Empresa' />
+                            <p className={t.error}>{errors.company}</p>
+                        </div>
+                        <div className={t.divs}>
+                            <label htmlFor="">Dirección *</label>
+                            <input className={`${t.inputs} ${t.inputs_file}`} type="text" name='address' onChange={handleChange} value={inputs.address} placeholder='Ingresar Domicilio Fiscal' />
+                            <p className={t.error}>{errors.address}</p>
+                        </div>
+                        <div className={t.divs}>
+                            <label htmlFor="">Telefono *</label>
+                            <input className={`${t.inputs} ${t.inputs_file}`} type="text" name='phone' onChange={handleChange} value={inputs.phone} placeholder='Ingresar Telefono' />
+                            <p className={t.error}>{errors.phone}</p>
+                        </div>
+                        <div className={t.divSubmit}>
+                            <button className={t.btnVerde} type='submit'>Agregar</button>
+                        </div>
+                    </form>
+                </div>
+                }
 
-                <form onSubmit={handleSubmit} className={t.form1}>
+                {
+                    showProfile && <div className={t.bodyLeftBody}>
+                        {/* -----------------------Perfil........................---------------------------------------------- */}
+                        <div className={t.bodyLeftHeader}>
+                            <img src={!Profile.image ? "https://cdn-icons-png.flaticon.com/512/666/666201.png" : Profile.image} alt="image" />
 
-                    <div className={t.divs} > <h2>Ingresar Datos / Editar Datos</h2> </div>
+                        </div>
 
+                        <div className={t.divInfo}>
+                            <label htmlFor="">User: </label>
+                            <small> {Profile?.name}</small>
+                        </div>
 
-                    <div className={t.divs}>
-                        <label>Imagen </label>
-                        <input className={`${t.inputs} ${t.inputs_file}`} type="file"
-                            name="image"
-
-                            onChange={handleUploadImage}
-
-
-                        />
+                        <div className={t.divInfo}>
+                            <label htmlFor="">Email: </label>
+                            <small> {Profile?.email}</small>
+                        </div>
+                        <div className={t.divInfo}>
+                            <label htmlFor="">Direccion: </label>
+                            <small>{Profile?.address}</small>
+                        </div>
+                        <div className={t.divInfo}>
+                            <label htmlFor="">Tel: </label>
+                            <small> {Profile?.phone}</small>
+                        </div>
+                        <div className={t.divInfo}>
+                            <label htmlFor="">Empresa: </label>
+                            <small> {Profile?.company}</small>
+                        </div>
 
                     </div>
-
-                    <div className={t.divs}>
-                        <label htmlFor="">Empresa *</label>
-                        <input className={`${t.inputs} ${t.inputs_file}`}
-                            type="text" name='company' onChange={handleChange} value={inputs.company} placeholder='Ingresar Empresa' />
-                        <p className={t.error}>{errors.company}</p>
-                    </div>
-
-
-                    <div className={t.divs}>
-                        <label htmlFor="">Dirección *</label>
-                        <input className={`${t.inputs} ${t.inputs_file}`} type="text" name='address' onChange={handleChange} value={inputs.address} placeholder='Ingresar Domicilio Fiscal' />
-                        <p className={t.error}>{errors.address}</p>
-
-                    </div>
-
-                    <div className={t.divs}>
-                        <label htmlFor="">Telefono *</label>
-                        <input className={`${t.inputs} ${t.inputs_file}`} type="text" name='phone' onChange={handleChange} value={inputs.phone} placeholder='Ingresar Telefono' />
-                        <p className={t.error}>{errors.phone}</p>
-
-                    </div>
-
-
-                    <div className={t.divSubmit}>
-                        <button className={t.submit} type='submit'>Agregar</button>
-                    </div>
-
-
-                </form>
-
+                }
             </div>
-
+            <div className={t.footer}>
+                <div class="btn-group" role="group" aria-label="Basic outlined example">
+                    <button type="button" class="btn btn-outline-primary" onClick={toggleProfile}>Perfil</button>
+                    <button type="button" class="btn btn-outline-primary" onClick={toggleEdit}>Editar</button>
+                    <button type="button" class="btn btn-outline-primary" onClick={handleSingOut}>Salir</button>
+                </div>
+            </div>
 
         </div>
 

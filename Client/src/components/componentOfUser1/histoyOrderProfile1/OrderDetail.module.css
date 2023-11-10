@@ -14,6 +14,9 @@
     /* background-color: red; */
     width: 100%;
     height: 20%;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.734);
+    margin-bottom: 5px;
+
 }
 
 .header1 {
@@ -26,6 +29,12 @@
     flex-direction: column;
     justify-content: space-around;
 
+}
+
+.header1 select:focus,
+.header1 input:focus {
+    outline: none;
+    /* eliminar lineas de que bordean los inputs y select */
 }
 
 .header2 {
@@ -49,8 +58,9 @@
     display: flex;
     flex-direction: column;
     /* background-color: red; */
-    width: 100%;
-    height: 80%;
+    /* width: 100%; */
+    /* height: 80%; */
     overflow-x: hidden;
     padding: 10px;
+    /* background-color: red; */
 }
