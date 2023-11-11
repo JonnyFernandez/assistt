@@ -11,9 +11,9 @@
 }
 
 .header {
-    width: 80%;
+    width: 100%;
     height: 50px;
-    background-color: rgb(179, 163, 163);
+    background-color: #00b4d8;
     font-family: Georgia, 'Times New Roman', Times, serif;
     display: flex;
     justify-content: center;
@@ -29,10 +29,11 @@
 .footer {
     width: 80%;
     height: 50px;
-    background-color: rgb(214, 201, 201);
-
+    /* background-color: rgb(214, 201, 201); */
+    background-color: #00b4d8;
     display: flex;
     justify-content: end;
+    /* border-radius: 1rem; */
 }
 
 
@@ -50,7 +51,41 @@
     background-color: rgba(245, 245, 245, 0.115);
     width: 100%;
     height: 360px;
+    /* background-color: red; */
+}
 
+.editHeaher {
+    width: 30%;
+    height: 360px;
+    background-color: #00b4d8;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: last baseline;
+    background-image: url('../../../assets//image/buo.png');
+    background-size: cover;
+    background-repeat: round;
+}
+
+.titleEdit {
+    color: blue;
+    background-color: yellow;
+}
+
+
+
+
+
+
+
+
+
+.editBody {
+    width: 60%;
+    height: 360px;
+    background-color: #d0e0e3;
+    display: flex;
+    flex-direction: column;
 }
 
 .form1 {
@@ -136,4 +171,78 @@
     height: 2.5vh;
     margin-left: 0px;
     font-family: 'Poppins', sans-serif;
+}
+
+/* css del perfil */
+
+.bodyProfile {
+    width: 100%;
+    height: 100%;
+    background-color: #09778d;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.bodyContainer {
+    width: 100%;
+    height: 86%;
+    /* background-color: beige; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.imageProfile {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+
+}
+
+.image {
+    max-width: 300px;
+    /* Ajusta la imagen al ancho del contenedor sin distorsionar la relación de aspecto */
+    max-height: 300px;
+    /* Ajusta la imagen al alto del contenedor sin distorsionar la relación de aspecto */
+    border-radius: 50%;
+    /* Un valor del 50% produce un círculo perfecto */
+    overflow: hidden;
+}
+
+/* Añade estilos adicionales según sea necesario */
+
+
+
+
+/* --------info---------- */
+.infoProfile {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    border: 1px solid black;
+}
+
+.divInfo {
+    margin-bottom: 25px;
+    margin-left: 7em;
+}
+
+.divInfo label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.divInfo small {
+    font-size: 14px;
+    color: #555;
+    /* Puedes ajustar el color según tus preferencias */
 }
