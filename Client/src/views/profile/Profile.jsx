@@ -18,9 +18,9 @@ const Profile1 = () => {
     const auth = useAuth()
     const dispatch = useDispatch()
 
-    const Profile = useSelector((state) => state.profile)
-    const cart = useSelector((state) => state.cart)
-    const fav = useSelector((state) => state.favorite)
+    // const Profile = useSelector((state) => state.profile)
+    // const cart = useSelector((state) => state.cart)
+    // const fav = useSelector((state) => state.favorite)
     const [showCartProfile, setShowCartProfile] = useState(false);
     const [showHistoryOrder, setShowHistoryOrder] = useState(false);
     const [showEditProfile, setShowEditProfile] = useState(false);
