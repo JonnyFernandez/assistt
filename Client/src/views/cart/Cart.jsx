@@ -7,8 +7,7 @@ import Footer from '../../components/footer/Footer'
 import { useState, useEffect } from 'react';
 import { codeToOrder } from '../../utils/codes';
 import { createOrder, cleanCart, getUser1, postReview } from '../../redux/actions';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; //iconos
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';//carrito
+
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
@@ -21,6 +20,7 @@ const Cart = () => {
     const dispatch = useDispatch();
     const codeOrder = codeToOrder();
     const myCart = useSelector(state => state.cart);
+    const fav = useSelector(state => state.favorite);
     const prod_ID = myCart.map(item => item.id);
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     const id = userInfo?.id || '';
@@ -138,7 +138,35 @@ const Cart = () => {
         <div className={L.cart}>
             <div className={L.headerCart}>
                 <Nav />
-                <div className={L.SubNav}></div>
+                <div className={L.SubNav} >
+                    <NavLink className={L.back} to='/user1'>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
+                        </svg>
+                    </NavLink>
+                    <div className={L.title}>
+                        Orden De Compra
+                    </div>
+
+                    <div>
+                        <NavLink to={'/fav'} >
+                            {
+                                fav.length <= 0
+                                    ? <div className={L.fav}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-bookmark" viewBox="0 0 16 16">
+                                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z" />
+                                        </svg>
+                                    </div>
+                                    : <div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-bookmark-fill" viewBox="0 0 16 16">
+                                            <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z" />
+                                        </svg>
+                                    </div>
+                            }
+
+                        </NavLink>
+                    </div>
+                </div>
             </div>
             <div className={L.bodyCart}>
                 <div className={L.divInfo}>
@@ -160,7 +188,7 @@ const Cart = () => {
                                 />
                             ))}
                         </div> : <div className={L.emptyCart}>
-                            <FontAwesomeIcon icon={faShoppingCart} size="3x" color="#555" />
+
                             <p>Carrito vacío, dirígete a <NavLink className={L.backToHome} to={'/user1'}>Inicio</NavLink> para agregar productos</p>
                         </div>
                     }
@@ -183,10 +211,12 @@ const Cart = () => {
 
                 {showCart && <div className={L.divButtons}>
                     {myCart.length > 0 && (
-                        <button className={L.cartProfileFooter_Approve} onClick={() => sendOrder()}>Enviar</button>
+                        // <button className={L.cartProfileFooter_Approve} onClick={() => sendOrder()}>Enviar</button>
+                        <button type="button" class="btn btn-primary btn-sm" onClick={() => sendOrder()}>Enviar Orden</button>
                     )}
                     {myCart.length > 0 && (
-                        <button className={L.cartProfileFooter_disapprove} onClick={() => clean_Cart()}>Vaciar carrito</button>
+                        // <button className={L.cartProfileFooter_disapprove} onClick={() => clean_Cart()}>Vaciar carrito</button>
+                        <button type="button" class="btn btn-secondary btn-sm" onClick={() => clean_Cart()}>Vaciar carrito</button>
                     )}
                 </div>}
 
