@@ -33,8 +33,9 @@
 }
 
 .divInfo {
-    width: 90%;
-    height: 90%;
+    width: 80%;
+    height: 454px;
+    background-color: rgba(0, 0, 0, 0.067);
     /* background-color: aliceblue; */
     /* flex-wrap: wrap; */
     display: flex;
@@ -96,11 +97,40 @@
 }
 
 .divButtons {
-    width: 90%;
+    width: 80%;
     height: 10%;
-    /* background-color: blue; */
+    background-color: rgba(0, 0, 0, 0.067);
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-evenly;
+    /* border: 1px solid #b4e688; */
+}
+
+.title {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 20rem;
+    height: 2.7rem;
+    font-size: xx-large;
+    /* background-color: whitesmoke; */
+    display: flex;
     justify-content: center;
+    color: white;
+}
+
+.emptyCart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    width: 100%;
+    background-color: #f3d8d8;
+    border: 1px solid #e1b6b6;
+    border-radius: 5px;
+    margin-top: 9rem;
+}
+
+.emptyCart p {
+    font-size: 1.2rem;
+    color: #555;
 }
