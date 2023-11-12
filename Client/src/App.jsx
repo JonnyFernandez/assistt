@@ -1,5 +1,5 @@
 
-import { Landing, User1, User2, User3, User4, Profile1, Cart, Orders, Fav, AllOrderHistory } from "./views"
+import { Landing, User1, User2, User3, Profile1, Cart, Orders, Fav, AllOrderHistory } from "./views"
 import { Route, Routes } from "react-router-dom"
 import UserList from "./views/user3/userList";
 import axios from "axios";

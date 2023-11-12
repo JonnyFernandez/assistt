@@ -52,7 +52,6 @@ const EditProfile = () => {
             return alert('Por favor, completa todos los campos y sube una imagen.');
         }
 
-
         await dispatch(addInfo(id, inputs));
 
         // Esperar a que la acción termine antes de obtener la información actualizada
@@ -60,9 +59,6 @@ const EditProfile = () => {
 
         setInputs({ company: '', address: '', phone: '', image: '' });
         setErrors({ company: '', address: '', phone: '' });
-
-      
-
         setProfileUpdated(true);
     };
 
@@ -98,14 +94,8 @@ const EditProfile = () => {
         dispatch(getUser1(id));
     }, [dispatch, id]);
 
-
     return (
         <div className={t.form}>
-
-
-
-            <div className={t.header}> <div className={t.divs} > <h2>Perfil de usuario</h2> </div></div>
-
             <div className={t.body}>
                 {edit &&
                     <div className={t.formContainer}>
@@ -193,63 +183,11 @@ const EditProfile = () => {
                             </div>
 
                         </div>
-
-
-                        <div className={t.divInfo}>
-                            <label htmlFor="">Empresa: </label>
-                            <small> {Profile?.company}</small>
-                        </div>
-
-            <div className={t.formContainer}>
-
-                <form onSubmit={handleSubmit} className={t.form1}>
-
-                    <div className={t.divs} > <h2>Ingresar Datos / Editar Datos</h2> </div>
-
-
-                    <div className={t.divs}>
-                        <label>Imagen </label>
-                        <input className={`${t.inputs} ${t.inputs_file}`} type="file"
-                            name="image"
-
-                            value={inputs.image}
-                            onChange={handleChange}
-                            placeholder='Ingresar imagen (Opcional)'
-                            onChange={handleUploadImage}
-                        />
-
-                    </div>
-
-                    <div className={t.divs}>
-                        <label htmlFor="">Empresa *</label>
-                        <input className={`${t.inputs} ${t.inputs_file}`}
-                            type="text" name='company' onChange={handleChange} value={inputs.company} placeholder='Ingresar Empresa' />
-                        <p className={t.error}>{errors.company}</p>
-                    </div>
-
-
-                    <div className={t.divs}>
-                        <label htmlFor="">Dirección *</label>
-                        <input className={`${t.inputs} ${t.inputs_file}`} type="text" name='address' onChange={handleChange} value={inputs.address} placeholder='Ingresar Domicilio Fiscal' />
-                        <p className={t.error}>{errors.address}</p>
-
-                    </div>
-
-                    <div className={t.divs}>
-                        <label htmlFor="">Telefono *</label>
-                        <input className={`${t.inputs} ${t.inputs_file}`} type="text" name='phone' onChange={handleChange} value={inputs.phone} placeholder='Ingresar Telefono' />
-                        <p className={t.error}>{errors.phone}</p>
-
-                    </div>
-
-
-
                     </div>
                 }
             </div>
             <div className={t.footer}>
                 <div className="btn-group" role="group" aria-label="Basic outlined example">
-                    {/* perfil */}
                     <button type="button" className="btn btn-outline-primary" onClick={toggleProfile}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                             <path fillRule="evenodd" d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
