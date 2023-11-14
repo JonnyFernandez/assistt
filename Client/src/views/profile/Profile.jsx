@@ -9,8 +9,9 @@ import CartProfile from '../../components/componentOfUser1/cartProfile/CartProfi
 import HistoryOrder from '../../components/componentOfUser1/histoyOrderProfile1/HistoryOrder'
 import EditProfile from '../../components/componentOfUser1/editProfile/EditProfile'
 import FavProfile from '../../components/componentOfUser1/favProfile/FavProfile'
-import Swal from 'sweetalert2';
 import Footer from '../../components/footer/Footer'
+import InitioProfile from '../../components/componentOfUser1/initioProfile/InitioProfile'
+import Swal from 'sweetalert2';
 
 
 const Profile1 = () => {
@@ -24,6 +25,7 @@ const Profile1 = () => {
     const [showCartProfile, setShowCartProfile] = useState(false);
     const [showHistoryOrder, setShowHistoryOrder] = useState(false);
     const [showEditProfile, setShowEditProfile] = useState(false);
+    const [showInicio, setShowInicio] = useState(true);
     const [showFav, setShowFav] = useState(false);
     const [selectedButton, setSelectedButton] = useState('');
 
@@ -47,6 +49,7 @@ const Profile1 = () => {
         setShowCartProfile(true);
         setShowHistoryOrder(false);
         setShowEditProfile(false);
+        setShowInicio(false)
         setShowFav(false);
     };
     const toggleHistotyOrder = (data) => {
@@ -54,6 +57,7 @@ const Profile1 = () => {
         setShowCartProfile(false);
         setShowHistoryOrder(true);
         setShowEditProfile(false);
+        setShowInicio(false)
         setShowFav(false);
     };
     const toggleEditProfile = (data) => {
@@ -61,6 +65,7 @@ const Profile1 = () => {
         setShowCartProfile(false);
         setShowHistoryOrder(false);
         setShowEditProfile(true);
+        setShowInicio(false)
         setShowFav(false);
     };
     const toggleFav = (data) => {
@@ -68,12 +73,9 @@ const Profile1 = () => {
         setShowCartProfile(false);
         setShowHistoryOrder(false);
         setShowEditProfile(false);
+        setShowInicio(false)
         setShowFav(true);
     };
-
-
-
-
     function handleSingOut() {
         Swal.fire({
             title: '¿Estás seguro?',
@@ -89,6 +91,10 @@ const Profile1 = () => {
             }
         });
     }
+
+
+
+
 
 
 
@@ -126,17 +132,6 @@ const Profile1 = () => {
                         </div>
                     </div>
                     <div className={`${p.button} ${selectedButton === 'Editar' ? p.active : ''}`} onClick={() => toggleEditProfile('Editar')}>
-
-
-
-
-
-
-
-
-
-
-
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#c2d6e3" class="bi bi-person-check-fill" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
                             <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
@@ -147,6 +142,7 @@ const Profile1 = () => {
             </div>
             <div className={p.body1}>
                 <div className={p.infoContainer}>
+                    {showInicio && <InitioProfile />}
                     {showHistoryOrder && <HistoryOrder />}
                     {showCartProfile && <CartProfile />}
                     {showFav && <FavProfile />}
@@ -154,104 +150,23 @@ const Profile1 = () => {
                 </div>
             </div>
             <Footer />
-
-
-
-
-
-
-
-
-
-
-            {/* <div >
-                <Nav />
-            </div>
-            <div className={p.body}>
-
-
-                <div className={p.bodyLeft}>
-
-
-                    <div className={p.bodyLeftHeader}>
-                        <img src={!Profile.image ? "https://cdn-icons-png.flaticon.com/512/666/666201.png" : Profile.image} alt="image" />
-
-                    </div>
-
-                    // <div className={p.bodyLeftBody}>
-                    //     <div className={p.divInfo}>
-                    //         <label htmlFor="">User: </label>
-                    //         <small> {Profile?.name}</small>
-                    //     </div>
-
-                    //     <div className={p.divInfo}>
-                    //         <label htmlFor="">Email: </label>
-                    //         <small> {Profile?.email}</small>
-                    //     </div>
-                    //     <div className={p.divInfo}>
-                    //         <label htmlFor="">Direccion: </label>
-                    //         <small>{Profile?.address}</small>
-                    //     </div>
-                    //     <div className={p.divInfo}>
-                    //         <label htmlFor="">Tel: </label>
-                    //         <small> {Profile?.phone}</small>
-                    //     </div>
-                    //     <div className={p.divInfo}>
-                    //         <label htmlFor="">Empresa: </label>
-                    //         <small> {Profile?.company}</small>
-                    //     </div>
-
-                    // </div>
-
-
-                    <div className={p.logOut}>
-                        <button onClick={handleSingOut}>Log Out</button>
-                    </div>
-
-                </div>
-
-
-                <div className={p.bodyRight}>
-
-                    <div className={p.bodyRightHeader}>
-
-
-                        <NavLink
-                            className={`${p.button} ${selectedButton === 'Inicio' ? p.active : ''}`}
-                            to={'/user1'}
-                        >
-                            <small className={p.inicionButton}>Inicio</small>
-                        </NavLink>
-
-
-                        <div className={`${p.button} ${selectedButton === 'History' ? p.active : ''}`} onClick={() => toggleHistotyOrder('History')}> <small>Historial</small> </div>
-
-                        <div className={`${p.button} ${selectedButton === 'Carrito' ? p.active : ''}`} onClick={() => toggleCartProfile('Carrito')}> <small>Carrito</small></div>
-
-                        <div className={`${p.button} ${selectedButton === 'Editar' ? p.active : ''}`} onClick={() => toggleEditProfile('Editar')}> <small>Editar</small> </div>
-
-                        <div className={`${p.button} ${selectedButton === 'favoritos' ? p.active : ''}`} onClick={() => toggleFav('favoritos')}><small>favoritos: </small> <small> {fav && fav.length}</small> </div>
-
-                    </div>
-
-                    <div className={p.bodyRightBody}>
-
-                        {showCartProfile && <CartProfile />}
-                        {showHistoryOrder && <HistoryOrder />}
-                        {showEditProfile && <EditProfile />}
-                        {showFav && <FavProfile />}
-                    </div>
-
-                </div>
-
-            </div>
-            <Footer /> */}
-
         </div>
-
-
     )
 }
 
-
 export default Profile1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
