@@ -85,7 +85,7 @@ const Login = () => {
                 client: '/user1',
                 banned: '/login',
                 admin: '/user3',
-                supplier: '/user4',
+                supplier: '/user2',
             };
             if (userTypeToRoute.hasOwnProperty(userType)) {
                 const userRoute = userTypeToRoute[userType];
@@ -124,7 +124,7 @@ const Login = () => {
                                 <FontAwesomeIcon icon={showPwd ? faEye : faEyeSlash} />
                             </button>
                         </div>
-                            {errors.password && <p className={style.error}>{errors.password}</p>}
+                        {errors.password && <p className={style.error}>{errors.password}</p>}
                     </label>
                     <button className={style.loginButton}>Login</button>
                 </form>
