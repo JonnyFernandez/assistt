@@ -34,6 +34,16 @@ export const getOrders = () => {
     }
   }
 }
+export const getOrdersUser2 = () => {
+  return async function (dispatch) {
+    try {
+      const res = await axios.get("http://localhost:3001/order");
+      dispatch({ type: GET_ORDER, payload: res.data });
+    } catch (error) {
+      console.error("Error al obtener las órdenes:", error);
+    }
+  }
+}
 
 export const getOrderDetail = (id) => {
   return async (dispatch) => {

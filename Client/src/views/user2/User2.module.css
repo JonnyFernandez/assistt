@@ -1,123 +1,41 @@
-/* contienes todo el componente */
-.bodyContainerUser2 {
+.user2 {
+    width: 100%;
+    height: 705px;
+    background-color: #f5ebe0;
+}
+
+.body {
+    width: 100%;
+    height: 478px;
+    display: flex;
+    /* flex-direction: row; */
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    justify-content: center;
+    align-items: center;
+}
+
+.bodyContainer {
+    width: 95%;
+    height: 460px;
     display: flex;
     justify-content: center;
-    width: 100%;
-    height: 600px;
-    /* background-color: rgba(118, 114, 109, 0.63); */
-
+    align-items: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
 }
 
-/* contiene solo el boby  */
-.body {
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    width: 100%;
+.menu {
+    position: fixed;
+    top: 55%;
+    left: 10%;
+    transform: translate(-65%, -75%);
+    /* z-index: 9999; */
+    width: 200px;
     height: 400px;
-    background-color: #606c38;
+    /* background-color: red; */
+
 }
 
-/* parte izquierda del body */
-.bodyLeft {
+.sidebar {
     display: flex;
     flex-direction: column;
-    width: 20%;
-    height: 600px;
-    background-color: #d6ccc2;
-}
-
-/* parte derecha del body, la cual contiene dos div */
-.bodyRight {
-    display: flex;
-    flex-direction: row;
-    width: 80%;
-    height: 600px;
-    background-color: #180d0294;
-}
-
-/* primer div de la boby derecho, donde esta la lista */
-.bodyRightList {
-    display: flex;
-    flex-direction: column;
-    width: 70%;
-    height: 600px;
-    background-color: aqua;
-}
-
-/* segundo div del boby derecho, dnde esta la info */
-.bodyRightInfo {
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-    height: 600px;
-    background-color: #33ab53;
-}
-
-/* cabezera del lista */
-.ListHead {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    width: 100%;
-    height: 50px;
-    background-color: bisque;
-}
-
-/* cuerpo de la lista */
-.ListBody {
-    width: 100%;
-    height: 550px;
-    background-color: #118ab2;
-}
-
-/* cabezera de la info */
-.headerInfo {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    width: 100%;
-    height: 50px;
-    background-color: rgba(93, 70, 41, 0.445);
-}
-
-.headerBody {
-    width: 100%;
-    height: 550px;
-    background-color: hsla(195, 77%, 59%, 0.447);
-}
-
-
-
-
-
-
-
-
-
-.divFooter {
-    height: 50px;
-    width: 100%;
-    background-color: #fb8500;
-}
-
-/* .divHeader {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    background-color: #333;
-    color: white;
-} */
-
-.sidebarButton {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 18px;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    border: none;
-
 }
