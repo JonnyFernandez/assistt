@@ -27,12 +27,17 @@ import {
     SET_FAV,
     SET_CURRENT_PAGE,
     SET_NEXT_PAGE,
-    SET_PREV_PAGE
+    SET_PREV_PAGE,
+    FILTER_BY_TYPE,
+    FILTER_BY_MIN_MAX,
+    FILTER_BY_STATUS,
+    SEACH_CODE_USER2
 } from '../redux/actionsType';
 
 const InitialState = {
     Product: [],
     Orders: [],
+    backupOrder: [],
     OrdersUser: [],
     backupProduct: [],
     favorite: [],
@@ -54,6 +59,56 @@ const InitialState = {
 const reducer = (state = InitialState, action) => {
     switch (action.type) {
 
+
+
+
+
+
+
+
+
+
+
+        case SEACH_CODE_USER2:
+            const code2 = action.payload;
+            console.log(code2);
+            let filterCode2 = (code2 == null ? state.backupOrder : state.backupOrder.filter(ord => ord.codeOrder.toLowerCase().includes(code2.toLowerCase())))
+            return {
+                ...state,
+                Orders: filterCode2
+            }
+        case FILTER_BY_STATUS:
+            const filterStatus = action.payload === "on" ? state.backupOrder.filter(item => !item.providerCode) : state.backupOrder.filter(item => item.providerCode !== null)
+            const res = action.payload === "All" ? state.backupOrder : filterStatus
+            return {
+                ...state,
+                Orders: res
+            }
+        case FILTER_BY_MIN_MAX:
+            let sortArr2 = action.payload === 'MIN' ?
+                state.backupOrder.sort(function (a, b) {
+                    if (a.Prods.length > b.Prods.length) { return 1 }
+                    if (b.Prods.length > a.Prods.length) { return -1 }
+                    return 0;
+                }) :
+                state.backupOrder.sort(function (a, b) {
+                    if (a.Prods.length < b.Prods.length) { return 1 }
+                    if (b.Prods.length < a.Prods.length) { return -1 }
+                    return 0;
+                })
+            return {
+                ...state,
+                Orders: [...sortArr2]
+            }
+        case FILTER_BY_TYPE:
+            const filteredOrders = state.backupOrder.filter(order =>
+                order.Prods.some(product => product.supplie_type === action.payload)
+            );
+            const filter_response = action.payload === "all" ? state.backupOrder : filteredOrders
+            return {
+                ...state,
+                Orders: filter_response
+            }
         case SET_CURRENT_PAGE:
             return {
                 ...state,
@@ -99,7 +154,8 @@ const reducer = (state = InitialState, action) => {
         case GET_ORDER:
             return {
                 ...state,
-                Orders: action.payload
+                Orders: action.payload,
+                backupOrder: action.payload
             };
         case ORDER_BY_ID_USER:
             return {
