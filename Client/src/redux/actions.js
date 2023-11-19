@@ -2,7 +2,7 @@
 
 import {
   GET_PROD, ADD_FAV, REMOVE_FAV, ADD_CART, REMOVE_CART, GET_PROFILE, GET_ORDER, CLEAN_DETAIL, ORDER_DETAIL, BY_TYPE, QUANTITY, POST_USER,
-  GET_REVIEWS, PUT_REVISOR, GET_ENTITY, SEARCH_PROD, SEARCH_USER, GET_USERS_NAME, SET_SEARCH_RESULTS, ORDER_BY_ID_USER, CLEAN_CART, PUT_USER_BANNED, SEARCH_BY_CODE, SET_CART, SET_FAV
+  GET_REVIEWS, PUT_REVISOR, GET_ENTITY, SEARCH_PROD, SEARCH_USER, GET_USERS_NAME, SET_SEARCH_RESULTS, ORDER_BY_ID_USER, CLEAN_CART, PUT_USER_BANNED, SEARCH_BY_CODE, SET_CART, SET_FAV, SET_CURRENT_PAGE, SET_NEXT_PAGE, SET_PREV_PAGE
 
 
 } from './actionsType'
@@ -384,3 +384,29 @@ export const setCartItems = (storeCart) => {
 export const setFavItems = (storedFav) => {
   return { type: SET_FAV, payload: storedFav }
 }
+
+// -----------------paginate--------------------------
+export const setCurrentPage = (payload) => {
+  return { type: SET_CURRENT_PAGE, payload }
+}
+export const setPrevPage = () => {
+  return { type: SET_PREV_PAGE }
+
+}
+export const setNextPage = () => {
+  return { type: SET_NEXT_PAGE }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -20,16 +20,23 @@
     width: 100%;
     background-color: whitesmoke;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     /* background-color: #233e4d13; */
 
 }
 
+.paginateContainer {
+
+    width: 40em;
+    height: 4em;
+    margin-top: 7px;
+}
+
 .card {
     width: 95%;
     height: 80%;
-    /* background-color: red; */
     margin-top: 30px;
 
 }
