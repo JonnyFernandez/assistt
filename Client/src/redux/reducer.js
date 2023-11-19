@@ -25,6 +25,9 @@ import {
     DELETE_USER,
     SET_CART,
     SET_FAV,
+    SET_CURRENT_PAGE,
+    SET_NEXT_PAGE,
+    SET_PREV_PAGE
 } from '../redux/actionsType';
 
 const InitialState = {
@@ -42,13 +45,32 @@ const InitialState = {
     reviewsWithUserInfo: [],
     profile: {},
     orderDetail: {},
-    approvalStatus: {}
+    approvalStatus: {},
+    currentPage: 1,
 
 
 };
 
 const reducer = (state = InitialState, action) => {
     switch (action.type) {
+
+        case SET_CURRENT_PAGE:
+            return {
+                ...state,
+                currentPage: action.payload
+            }
+        case SET_PREV_PAGE:
+            const prev = --state.currentPage
+            return {
+                ...state,
+                currentPage: prev
+            }
+        case SET_NEXT_PAGE:
+            const next = ++state.currentPage
+            return {
+                ...state,
+                currentPage: next
+            }
 
         case GET_REVIEWS:
             const reviewsWithUserInfo = action.payload.map((review) => {

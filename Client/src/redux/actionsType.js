@@ -61,3 +61,13 @@ export const SEARCH_BY_CODE = "SEARCH_BY_CODE"
 
 export const SET_CART = "SET_CART"
 export const SET_FAV = "SET_FAV"
+
+
+// ------------------------paginate
+
+export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE"
+export const SET_PREV_PAGE = "SET_PREV_PAGE"
+export const SET_NEXT_PAGE = "SET_NEXT_PAGE"
+
+
+// ------------------------paginate
