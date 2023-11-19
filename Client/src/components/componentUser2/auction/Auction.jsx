@@ -1,9 +1,10 @@
 import a from './Auction.module.css'
-import SearchByCode from '../../componentOfUser1/histoyOrderProfile1/searchBycode/SearchByCode'
+// import SearchByCode from '../../componentOfUser1/histoyOrderProfile1/searchBycode/SearchByCode'
 import CardUser2 from '../cardUser2/CardUser2'
+import SearchCode_user2 from '../searchCode/searchCode'
 
 
-import { getOrdersUser2 } from '../../../redux/actions'
+import { getOrdersUser2, filter_By_Type_user2, filter_By_MinMax_user2, filter_By_Status_user2 } from '../../../redux/actions'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Paginado from '../paginate/Paginate'
@@ -25,30 +26,48 @@ const Auction = () => {
     const firstIndex = lastIndex - cardsInPage;
     const cardsShowed = orders.slice(firstIndex, lastIndex);
 
+    const handleType = (e) => {
+        const value = e.target.value
+        dispatch(filter_By_Type_user2(value))
+    }
+    const handleMaxMin = (e) => {
+        dispatch(filter_By_MinMax_user2(e.target.value))
+    }
+    const handleStatus = (e) => {
+        dispatch(filter_By_Status_user2(e.target.value))
+    }
 
     return (
         <div className={a.auction}>
             <div className={a.header}>
-                <select>
-                    <option value="">Rubro</option>
-                    <option value="">Almacen</option>
-                    <option value="">Medico</option>
-                    <option value="">Limpieza</option>
-                    <option value="">Libreria</option>
-                    <option value="">Otros</option>
-                </select>
-                <select>
-                    <option value="">Min-Max</option>
-                    <option value="">Max</option>
-                    <option value="">Min</option>
-                </select>
-                <select>
-                    <option value="">Status</option>
-                    <option value="">Disponible</option>
-                    <option value="">Capturadas</option>
-                </select>
-                <div>
-                    <SearchByCode />
+                <div className={a.rubro}>
+                    <select onChange={handleType}>
+                        <option value="all">Rubro</option>
+                        <option value="almacen">Almacen</option>
+                        <option value="medico">Medico</option>
+                        <option value="limpieza">Limpieza</option>
+                        <option value="libreria">Libreria</option>
+                        <option value="otros">Otros</option>
+                    </select>
+                </div>
+
+                <div className={a.minMax}>
+                    <select onChange={handleMaxMin}>
+                        <option value="all">Min-Max</option>
+                        <option value="MAX">Max</option>
+                        <option value="MIN">Min</option>
+                    </select>
+                </div>
+
+                <div className={a.status}>
+                    <select onChange={handleStatus}>
+                        <option value="All">Status</option>
+                        <option value="on">Disponible</option>
+                        <option value="Off">Capturadas</option>
+                    </select>
+                </div>
+                <div className={a.seach}>
+                    <SearchCode_user2 />
                 </div>
 
             </div>
@@ -72,7 +91,8 @@ const Auction = () => {
                                             <div key={item.id}>
                                                 <CardUser2
                                                     code={item.codeOrder}
-                                                    date={item.order_date.toString().slice(0, 10)}
+                                                    date={item.order_date ? item.order_date.toString().slice(0, 10) : ''}
+
                                                     status={item.providerCode}
                                                     prods={item.Prods}
                                                     review={item.ReviewGeneral}

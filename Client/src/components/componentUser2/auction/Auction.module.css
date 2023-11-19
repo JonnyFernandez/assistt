@@ -5,6 +5,8 @@
     display: flex;
     flex-direction: column;
     /* border-radius: 5px; */
+    border-radius: 15px;
+
 }
 
 .header {
@@ -13,6 +15,32 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    /* background-color: red; */
+}
+
+
+
+.rubro,
+.minMax,
+.status,
+select {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 0 10px;
+    /* width: 200px; */
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+
+
+.seach input {
+    height: 100%;
+    width: 200px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 5px;
 }
 
 .body {
@@ -23,7 +51,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* background-color: #233e4d13; */
+    background-color: #bacad240;
+    /* background-image: url('../../../assets/azulDetalles.jpg'); */
+    background-size: cover;
+    border-radius: 15px;
+    /* background-color: red; */
 
 }
 
@@ -31,7 +63,7 @@
 
     width: 40em;
     height: 4em;
-    margin-top: 7px;
+    margin-top: 10px;
 }
 
 .card {
@@ -53,6 +85,7 @@
     gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
     overflow-x: hidden;
+    /* background-color: red; */
 }
 
 
