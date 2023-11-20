@@ -12,6 +12,7 @@ const Nav2 = ({ selector }) => {
 
         <div className={p.nav2Container}  >
 
+            <button class="btn btn-primary" value={""}  >Menu</button>
             <button class="btn btn-primary" value={"auction"} onClick={(e) => selector(e.target.value)} >Subasta</button>
             <button class="btn btn-primary" value={"assignament"} onClick={(e) => selector(e.target.value)}>Asignación</button>
             <button class="btn btn-primary" value={"addProd"} onClick={(e) => selector(e.target.value)}>Agregar Productos</button>

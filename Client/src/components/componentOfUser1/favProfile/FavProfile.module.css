@@ -1,19 +1,23 @@
 .fav {
     width: 100%;
-    height: 465px;
+    height: 460px;
     display: flex;
-    flex-direction: row;
+    justify-content: center;
     align-items: center;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: #e3d5ca;
+    border-radius: 15px;
 }
 
 .favContainer {
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.067);
+    width: 95%;
+    height: 458px;
+    /* background-color: rgba(0, 0, 0, 0.067); */
     display: flex;
     flex-direction: row;
     justify-content: center;
     overflow-x: hidden;
+    /* background-color: red; */
 
 }
 
@@ -21,7 +25,7 @@
 .favCard {
     width: 80%;
     height: 454px;
-    background-color: rgba(0, 0, 0, 0.067);
+    background-color: rgba(245, 245, 245, 0.749);
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
