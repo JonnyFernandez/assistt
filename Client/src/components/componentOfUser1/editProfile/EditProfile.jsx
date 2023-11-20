@@ -152,33 +152,46 @@ const EditProfile = () => {
 
                             <div className={t.imageProfile}>
                                 <div className={t.image}>
-                                    <img src={!Profile.image ? "https://cdn-icons-png.flaticon.com/512/666/666201.png" : Profile.image} alt="image" />
+                                    {Profile.image ? (
+                                        <img src={Profile.image} alt="image" />
+                                    ) : (
+                                        <div className={t.icono}>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="250" height="250" fill="black" className="bi bi-person-circle" viewBox="0 0 16 16">
+                                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                                <path fillRule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                                            </svg>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
 
 
 
+
                             <div className={t.infoProfile}>
                                 <div className={t.divInfo}>
-                                    <label htmlFor="">| User: </label>
+                                    <label htmlFor="">  User: </label>
                                     {Profile?.name}
                                 </div>
 
                                 <div className={t.divInfo}>
-                                    <label htmlFor="">| Email: </label>
+                                    <label htmlFor="">  Email: </label>
                                     {Profile?.email}
                                 </div>
                                 <div className={t.divInfo}>
-                                    <label htmlFor="">| Direccion: </label>
-                                    {Profile?.address}
+                                    <label htmlFor="">  Direccion: </label>
+                                    {Profile?.address ? Profile?.address : <small>Agregar Informacion</small>}
+                                    {/* {Profile?.address} */}
                                 </div>
                                 <div className={t.divInfo}>
-                                    <label htmlFor="">| Tel: </label>
-                                    {Profile?.phone}
+                                    <label htmlFor="">  Tel: </label>
+                                    {Profile?.phone ? Profile?.phone : <small>Agregar Informacion</small>}
+                                    {/* {Profile?.phone} */}
                                 </div>
                                 <div className={t.divInfo}>
-                                    <label htmlFor="">| Empresa: </label>
-                                    {Profile?.company}
+                                    <label htmlFor="">  Empresa: </label>
+                                    {Profile?.company ? Profile?.company : <small>Agregar Informacion</small>}
+                                    {/* {Profile?.company} */}
                                 </div>
                             </div>
 
