@@ -5,10 +5,10 @@ import { pause_order, getOrderUserById } from '../../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 const OrdersDetailProfile = ({ order, onUpdate }) => {
+
+
+
     const dispatch = useDispatch();
-
-
-
 
     let status = order.revisor1 === false ? 'Pausada' : order.aprobado ? 'Aprobado' : order.aprobado === false ? 'Orden rechazada' : order.revisor1 === null ? 'Pendiente' : order.revisor1 === true ? 'Reactivada' : ''
 
@@ -29,7 +29,9 @@ const OrdersDetailProfile = ({ order, onUpdate }) => {
                     <div>Estado</div>
                     <div>{status}</div>
                     <select onChange={handleRevisor1}>
+
                         <option value=''>administrar</option>
+
                         {order.revisor1 || order.revisor1 === null ? <option value='pause'>Pausar</option> : ''}
                         {order.revisor1 === false ? <option value='resume'>Reanudar</option> : ''}
 

@@ -61,3 +61,17 @@ export const SEARCH_BY_CODE = "SEARCH_BY_CODE"
 
 export const SET_CART = "SET_CART"
 export const SET_FAV = "SET_FAV"
+
+
+// ------------------------paginate
+
+export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE"
+export const SET_PREV_PAGE = "SET_PREV_PAGE"
+export const SET_NEXT_PAGE = "SET_NEXT_PAGE"
+// ------------------------paginate
+
+export const FILTER_BY_TYPE = "FILTER_BY_TYPE"
+export const FILTER_BY_MIN_MAX = "FILTER_BY_MIN_MAX"
+export const FILTER_BY_STATUS = "FILTER_BY_STATUS"
+export const SEACH_CODE_USER2 = "SEACH_CODE_USER2"
+

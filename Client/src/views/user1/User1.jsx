@@ -10,10 +10,10 @@ import Footer from '../../components/footer/Footer'
 const User1 = () => {
 
   const dispatch = useDispatch()
-  let prod = useSelector(state => state.Product)
+  let prodState = useSelector(state => state.Product)
+  let prod = prodState.filter(item => item.stock !== 0)
 
-
-
+  console.log(prod);
   useEffect(() => {
     dispatch(getProd())
     const storedCart = JSON.parse(localStorage.getItem('cart')) || [];

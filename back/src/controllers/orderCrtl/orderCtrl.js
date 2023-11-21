@@ -26,7 +26,7 @@ const getOrder = async () => {
             include: [
                 {
                     model: Prod,
-                    attributes: ["name", "price", "quanty"],
+                    attributes: ["name", "price", "quanty", "supplie_type", "code"],
                     through: {
                         attributes: []
                     }
@@ -53,7 +53,7 @@ const getOrder = async () => {
 
 const getIdOrders = async (id) => {
     const orderid = await getOrder();
-
+    // console.log(id);
     const idOrder = orderid.filter(el => el.id == id);
     return idOrder;
 }

@@ -1,25 +1,104 @@
 .form {
+    /* background-color: red; */
+    width: 100%;
+    height: 460px;
+    display: flex;
+    flex-direction: column;
+    /* background-color: rgba(0, 0, 0, 0.067); */
+    background-color: #e3d5ca;
+    align-items: center;
+    /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.807); */
+    border-radius: 15px;
+
+
+}
+
+.header {
+    width: 100%;
+    height: 50px;
+    background-color: #00b4d8;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     display: flex;
     justify-content: center;
-    width: 100%;
-    height: 490px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+
 }
+
+.body {
+    width: 80%;
+    height: 360px;
+    /* background-color: rgb(214, 201, 201); */
+    margin-top: 20px;
+    box-shadow: 0px 0px 10px black;
+}
+
+.footer {
+    width: 80%;
+    height: 50px;
+    /* background-color: rgb(214, 201, 201); */
+    /* background-color: #00b4d8; */
+    display: flex;
+    justify-content: end;
+    /* border-radius: 1rem; */
+}
+
+
+
+
+
+
+
+
 
 .formContainer {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
     background-color: rgba(245, 245, 245, 0.115);
-    margin-top: 10px;
-    width: 95%;
-    height: 470px;
-    /* box-shadow: 0px 0px 7px black; */
-    box-shadow: 0px 0px 10px rgba(235, 233, 233, 0.921);
+    width: 100%;
+    height: 360px;
+    /* background-color: red; */
 }
 
-.form1 {
+.editHeaher {
+    width: 30%;
+    height: 360px;
+    /* background-color: #00b4d8; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: last baseline;
+    background-image: url('../../../assets//image/buo.png');
+    background-size: cover;
+    background-repeat: round;
+    border-radius: 50%;
+}
+
+.titleEdit {
+    color: blue;
+    background-color: yellow;
+}
+
+
+
+
+
+
+
+
+
+.editBody {
+    width: 60%;
+    height: 350px;
+    /* background-color: #d0e0e3; */
+    display: flex;
+    flex-direction: column;
     /* background-color: red; */
+    box-shadow: 1px 2px 5px black;
+    border-radius: 15px;
+}
+
+
+.form1 {
     display: flex;
     flex-direction: column;
     width: 70%;
@@ -74,26 +153,22 @@
 
 .divSubmit {
     width: 100%;
-    height: 2rem;
-    /* background-color: rgba(255, 235, 205, 0.266); */
+    height: 30px;
     display: flex;
     justify-content: center;
+    /* background-color: red; */
 }
 
-.submit {
-    font-family: 'Poppins', sans-serif;
-    width: 10rem;
-    border-radius: .5em;
+.btnVerde {
+    background-color: #4CAF50;
+    color: white;
+    width: 25rem;
+    border: none;
 }
 
-.submit:hover,
-.submit:focus {
-    border-radius: 0em;
-    border: 1 px solid white;
-}
-
-.divSubmit:hover {
-    border-bottom: 1px solid white;
+.btnVerde:hover {
+    background-color: #2fc534;
+    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.585);
 }
 
 .error {
@@ -105,4 +180,85 @@
     height: 2.5vh;
     margin-left: 0px;
     font-family: 'Poppins', sans-serif;
+}
+
+/* css del perfil */
+
+.bodyProfile {
+    width: 100%;
+    height: 100%;
+    background-color: #e3d5ca;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.bodyContainer {
+    width: 100%;
+    height: 86%;
+    /* background-color: beige; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.imageProfile {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    /* background-color: #e3d5ca; */
+
+}
+
+.image {
+    max-width: 300px;
+    /* Ajusta la imagen al ancho del contenedor sin distorsionar la relación de aspecto */
+    max-height: 300px;
+    /* Ajusta la imagen al alto del contenedor sin distorsionar la relación de aspecto */
+    border-radius: 50%;
+    /* Un valor del 50% produce un círculo perfecto */
+    overflow: hidden;
+
+}
+
+/* .icono {
+} */
+
+/* Añade estilos adicionales según sea necesario */
+
+
+
+
+/* --------info---------- */
+.infoProfile {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    border: 1px solid black;
+}
+
+.divInfo {
+    margin-bottom: 25px;
+    margin-left: 7em;
+    border-bottom: 1px solid black;
+
+}
+
+.divInfo label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.divInfo small {
+    font-size: 14px;
+    color: #555;
+    /* Puedes ajustar el color según tus preferencias */
 }

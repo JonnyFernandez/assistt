@@ -25,6 +25,7 @@ const CartProfile = () => {
 
     const clean_Cart = () => {
         dispatch(cleanCart())
+        localStorage.removeItem('cart')
     }
 
     return (
@@ -59,8 +60,8 @@ const CartProfile = () => {
                     </div>}
 
                 <div className={s.cartDown}>
-                    {Cart.length > 0 && <div className={s.cartProfileFooter_Approve} onClick={() => sendOrder()}>Finalizar Pedido</div>}
-                    {Cart.length > 0 && <div className={s.cartProfileFooter_disapprove} onClick={() => clean_Cart()}>Vaciar Carrito</div>}
+                    {Cart.length > 0 && <div type="button" class="btn btn-success" className={s.cartProfileFooter_Approve} onClick={() => sendOrder()}>Finalizar Pedido</div>}
+                    {Cart.length > 0 && <div type="button" class="btn btn-danger" className={s.cartProfileFooter_disapprove} onClick={() => clean_Cart()}>Vaciar Carrito</div>}
                 </div>
             </div>
 

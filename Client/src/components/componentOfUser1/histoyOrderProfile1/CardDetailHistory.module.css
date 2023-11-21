@@ -4,10 +4,10 @@
     justify-content: space-evenly;
     width: 80%;
     height: auto;
-    /* background-color: antiquewhite; */
+    /* background-color: red; */
     margin-top: 1rem;
     margin-left: 5rem;
-    box-shadow: .5px .5px 0px whitesmoke;
+    box-shadow: .5px .5px 0px black;
     font-family: Georgia, 'Times New Roman', Times, serif;
 
 }

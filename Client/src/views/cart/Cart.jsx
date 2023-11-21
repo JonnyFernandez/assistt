@@ -3,13 +3,14 @@ import Nav from '../../components/nav/Nav';
 import L from './Cart.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import Card2 from '../../components/card2/Card2';
+import Footer from '../../components/footer/Footer'
 import { useState, useEffect } from 'react';
 import { codeToOrder } from '../../utils/codes';
 import { createOrder, cleanCart, getUser1, postReview } from '../../redux/actions';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; //iconos
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';//carrito
+
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+
 
 
 const Cart = () => {
@@ -19,6 +20,7 @@ const Cart = () => {
     const dispatch = useDispatch();
     const codeOrder = codeToOrder();
     const myCart = useSelector(state => state.cart);
+    const fav = useSelector(state => state.favorite);
     const prod_ID = myCart.map(item => item.id);
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     const id = userInfo?.id || '';
@@ -41,9 +43,10 @@ const Cart = () => {
         codeOrder: codeOrder
     });
     const [showReviewForm, setShowReviewForm] = useState(false);
+    const [showCart, setShowCart] = useState(true);
+
 
     const sendOrder = () => {
-        // Muestra una alerta de confirmación
         Swal.fire({
             title: '¿Estás seguro?',
             text: `¿Quieres generar esta orden: ${input.codeOrder}?`,
@@ -54,28 +57,21 @@ const Cart = () => {
             confirmButtonText: 'Sí, generar orden',
             cancelButtonText: 'Cancelar'
         }).then((result) => {
-            // Si el usuario confirma la orden
             if (result.isConfirmed) {
-                // Despacha la acción para crear la orden
                 dispatch(createOrder(input));
 
-                // Muestra un nuevo SweetAlert para opciones adicionales después de crear la orden
                 Swal.fire({
                     title: `Orden ${input.codeOrder} creada`,
                     text: '¿Qué quieres hacer a continuación??',
                     showDenyButton: true,
-                    // showCancelButton: true,
                     confirmButtonText: 'Abrir reseña',
                     denyButtonText: 'Terminar operación',
-                    // cancelButtonText: 'Cancelar'
                 }).then((innerResult) => {
-                    // Si el usuario elige abrir la reseña
                     if (innerResult.isConfirmed) {
-                        // Muestra el formulario de revisión
                         setShowReviewForm(true);
+                        setShowCart(false)
                     } else if (innerResult.isDenied) {
-                        // Si el usuario elige terminar la operación
-                        // Limpia el carrito
+
                         dispatch(cleanCart());
                         localStorage.removeItem('cart');
 
@@ -106,7 +102,7 @@ const Cart = () => {
 
             dispatch(cleanCart());
             localStorage.removeItem('cart');
-
+            setShowReviewForm(false)
             // Crea una alerta utilizando SweetAlert para informar al usuario que la revisión se ha creado con éxito
             Swal.fire({
                 title: `¡La reseña se creó con éxito!`,
@@ -140,79 +136,100 @@ const Cart = () => {
 
     return (
         <div className={L.cart}>
-            <div className='divHeader'>
-                <div>
-                    <Nav />
-                </div>
-                <div className={L.backContainer} >
-                    <NavLink className={L.back} to={'/user1'}>Inicio</NavLink>
+            <div className={L.headerCart}>
+                <Nav />
+                <div className={L.SubNav} >
+                    <NavLink className={L.back} to='/user1'>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
+                        </svg>
+                    </NavLink>
+                    <div className={L.title}>
+                        Orden De Compra
+                    </div>
 
+                    <div>
+                        <NavLink to={'/fav'} >
+                            {
+                                fav.length <= 0
+                                    ? <div className={L.fav}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-bookmark" viewBox="0 0 16 16">
+                                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z" />
+                                        </svg>
+                                    </div>
+                                    : <div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-bookmark-fill" viewBox="0 0 16 16">
+                                            <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z" />
+                                        </svg>
+                                    </div>
+                            }
+
+                        </NavLink>
+                    </div>
                 </div>
+            </div>
+            <div className={L.bodyCart}>
+                <div className={L.divInfo}>
+
+
+
+                    {
+                        myCart.length > 0 ? <div className={L.container}>
+                            {myCart.map(item => (
+                                <Card2
+                                    key={item.id}
+                                    id={item.id}
+                                    code={item.code}
+                                    name={item.name}
+                                    description={item.description}
+                                    quanty={item.quanty}
+                                    price={item.price}
+                                    stock={item.stock}
+                                />
+                            ))}
+                        </div> : <div className={L.emptyCart}>
+
+                            <p>Carrito vacío, dirígete a <NavLink className={L.backToHome} to={'/user1'}>Inicio</NavLink> para agregar productos</p>
+                        </div>
+                    }
+                </div>
+
+                {showReviewForm && (
+
+
+                    <div className={L.reviewForm}>
+                        <h2>Crear Reseña</h2>
+                        <textarea
+                            placeholder="Escribe tu reseña aquí"
+                            value={reviews.review}
+                            onChange={handleReviewChange}
+                        />
+                        <button onClick={() => submitReview()}>Enviar Pedido</button>
+                    </div>
+
+                )}
+
+                {showCart && <div className={L.divButtons}>
+                    {myCart.length > 0 && (
+                        // <button className={L.cartProfileFooter_Approve} onClick={() => sendOrder()}>Enviar</button>
+                        <button type="button" class="btn btn-primary btn-sm" onClick={() => sendOrder()}>Enviar Orden</button>
+                    )}
+                    {myCart.length > 0 && (
+                        // <button className={L.cartProfileFooter_disapprove} onClick={() => clean_Cart()}>Vaciar carrito</button>
+                        <button type="button" class="btn btn-secondary btn-sm" onClick={() => clean_Cart()}>Vaciar carrito</button>
+                    )}
+                </div>}
 
             </div>
-            {/*  */}
-            {myCart.length > 0 ? (<div className={L.divBody}>
-                <div className={L.divBodyLeft}>
-                    <div className={L.divCarts}>
-                        {myCart && myCart.map(item => (
-                            <Card2
-                                key={item.id}
-                                id={item.id}
-                                code={item.code}
-                                name={item.name}
-                                description={item.description}
-                                quanty={item.quanty}
-                                price={item.price}
-                                stock={item.stock}
-                            />
-                        ))}
-                    </div>
-                </div>
-
-                <div className={L.divBodyRight}>
-
-                    <div className={L.divBodyInfo}>
-                        <h1>Orden de Compra</h1>
-                        <h3>Datos Solicitante</h3>
-                        <h4>Nombre: {Profile.name}</h4>
-                        <h4>Email: {Profile.email}</h4>
-                        <h4>Empresa: {Profile.company}</h4>
-                        <h4>Dirección: {Profile.address}</h4>
-                        <div className={L.Buttons}>
-                            {myCart.length > 0 && (
-                                <button className={L.cartProfileFooter_Approve} onClick={() => sendOrder()}>Enviar</button>
-                            )}
-                            {myCart.length > 0 && (
-                                <button className={L.cartProfileFooter_disapprove} onClick={() => clean_Cart()}>Vaciar carrito</button>
-                            )}
-                        </div>
-                    </div>
-
-                    <div className={L.divBodyReview}>
-                        {showReviewForm && (
-                            <div className={L.reviewForm}>
-                                <h2>Crear una reseña</h2>
-                                <textarea
-                                    placeholder="Escribe tu reseña aquí"
-                                    value={reviews.review}
-                                    onChange={handleReviewChange}
-                                />
-                                <button onClick={() => submitReview()}>Enviar Pedido</button>
-                            </div>
-                        )}
-                    </div>
+            <Footer />
 
 
 
-                </div>
-            </div>) :
-                <div className={L.emptyCart}>
-                    <FontAwesomeIcon icon={faShoppingCart} size="3x" color="#555" />
-                    <p>Carrito vacío, dirígete a <NavLink className={L.backToHome} to={'/user1'}>Inicio</NavLink> para agregar productos</p>
-                </div>
-            }
 
-            {/*  */}
+
+
+
+
         </div>
     );
 };
