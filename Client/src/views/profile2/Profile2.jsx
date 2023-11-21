@@ -3,8 +3,6 @@ import { NavLink } from "react-router-dom"
 const Profile2 = () => {
 
 
-
-
     return (
         <div>
             profile2

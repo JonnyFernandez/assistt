@@ -18,3 +18,9 @@ export { Landing, User1, User2, User3, Profile1, Profile3, Cart, Orders, Fav, Lo
 
 
 
+
+export { Landing, User1, User2, User3, Profile1, Profile2, Profile3, Cart, Orders, Fav, Login, Signup, OrderDetail, UserList, AllOrderHistory}
+
+
+
+

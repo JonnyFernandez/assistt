@@ -7,7 +7,9 @@ import { store } from './redux/store.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
-import { Landing, User1, User2, User3, Profile1, Profile3, Cart, Orders, Fav, Login, Signup, OrderDetail, AllOrderHistory, Profile2 } from './views/index.jsx';
+
+import { Landing, User1, User2, User3, Profile1, Profile2, Profile3, Cart, Orders, Fav, Login, Signup, OrderDetail, AllOrderHistory } from './views/index.jsx';
+
 import ProtectedRoute from './authAll/ProtectedRoute.jsx';
 import { AuthProvider } from './authAll/auth/AuthProvider.jsx';
 

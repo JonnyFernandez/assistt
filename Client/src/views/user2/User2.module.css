@@ -17,10 +17,6 @@
     border-radius: 15px;
 }
 
-
-
-
-
 .bodyContainer {
     width: 95%;
     height: 460px;
@@ -32,19 +28,3 @@
 
 }
 
-/* .menu {
-    position: fixed;
-    top: 55%;
-    left: 10%;
-    transform: translate(-65%, -75%);
-    z-index: 9999;
-    width: 200px;
-    height: 400px;
-    background-color: red;
-
-} */
-
-.sidebar {
-    display: flex;
-    flex-direction: column;
-}

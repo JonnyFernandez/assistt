@@ -1,139 +1,138 @@
+.userAvatarButtonContainer {
+  position: absolute;
+  top: 150px;
+  left: 20px;
+  z-index: 3;
+}
 
 .reviewList {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 .reviewListItem {
-    border: 1px solid #ccc;
-    font-weight: bold;
-    padding: 8px;
-    margin: 12px 0;
-    font-size: 13px;
-    color: #f6f0f0;
-    text-align: center;
-    font-family: Calibri, 'Trebuchet MS', sans-serif;
+  border: 1px solid #ccc;
+  font-weight: bold;
+  padding: 8px;
+  margin: 12px 0;
+  font-size: 13px;
+  color: #f6f0f0;
+  text-align: center;
+  font-family: Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .customLink {
-    text-decoration: none;
-    color: #0af8f0;
-    font-weight: bold;
-    transition: color 0.3s ease;
-    /* Agregar una transición suave de color */
+  text-decoration: none;
+  color: #0af8f0;
+  font-weight: bold;
+  transition: color 0.3s ease;
 }
 
 .customLink:hover {
-    color: #19191a;
-    /* Cambiar el color al pasar el cursor (por ejemplo, a naranja) */
-    /* Otros cambios de estilo que desees aplicar al pasar el cursor */
+  color: #19191a;
 }
 
-
-
-/* ------------------------------------------------------------- */
-
 .body {
-    background-color: rgb(245 245 245);
-    display: flex;
-    flex-direction: row;
-    height: auto;
-    width: 100%;
-    justify-content: space-around;
-   
+  background-color: rgb(245 245 245);
+  display: flex;
+  flex-direction: row;
+  height: 80vh;
+  width: 100%;
+  justify-content: space-around;
 }
 
 .left {
-    display: flex;
-    width: 15%;
-    height: 500px;
-    background-color: rgb(53, 135, 249);
-    flex-direction: column;
-    border-bottom-right-radius: 50px;
-    overflow-y: scroll;
-    font-size: xx-small;
+  display: flex;
+  width: 15%;
+  height: 100%;
+  background-color: rgb(53, 135, 249);
+  flex-direction: column;
+  border-bottom-right-radius: 50px;
+  overflow-y: scroll;
+  font-size: xx-small;
 }
 
 .infoLeft {
-    height: 480px;
-    width: 100%;
-    background-image: url('../../assets/imageLogo/FONDOASSIST.jpg');
-    background-size: cover; 
-    background-repeat: no-repeat;
-   
+  height: 100%;
+  width: 100%;
+  background-image: url('../../assets/imageLogo/FONDOASSIST.jpg');
+  background-size: cover; 
+  background-repeat: no-repeat;
+  font-size: xx-small;
+  animation: moveBackground 20s linear infinite; /* Ajusta la velocidad y la duración según tus preferencias */
 }
 
-/* Estilos para navegadores webkit (Chrome y Safari) */
-.left::-webkit-scrollbar{
-    width: 10px; /* Ancho del scrollbar */
-    background-color: #f1f1f1; /* Color de fondo del scrollbar */
+@keyframes moveBackground {
+  from {
+      background-position: 100% 30%; /* Inicio de la animación (derecha) */
+  }
+  to {
+      background-position: 0% 0%; /* Fin de la animación (izquierda) */
+  }
 }
 
-.left{
-    scrollbar-width: thin; /* Ancho del scrollbar */
+
+.left::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f1f1f1;
+}
+
+.left {
+  scrollbar-width: thin;
 }
 
 .left::-webkit-scrollbar-thumb {
-    background-color: #abb2ac; /* Color del thumb (barra de desplazamiento) */
-    border-radius: 5px; /* Bordes redondeados para el thumb */
+  background-color: #abb2ac;
+  border-radius: 5px;
 }
 
 .left::-webkit-scrollbar-track {
-    background-color: #f1f1f1; /* Color de fondo del scrollbar */
+  background-color: #f1f1f1;
 }
 
 .right {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 500px;
-    background-color: #cad4f5;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: #cad4f5;
 }
 
 .footer {
-    width: 100%;
-    height: 50px;
-    background-color: #6e8db2;
+  width: 100%;
+  height: 50px;
+  background-color: #6e8db2;
 }
 
-/* botones  */
 .botonera {
-    width: 100%;
-    height: 60px;
-    /* background-color: #05050355; */
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    padding: 10px;
-/* informacion */
-}
-.info {
-    width: 100%;
-    height: 460px;
-    background-color: #05050355;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 10px;
 }
 
+.info {
+  width: 100%;
+  height: 460px;
+  background-color: #05050355;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
 
 .infoLeft {
-
-    height: 100%;
-    width: 100%;
-    /* margin-top: 2rem; */
-    background-color: whitesmoke;
-   
-    font-size: xx-small;
-    /* background-color: red; */
-
+  height: 100%;
+  width: 100%;
+  font-size: xx-small;
 }
 
 .informativeMessage {
   background-color: #f0e7e7;
   border: 1px solid #ccc;
   width: 95%;
-  margin-left:4px;
+  margin-left: 4px;
   padding: 10px;
   margin-top: 20px;
   text-align: center;
@@ -141,40 +140,6 @@
   font-size: 16px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-
-
-.infoRight {
-    width: 30%;
-    background-color: #6099da;
-    display: flex;
-    flex-direction: column;
-
-}
-
-.infoRightHeader {
-    width: 100%;
-    height: 30px;
-    background-color: #766add;
-    display: flex;
-    justify-content: center;
-}
-
-.infoRightBody {
-    width: 100%;
-    height: 380px;
-    background-color: #fceaea;
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-    justify-content: space-around;
-}
-
-.infoRightfooter {
-    width: 100%;
-    height: 50px;
-    background-color: brown;
 }
 
 .h1 {
@@ -186,103 +151,77 @@
 }
 
 .button {
-    position: relative;
-    display: inline-block;
-    background: linear-gradient(to bottom, #1b1c3f, #4a4e91);
-   /* Gradient background */
-    color: white;
-   /* White text color */
-    font-family: "Segoe UI", sans-serif;
-   /* Stylish and legible font */
-    font-weight: bold;
-    font-size: 12px;
-   /* Large font size */
-    border: none;
-   /* No border */
-    border-radius: 30px;
-   /* Rounded corners */
-    padding: 9px 24px;
-   /* Large padding */
-    cursor: pointer;
-   /* Cursor on hover */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-   /* Subtle shadow */
-    animation: button-shimmer 2s infinite;
-    transition: all 0.3s ease-in-out;
-   /* Smooth transition */
-  }
-  
-  /* Hover animation */
-  .button:hover {
-    background: linear-gradient(to bottom, #2c2f63, #5b67b7);
-    animation: button-particles 1s ease-in-out infinite;
-    transform: translateY(-2px);
-  }
-  
-  /* Click animation */
-  .button:active {
-    transform: scale(0.95);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  /* Shimmer animation */
-  @keyframes button-shimmer {
-    0% {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 5px; 
+  transition: background-color 0.3s ease; 
+}
+
+.button:hover {
+  background-color: #0056b3; 
+}
+
+.button:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes button-shimmer {
+  0% {
       background-position: left top;
-    }
-  
-    100% {
-      background-position: right bottom;
-    }
-  }
-  
-  /* Particle animation */
-  @keyframes button-particles {
-    0% {
-      background-position: left top;
-    }
-  
-    100% {
-      background-position: right bottom;
-    }
   }
 
-  /* Estilos generales que no dependen del tamaño de la pantalla */
+  100% {
+      background-position: right bottom;
+  }
+}
 
-/* Media query para pantallas pequeñas (menos de 768px de ancho) */
+@keyframes button-particles {
+  0% {
+      background-position: left top;
+  }
+
+  100% {
+      background-position: right bottom;
+  }
+}
+
 @media screen and (max-width: 768px) {
-    .body {
-      flex-direction: column; /* Cambia la dirección de flexión a columna */
-    }
-  
-    .left {
-      width: 100%; /* Ocupa todo el ancho de la pantalla */
-      border-bottom-right-radius: 0; /* Elimina el redondeo en la parte inferior derecha */
-      overflow-y: auto; /* Agrega desplazamiento vertical */
-    }
-  
-    .infoLeft {
-      height: auto; /* Ajusta la altura automáticamente */
-    }
+  .body {
+      flex-direction: column;
   }
-  
-  /* Media query para pantallas medianas (entre 769px y 1024px de ancho) */
-  @media screen and (min-width: 769px) and (max-width: 1024px) {
-    .infoLeft {
-      font-size: small; /* Ajusta el tamaño de fuente para pantallas medianas */
-    }
+
+  .left {
+      width: 100%;
+      border-bottom-right-radius: 0;
+      overflow-y: auto;
   }
-  
-  /* Media query para pantallas grandes (más de 1024px de ancho) */
-  @media screen and (min-width: 1025px) {
-    .body {
-      justify-content: space-between; /* Vuelve a justificar el contenido alrededor */
-    }
+
+  .infoLeft {
+      height: auto;
   }
-  
-  /* Media query para pantallas extra grandes (más de 1440px de ancho) */
-  @media screen and (min-width: 1441px) {
-    .info {
-      height: 600px; /* Ajusta la altura del área de información */
-    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .infoLeft {
+      font-size: small;
   }
+}
+
+@media screen and (min-width: 1025px) {
+  .body {
+      justify-content: space-between;
+  }
+}
+
+@media screen and (min-width: 1441px) {
+  .info {
+      height: 600px;
+  }
+}
+
+
