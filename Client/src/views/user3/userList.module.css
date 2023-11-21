@@ -3,7 +3,7 @@
     align-items: center;
     padding: 10px;
     background-color: #d0cccc77;
-    margin: 10px 50px 50px 50px;/* 20px de margen izquierdo y derecho, puedes ajustar este valor según tus preferencias */
+    margin: 10px 40px 20px 40px;
     border-radius: 10px; /*20px Ajusta el valor según el radio de redondez deseado */
    
   }

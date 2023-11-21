@@ -7,11 +7,12 @@ const Nav = () => {
     const navigate = useNavigate()
     const auth = useAuth()
     const [name, setName] = useState('')
-
+    const [image, setImage] = useState('');
 
     useEffect(() => {
-        setName(auth.name)
-    }, [auth.name])
+        setName(auth.name);
+        setImage(auth.image);
+    }, [auth.name, auth.image]);
 
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     const type = userInfo?.type || '';
@@ -37,12 +38,18 @@ const Nav = () => {
             <NavLink className={p.logo} to={'/'}>
                 <img className={p.logo} to={'/'} src="/logo111.png" alt="logo" />
             </NavLink>
-            {
-                name
-                    ? <div onClick={handleProfile} className={p.linkProfile}> {name} <br /> <small>{email}</small> </div>
-
-                    : <div>| Ingresar</div>
-            }
+            {name ? (
+                <div onClick={handleProfile} className={p.linkProfile}>
+                    {image && <img src={image} className={p.userImage} />}
+                    <div>
+                        <span>{name}</span>
+                        <br />
+                        <small>{email}</small>
+                    </div>
+                </div>
+            ) : (
+                <div className={p.linkProfile}>| Ingresar</div>
+            )}
         </div>
     )
 }

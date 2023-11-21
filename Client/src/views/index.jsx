@@ -12,9 +12,12 @@ import OrderDetail from "./orders/orderDetail"
 import Profile3 from "./profile3/Profile3"
 import UserList from "./user3/userList"
 import AllOrderHistory from "./AllOrders/AllOrderHistory"
-
-export { Landing, User1, User2, User3, User4, Profile1, Profile3, Cart, Orders, Fav, Login, Signup, OrderDetail, UserList, AllOrderHistory}
-
 import Profile2 from "./profile2/Profile2"
+
+
+
+export { Landing, User1, User2, User3, Profile1, Profile2, Profile3, Cart, Orders, Fav, Login, Signup, OrderDetail, UserList, AllOrderHistory}
+
+
 
 
