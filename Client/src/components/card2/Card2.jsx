@@ -6,6 +6,8 @@ import { addCart, removeCard, quantityDB } from '../../redux/actions'
 
 
 const Card2 = ({ id, code, name, description, quanty, price, stock }) => {
+
+    console.log(stock);
     const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
 
     const dispatch = useDispatch()

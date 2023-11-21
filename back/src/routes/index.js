@@ -13,6 +13,7 @@ const review = require('./review.routes')
 
 const authenticate = require('../utils/auth/authenticate')
 
+const stadistic = require('./stadistics.routes')
 
 // ----------------------------------------------
 const route = Router()
@@ -30,6 +31,9 @@ route.use('/api/login', loginR)
 route.use('/user', user)
 
 route.use('/refresh-token', refresh_token)
+
+
+route.use('/count', stadistic)
 
 
 
