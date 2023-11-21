@@ -6,6 +6,8 @@ import Swal from "sweetalert2";
 
 
 export default function Paginado({ cardsInPage, totalCards, currentPage }) {
+
+
     const dispatch = useDispatch();
 
     const pageNumbers = [];

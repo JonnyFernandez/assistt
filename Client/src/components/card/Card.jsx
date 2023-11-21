@@ -2,8 +2,7 @@ import c from './Card.module.css'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import { addFav, removeFav, addCart, removeCard } from '../../redux/actions'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+
 
 const Card = ({ id, code, name, description, quanty, price, stock, type }) => {
 
@@ -99,7 +98,7 @@ const Card = ({ id, code, name, description, quanty, price, stock, type }) => {
                     <div> {type} </div>
                 </div>
                 <div className={c.divCodeStock}>
-                    <div> stock: 58 </div>
+                    <div> stock: {stock} </div>
                 </div>
 
 

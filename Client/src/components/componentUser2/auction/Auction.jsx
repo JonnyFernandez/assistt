@@ -17,6 +17,7 @@ const Auction = () => {
         dispatch(getOrdersUser2())
     }, [])
     const orders = useSelector((state) => state.Orders)
+
     const currentPage = useSelector((state) => state.currentPage)
 
     // PAGINATION VARS
@@ -61,9 +62,9 @@ const Auction = () => {
 
                 <div className={a.status}>
                     <select onChange={handleStatus}>
-                        <option value="All">Status</option>
+                        <option value="All">Estado</option>
                         <option value="on">Disponible</option>
-                        <option value="Off">Capturadas</option>
+                        <option value="Off">No Disponible</option>
                     </select>
                 </div>
                 <div className={a.seach}>
