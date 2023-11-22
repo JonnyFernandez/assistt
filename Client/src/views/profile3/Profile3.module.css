@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 140%; /* Ajustado para un ancho relativo */
+  width: 190%; 
   padding: 20px; 
 
 }
@@ -18,7 +18,7 @@
 }
 
 .profileContainer {
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #ccc;
@@ -59,6 +59,7 @@
 
 .profileImageContainer {
   text-align: center;
+  width: 500px;
 }
 
 .profileImage {
@@ -69,6 +70,7 @@
   border: 2px solid rgb(8, 1, 1)1e1;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   margin: 0 auto;
+  margin-right: 190px;
   margin-bottom: 20px;
   image-rendering: optimizeQuality; /* Propiedad para mejorar la calidad de la imagen en algunos navegadores */
 }
@@ -80,6 +82,7 @@
 
 .datosContainer {
   text-align: left;
+  margin-top: 12px;
 }
 
 .datos {
@@ -88,6 +91,7 @@
   font-weight: 100;
   font-size: 20px;
   margin-bottom: 10px;
+  
 }
 
 .p.datos strong {
@@ -97,7 +101,7 @@
 .closeButton {
   position: absolute;
   top: 85px; 
-  right: 390px;
+  right: 270px;
   padding: 5px 10px;
   cursor: pointer;
   color: white;

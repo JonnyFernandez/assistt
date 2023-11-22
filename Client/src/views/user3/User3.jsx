@@ -131,34 +131,28 @@ const User3 = () => {
             </div>
             <div>
               <button className={style.button} onClick={showMoreSellerOnClick}>
-                Más Vendido
+              Top Ventas
               </button>
             </div>
             <div>
               <button className={style.button} onClick={showPriceOnClick}>
-                Cotización
+                Cotizaciones
               </button>
             </div>
           </div>
 
           <div className={style.info}>
-            <div className={style.infoLeft}>
+          <div className={style.infoLeft}>
             <div className={`${style.infoLeftTop} ${style.userAvatarButtonContainer}`}>
-            {showUserAvatarButton && <UserAvatarButton userImage={profile?.userImage} />}
+              {showUserAvatarButton && <UserAvatarButton userImage={profile?.userImage} />}
+            </div>
+            <div className={style.infoLeftCenter}>
+              {showDashboard && !showMoreSeller && !showPrice && <DashboardEntry />}
+              {showMoreSeller && <MoreSeller />}
+              {selectedOrder && !showMoreSeller && !showPrice && <OrderDetail approvalStatus={approvalStatus} updateApprovalStatus={updateApprovalStatus} />}
+              {showUserList && <UserList users={searchResults} />}
+              {showPrice && <Price />}
               </div>
-              <div className={style.infoLeftCenter}>
-                {showDashboard && <DashboardEntry />}
-                {selectedOrder && (
-                  <OrderDetail
-                    approvalStatus={approvalStatus}
-                    updateApprovalStatus={updateApprovalStatus}
-                  />
-                )}
-                {showUserList && <UserList users={searchResults} />}
-                {showMoreSeller && <MoreSeller />}
-                {showPrice && <Price />}
-              </div>
-          
             </div>
           </div>
         </div>

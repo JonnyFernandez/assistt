@@ -1,5 +1,5 @@
 
-import { Landing, User1, User2, User3, Profile1, Cart, Orders, Fav, AllOrderHistory } from "./views"
+import { Landing, User1, User2, User3, Profile1, Cart, Orders, Fav } from "./views"
 import { Route, Routes } from "react-router-dom"
 import UserList from "./views/user3/userList";
 import axios from "axios";
@@ -20,7 +20,6 @@ function App() {
         <Route exact path="/orders" element={<Orders />} />
         <Route path="/detail/:id" element={<User3 />} />
         <Route path="/usersList" element={<UserList />} />
-        <Route path="/order/detail/:id" element={<AllOrderHistory />} />
         <Route exact path="/fav" element={<Fav />} />
       </Routes>
     </div>

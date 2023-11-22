@@ -1,0 +1,55 @@
+/* MoreSeller.css */
+
+.title {
+    display: flex;
+    color: #06118c;
+    font-size: 30px;
+    font-weight: bold;
+    justify-content: center;
+    margin: 10px 10px 10px 10px;
+    
+  }
+  
+  .nodatacontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px; /* Ajusta la altura según sea necesario */
+  }
+  
+  .nodata {
+    display: flex;
+    flex-direction: column; /* Alinea el texto en columna */
+    color: #555;
+    font-size: 20px; /* Ajusta el tamaño de la fuente */
+    border: 2px solid #ccc;
+    padding: 30px;
+    width: 400px;
+    justify-content: center;
+    align-items: center; /* Centra el contenido horizontalmente */
+    border-radius: 10px; /* Borde más redondeado */
+    text-align: center;
+    background-color: #f9f9f9d5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sutil sombra */
+  }
+
+  .nodata:hover {
+    transform: scale(1.02); /* Cambia el tamaño al pasar el ratón para un efecto de levantamiento */
+    transition: transform 0.3s ease;
+  }
+
+ /* Estilos específicos para el gráfico */
+.chartcontainer {
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Ajustes para la apariencia del gráfico */
+  .rechartswrapper {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+   
+  }
+  
+  
