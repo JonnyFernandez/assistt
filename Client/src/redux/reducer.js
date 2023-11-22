@@ -59,16 +59,6 @@ const InitialState = {
 const reducer = (state = InitialState, action) => {
     switch (action.type) {
 
-
-
-
-
-
-
-
-
-
-
         case SEACH_CODE_USER2:
             const code2 = action.payload;
             console.log(code2);

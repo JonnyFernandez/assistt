@@ -39,19 +39,32 @@ const Nav = () => {
                 <img className={p.logo} to={'/'} src="/logo111.png" alt="logo" />
             </NavLink>
             {name ? (
-                <div onClick={handleProfile} className={p.linkProfile}>
+                <div className={p.linkProfile}>
                     {image && <img src={image} className={p.userImage} />}
                     <div>
-                        <span>{name}</span>
-                        <br />
-                        <small>{email}</small>
+                        <span>🟢 Bienvenido/a, {name}!</span>
                     </div>
                 </div>
             ) : (
-                <div className={p.linkProfile}>| Ingresar</div>
+                <div className={p.linkProfile}>🔴 Ingresar</div>
             )}
         </div>
     )
 }
 
 export default Nav
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
