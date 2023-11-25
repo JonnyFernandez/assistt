@@ -33,16 +33,28 @@
 .bodyHeader {
     width: 98%;
     height: 10%;
-    background-color: red;
+    /* background-color: red; */
     display: flex;
-
+    margin-top: 10px;
     justify-content: center;
 }
 
 .bodyCard {
     width: 98%;
-    height: 90%;
+    height: 95%;
+    display: flex;
+    /* background-color: red; */
+    justify-content: center;
+    align-items: center;
+}
+
+.cardContailer {
+    width: 98%;
+    height: 95%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    /* background-color: aqua; */
 }

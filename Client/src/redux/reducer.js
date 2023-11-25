@@ -31,11 +31,14 @@ import {
     FILTER_BY_TYPE,
     FILTER_BY_MIN_MAX,
     FILTER_BY_STATUS,
-    SEACH_CODE_USER2
+    SEACH_CODE_USER2,
+    GET_PROD_USER2
 } from '../redux/actionsType';
 
 const InitialState = {
     Product: [],
+    ProductUser2: [],
+    backupProductUser2: [],
     Orders: [],
     backupOrder: [],
     OrdersUser: [],
@@ -58,6 +61,23 @@ const InitialState = {
 
 const reducer = (state = InitialState, action) => {
     switch (action.type) {
+
+        case GET_PROD_USER2:
+            return {
+                ...state,
+                ProductUser2: action.payload,
+                backupProductUser2: action.payload
+            }
+
+
+
+
+
+
+
+
+
+
 
         case SEACH_CODE_USER2:
             const code2 = action.payload;

@@ -1,6 +1,7 @@
 
 //-------PRODUCTOS--------------------------
 export const GET_PROD = "GET_PROD"
+export const GET_PROD_USER2 = "GET_PROD_USER2"
 export const BY_TYPE = "BY_TYPE"
 export const QUANTITY = "QUANTITY"
 
