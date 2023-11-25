@@ -22,11 +22,11 @@
 
 /* Estilos para diferentes estados */
 .aprobado {
-    background-color: rgb(11, 251, 11);
+    background-color: rgb(64, 234, 64);
 }
 
 .desaprobado {
-    background-color: rgba(253, 3, 3, 0.84);
+    background-color: rgba(244, 56, 56, 0.84);
 }
 
 .send {

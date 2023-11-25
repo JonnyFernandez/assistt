@@ -223,6 +223,7 @@
     border-radius: 50%;
     /* Un valor del 50% produce un círculo perfecto */
     overflow: hidden;
+    border: 1px solid black;
 
 }
 

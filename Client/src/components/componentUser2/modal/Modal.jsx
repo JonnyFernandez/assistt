@@ -28,8 +28,8 @@ const Modal = ({ isOpen, onClose, productDetails }) => {
 
             <div className={j.modalContent}>
                 <div className={j.header}>
-                    <p>Code: {productDetails.code}</p>
-                    <p>Date: {productDetails.date}</p>
+                    <p>Codigo: {productDetails.code}</p>
+                    <p>Fecha: {productDetails.date}</p>
                     <p>Estado: {!productDetails.status ? 'Disponible' : 'No Disponible'}</p>
                     <p onClick={openReview}>reseña</p>
                 </div>
@@ -47,6 +47,8 @@ const Modal = ({ isOpen, onClose, productDetails }) => {
                                                     <div className={j.info}>Prod-Codigo: {item.code}</div>
                                                     <div className={j.info}>Nombre: {item.name} </div>
                                                     <div className={j.info}>Cantidad: {item.quanty} </div>
+                                                    <div className={j.info}>precio: $ 159.111 </div>
+                                                    <div className={j.info}>total: $ 159.111 </div>
                                                 </div>
 
                                             </div>

@@ -31,19 +31,56 @@ const update = async (id, active) => {
 }
 
 const updateCantidad = async (id, quanty) => {
+    try {
+        const producto = await Prod.findByPk(id);
 
+        if (producto) {
+            // Obtener el stock actual
+            const stockActual = producto.stock;
+
+            // Calcular la diferencia entre la nueva cantidad y la cantidad anterior
+            const diferenciaCantidad = quanty - producto.quanty;
+
+            // Verificar si la diferencia implica una disminución en el stock
+            if (diferenciaCantidad > 0) {
+                // Si la diferencia es positiva, reducir el stock
+                const nuevoStock = stockActual - diferenciaCantidad;
+
+                // Actualizar el stock y la cantidad
+                producto.stock = nuevoStock;
+                producto.quanty = quanty;
+                await producto.save();
+
+                return producto;
+            } else {
+                // Si la diferencia es negativa o cero, mantener el stock actual
+                producto.quanty = quanty;
+                await producto.save();
+
+                return producto;
+            }
+        } else {
+            throw new Error('Producto no encontrado');
+        }
+    } catch (error) {
+        throw new Error('Error al actualizar la cantidad: ' + error.message);
+    }
+};
+
+
+
+const updateStock = async (id, stock) => {
     const aux = await Prod.findByPk(id)
-
-    // console.log(aux);
-
-
-    aux.quanty = quanty
-
-
+    if (!aux) throw new Error("Prod no encontrado")
+    aux.stock = stock
     await aux.save()
-
-
     return aux
 }
 
-module.exports = { createProd, getProd, update, updateCantidad }
+
+
+
+
+
+
+module.exports = { createProd, getProd, update, updateCantidad, updateStock }

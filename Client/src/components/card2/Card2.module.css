@@ -11,29 +11,57 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
-    width: 90%;
-
+    justify-content: center;
+    width: 95%;
+    height: 100px;
     border: 1px solid black;
     margin: 10px;
     padding: 20px;
-    /* background-color: #b0c4b1; */
-    /* background-color: #d5bdaf; */
-    /* background-color: #cad2c5; */
-    /* background-color: #f7a072; */
-    /* background-color: #fff3b0; */
     background-color: #cce3de;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.521);
     border-radius: 15px;
+
 }
 
 .buttoContainer {
     display: flex;
-    flex-direction: column;
+    /* justify-content: center; */
     align-items: center;
-    margin-top: 20px;
-    /* background-color: blue; */
-    width: 130px;
+    height: 100%;
+    width: 150px;
+    margin-right: 20px;
+    /* background-color: rgba(0, 26, 255, 0.501); */
+}
+
+.decrece {
+    margin-top: 12px;
+    background-color: #41a0b3;
+    color: black;
+    border: none;
+    width: 26px;
+    height: 26px;
+    border-radius: 5px;
+
+}
+
+.crece {
+    margin-top: 12px;
+    background-color: #41a0b3;
+    color: black;
+    border: none;
+    width: 26px;
+    height: 26px;
+    border-radius: 5px;
+}
+
+.decrece:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.577);
+    border: 1px solid black;
+}
+
+.crece:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.577);
+    border: 1px solid black;
 
 }
 
@@ -42,34 +70,77 @@
     flex-direction: row;
     align-items: center;
     margin-bottom: 20px;
-
-
 }
 
-input {
-    width: 70px;
+
+
+
+
+
+.input {
+    width: 40px;
     margin: 0 15px;
     text-align: center;
+    margin-top: 12px;
 }
 
 .deleteCart {
     background-color: red;
     color: white;
     border: none;
-    padding: 10px 20px;
-    /* Ajusta el relleno del botón según sea necesario */
-    cursor: pointer;
+    width: 26px;
+    height: 26px;
+    border-radius: 5px;
 }
 
-.divCode {
-    flex: 1;
-    padding: 0 10px;
+.deleteCart:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.577);
+    border: 1px solid black;
+}
+
+
+
+
+.divCode1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 110px;
+    margin-right: 20px;
+    /* background-color: red; */
 
 }
 
-h4 {
-    font-size: 14px;
-    /* Ajusta el tamaño de la fuente según sea necesario */
-    margin: 5px 0;
-    /* Ajusta el margen superior e inferior para separar los elementos */
+.divCode2 {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    height: 100%;
+    width: 200px;
+    margin-right: 20px;
+    /* background-color: rgb(0, 255, 68); */
+
+}
+
+.divCode3 {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    height: 100%;
+    width: 300px;
+    margin-right: 20px;
+    /* background-color: rgba(0, 26, 255, 0.501); */
+
+}
+
+.divCode4 {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    height: 100%;
+    width: 80px;
+    margin-right: 20px;
+    /* background-color: rgba(0, 26, 255, 0.501); */
+
 }

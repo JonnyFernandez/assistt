@@ -84,7 +84,7 @@ const Card = ({ id, code, name, description, quanty, price, stock, type }) => {
             <div className={c.card} >
 
                 <div className={c.divCode1} >
-                    <div className={c.code}>{code}</div>
+                    <div className={c.code}>Code: {code}</div>
                 </div>
 
                 <div className={c.divCode}>
