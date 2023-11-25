@@ -1,0 +1,12 @@
+.search {
+    /* background-color: red; */
+    display: flex;
+    flex-direction: row;
+}
+
+.checks {
+    display: flex;
+    flex-direction: column;
+    /* background-color: red; */
+    margin-right: 5px;
+}
