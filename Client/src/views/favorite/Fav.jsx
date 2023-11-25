@@ -11,7 +11,7 @@ const Fav = () => {
     const fav = useSelector((state) => state.favorite);
     const cart = useSelector((state) => state.cart);
 
-
+    console.log(fav);
 
     return (
         <div className={f.Fav}>
@@ -53,7 +53,7 @@ const Fav = () => {
                         {
                             fav && fav.map(item => {
                                 return (
-                                    <Card key={item.id} id={item.id} code={item.code} name={item.name} description={item.description} quanty={item.quanty} price={item.price} type={item.type} />
+                                    <Card key={item.id} id={item.id} code={item.code} name={item.name} description={item.description} quanty={item.quanty} price={item.price} type={item.type} stock={item.stock} />
                                 )
                             })
                         }

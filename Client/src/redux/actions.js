@@ -323,59 +323,87 @@ export const getOrderUserById = (id) => {
 
 
 
+// export const pause_order = (id, pause) => {
+//   return async (dispatch) => {
+//     try {
+//       const data = { pause }
+//       await axios.put(`/order/api/${id}`, data);
+//       const message = pause === 'pause' ? "Orden Pausada" : pause === 'resume' ? "Orden Reanudada" : 'Orden eliminada';
+
+//       Swal.fire({
+//         title: message,
+//         imageUrl: '',
+//         imageWidth: 100,
+//         imageHeight: 100,
+//         confirmButtonText: "Aceptar",
+//         background: "white",
+//         width: "30%",
+//         heightAuto: false,
+//         height: "1%",
+//         padding: "3rem",
+//         buttonsStyling: false,
+//         customClass: {
+//           title: "mesageAlert",
+//           confirmButton: "buttonAlert",
+//         },
+//       });
+//     } catch (error) {
+//       console.error("Error al aprobar/desaprobar la orden:", error);
+//       const errorMessage = error.response && error.response.data && error.response.data.error
+//         ? error.response.data.error
+//         : "Error al pausar la orden";
+
+//       Swal.fire({
+//         title: "Error al pausar la orden",
+//         text: errorMessage,
+//         imageWidth: 100,
+//         imageHeight: 100,
+//         background: "white",
+//         width: "30%",
+//         heightAuto: false,
+//         height: "1%",
+//         padding: "3rem",
+//         buttonsStyling: false,
+//         confirmButtonText: "Aceptar",
+//         customClass: {
+//           title: "mesageAlert",
+//           confirmButton: "buttonAlert",
+//         },
+//       });
+//     }
+//   };
+// };
+
+
+// ----------setear carrito con el localStorage-----
+
+
 export const pause_order = (id, pause) => {
   return async (dispatch) => {
     try {
-      const data = { pause }
+      const data = { pause };
       await axios.put(`/order/api/${id}`, data);
-      const message = pause === 'pause' ? "Orden Pausada" : pause === 'resume' ? "Orden Reanudada" : 'Orden eliminada';
 
-      Swal.fire({
-        title: message,
-        imageUrl: '',
-        imageWidth: 100,
-        imageHeight: 100,
-        confirmButtonText: "Aceptar",
-        background: "white",
-        width: "30%",
-        heightAuto: false,
-        height: "1%",
-        padding: "3rem",
-        buttonsStyling: false,
-        customClass: {
-          title: "mesageAlert",
-          confirmButton: "buttonAlert",
-        },
-      });
+      const message = pause === 'pause' ? "Orden Pausada" : pause === 'resume' ? "Orden Reanudada" : 'Orden eliminada';
+      console.log(message); // Puedes usar esta información para manejar la respuesta en el front-end
+
+      // Ejemplo de cómo podrías manejar la respuesta en el front-end:
+      // Realizar acciones adicionales según la respuesta, actualizar el estado, etc.
+
     } catch (error) {
       console.error("Error al aprobar/desaprobar la orden:", error);
       const errorMessage = error.response && error.response.data && error.response.data.error
         ? error.response.data.error
         : "Error al pausar la orden";
 
-      Swal.fire({
-        title: "Error al pausar la orden",
-        text: errorMessage,
-        imageWidth: 100,
-        imageHeight: 100,
-        background: "white",
-        width: "30%",
-        heightAuto: false,
-        height: "1%",
-        padding: "3rem",
-        buttonsStyling: false,
-        confirmButtonText: "Aceptar",
-        customClass: {
-          title: "mesageAlert",
-          confirmButton: "buttonAlert",
-        },
-      });
+      console.error(errorMessage); // Manejar el mensaje de error en caso de fallo en la solicitud
+      // Puedes usar esta información para manejar el error en el front-end
     }
   };
 };
 
 
-// ----------setear carrito con el localStorage-----
+
 
 export const setCartItems = (storeCart) => {
   return { type: SET_CART, payload: storeCart }

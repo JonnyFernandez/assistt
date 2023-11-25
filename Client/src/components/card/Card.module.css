@@ -6,6 +6,10 @@
     margin-bottom: 10px;
     justify-content: center;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    /* background-color: #cce3de; */
+    background-color: #f7e6d4;
+
+    border-radius: 9px;
 }
 
 
@@ -14,13 +18,14 @@
     display: flex;
     height: 80px;
     width: 95%;
+    /* background-color: red; */
 }
 
 .divCode1 {
-    width: 100px;
+    width: 120px;
     align-items: center;
     display: flex;
-    justify-content: center;
+
 
 }
 

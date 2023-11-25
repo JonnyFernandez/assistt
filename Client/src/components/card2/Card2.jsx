@@ -1,7 +1,7 @@
 import c from './Card2.module.css'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { addCart, removeCard, quantityDB } from '../../redux/actions'
+import { addCart, removeCard, quantityDB, getProd } from '../../redux/actions'
 
 
 
@@ -26,7 +26,8 @@ const Card2 = ({ id, code, name, description, quanty, price, stock }) => {
                 setCart(true);
             }
         });
-    }, [myList]);
+        dispatch(quantityDB(id, 1))
+    }, [myList, dispatch]);
 
     const handleCart = () => {
         if (cart) {
@@ -54,7 +55,7 @@ const Card2 = ({ id, code, name, description, quanty, price, stock }) => {
         if (inputs.quanty > 1) {
             const newQuantity = parseInt(inputs.quanty) - 1;
             dispatch(quantityDB(id, newQuantity));
-            setInputs({ ...inputs, quanty: newQuantity });
+            setInputs({ ...inputs, quanty: (newQuantity) });
         } else {
             return alert('Solo numeros mayores que 1')
         }
@@ -71,35 +72,39 @@ const Card2 = ({ id, code, name, description, quanty, price, stock }) => {
 
             <div className={c.card} >
 
-                <div className={c.divCode} >
-                    <h4 className={c.code}>Code: {code}</h4>
+                <div className={c.divCode1} >
+                    <h5 className={c.code}> <small>Code: {code}</small> </h5>
                 </div>
 
-                <div className={c.divCode}>
-                    <h4 className={c.name}> {name}</h4>
+                <div className={c.divCode2}>
+                    <h5 className={c.name}> <small>{name}</small> </h5>
 
                 </div>
 
-                <div className={c.divCode}>
-                    <h4 className={c.descrip}>Stock: {stock}</h4>
+                <div className={c.divCode3}>
+                    <h5 className={c.descrip}> <small>{description}</small> </h5>
                 </div>
+                {/* <div className={c.divCode4}>
+                    <h5 className={c.descrip}> <small>Stock: {stock}</small> </h5>
+                </div> */}
 
-                <div className={c.divCode}>
-                    <h4 className={c.descrip}>{description}</h4>
-                </div>
 
                 <div className={c.buttoContainer}>
 
                     <div className={c.inputsNum}>
-                        <button onClick={handlerDecrese}>-</button>
-                        <input className={c.input} type="text" onChange={handleInputChange} value={inputs.quanty} />
-                        <button onClick={handlerIncrese}>+</button>
+                        <div>
+                            <button className={c.decrece} onClick={handlerDecrese}>-</button>
+                            <input className={c.input} type="text" onChange={handleInputChange} value={inputs.quanty} />
+                            <button className={c.crece} onClick={handlerIncrese}>+</button>
+                        </div>
                     </div>
 
-                    <button className={c.deleteCart} onClick={handleCart}> quitar </button>
+                    {/* <button>confirmar</button> */}
+
 
                 </div>
 
+                <button className={c.deleteCart} onClick={handleCart}> X </button>
 
             </div>
 
