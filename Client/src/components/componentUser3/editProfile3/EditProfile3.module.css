@@ -5,7 +5,8 @@
     justify-content: center;
     align-items: center;
     width: 140%; /* Ajustado para un ancho relativo */
-    padding: 10px; /* Añadido relleno */
+    padding: 20px; /* Añadido relleno */
+    margin-top: 50px;
 }
 
 .titulo {
@@ -151,6 +152,16 @@
     font-size: 0.7em; 
     margin-top: 2px;
     margin-left: 15px;
+  }
+
+  .closeButton {
+    position: absolute;
+    top: 100px; /* Ajusta según sea necesario para la posición vertical */
+    right: 180px; /* Ajusta según sea necesario para la posición horizontal */
+    background-color: #3b0be8; 
+    border: 1px solid #e9e6e6;
+    padding: 5px 10px;
+    cursor: pointer;
   }
 
 

@@ -5,7 +5,7 @@ import t from './EditProfile3.module.css';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-const EditProfile3 = () => {
+const EditProfile3 = ({ onClose }) => {
   const dispatch = useDispatch();
   const userInfo = JSON.parse(localStorage.getItem('userInfo')) || {};
   const id = userInfo.id || '';
@@ -87,66 +87,64 @@ const EditProfile3 = () => {
   }, [userInfo.image]);
 
   return (
-    <div>
-      <h2 className={t.titulo}>Editar datos de tu Perfil</h2>
-      <div className={t.form}>
-        <div className={t.formContainer}>
-          <div className={t.formLeft}>
-            <div className={t.uploadedImageContainer}>
-              <h3 className={t.subtitulo}>Vista previa de la imagen:</h3>
-              <div className={t.profileImageContainer}>
-                <img
-                  src={inputs.image || uploadedImage}
-                  alt="Preview"
-                  className={`${t.profileImage} ${!inputs.image && t.defaultImage}`}
-                />
-              </div>
-              <button onClick={handleImageRemoval}>Modificar imagen</button>
+    <div className={t.form}>
+        <button onClick={onClose} className={t.closeButton} >X</button>
+      <div className={t.formContainer}>
+        <div className={t.formLeft}>
+          <div className={t.uploadedImageContainer}>
+            <h3 className={t.subtitulo}>Vista previa de la imagen:</h3>
+            <div className={t.profileImageContainer}>
+              <img
+                src={inputs.image || uploadedImage}
+                alt="Preview"
+                className={`${t.profileImage} ${!inputs.image && t.defaultImage}`}
+              />
             </div>
-            {!inputs.image && !uploadedImage && (
-              <input type="file" onChange={handleImageSelection} accept="image/*" />
-            )}
+            <button onClick={handleImageRemoval}>Modificar imagen</button>
           </div>
-          <div className={t.formRight}>
-            <form onSubmit={handleSubmit} className={t.form1}>
-              <div className={t.divs}>
-                <h2 className={t.subtitulo}>Ingreso/ Edición de Datos</h2>
-              </div>
-              <div className={t.divs}>
-                <input
-                  type="text"
-                  name="company"
-                  onChange={handleChange}
-                  value={inputs.company}
-                  placeholder="Ingresar Empresa"
-                  className={`${t.inputs} ${t.inputs_file}`}
-                />
-              </div>
-              <div className={t.divs}>
-                <input
-                  type="text"
-                  name="address"
-                  onChange={handleChange}
-                  value={inputs.address}
-                  placeholder="Ingresar Domicilio Fiscal"
-                  className={`${t.inputs} ${t.inputs_file}`}
-                />
-              </div>
-              <div className={t.divs}>
-                <input
-                  type="text"
-                  name="phone"
-                  onChange={handleChange}
-                  value={inputs.phone}
-                  placeholder="Ingresar Teléfono"
-                  className={`${t.inputs} ${t.inputs_file}`}
-                />
-              </div>
-              <div className={t.divSubmit}>
-                <button type="submit" className={t.submit}>Agregar</button>
-              </div>
-            </form>
-          </div>
+          {!inputs.image && !uploadedImage && (
+            <input type="file" onChange={handleImageSelection} accept="image/*" />
+          )}
+        </div>
+        <div className={t.formRight}>
+          <form onSubmit={handleSubmit} className={t.form1}>
+            <div className={t.divs}>
+              <h2 className={t.subtitulo}>Ingreso/ Edición de Datos</h2>
+            </div>
+            <div className={t.divs}>
+              <input
+                type="text"
+                name="company"
+                onChange={handleChange}
+                value={inputs.company}
+                placeholder="Ingresar Empresa"
+                className={`${t.inputs} ${t.inputs_file}`}
+              />
+            </div>
+            <div className={t.divs}>
+              <input
+                type="text"
+                name="address"
+                onChange={handleChange}
+                value={inputs.address}
+                placeholder="Ingresar Domicilio Fiscal"
+                className={`${t.inputs} ${t.inputs_file}`}
+              />
+            </div>
+            <div className={t.divs}>
+              <input
+                type="text"
+                name="phone"
+                onChange={handleChange}
+                value={inputs.phone}
+                placeholder="Ingresar Teléfono"
+                className={`${t.inputs} ${t.inputs_file}`}
+              />
+            </div>
+            <div className={t.divSubmit}>
+              <button type="submit" className={t.submit}>Agregar</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -154,6 +152,7 @@ const EditProfile3 = () => {
 };
 
 export default EditProfile3;
+
 
 
 

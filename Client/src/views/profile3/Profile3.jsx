@@ -1,85 +1,66 @@
-
-import Nav from '../../components/nav/Nav';
-import p from './Profile3.module.css';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useAuth } from '../../authAll/auth/AuthProvider';
-import { useEffect } from 'react';
-import { getUser1 } from '../../redux/actions'
-import Footer from '../../components/footer/Footer'
-import EditProfile3 from '../../components/componentUser3/editProfile3/EditProfile3';
+import { getUser1 } from '../../redux/actions';
+import p from './Profile3.module.css';
 
-const Profile3 = () => {
-    const auth = useAuth();
-    const dispatch = useDispatch();
-    const Profile = useSelector((state) => state.profile);
+const Profile3 = ({ onClose }) => {
+  const dispatch = useDispatch();
+  const profile = useSelector((state) => state.profile);
+  const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+  const userId = userInfo?.id || '';
 
-    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-    const userId = userInfo?.id || '';
+  useEffect(() => {
+    dispatch(getUser1(userId));
+  }, [dispatch]);
 
-    useEffect(() => {
-        dispatch(getUser1(userId));
-    }, [dispatch]);
+  const handleCloseProfile3Modal = () => {
+    onClose();
+  };
 
-    const handleSignOut = () => {
-        auth.signOut();
-    };
+  const defaultImage = 'https://cdn-icons-png.flaticon.com/512/666/666201.png';
 
-    const saveProfileChanges = (updatedProfileData) => {
-        dispatch(updateUserProfile(updatedProfileData));
-    };
-
-    const defaultImage = 'https://cdn-icons-png.flaticon.com/512/666/666201.png'; // URL de la imagen por defecto
-
-    return (
-        <div>
-            <div>
-                <Nav />
-            </div>
-            <div className={p.body}>
-                <div className={p.bodyLeft}>
-                    <h3 className={p.subtitulo}>Datos del Perfil</h3>
-                    <div className={p.bodyLeftHeader}>
-                        <img
-                            src={Profile?.image || defaultImage}
-                            alt="Imagen de perfil"
-                            className={p.profileImage}
-                        />
-                        <h3 className={p.datos}>
-                            <strong>Nombre:</strong> {Profile?.name}
-                        </h3>
-                        <h3 className={p.datos}>
-                            <strong>Email:</strong> {Profile?.email}
-                        </h3>
-                        <h3 className={p.datos}>
-                            <strong>Empresa:</strong> {Profile?.company}
-                        </h3>
-                        <h3 className={p.datos}>
-                            <strong>Teléfono:</strong> {Profile?.phone}
-                        </h3>
-                        <h3 className={p.datos}>
-                            <strong>Domicilio:</strong> {Profile?.address}
-                        </h3>
-
-                        <div>
-                            <button onClick={handleSignOut}>Cerrar Sesion</button>
-                        </div>
-                    </div>
-                </div>
-                <div className={p.bodyRight}>
-                    <div className={p.bodyRightHeader}>
-                        <EditProfile3
-                            userProfile={Profile}
-                            saveProfileChanges={saveProfileChanges}
-                        />
-                    </div>
-                </div>
-            </div>
-            <div className={p.footer}>
-                <Footer />
-            </div>
+  return (
+      <div className={p.cont}>
+    <button onClick={handleCloseProfile3Modal} className={p.closeButton}>
+        X
+      </button>
+    <div className={p.profileContainer}>
+      <div className={p.headerContainer}>
+        <h2 className={p.header}>Datos del Perfil</h2>
+      </div>
+      <div className={p.body}>
+        <div className={p.bodyLeft}>
+          <div className={p.profileImageContainer}>
+            <img src={profile?.image || defaultImage} alt="Imagen de perfil" className={p.profileImage} />
+          </div>
         </div>
-    );
+        <div className={p.bodyRight}>
+          <div className={p.datosContainer}>
+            <h3 className={p.datos}>
+              <strong>Nombre:</strong> {profile?.name}
+            </h3>
+            <h3 className={p.datos}>
+              <strong>Email:</strong> {profile?.email}
+            </h3>
+            <h3 className={p.datos}>
+              <strong>Empresa:</strong> {profile?.company}
+            </h3>
+            <h3 className={p.datos}>
+              <strong>Teléfono:</strong> {profile?.phone}
+            </h3>
+            <h3 className={p.datos}>
+              <strong>Domicilio:</strong> {profile?.address}
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  );
 };
 
 export default Profile3;
+
+  
+
 

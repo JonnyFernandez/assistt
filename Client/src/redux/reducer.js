@@ -61,12 +61,14 @@ const InitialState = {
 
 const reducer = (state = InitialState, action) => {
     switch (action.type) {
+
         case GET_PROD_USER2:
             return {
                 ...state,
                 ProductUser2: action.payload,
                 backupProductUser2: action.payload
             }
+
 
 
 

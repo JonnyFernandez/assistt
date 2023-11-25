@@ -1,0 +1,42 @@
+/* UserAvatar.module.css */
+.userAvatar {
+    width: 40px; /* Ajusta el ancho según tus preferencias */
+    height: 40px; /* Ajusta la altura según tus preferencias */
+    border-radius: 50%; /* Para que la imagen sea redonda */
+    object-fit: cover; /* Para mantener las proporciones de la imagen */
+    margin-right: 10px; /* Ajusta el margen derecho según tus preferencias */
+    cursor: pointer; /* Cambia el cursor al pasar sobre la imagen */
+    background-color: transparent; /* Fondo transparente */
+    border: none; /* Sin borde */
+    padding: 0; /* Sin relleno */
+}
+
+.userAvatar:hover {
+    filter: brightness(80%); /* Cambia el brillo al pasar el cursor (puedes ajustar el valor según tus preferencias) */
+}
+
+
+.userAvatarContainer {
+    width: 40px; /* Ajusta el tamaño según sea necesario */
+    height: 40px; /* Ajusta el tamaño según sea necesario */
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    border: 2px solid #fff; /* Añade un borde blanco de 2px */
+  }
+  
+  .userAvatarImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .userIcon {
+    width: 100%;
+    height: 100%;
+    font-size: 24px; /* Ajusta el tamaño según sea necesario */
+    color: #fff; /* Color blanco */
+    z-index: 1;
+  }
+  
+  
