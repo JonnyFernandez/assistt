@@ -15,9 +15,14 @@ const loginUser = async (email, password) => {
 
     const user = await userDB.find(u => u.email === email);
     console.log(user);
+
     if (!user) {
-        throw new Error('Usuario no encontrado')
+        throw new Error('Usuario Inexistente')
     };
+
+    if (!user.active) {
+        throw new Error('Usuario Desactivado!');
+    }
 
     //verificando password
     if (!bcrypt.compareSync(password, user.password)) {
@@ -25,7 +30,7 @@ const loginUser = async (email, password) => {
     }
 
     const token = jwt.sign({ userId: user.id }, secretKey, { expiresIn: '1h' });
-    const refreshToken = jwt.sign({ userId: user.id }, refreshTokenSecretKey, { expiresIn: '7d' }); // Puedes ajustar la duración según tus necesidades
+    const refreshToken = jwt.sign({ userId: user.id }, refreshTokenSecretKey, { expiresIn: '7d' }); 
     await Token.create({ token: refreshToken })
 
     const result = {
@@ -37,8 +42,8 @@ const loginUser = async (email, password) => {
             type: user.type,
         },
 
-        accessToken: token, // El token de acceso
-        refreshToken: refreshToken // El token de actualización
+        accessToken: token, 
+        refreshToken: refreshToken 
     };
 
 

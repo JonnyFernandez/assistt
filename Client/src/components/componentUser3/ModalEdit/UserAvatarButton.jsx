@@ -5,6 +5,7 @@ import { useAuth } from '../../../authAll/auth/AuthProvider';
 import EditProfile3 from '../editProfile3/EditProfile3';
 import Profile3 from '../../../views/profile3/Profile3';
 import Swal from 'sweetalert2';
+import { NavLink } from 'react-router-dom';
 
 const UserAvatarButton = () => {
   const auth = useAuth();
@@ -61,6 +62,9 @@ const UserAvatarButton = () => {
         <div className={style.sidebar} onMouseOver={showSidebar} onMouseOut={hideSidebar}>
           <button onClick={handleProfileClick}>Perfil</button>
           <button onClick={handleEditProfileClick}>Editar Perfil</button>
+          <NavLink className={style.navlink} to={'/signup'}>
+           <button>Crear Perfiles</button>
+        </NavLink>
           <button onClick={handleSignOut}>Cerrar Sesión</button>
         </div>
       )}
