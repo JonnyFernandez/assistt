@@ -19,6 +19,9 @@
     
   }
 
+  .navlink{
+    text-decoration: none;
+  }
 
 .sidebar {
     margin-left: 55px; /* Ajusta este valor para mover más a la derecha */

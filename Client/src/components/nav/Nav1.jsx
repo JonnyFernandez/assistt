@@ -18,7 +18,8 @@ const Nav1 = () => {
     return (
         <div className={p.nav1Container}  >
             <div className={p.inicio} onClick={restarAll}>
-                Inicio
+                <NavLink to={'/Profile1'} >Perfil
+                </NavLink>
             </div>
 
 

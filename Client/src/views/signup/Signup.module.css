@@ -79,8 +79,8 @@
   }
   
   .form label .input { 
-    width: 155px;
-    padding: 10px; /* Reducir el relleno */
+    width: 190px;
+    padding: 8px; /* Reducir el relleno */
     color: rgb(92, 83, 83);
     font-family:Tahoma, Geneva, Verdana, sans-serif;
     border: 1px solid rgba(105, 105, 105, 0.397);
