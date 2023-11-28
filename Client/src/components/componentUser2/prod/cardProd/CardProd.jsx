@@ -1,10 +1,19 @@
+import { useState } from 'react'
 import b from './CardProd.module.css'
-
+import ModalDetail from '../modalDetail/ModalDetail'
 
 const CardProd = (props) => {
+
+    const [showModal, setShowModal] = useState(false)
+    console.log(showModal);
+    const handleModal = () => {
+        setShowModal(!showModal)
+
+    }
+
     return (
-        <div className={b.prodCard}>
-            <div className={b.image}>
+        <div className={b.prodCard} >
+            <div className={b.image} onClick={() => handleModal()} >
                 {props.image ? (
                     <img src={props.image} alt="image" />
                 ) : (
@@ -16,21 +25,33 @@ const CardProd = (props) => {
                     </div>
                 )}
             </div>
-            <div className={b.bodyCard}>
 
-
+            <div className={b.bodyCard} onClick={() => handleModal()}>
                 <p className={b.code}>Codigo: {props.code ? props.code : 'Codigo'}</p>
-
-
-
                 <p className={b.price}>Precio: $ {props.price ? props.price : "precio"}</p>
-
-
-
-
+            </div>
+            <div>
+                {showModal && <ModalDetail
+                    handleModal={handleModal}
+                    code={props.code}
+                    name={props.name}
+                    price={props.price}
+                    image={props.image}
+                    description={props.description}
+                    supplie_type={props.supplie_type}
+                    stock={props.stock}
+                    id={props.id}
+                />}
             </div>
         </div>
     )
 }
 
 export default CardProd
+
+
+
+
+
+
+

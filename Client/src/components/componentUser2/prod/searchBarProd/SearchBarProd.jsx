@@ -1,11 +1,19 @@
 // SearchBar.js
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 import d from './searchBarProd.module.css'
+import { useSelector, useDispatch } from 'react-redux';
+import { getProdUser2, searchProdCode, searchProdName } from '../../../../redux/actions';
+
+
 const SearchBar = () => {
+
+    const dispatch = useDispatch()
+
     const [buscarPorCodigo, setBuscarPorCodigo] = useState(false);
     const [buscarPorNombre, setBuscarPorNombre] = useState(false);
-    const [inputBusqueda, setInputBusqueda] = useState('');
+    const [input, setInput] = useState('')
+
 
     const handleBuscarPorCodigo = () => {
         setBuscarPorCodigo(!buscarPorCodigo);
@@ -13,7 +21,6 @@ const SearchBar = () => {
             setBuscarPorNombre(false);
         }
     };
-
     const handleBuscarPorNombre = () => {
         setBuscarPorNombre(!buscarPorNombre);
         if (!buscarPorNombre) {
@@ -21,12 +28,38 @@ const SearchBar = () => {
         }
     };
 
-    const realizarBusqueda = () => {
-        const buscarPor = buscarPorCodigo ? 'codigo' : buscarPorNombre ? 'nombre' : 'ninguno';
-        console.log('Buscar por:', buscarPor);
-        console.log('Texto de búsqueda:', inputBusqueda);
-        // Aquí puedes realizar la búsqueda según la opción seleccionada (por código, por nombre o ninguna)
-    };
+    useEffect(() => {
+        if (buscarPorCodigo) {
+            if (input.trim() === '') {
+                dispatch(getProdUser2());
+            } else {
+                dispatch(searchProdCode(input));
+            }
+        }
+        if (buscarPorNombre) {
+            if (input.trim() === '') {
+                dispatch(getProdUser2());
+
+            } else {
+                dispatch(searchProdName(input));
+
+            }
+        }
+        if (buscarPorCodigo === false && buscarPorNombre === false && input !== '') {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Selecciona cómo deseas buscar el producto',
+                text: 'Por nombre o por código',
+            });
+            setInput('')
+        }
+    }, [input, dispatch]);
+
+
+
+
+
+
 
     return (
         <div className={d.search}>
@@ -51,10 +84,9 @@ const SearchBar = () => {
             <input
                 type="text"
                 placeholder='¿Qué estás buscando?'
-                value={inputBusqueda}
-                onChange={(e) => setInputBusqueda(e.target.value)}
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
             />
-            {/* <button onClick={realizarBusqueda}>Buscar</button> */}
         </div>
     );
 };

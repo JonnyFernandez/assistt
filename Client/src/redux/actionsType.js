@@ -5,6 +5,11 @@ export const GET_PROD_USER2 = "GET_PROD_USER2"
 export const BY_TYPE = "BY_TYPE"
 export const QUANTITY = "QUANTITY"
 
+export const SEARCH_PROD_CODE = "SEARCH_PROD_CODE"
+export const SEARCH_PROD_NAME = "SEARCH_PROD_NAME"
+export const SEARCH_STOCK = "SEARCH_STOCK"
+export const FILTER_BY_PRICE = "FILTER_BY_PRICE"
+
 
 //-------AGRGAR PROD FAVORITOS USER 1 -------
 export const ADD_FAV = "ADD_FAV"

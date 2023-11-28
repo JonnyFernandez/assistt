@@ -1,17 +1,28 @@
+import axios from 'axios'
+import Swal from 'sweetalert2'
 
 
 import {
   GET_PROD, ADD_FAV, REMOVE_FAV, ADD_CART, REMOVE_CART, GET_PROFILE, GET_ORDER, CLEAN_DETAIL, ORDER_DETAIL, BY_TYPE, QUANTITY, POST_USER,
-  GET_REVIEWS, PUT_REVISOR, GET_ENTITY, SEARCH_PROD, SEARCH_USER, GET_USERS_NAME, SET_SEARCH_RESULTS, ORDER_BY_ID_USER, CLEAN_CART, PUT_USER_BANNED, SEARCH_BY_CODE, SET_CART, SET_FAV, SET_CURRENT_PAGE, SET_NEXT_PAGE, SET_PREV_PAGE, FILTER_BY_TYPE, FILTER_BY_MIN_MAX, FILTER_BY_STATUS, SEACH_CODE_USER2, GET_PROD_USER2
-
-
+  GET_REVIEWS, PUT_REVISOR, GET_ENTITY, SEARCH_PROD, SEARCH_USER, GET_USERS_NAME, SET_SEARCH_RESULTS, ORDER_BY_ID_USER, CLEAN_CART, PUT_USER_BANNED, SEARCH_BY_CODE, SET_CART, SET_FAV, SET_CURRENT_PAGE, SET_NEXT_PAGE, SET_PREV_PAGE, FILTER_BY_TYPE, FILTER_BY_MIN_MAX, FILTER_BY_STATUS, SEACH_CODE_USER2, GET_PROD_USER2, SEARCH_PROD_CODE, SEARCH_PROD_NAME, SEARCH_STOCK, FILTER_BY_PRICE
 } from './actionsType'
 
+export const searchProdCode = (payload) => {
+  return { type: SEARCH_PROD_CODE, payload }
+}
+export const searchProdName = (payload) => {
 
-import axios from 'axios'
+  return { type: SEARCH_PROD_NAME, payload }
+}
+
+export const prodStock = (payload) => {
+  return { type: SEARCH_STOCK, payload }
+}
+export const filterByPrice = (payload) => {
+  return { type: FILTER_BY_PRICE, payload }
+}
 
 
-import Swal from 'sweetalert2'
 
 
 export const getProd = () => {
