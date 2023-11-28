@@ -2,7 +2,7 @@ import x from './Prod.module.css'
 import CardProd from './cardProd/CardProd'
 import { useSelector, useDispatch } from 'react-redux'
 import Paginado from '../paginate/Paginate'
-import { getProdUser2 } from '../../../redux/actions'
+import { getProdUser2, prodStock, filterByPrice } from '../../../redux/actions'
 import { useEffect } from 'react'
 import SearchBar from './searchBarProd/SearchBarProd'
 
@@ -24,6 +24,16 @@ const Prod = () => {
     const cardsShowed = prod.slice(firstIndex, lastIndex);
 
 
+    const handleFilter = (e) => {
+        let value = e.target.value
+        // console.log(value);
+        if (value === "all") dispatch(prodStock(value))
+        if (value === "No_Stock") dispatch(prodStock(value))
+        if (value === "max") dispatch(filterByPrice(value))
+        if (value === "min") dispatch(filterByPrice(value))
+    }
+
+
 
 
 
@@ -31,17 +41,22 @@ const Prod = () => {
     return (
         <div className={x.prod}>
             <div className={x.header}>
-                <div>Productos</div>
-                <div>Agregar</div>
 
-                <SearchBar />
-                <select name="" id="">
-                    <option value="">Filtros</option>
-                    <option value="">Sin stock</option>
-                    <option value="">max</option>
-                    <option value="">min</option>
-                </select>
+                <div className={x.divA}>Productos</div>
+
+                <div className={x.divH}>
+                    <SearchBar />
+                    <select name="" id="" onChange={handleFilter}>
+                        <option value="all">Filtros</option>
+                        <option value="No_Stock">Sin Stock</option>
+                        <option value="max">Precio + </option>
+                        <option value="min">Precio - </option>
+                    </select>
+                </div>
             </div>
+
+
+
             <div className={x.body}>
                 <div className={x.bodyHeader}>
                     <Paginado
@@ -59,6 +74,7 @@ const Prod = () => {
 
                                         <CardProd
                                             key={item.id}
+                                            id={item.id}
                                             code={item.code}
                                             name={item.name}
                                             price={item.price}

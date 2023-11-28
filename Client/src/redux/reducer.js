@@ -32,7 +32,11 @@ import {
     FILTER_BY_MIN_MAX,
     FILTER_BY_STATUS,
     SEACH_CODE_USER2,
-    GET_PROD_USER2
+    GET_PROD_USER2,
+    SEARCH_PROD_CODE,
+    SEARCH_PROD_NAME,
+    SEARCH_STOCK,
+    FILTER_BY_PRICE
 } from '../redux/actionsType';
 
 const InitialState = {
@@ -67,10 +71,44 @@ const reducer = (state = InitialState, action) => {
                 ProductUser2: action.payload,
                 backupProductUser2: action.payload
             }
+        case SEARCH_PROD_CODE:
+            const prodCode = action.payload;
+            let prod = (prodCode == null ? state.backupProductUser2 : state.backupProductUser2.filter(item => item.code.toLowerCase().includes(prodCode.toLowerCase())))
+            return {
+                ...state,
+                ProductUser2: prod
+            }
+        case SEARCH_PROD_NAME:
+            const prodName = action.payload;
+            let filterProd = (prodName == null ? state.backupProductUser2 : state.backupProductUser2.filter(item => item.name.toLowerCase().includes(prodName.toLowerCase())))
+            return {
+                ...state,
+                ProductUser2: filterProd
+            }
+        case SEARCH_STOCK:
+            let value = action.payload
+            let resp = value === "all" ? state.backupProductUser2 : value === "No_Stock" ? state.backupProductUser2.filter(item => item.stock === 0) : ''
+            return {
+                ...state,
+                ProductUser2: resp
+            }
+        case FILTER_BY_PRICE:
 
-
-
-
+            let valuePrice = action.payload === 'min' ?
+                state.backupProductUser2.sort(function (a, b) {
+                    if (a.price > b.price) { return 1 }
+                    if (b.price > a.price) { return -1 }
+                    return 0;
+                }) :
+                state.backupOrder.sort(function (a, b) {
+                    if (a.price < b.price) { return 1 }
+                    if (b.price < a.price) { return -1 }
+                    return 0;
+                })
+            return {
+                ...state,
+                ProductUser2: [...valuePrice]
+            }
 
 
 
@@ -79,7 +117,7 @@ const reducer = (state = InitialState, action) => {
 
         case SEACH_CODE_USER2:
             const code2 = action.payload;
-            console.log(code2);
+            // console.log(code2);
             let filterCode2 = (code2 == null ? state.backupOrder : state.backupOrder.filter(ord => ord.codeOrder.toLowerCase().includes(code2.toLowerCase())))
             return {
                 ...state,
