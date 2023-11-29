@@ -5,9 +5,10 @@ import ModalDetail from '../modalDetail/ModalDetail'
 const CardProd = (props) => {
 
     const [showModal, setShowModal] = useState(false)
-    console.log(showModal);
+    // console.log(showModal);
     const handleModal = () => {
         setShowModal(!showModal)
+
 
     }
 

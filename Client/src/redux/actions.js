@@ -21,8 +21,12 @@ export const prodStock = (payload) => {
 export const filterByPrice = (payload) => {
   return { type: FILTER_BY_PRICE, payload }
 }
+export const setProd = async (id, upDate) => {
 
+  await axios.put(`http://localhost:3001/prod/api/${id}`, upDate)
 
+}
+// -------------------------------------------------------------
 
 
 export const getProd = () => {

@@ -69,12 +69,24 @@ const updateCantidad = async (id, quanty) => {
 
 
 
-const updateStock = async (id, stock) => {
+const updateProduct = async (id, name, price, image, description, supplie_type, stock) => {
+
+    let pepe = { id, name, price, image, description, supplie_type, stock }
+    console.log(pepe);
+
     const aux = await Prod.findByPk(id)
     if (!aux) throw new Error("Prod no encontrado")
-    aux.stock = stock
+
+    name ? aux.name = name : aux.name
+    price ? aux.price = price : aux.price
+    image ? aux.image = image : aux.image
+    description ? aux.description = description : aux.description
+    supplie_type ? aux.supplie_type = supplie_type : aux.supplie_type
+    stock ? aux.stock = stock : aux.stock
+
     await aux.save()
     return aux
+
 }
 
 
@@ -83,4 +95,4 @@ const updateStock = async (id, stock) => {
 
 
 
-module.exports = { createProd, getProd, update, updateCantidad, updateStock }
+module.exports = { createProd, getProd, update, updateCantidad, updateProduct }
