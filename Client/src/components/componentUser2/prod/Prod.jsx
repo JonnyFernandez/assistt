@@ -17,7 +17,7 @@ const Prod = () => {
     const currentPage = useSelector((state) => state.currentPage)
 
     // PAGINATION VARS
-    const cardsInPage = 10;
+    const cardsInPage = 15;
     const totalCards = prod.length;
     const lastIndex = currentPage * cardsInPage;
     const firstIndex = lastIndex - cardsInPage;
@@ -35,14 +35,17 @@ const Prod = () => {
 
 
 
-
+    const Refresh = () => {
+        dispatch(getProdUser2())
+        alert('hola')
+    }
 
 
     return (
         <div className={x.prod}>
             <div className={x.header}>
 
-                <div className={x.divA}>Productos</div>
+                <div className={x.divA} onClick={() => Refresh()}>Productos</div>
 
                 <div className={x.divH}>
                     <SearchBar />

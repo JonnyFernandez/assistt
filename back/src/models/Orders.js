@@ -45,17 +45,21 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: true
         },
-        going: {
+        quotes: {
             type: DataTypes.BOOLEAN,
             allowNull: true
-
         },
-
-
-
-
-
-
+        dispatching: {
+            type: DataTypes.BOOLEAN,
+            allowNull: true
+        },
 
     }, { timestamps: false, freezeTableName: true })
 };
+
+
+
+
+
+
+

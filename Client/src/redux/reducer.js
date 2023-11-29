@@ -74,12 +74,18 @@ const reducer = (state = InitialState, action) => {
             }
         case SEARCH_PROD_CODE:
             const prodCode = action.payload;
-
-            let prod = (prodCode == null ? state.backupProductUser2 : state.backupProductUser2.filter(item => item.code.toLowerCase().includes(prodCode.toLowerCase())))
+            // console.log(prodCode);
+            const filteredProducts = (prodCode == null
+                ? state.backupProductUser2
+                : state.backupProductUser2.filter(item =>
+                    item.code.toLowerCase().includes(prodCode.toLowerCase())
+                )
+            );
             return {
                 ...state,
-                ProductUser2: prod
-            }
+                ProductUser2: filteredProducts
+            };
+
         case SEARCH_PROD_NAME:
             const prodName = action.payload;
             let filterProd = (prodName == null ? state.backupProductUser2 : state.backupProductUser2.filter(item => item.name.toLowerCase().includes(prodName.toLowerCase())))

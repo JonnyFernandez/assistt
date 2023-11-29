@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import t from './CardUser2.module.css';
 import Modal from '../modal/Modal';
 
-const CardUser2 = ({ code, date, status, prods, review }) => {
+const CardUser2 = ({ code, date, status, prods, review, id }) => {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null);
@@ -33,7 +33,7 @@ const CardUser2 = ({ code, date, status, prods, review }) => {
                 <div>{date}</div>
                 <div>{currentStatus}</div>
             </div>
-            <Modal isOpen={isModalOpen} onClose={handleCloseModal} productDetails={selectedProduct}
+            <Modal isOpen={isModalOpen} onClose={handleCloseModal} productDetails={selectedProduct} id={id}
             />
         </div>
     );

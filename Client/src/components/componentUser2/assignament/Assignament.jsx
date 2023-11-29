@@ -3,7 +3,7 @@
 const Assignament = () => {
     return (
         <div>
-            Assignament
+            ACA APARECEN LAS ORDENES QUE YA SON MIAS
         </div>
     )
 }

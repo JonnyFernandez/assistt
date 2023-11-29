@@ -1,6 +1,6 @@
 const AddProd = () => {
     return (
-        <div>AddProd</div>
+        <div>CREACION DE PRODUCTOS</div>
     )
 }
 

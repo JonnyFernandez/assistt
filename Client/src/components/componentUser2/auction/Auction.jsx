@@ -1,5 +1,4 @@
 import a from './Auction.module.css'
-// import SearchByCode from '../../componentOfUser1/histoyOrderProfile1/searchBycode/SearchByCode'
 import CardUser2 from '../cardUser2/CardUser2'
 import SearchCode_user2 from '../searchCode/searchCode'
 
@@ -16,10 +15,10 @@ const Auction = () => {
     useEffect(() => {
         dispatch(getOrdersUser2())
     }, [])
-    const orders = useSelector((state) => state.Orders)
-
+    const aux = useSelector((state) => state.Orders)
     const currentPage = useSelector((state) => state.currentPage)
-
+    const orders = aux.filter(item => item.aprobado && item.active)
+    // console.log(orders);
     // PAGINATION VARS
     const cardsInPage = 5;
     const totalCards = orders.length;
@@ -93,7 +92,7 @@ const Auction = () => {
                                                 <CardUser2
                                                     code={item.codeOrder}
                                                     date={item.order_date ? item.order_date.toString().slice(0, 10) : ''}
-
+                                                    id={item.id}
                                                     status={item.providerCode}
                                                     prods={item.Prods}
                                                     review={item.ReviewGeneral}
