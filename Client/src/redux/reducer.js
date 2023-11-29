@@ -73,6 +73,7 @@ const reducer = (state = InitialState, action) => {
             }
         case SEARCH_PROD_CODE:
             const prodCode = action.payload;
+
             let prod = (prodCode == null ? state.backupProductUser2 : state.backupProductUser2.filter(item => item.code.toLowerCase().includes(prodCode.toLowerCase())))
             return {
                 ...state,
@@ -87,20 +88,21 @@ const reducer = (state = InitialState, action) => {
             }
         case SEARCH_STOCK:
             let value = action.payload
+
             let resp = value === "all" ? state.backupProductUser2 : value === "No_Stock" ? state.backupProductUser2.filter(item => item.stock === 0) : ''
             return {
                 ...state,
                 ProductUser2: resp
             }
         case FILTER_BY_PRICE:
-
+            // console.log(state.backupProductUser2)
             let valuePrice = action.payload === 'min' ?
                 state.backupProductUser2.sort(function (a, b) {
                     if (a.price > b.price) { return 1 }
                     if (b.price > a.price) { return -1 }
                     return 0;
                 }) :
-                state.backupOrder.sort(function (a, b) {
+                state.backupProductUser2.sort(function (a, b) {
                     if (a.price < b.price) { return 1 }
                     if (b.price < a.price) { return -1 }
                     return 0;

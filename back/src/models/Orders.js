@@ -44,7 +44,14 @@ module.exports = (sequelize) => {
         providerCode: {
             type: DataTypes.STRING,
             allowNull: true
-        }
+        },
+        going: {
+            type: DataTypes.BOOLEAN,
+            allowNull: true
+
+        },
+
+
 
 
 
