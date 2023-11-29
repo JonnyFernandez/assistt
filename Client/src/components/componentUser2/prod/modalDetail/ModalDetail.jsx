@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react'
 import m from './ModalDetail.module.css'
 import axios from 'axios'
-import { setProd, getProd } from '../../../../redux/actions'
-import { useDispatch } from 'react-redux'
+import { setProd, getProd, acceptOrder_user2 } from '../../../../redux/actions'
+import { useDispatch, useSelector } from 'react-redux'
 
 
 
 const ModalDetail = ({ handleModal, code, name, price, image, description, supplie_type, stock, id }) => {
 
     const dispatch = useDispatch()
+    const profile = useSelector(state => state.profile)
+    console.log(profile);
     useEffect(() => {
         dispatch(getProd())
     }, [dispatch, handleModal])

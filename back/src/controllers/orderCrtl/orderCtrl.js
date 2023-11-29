@@ -1,3 +1,4 @@
+const { errors } = require('pg-promise');
 const { User, Prod, Orders, Review } = require('../../db')
 
 const createOrder = async (codeOrder, userId, prodId) => {
@@ -125,7 +126,15 @@ const setPauseOrder = async (id, pause) => {
     return message;
 };
 
+const acceptOrder = async (id, userEmail) => {
 
+
+    const orderAccept = await Orders.findByPk(id)
+    if (!orderAccept) throw new Error('Orden no encontrada')
+    orderAccept.providerCode = userEmail
+    await orderAccept.save()
+    return orderAccept
+}
 
 
 module.exports = {
@@ -134,5 +143,6 @@ module.exports = {
     getIdOrders,
     orderUpdate,
     OrdersUserById,
-    setPauseOrder
+    setPauseOrder,
+    acceptOrder
 };
