@@ -11,7 +11,7 @@ const User1 = () => {
 
   const dispatch = useDispatch()
   let prodState = useSelector(state => state.Product)
-  let prod = prodState.filter(item => item.stock == 0)
+  let prod = prodState.filter(item => item.stock !== 0)
 
   console.log(prod);
   useEffect(() => {
