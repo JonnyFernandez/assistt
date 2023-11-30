@@ -1,37 +1,40 @@
 .card_green {
-    background-color: rgb(20 97 20 / 85%);
+    background: linear-gradient(to right, #7d7c92, #26476d);
     height: 100px;
     padding: 10px 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: rgb(241, 235, 235);
-    border-radius: 5px;
+    color: white;
+    border-radius: 10px;
     font-size: medium;
-    font-family: Verdana;
-    /* box-shadow: 0px 0px 10px black; */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
 .card_green:hover {
     box-shadow: 1px 1px 10px rgb(255, 255, 255);
 }
 
-
 .card_blue {
-    background-color: rgba(220, 15, 15, 0.835);
+    background: linear-gradient(to right, rgb(108, 23, 23), rgba(255, 43, 50, 0.645)); 
     height: 100px;
     padding: 10px 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: rgb(241, 235, 235);
-    border-radius: 5px;
+    color: white;
+    border-radius: 10px;
     font-size: medium;
-    font-family: Verdana;
-    /* box-shadow: 0px 0px 10px black; */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.card_blue:hover{
+.card_blue:hover {
     box-shadow: 1px 1px 10px rgb(255, 255, 255);
 }
+

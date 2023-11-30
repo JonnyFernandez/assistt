@@ -30,9 +30,10 @@ const ModalDetail = ({ handleModal, code, name, price, image, description, suppl
         setEdit(false)
     }
     const closeEdit = async () => {
-        setEdit(true)
-        setProd(id, upDate)
-    }
+        setEdit(true);
+        await setProd(id, upDate);
+        handleModal();
+      };
 
 
 
@@ -56,8 +57,8 @@ const ModalDetail = ({ handleModal, code, name, price, image, description, suppl
         <div className={m.modal} >
             <div className={m.modalContent}>
                 <div className={m.header}>
-                    <h1>Prod cod: {code}</h1>
-                    <div onClick={() => handleModal()}>x</div>
+                <div className={m.close} onClick={() => handleModal()}>❌</div>
+                    <h4 className={m.pInput}>Prod cod: {code}</h4>
 
                 </div>
                 <div className={m.body}>
