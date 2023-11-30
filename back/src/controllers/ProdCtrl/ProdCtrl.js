@@ -1,7 +1,18 @@
 const { Prod } = require('../../db')
 const prodBlack = require('../../utils/demo')
 
-const createProd = async (code, name, description, supplie_type) => {
+const createProd = async (code, image, name, description, supplie_type, stock, price) => {
+
+    const findExist = await Prod.findAll({ where: { code: code } })
+
+
+    await Prod.create({ code, image, name, description, supplie_type, stock, price })
+    console.log(`producto ${name} ingresado`);
+    return `producto ${name} ingresado`
+};
+
+
+const chargerProd = async (code, name, description, supplie_type) => {
 
     const findExist = await Prod.findAll({ where: { code: code } })
 
@@ -10,6 +21,11 @@ const createProd = async (code, name, description, supplie_type) => {
     // console.log(`producto ${name} ingresado`);
     return `producto ${name} ingresado`
 }
+
+
+
+
+
 
 
 const getProd = async () => {
@@ -95,4 +111,4 @@ const updateProduct = async (id, name, price, image, description, supplie_type, 
 
 
 
-module.exports = { createProd, getProd, update, updateCantidad, updateProduct }
+module.exports = { createProd, getProd, update, updateCantidad, updateProduct, chargerProd }
