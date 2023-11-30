@@ -1,12 +1,12 @@
 import a from './Auction.module.css'
 import CardUser2 from '../cardUser2/CardUser2'
 import SearchCode_user2 from '../searchCode/searchCode'
-
-
 import { getOrdersUser2, filter_By_Type_user2, filter_By_MinMax_user2, filter_By_Status_user2 } from '../../../redux/actions'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Paginado from '../paginate/Paginate'
+
+
 
 
 const Auction = () => {
