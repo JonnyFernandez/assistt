@@ -1,12 +1,12 @@
-
 .modalOverlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.633);
     display: flex;
+    font-family: cursive;
     justify-content: center;
     align-items: center;
     z-index: 999;
@@ -16,8 +16,7 @@
 .modalContent {
     background-color: white;
     border-radius: 8px;
-    width: 60%;
-    max-width: 600px;
+    width: 70%; /* Ajusta el porcentaje según tus preferencias */
     overflow-x: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
@@ -25,24 +24,22 @@
 .header {
     display: flex;
     justify-content: space-between;
-    padding: 15px;
-    background-color: #333;
+    padding: 30px;
+    background-color: rgba(9, 25, 164, 0.757);
     color: white;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .header p {
     margin: 0;
-   
 }
 
 .reseña {
     cursor: pointer;
     text-decoration: underline;
 }
-
-
 
 .details {
     padding: 15px;
@@ -56,10 +53,10 @@
     align-items: center;
     border: 1px solid #ddd;
     border-radius: 4px;
-    padding: 10px;
+    padding: 20px;
     margin-top: 10px;
     background-color: #f9f9f9;
-    font-family: 'Trebuchet MS', sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .card:hover {
@@ -88,17 +85,18 @@
 }
 
 .modalButtons button:hover {
-    background-color: #ddd;
+    background-color: #e4dbdb;
 }
 
-/* Añade este estilo para el elemento p de las reseñas */
 .reviewContent {
     margin-top: 30px;
     font-size: 15px;
     line-height: 1.5;
-    color: rgb(32, 32, 29)f6f; /* Puedes ajustar el color según tus preferencias */
+    color: rgb(32, 32, 29)f6f;
     margin-bottom: 10px;
 }
+
+
 
 
 

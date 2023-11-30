@@ -45,7 +45,7 @@ const Prod = () => {
         <div className={x.prod}>
             <div className={x.header}>
 
-                <div className={x.divA} onClick={() => Refresh()}>Productos</div>
+                <div className={x.divA} onClick={() => Refresh()}>Productos 🔄</div>
 
                 <div className={x.divH}>
                     <SearchBar />

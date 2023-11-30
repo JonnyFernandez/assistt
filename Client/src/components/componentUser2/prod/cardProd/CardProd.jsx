@@ -28,6 +28,7 @@ const CardProd = (props) => {
             </div>
 
             <div className={b.bodyCard} onClick={() => handleModal()}>
+                <p className={b.code}>Nombre: {props.name ? props.name : 'Nombre'}</p>
                 <p className={b.code}>Codigo: {props.code ? props.code : 'Codigo'}</p>
                 <p className={b.price}>Precio: $ {props.price ? props.price : "precio"}</p>
             </div>

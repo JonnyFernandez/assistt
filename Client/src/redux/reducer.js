@@ -120,11 +120,6 @@ const reducer = (state = InitialState, action) => {
             }
 
 
-
-
-
-
-
         case SEACH_CODE_USER2:
             const code2 = action.payload;
             // console.log(code2);

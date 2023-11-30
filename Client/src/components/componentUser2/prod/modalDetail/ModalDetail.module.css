@@ -4,7 +4,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,14 +12,13 @@
 }
 
 .modalContent {
-    background-color: white;
-    /* background-color: red; */
+    background-color: #ffffff;
     padding: 20px;
-    border-radius: 8px;
-    width: 80%;
-    height: 80%;
-    overflow-x: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    width: 70%;
+    max-width: 600px;
+    height: auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -29,24 +28,26 @@
 .header {
     width: 100%;
     height: 50px;
-    background-color: rgba(0, 0, 0, 0.478);
+    background-color: #333;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    border-radius: 10px 10px 0 0;
+    color: #fff;
 }
 
 .body {
-    width: 95%;
-    height: 90%;
-    /* background-color: red; */
+    width: 100%;
+    height: auto;
     display: flex;
-    flex-direction: row;
 }
 
 .bodyLeft {
     width: 50%;
-    height: 100%;
-    background-color: powderblue;
+    height: auto;
+    background-color: #f9f9f9;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -54,22 +55,19 @@
 }
 
 .imageDiv {
-    height: 320px;
-    width: 320px;
-    border-radius: 10%;
+    height: 350px;
+    width: 98%;
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0px 0px 10px black;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-
 .bodyRight {
     width: 50%;
-    height: 100%;
-    /* background-color: blue; */
-
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -79,93 +77,75 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    /* align-items: center; */
     width: 90%;
-    height: 90%;
-    background-color: azure;
-}
-
-.divs {
-    width: 100%;
-    height: 1.8em;
-    /* background-color: aqua; */
-    border: 1px solid black;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    max-width: 300px;
+    height: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .divs1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
+    flex-direction: column;
     position: relative;
-    width: 100%;
     min-height: 90px;
-    border-right: 1px solid rgba(0, 0, 0, 0.227);
-    padding: 5px 0;
+    padding: 10px 0;
     margin: 0;
-    /* background-color: rgb(181, 54, 54); */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.upDateText {
-    width: 98%;
-    padding: 0 10px;
+.upDateText,
+.upDateInput {
+    width: 100%;
+    padding: 10px;
     outline: none;
-    border: 0;
-    border-bottom: 1px solid rgb(167, 160, 160);
+    border: 1px solid #ddd;
     border-radius: 5px;
     text-align: center;
-}
-
-.upDateInput {
-    width: 60%;
-    padding: 0 10px;
-    outline: none;
-    border: 0;
-    border-bottom: 1px solid rgb(167, 160, 160);
-    border-radius: 5px;
-    /* background-color: rgb(166, 238, 57); */
+    margin-top: 10px;
 }
 
 .pInput {
     margin: 0;
-}
-
-.inputs_file {
-    width: 80%;
-    padding: 5px 5px;
-    border: 0px;
-    outline: none;
-    background-color: transparent;
-    border-bottom: 1px solid rgb(166, 161, 161);
-    font-family: "Poppins", sans-serif;
-    transition: border-bottom 0.5s;
-    margin-top: 10px;
-
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-family:  Verdana, sans-serif;
 }
 
 .btnCloudinary {
-    width: 135px;
-    font-size: 12px;
-    box-shadow: 0px 0px 15px rgb(166, 238, 57);
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    background-color: #aed3ec;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.btnCloudinary:hover {
+    background-color: #2980b9;
+}
+
+.close {
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.close:hover {
+    background-color: #d40e0e7d;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 
-.contanierSwitch {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: row;
-    position: relative;
-    width: 14.30%;
-    min-height: 90px;
-    border-right: 1px solid rgba(0, 0, 0, 0.227);
-    padding: 5px 0;
-    margin: 0;
-}
+
