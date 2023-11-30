@@ -1,4 +1,4 @@
-const { createProd } = require('../controllers/ProdCtrl/ProdCtrl')
+const { chargerProd } = require('../controllers/ProdCtrl/ProdCtrl')
 
 const data = [
     { "code": "a123", "name": "K-kaution", "description": "Cepillo Endocervical Esteril Descartable", "supplie_type": "almacen" },
@@ -29,7 +29,7 @@ const data = [
 const ProdToDB = async () => {
 
     data.forEach(item => {
-        createProd(
+        chargerProd(
             item.code,
             item.name,
             item.description,

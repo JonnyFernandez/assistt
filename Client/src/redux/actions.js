@@ -7,6 +7,12 @@ import {
   GET_REVIEWS, PUT_REVISOR, GET_ENTITY, SEARCH_PROD, SEARCH_USER, GET_USERS_NAME, SET_SEARCH_RESULTS, ORDER_BY_ID_USER, CLEAN_CART, PUT_USER_BANNED, SEARCH_BY_CODE, SET_CART, SET_FAV, SET_CURRENT_PAGE, SET_NEXT_PAGE, SET_PREV_PAGE, FILTER_BY_TYPE, FILTER_BY_MIN_MAX, FILTER_BY_STATUS, SEACH_CODE_USER2, GET_PROD_USER2, SEARCH_PROD_CODE, SEARCH_PROD_NAME, SEARCH_STOCK, FILTER_BY_PRICE, ACCEPT_ORDER_USER2
 } from './actionsType'
 
+
+export const createProd = async (inputs) => {
+  await axios.post("http://localhost:3001/prod/", inputs)
+  // console.log(inputs);
+}
+
 export const acceptOrder_user2 = (id, userEmail) => {
   return async function (dispatch) {
     try {
