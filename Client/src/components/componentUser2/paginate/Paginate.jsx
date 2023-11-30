@@ -96,7 +96,7 @@ export default function Paginado({ cardsInPage, totalCards, currentPage }) {
                                 className={styles.paginationButton}
                                 onClick={handleFirstPageClick}
                             >
-                                Primera
+                                Inicio
                             </button>
                         </li>
                         <li
@@ -142,7 +142,7 @@ export default function Paginado({ cardsInPage, totalCards, currentPage }) {
                                 className={styles.paginationButton}
                                 onClick={handleLastPageClick}
                             >
-                                Última
+                                Fin
                             </button>
                         </li>
                     </ul>

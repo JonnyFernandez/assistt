@@ -10,7 +10,7 @@ import Assignament from '../../components/componentUser2/assignament/Assignament
 import Auction from '../../components/componentUser2/auction/Auction';
 import OrderUser2 from '../../components/componentUser2/ordersUser2/OrdersUser2';
 import Prod from '../../components/componentUser2/prod/Prod';
-
+import EditProfile from '../../components/componentOfUser1/editProfile/EditProfile';
 
 
 const User2 = () => {
@@ -21,6 +21,15 @@ const User2 = () => {
     const [auction, setAuction] = useState(true);
     const [orderUser2, setOrderUser2] = useState(false);
     const [prod, setProd] = useState(false);
+    const [isEditProfile1ModalVisible, setEditProfile1ModalVisible] = useState(false);
+
+    const handleEditProfileClick = () => {
+        setEditProfile1ModalVisible(true);
+      };
+    
+      const handleCloseEditProfileModal = () => {
+        setEditProfile1ModalVisible(false);
+      };
 
     const showSidebar = () => {
         setSidebarVisible(true);
@@ -100,19 +109,15 @@ const User2 = () => {
 
             <div className={u.body}>
                 <div className={u.menu}>
-                    <button className={u.sidebarButton} onMouseOver={showSidebar} onMouseOut={hideSidebar}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
-                            <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
-                        </svg>
-                    </button>
+                <button className={u.sidebarButton} onMouseOver={showSidebar} onMouseOut={hideSidebar}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-list" viewBox="0 0 16 16">
+                        <path d="M2 1.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zM2 6.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zM2 11.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
+                </button>
+
                     {sidebarVisible && (
                         <div className={u.sidebar} onMouseOver={showSidebar} onMouseOut={hideSidebar}>
-                            <button onClick={() => alert('Perfil clicado')}>Perfil</button>
-                            <button onClick={() => alert('Pepe clicado')}>Editar Perfil</button>
-                            <button onClick={() => alert('Notificaciones clicadas')}>Notificaciones</button>
-                            <button onClick={() => alert('Pepe clicado')}>Pepe</button>
-                            <button onClick={() => alert('Pepe clicado')}>calamardo</button>
-                            <button onClick={() => alert('Pepe clicado')}>patricio</button>
+                            <button onClick={handleEditProfileClick}>Ver Perfil/Editar</button>
                             <button onClick={handleSingOut}>Log Out</button>
                         </div>
                     )}
@@ -124,9 +129,13 @@ const User2 = () => {
                     {orderUser2 && <OrderUser2 />}
                     {prod && <Prod />}
                 </div>
-
-
-
+            </div>
+            <div >
+            {isEditProfile1ModalVisible && (
+        <div className={u.modalBackdrop}>
+          <EditProfile onClose={handleCloseEditProfileModal} />
+        </div>
+      )}
             </div>
 
 

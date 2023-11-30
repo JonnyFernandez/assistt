@@ -47,7 +47,7 @@ const Modal = ({ isOpen, onClose, productDetails, id }) => {
                     <p>Codigo: {productDetails.code}</p>
                     <p>Fecha: {productDetails.date}</p>
                     <p>Estado: {!productDetails.status ? 'Disponible' : 'No Disponible'}</p>
-                    <p onClick={openReview}>reseña</p>
+                    <p className={j.reseña} onClick={openReview}>Ver Reseña</p>
                 </div>
 
 
@@ -80,13 +80,11 @@ const Modal = ({ isOpen, onClose, productDetails, id }) => {
                                 ? <div>
                                     {review.map(item => <div className={j.review}>
                                         <div className={j.reviewContainer}>
-                                            <div className={j.titleReview}>Reseña de Orden</div>
-                                            <div className={j.reviewContent}>{item.review}</div>
-                                            <div className={j.closeR} onClick={closeReview}>back</div>
+                                            <div className={j.reviewContent}>{item.review}</div> 
                                         </div>
                                     </div>)}
                                 </div>
-                                : <div> <p>Esta Orden de compra no tiene reseña asociada</p>  </div>
+                                : <div> <p className={j.reviewContent}>Esta Orden de compra no tiene reseña asociada</p>  </div>
                         }
                     </div>
                     }
@@ -94,7 +92,7 @@ const Modal = ({ isOpen, onClose, productDetails, id }) => {
                 </div>
                 <div className={j.modalButtons}>
                     <button onClick={() => acceptOrder()}>Aceptar</button>
-                    <button onClick={() => onClose(false)}>Rechazar</button>
+                    <button onClick={() => onClose(false)}>Ignorar</button>
                 </div>
             </div>
         </div>

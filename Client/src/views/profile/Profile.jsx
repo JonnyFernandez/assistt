@@ -94,13 +94,6 @@ const Profile1 = () => {
 
 
 
-
-
-
-
-
-
-
     return (
         <div className={p.profile1}>
 

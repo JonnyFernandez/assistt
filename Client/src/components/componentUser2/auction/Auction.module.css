@@ -25,11 +25,11 @@
 .status,
 select {
     padding: 5px;
-    border: 1px solid #ddd;
+    border: none;
     border-radius: 5px;
     margin: 0 10px;
-    /* width: 200px; */
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: Calibri;
+    color: rgb(77, 75, 75);
 }
 
 
@@ -41,6 +41,7 @@ select {
     border: 1px solid #ddd;
     border-radius: 5px;
     margin-top: 5px;
+    font-family: Calibri;
 }
 
 .body {

@@ -1,27 +1,37 @@
 .card_green {
-    background-color: rgb(56, 182, 56);
+    background-color: rgb(20 97 20 / 85%);
+    height: 100px;
+    padding: 10px 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: black;
-    border-radius: 10px;
+    color: rgb(241, 235, 235);
+    border-radius: 5px;
+    font-size: medium;
+    font-family: Verdana;
     /* box-shadow: 0px 0px 10px black; */
-    border: 1px solid black;
     cursor: pointer;
+}
+.card_green:hover {
+    box-shadow: 1px 1px 10px rgb(255, 255, 255);
 }
 
 
 .card_blue {
-    background-color: #457b9d;
+    background-color: rgba(220, 15, 15, 0.835);
+    height: 100px;
+    padding: 10px 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: white;
-    border: 1px solid wheat;
-    border-radius: 10px;
+    color: rgb(241, 235, 235);
+    border-radius: 5px;
+    font-size: medium;
+    font-family: Verdana;
+    /* box-shadow: 0px 0px 10px black; */
     cursor: pointer;
 }
 
-.card_green:hover {
-    box-shadow: 0px 0px 10px black;
+.card_blue:hover{
+    box-shadow: 1px 1px 10px rgb(255, 255, 255);
 }
