@@ -45,10 +45,6 @@
 
 
 
-
-
-
-
 .formContainer {
     display: flex;
     flex-direction: row;
@@ -77,12 +73,6 @@
     color: blue;
     background-color: yellow;
 }
-
-
-
-
-
-
 
 
 
@@ -263,3 +253,15 @@
     color: #555;
     /* Puedes ajustar el color según tus preferencias */
 }
+
+.closeButton {
+    position: absolute;
+    top: -50px; /* Ajusta según sea necesario para la posición vertical */
+    right: 15px; /* Ajusta según sea necesario para la posición horizontal */
+    background-color: #3b0be8; 
+    border: 1px solid #6b6969;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+  }

@@ -47,7 +47,7 @@ const Modal = ({ isOpen, onClose, productDetails, id }) => {
                     <p>Codigo: {productDetails.code}</p>
                     <p>Fecha: {productDetails.date}</p>
                     <p>Estado: {!productDetails.status ? 'Disponible' : 'No Disponible'}</p>
-                    <p onClick={openReview}>reseña</p>
+                    <p className={j.reseña} onClick={openReview}>Ver Reseña</p>
                 </div>
 
 
@@ -86,7 +86,7 @@ const Modal = ({ isOpen, onClose, productDetails, id }) => {
                                         </div>
                                     </div>)}
                                 </div>
-                                : <div> <p>Esta Orden de compra no tiene reseña asociada</p>  </div>
+                                : <div> <p className={j.reviewContent}>Esta Orden de compra no tiene reseña asociada</p>  </div>
                         }
                     </div>
                     }
@@ -94,7 +94,7 @@ const Modal = ({ isOpen, onClose, productDetails, id }) => {
                 </div>
                 <div className={j.modalButtons}>
                     <button onClick={() => acceptOrder()}>Aceptar</button>
-                    <button onClick={() => onClose(false)}>Rechazar</button>
+                    <button onClick={() => onClose(false)}>Ignorar</button>
                 </div>
             </div>
         </div>

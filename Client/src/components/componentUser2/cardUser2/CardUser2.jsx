@@ -29,8 +29,8 @@ const CardUser2 = ({ code, date, status, prods, review, id }) => {
                 className={currentStatus === 'Disponible' ? `${t.card_green}` : `${t.card_blue}`}
                 onClick={() => handleCardClick(all)}
             >
-                <div>{code}</div>
-                <div>{date}</div>
+                <div>Fecha: {date}</div>
+                <div>Orden: {code}</div>
                 <div>{currentStatus}</div>
             </div>
             <Modal isOpen={isModalOpen} onClose={handleCloseModal} productDetails={selectedProduct} id={id}

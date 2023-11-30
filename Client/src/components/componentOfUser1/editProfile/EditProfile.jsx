@@ -7,7 +7,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useAuth } from '../../../authAll/auth/AuthProvider';
 
-const EditProfile = () => {
+const EditProfile = ({ onClose }) => {
     const auth = useAuth()
     const dispatch = useDispatch();
     const Profile = useSelector(state => state.profile);
@@ -96,6 +96,7 @@ const EditProfile = () => {
 
     return (
         <div className={t.form}>
+            <button onClick={onClose} className={t.closeButton} >X</button>
             <div className={t.body}>
                 {edit &&
                     <div className={t.formContainer}>

@@ -8,13 +8,13 @@
     width: 100%;
     height: 478px;
     display: flex;
-    /* flex-direction: row; */
     font-family: Georgia, 'Times New Roman', Times, serif;
     justify-content: center;
     align-items: center;
     background-image: url('../../assets/auction03.jpg');
     background-size: cover;
     border-radius: 15px;
+   
 }
 
 .bodyContainer {
@@ -25,6 +25,64 @@
     align-items: center;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
     border-radius: 15px;
-
+    
 }
+
+.sidebarButton {
+    position: relative;
+    top: -180px;
+    border: none;
+    background-color: transparent;
+    padding: 1px 12px 1px;
+    margin-right: 10px;
+    color: white;
+}
+
+.sidebar {
+    background-color: rgba(182, 175, 175, 0.548); 
+    padding: 10px;
+    margin-top: -180px;
+    display: flex;
+    flex-direction: column; /* Cambiar a columna para mostrar las opciones en fila hacia abajo */
+    align-items: left; /* Alinear opciones al centro */
+    position: absolute;
+    z-index: 2000;
+}
+
+.sidebar button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.sidebar button:hover {
+    background-color: #45a049;
+}
+
+.modalBackdrop {
+    position: fixed;
+    top: 150px;
+    left: 300px;
+    width: 50%; /* Cambiado a 100% para ocupar toda la pantalla */
+    height: 50%; /* Cambiado a 100% para ocupar toda la pantalla */
+    background-color: rgba(0, 0, 0, 0.9); /* Ajusta el valor alpha para hacerlo más transparente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
+
+  .modalContent {
+    background-color: #fff; /* Color de fondo claro para el contenido del modal */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); /* Sombra para resaltar el modal */
+}
+
+
 

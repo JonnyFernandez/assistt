@@ -16,7 +16,7 @@ const OrderDetail = () => {
 useEffect(() => {
     dispatch(getOrderDetail(id));
     
-    // Intentar cargar el estado de aprobación desde LocalStorage
+    // Intentar cargar el  de aprobación desde LocalStorage
     const storedApprovalStatus = localStorage.getItem(`approvalStatus_${id}`);
     
     // Si se encuentra el estado almacenado en LocalStorage, úsalo
