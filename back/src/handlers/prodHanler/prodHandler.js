@@ -1,9 +1,9 @@
 const { createProd, getProd, update, updateCantidad, updateProduct } = require('../../controllers/ProdCtrl/ProdCtrl')
 
 const postProd = async (req, res) => {
-    const { code, name, description, supplie_type } = req.body;
+    const { code, image, name, description, supplie_type, stock, price } = req.body;
     try {
-        const newProd = await createProd(code, name, description, supplie_type)
+        const newProd = await createProd(code, image, name, description, supplie_type, stock, price)
         res.status(201).json(newProd)
 
     } catch (error) {
