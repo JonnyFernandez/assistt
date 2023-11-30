@@ -80,9 +80,7 @@ const Modal = ({ isOpen, onClose, productDetails, id }) => {
                                 ? <div>
                                     {review.map(item => <div className={j.review}>
                                         <div className={j.reviewContainer}>
-                                            <div className={j.titleReview}>Reseña de Orden</div>
-                                            <div className={j.reviewContent}>{item.review}</div>
-                                            <div className={j.closeR} onClick={closeReview}>back</div>
+                                            <div className={j.reviewContent}>{item.review}</div> 
                                         </div>
                                     </div>)}
                                 </div>
