@@ -2,40 +2,16 @@ const { Prod } = require('../../db')
 const prodBlack = require('../../utils/demo')
 
 const createProd = async (code, image, name, description, supplie_type, stock, price) => {
-
-    const findExist = await Prod.findAll({ where: { code: code } })
-
-
     await Prod.create({ code, image, name, description, supplie_type, stock, price })
-    console.log(`producto ${name} ingresado`);
-    return `producto ${name} ingresado`
 };
-
-
 const chargerProd = async (code, name, description, supplie_type) => {
-
-    const findExist = await Prod.findAll({ where: { code: code } })
-
-
     await Prod.findOrCreate({ where: { code, name, description, supplie_type } })
-    // console.log(`producto ${name} ingresado`);
-    return `producto ${name} ingresado`
-}
-
-
-
-
-
-
-
+};
 const getProd = async () => {
     const aux = await Prod.findAll()
     if (aux.length < 1) throw new Error('No hay prod cargados en la db')
     return aux
-
-}
-
-
+};
 const update = async (id, active) => {
     let prodX = await Prod.findByPk(id)
     if (!prodX) throw new Error(`No hay prod con id: ${id} para actualizar`)
@@ -82,9 +58,6 @@ const updateCantidad = async (id, quanty) => {
         throw new Error('Error al actualizar la cantidad: ' + error.message);
     }
 };
-
-
-
 const updateProduct = async (id, name, price, image, description, supplie_type, stock) => {
 
     let pepe = { id, name, price, image, description, supplie_type, stock }

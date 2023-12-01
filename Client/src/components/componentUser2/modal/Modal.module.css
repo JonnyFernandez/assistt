@@ -19,6 +19,7 @@
     width: 70%; /* Ajusta el porcentaje según tus preferencias */
     overflow-x: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    /* background-color: red; */
 }
 
 .header {
@@ -34,6 +35,10 @@
 
 .header p {
     margin: 0;
+
+
+
+
 }
 
 .reseña {
@@ -93,10 +98,22 @@
     font-size: 15px;
     line-height: 1.5;
     color: rgb(32, 32, 29)f6f;
+
+    
+
+
     margin-bottom: 10px;
 }
 
+.totalAmount {
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    background-color: #3333335e;
+    color: black;
 
+
+}
 
 
 
