@@ -1,51 +1,47 @@
 .prodCard {
     display: flex;
     flex-direction: column;
-    width: 200px;
-    height: 150px;
-    background-color: bisque;
-    margin-right: 50px;
-    margin-left: 5px;
-    margin-top: 10px;
+    width: 250px;
+    height: 240px;
+  
+    background-color: #3498db; /* Blue background for the entire card */
+    margin: 15px 40px 40px 5px;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.773);
+    box-shadow: 0px 0px 10px rgba(250, 249, 249, 0.578); /* Lighter box shadow */
     cursor: pointer;
+    transition: border-radius 0.3s, box-shadow 0.3s;
 }
 
 .prodCard:hover {
     border-radius: 5px;
-    box-shadow: 0px 0px 10px whitesmoke;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Slightly darker shadow on hover */
 }
 
-
-
 .image {
-    width: 200px;
-    height: 90px;
-    /* background-color: #fefae0; */
+    width: 100%;
+    height: 100px;
     overflow: hidden;
     display: flex;
     justify-content: center;
-    /* border-bottom: 1px solid black; */
+    background-color: beige; /* Beige background for the image */
 }
 
 .bodyCard {
-    width: 200px;
-    height: 60px;
-    /* background-color: #fefae0; */
-    /* display: flex;
-    flex-direction: column; */
-
-    /* align-items: center; */
+    width: 100%;
+    height: 30px;
+    margin-top: 10px;
+    color: #fff; /* White text color */
 }
 
-.code {
+.code, .price {
     margin-top: 5px;
     margin-left: 10px;
-
+    background-color: #3498db; /* Blue color */
 }
 
 .price {
     margin-top: -12px;
-    margin-left: 10px;
+    font-weight: bold; /* Bold text for price */
 }
+
+

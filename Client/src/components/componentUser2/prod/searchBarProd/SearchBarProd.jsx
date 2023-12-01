@@ -56,11 +56,6 @@ const SearchBar = () => {
     }, [input, dispatch]);
 
 
-
-
-
-
-
     return (
         <div className={d.search}>
             <div className={d.checks}>
