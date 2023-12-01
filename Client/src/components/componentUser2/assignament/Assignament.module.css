@@ -1,29 +1,35 @@
-.Assignament {
+.auction {
     background-color: #059ef1be;
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
+    /* border-radius: 5px; */
     border-radius: 15px;
+
 }
 
-.AssignamentHeader {
+.header {
     height: 10%;
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    /* background-color: blueviolet; */
-    color: white;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    /* background-color: red; */
 }
 
-.AssignamentBody {
+
+
+
+
+
+
+.body {
     height: 90%;
     width: 100%;
     background-color: whitesmoke;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: #bacad240;
@@ -31,45 +37,39 @@
     background-size: cover;
     border-radius: 15px;
     /* background-color: red; */
+
+}
+
+.paginateContainer {
+    /* background-color: red; */
+    width: 40em;
+    height: 2.5em;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
 }
 
 .card {
     width: 95%;
     height: 80%;
-    margin-top: 30px;
+    margin-top: 10px;
 
 }
 
 .CardUser2Container {
     /* background-color: red; */
-    height: 98%;
+    height: 100%;
     width: 100%;
-    overflow-x: hidden;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
 
+    margin: 0 auto;
 
-    /* margin: 0 auto;
     display: grid;
+
     gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
-    overflow-x: hidden; */
+    overflow-x: hidden;
     /* background-color: red; */
 }
 
 
-
-.AssignamentContainer {
-    width: 98%;
-    height: 95%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    /* margin: 0 auto; */
-    /* display: grid; */
-    /* gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); */
-    overflow-x: hidden;
-}
+/* ------------------ */
