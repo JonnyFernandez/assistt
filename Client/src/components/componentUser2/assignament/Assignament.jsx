@@ -23,7 +23,7 @@ const Assignament = () => {
 
     console.log(myOrders);
     return (
-        <div className={a.auction}>
+        <div className={a.Assignament}>
             <div className={a.header}>
                 <h2>Mis Asignaciones</h2>
 
