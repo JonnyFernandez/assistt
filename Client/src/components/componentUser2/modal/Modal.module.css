@@ -19,6 +19,7 @@
     width: 70%; /* Ajusta el porcentaje según tus preferencias */
     overflow-x: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    /* background-color: red; */
 }
 
 .header {
@@ -94,6 +95,16 @@
     line-height: 1.5;
     color: rgb(32, 32, 29)f6f;
     margin-bottom: 10px;
+}
+
+.totalAmount {
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    background-color: #3333335e;
+    color: black;
+
+
 }
 
 
