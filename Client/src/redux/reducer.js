@@ -81,7 +81,7 @@ const reducer = (state = InitialState, action) => {
             }
         case SEARCH_PROD_CODE:
             const prodCode = action.payload;
-            // console.log(prodCode);
+            console.log(prodCode);
             const filteredProducts = (prodCode == null
                 ? state.backupProductUser2
                 : state.backupProductUser2.filter(item =>
