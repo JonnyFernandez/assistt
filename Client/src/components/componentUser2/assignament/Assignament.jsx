@@ -23,11 +23,17 @@ const Assignament = () => {
 
     console.log(myOrders);
     return (
-        <div className={a.Assignament}>
-            <div className={a.AssignamentHeader}>
-                <h1>Mis Asignaciones</h1>
+        <div className={a.auction}>
+            <div className={a.header}>
+                <h2>Mis Asignaciones</h2>
+
             </div>
-            <div className={a.AssignamentBody}>
+
+            <div className={a.body}>
+                <div className={a.paginateContainer}>
+                    <h3>Cotizaciones pendiente de revision</h3>
+
+                </div>
                 <div className={a.card}>
                     {
                         myOrders.length > 0
@@ -50,11 +56,12 @@ const Assignament = () => {
                                     })
                                 }
                             </div>
-                            : 'No tienes Ordenes asignadas'
+                            : 'No tienes Cotizaciones asignadas'
                     }
 
                 </div>
             </div>
+
         </div>
     )
 }
