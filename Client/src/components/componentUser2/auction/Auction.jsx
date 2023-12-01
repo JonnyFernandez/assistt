@@ -18,7 +18,7 @@ const Auction = () => {
     const aux = useSelector((state) => state.Orders)
     const currentPage = useSelector((state) => state.currentPage)
     const orders = aux.filter(item => item.aprobado && item.active)
-    // console.log(orders);
+    console.log(orders);
     // PAGINATION VARS
     const cardsInPage = 5;
     const totalCards = orders.length;
