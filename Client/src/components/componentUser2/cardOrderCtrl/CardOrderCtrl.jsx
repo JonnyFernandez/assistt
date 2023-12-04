@@ -40,8 +40,8 @@ const CardOrderCtrl = ({ code, date, id, status, prods, review }) => {
             <ModalCardCtrl isOpen={isModalOpen} onClose={handleCloseModal} productDetails={selectedProduct} id={id}
             />
             <div className={v.footer}>
-                <button className={v.sendBut} onClick={() => sendOrder()}>Despachar</button>
-                <button className={v.cancelBut} onClick={() => cancelOrder()}>Cancelar</button>
+                {/* <button className={v.sendBut} onClick={() => sendOrder()}>Despachar</button>
+                <button className={v.cancelBut} onClick={() => cancelOrder()}>Cancelar</button> */}
             </div>
 
         </div>
