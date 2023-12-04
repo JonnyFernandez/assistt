@@ -4,7 +4,9 @@
 import React, { useEffect, useState } from 'react';
 import c from './ModalCardCtrl.module.css'
 import { useDispatch } from 'react-redux';
-// import { acceptOrder_user2 } from '../../../redux/actions';
+import { dispatchOrder } from '../../../redux/actions';
+import jsPDF from 'jspdf';
+
 
 const ModalCardCtrl = ({ isOpen, onClose, productDetails, id }) => {
     const dispatch = useDispatch()
@@ -13,14 +15,16 @@ const ModalCardCtrl = ({ isOpen, onClose, productDetails, id }) => {
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     const userEmail = userInfo?.email || ''
 
-
     const review = productDetails?.review
 
+
     const [showReview, setShowReview] = useState(false)
+
     useEffect(() => {
         setShowReview(false)
     }, [])
-    console.log(showReview);
+
+
     const openReview = () => {
         setShowReview(true)
     }
@@ -42,23 +46,56 @@ const ModalCardCtrl = ({ isOpen, onClose, productDetails, id }) => {
 
     const calculateTotal = () => {
         let total = 0;
-
-        // Itera sobre cada producto en productDetails.prods y calcula el subtotal
         productDetails.prods.forEach(item => {
-            total += item.quanty * item.price; // Multiplica la cantidad por el precio de cada producto
+            total += item.quanty * item.price;
         });
+        return total;
+    };
+    const totalAmount = calculateTotal();
 
-        return total; // Devuelve el total de la compra
+
+    const generatePDF = () => {
+        const doc = new jsPDF();
+
+        // Encabezado del PDF
+        doc.text('Lista de Productos', 10, 10);
+
+        // Contenido de la lista de productos
+        let y = 30; // Posición vertical inicial para el contenido de los productos
+
+        productDetails.prods.forEach(item => {
+            doc.text(`Código: ${item.code}`, 10, y);
+            doc.text(`Nombre: ${item.name}`, 10, y + 10);
+            doc.text(`Cantidad: ${item.quanty}`, 10, y + 20);
+            doc.text(`Precio: $${item.price}`, 10, y + 30);
+            doc.text(`Total: $${item.price * item.quanty}.00`, 10, y + 40);
+            doc.line(10, y + 45, 200, y + 45); // Línea separadora entre productos
+            y += 60; // Incremento en la posición vertical para el siguiente producto
+        });
+        doc.text(`Monto Total: $${totalAmount}.00`, 10, y + 50);
+
+        // Descargar el archivo PDF al hacer clic en el botón
+        doc.save('lista_productos.pdf');
     };
 
-    // Calcula el total de la compra
-    const totalAmount = calculateTotal();
+
+
+    const finish_Order = () => {
+        // const amount = { amount: totalAmount }
+        dispatch(dispatchOrder(id, totalAmount))
+
+    }
+    const cancelOrder = () => {
+        alert('al canselar, la orden vuelve a estar disponible para otros usuarios')
+    }
 
     return (
         <div className={c.modalOverlay}>
 
             <div className={c.modalContent}>
                 <div className={c.header}>
+                    <button onClick={() => onClose(false)}>X</button>
+
                     <p>Codigo: {productDetails.code}</p>
                     <p>Fecha: {productDetails.date}</p>
                     <p>Estado: {!productDetails.status ? 'Disponible' : 'No Disponible'}</p>
@@ -74,14 +111,14 @@ const ModalCardCtrl = ({ isOpen, onClose, productDetails, id }) => {
                                 productDetails.prods
                                     .map((item) => {
                                         return (
-                                            <div>
-                                                <div key={item.id} className={c.card}>
-                                                    <div className={c.info}>Codigo: {item.code}</div>
-                                                    <div className={c.info}>Nombre: {item.name} </div>
-                                                    <div className={c.info}>Cantidad: {item.quanty} </div>
-                                                    <div className={c.info}>precio: $ {item.price} </div>
-                                                    <div className={c.info}>total: $ {item.price * item.quanty}.00 </div>
-                                                </div>
+                                            <div key={item.id} className={c.card}>
+
+                                                <div className={c.info}>Codigo: {item.code}</div>
+                                                <div className={c.info}>Nombre: {item.name} </div>
+                                                <div className={c.info}>Cantidad: {item.quanty} </div>
+                                                <div className={c.info}>precio: $ {item.price} </div>
+                                                <div className={c.info}>total: $ {item.price * item.quanty}.00 </div>
+
 
                                             </div>
                                         )
@@ -108,9 +145,9 @@ const ModalCardCtrl = ({ isOpen, onClose, productDetails, id }) => {
 
                 </div>
                 <div className={c.modalButtons}>
-                    <button onClick={() => alert('acepta')}>Aceptar</button>
-                    <button onClick={() => onClose(false)}>Ignorar</button>
-                    {/* <button onClick={() => onClose(false)}>Descargar</button> */}
+                    <button onClick={() => finish_Order()}>Despachar</button>
+                    <button onClick={() => cancelOrder()}>Cancelar</button>
+                    <button onClick={() => generatePDF()}>Descargar PDF</button>
                 </div>
             </div>
         </div>
