@@ -4,6 +4,7 @@ import Validation from '../ValidateProd/Validation'
 import axios from 'axios'
 import { createProd } from '../../../redux/actions'
 import { codeToProd } from '../../../utils/codes'
+import Swal from 'sweetalert2';
 
 
 const AddProd = () => {
@@ -24,18 +25,24 @@ const AddProd = () => {
         const formData = new FormData();
         formData.append('file', file);
         formData.append('upload_preset', 'assistt_file');
-
+    
         try {
             const response = await axios.post('https://api.cloudinary.com/v1_1/dkx6y2e2z/image/upload', formData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
             });
+            
+            // Actualiza el estado 'image' con la URL de la imagen procesada
             setInputs({ ...inputs, image: response.data.secure_url });
+    
+            // Limpia el input de carga de imagen
+            event.target.value = '';
         } catch (error) {
             console.error('Error al cargar la imagen:', error);
-            // Mostrar un mensaje de error al usuario
+            // Muestra un mensaje de error al usuario
             alert('Error al cargar la imagen. Inténtalo de nuevo.');
         }
-    }
+    };
+    
     const handleChange = (event) => {
         const { name, value } = event.target;
         setInputs({ ...inputs, [name]: value });
@@ -49,22 +56,33 @@ const AddProd = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (Object.values(inputs).some(value => !value)) {
-            return alert('Por favor, completa todos los campos y sube una imagen.');
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Por favor, completa todos los campos y sube una imagen.',
+            });
+            return;
         }
 
-        createProd(inputs)
-
+        createProd(inputs);
 
         setInputs({ image: '', name: '', description: '', supplie_type: '', stock: '', price: '' });
         setErrors({ image: '', name: '', description: '', supplie_type: '', stock: '', price: '' });
 
+        
+        Swal.fire({
+            icon: 'success',
+            title: 'Éxito',
+            text: 'Producto agregado exitosamente.',
+        });
     };
+
 
     return (
 
         <div className={r.addProd}>
             <div className={r.header}>
-                <h1>Agregar Productos</h1>
+                <h4 className={r.title}>Agregar Productos</h4>
             </div>
             <div className={r.body}>
                 <div className={r.bodyLeft}>
@@ -154,7 +172,7 @@ const AddProd = () => {
                             />
                             <p className={r.error}>{errors.price}</p>
                         </div>
-                        <button className={r.btnVerde} type='submit'>Agregar</button>
+                        <button className={`${r.btnVerde}`} type='submit'>Agregar</button>
                     </form>
                 </div>
             </div>
