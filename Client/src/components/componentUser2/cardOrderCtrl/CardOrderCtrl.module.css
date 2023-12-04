@@ -43,14 +43,14 @@
 }
 
 .sendBut {
-    width: 50%;
-    height: 100%;
+    width: 40%;
+    height: 90%;
     /* background-color: aqua; */
 }
 
 .cancelBut {
-    width: 50%;
-    height: 100%;
+    width: 40%;
+    height: 90%;
     /* background-color: rebeccapurple; */
     display: flex;
     justify-content: end;

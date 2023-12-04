@@ -1,10 +1,23 @@
 import m from './OrderUser2.module.css'
 import CardOrderCtrl from '../cardOrderCtrl/CardOrderCtrl'
-
+import { useSelector, useDispatch } from 'react-redux'
+import { getOrdersUser2 } from '../../../redux/actions'
+import { useEffect } from 'react'
 
 const OrderUser2 = () => {
 
-    const myOrders = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
+    const dispatch = useDispatch()
+
+
+    useEffect(() => {
+        dispatch(getOrdersUser2())
+    }, []);
+    const orders = useSelector((state) => state.Orders)
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    const userEmail = userInfo?.email || ''
+
+    const myOrders = orders.filter(item => item.aprobado && item.active && item.providerCode === userEmail && item.quotes === null)
+
 
     return (
         <div className={m.orderControl}>
