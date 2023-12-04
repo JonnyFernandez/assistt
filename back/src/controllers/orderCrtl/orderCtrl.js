@@ -48,7 +48,7 @@ const getOrder = async () => {
 
         return getOrders;
     } catch (error) {
-        throw new Error('No se pudieron obtener las órdenes');
+        throw new Error('Empty Orders DataBase');
     }
 };
 

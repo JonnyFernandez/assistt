@@ -36,7 +36,8 @@ import {
     SEARCH_PROD_CODE,
     SEARCH_PROD_NAME,
     SEARCH_STOCK,
-    FILTER_BY_PRICE
+    FILTER_BY_PRICE,
+    GET_ORDER_USER2
 } from '../redux/actionsType';
 
 const InitialState = {
@@ -66,6 +67,12 @@ const InitialState = {
 const reducer = (state = InitialState, action) => {
     switch (action.type) {
 
+        case GET_ORDER_USER2:
+            return {
+                ...state,
+                backupOrder: action.payload,
+                Orders: action.payload
+            }
         case GET_PROD_USER2:
             return {
                 ...state,
@@ -74,7 +81,7 @@ const reducer = (state = InitialState, action) => {
             }
         case SEARCH_PROD_CODE:
             const prodCode = action.payload;
-            // console.log(prodCode);
+            console.log(prodCode);
             const filteredProducts = (prodCode == null
                 ? state.backupProductUser2
                 : state.backupProductUser2.filter(item =>
