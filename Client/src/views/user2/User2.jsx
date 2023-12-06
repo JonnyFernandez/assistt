@@ -25,11 +25,11 @@ const User2 = () => {
 
     const handleEditProfileClick = () => {
         setEditProfile1ModalVisible(true);
-      };
-    
-      const handleCloseEditProfileModal = () => {
+    };
+
+    const handleCloseEditProfileModal = () => {
         setEditProfile1ModalVisible(false);
-      };
+    };
 
     const showSidebar = () => {
         setSidebarVisible(true);
@@ -109,11 +109,11 @@ const User2 = () => {
 
             <div className={u.body}>
                 <div className={u.menu}>
-                <button className={u.sidebarButton} onMouseOver={showSidebar} onMouseOut={hideSidebar}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-list" viewBox="0 0 16 16">
-                        <path d="M2 1.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zM2 6.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zM2 11.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
-                    </svg>
-                </button>
+                    <button className={u.sidebarButton} onMouseOver={showSidebar} onMouseOut={hideSidebar}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-list" viewBox="0 0 16 16">
+                            <path d="M2 1.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zM2 6.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zM2 11.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                        </svg>
+                    </button>
 
                     {sidebarVisible && (
                         <div className={u.sidebar} onMouseOver={showSidebar} onMouseOut={hideSidebar}>
@@ -131,11 +131,11 @@ const User2 = () => {
                 </div>
             </div>
             <div >
-            {isEditProfile1ModalVisible && (
-        <div className={u.modalBackdrop}>
-          <EditProfile onClose={handleCloseEditProfileModal} />
-        </div>
-      )}
+                {isEditProfile1ModalVisible && (
+                    <div className={u.modalBackdrop}>
+                        <EditProfile onClose={handleCloseEditProfileModal} />
+                    </div>
+                )}
             </div>
 
 

@@ -67,8 +67,8 @@ const ModalCardCtrl = ({ isOpen, onClose, productDetails, id }) => {
             cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.isConfirmed) {
-                const doc = new jsPDF();
 
+                const doc = new jsPDF();
                 doc.text('Lista de Productos', 10, 10);
 
                 // Contenido de la lista de productos
