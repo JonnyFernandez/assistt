@@ -153,14 +153,38 @@ const finisOrder = async (id, amout) => {
         Order.save()
         return Order
     }
+}
+
+const aprov_Quote = async (id, quotes) => {
+
+    const OrderByAdmin = await Orders.findByPk(id)
+
+    if (quotes === false) {
+        OrderByAdmin.quotes = null
+        OrderByAdmin.providerCode = null
+        OrderByAdmin.save()
+        return OrderByAdmin
+    }
 
 
+    if (quotes === true) {
+        OrderByAdmin.quotes = quotes
+        OrderByAdmin.save()
+        return OrderByAdmin
+    }
 
 
 
 
 
 }
+
+
+
+
+
+
+
 
 
 module.exports = {
@@ -171,5 +195,6 @@ module.exports = {
     OrdersUserById,
     setPauseOrder,
     acceptOrder,
-    finisOrder
+    finisOrder,
+    aprov_Quote
 };

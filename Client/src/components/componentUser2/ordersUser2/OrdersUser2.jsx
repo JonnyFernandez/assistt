@@ -16,7 +16,7 @@ const OrderUser2 = () => {
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     const userEmail = userInfo?.email || ''
 
-    const myOrders = orders.filter(item => item.aprobado && item.active && item.providerCode === userEmail && item.quotes === null)
+    const myOrders = orders.filter(item => item.aprobado && item.active && item.providerCode === userEmail && item.quotes)
 
 
     return (

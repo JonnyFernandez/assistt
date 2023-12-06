@@ -33,7 +33,7 @@ const ModalDetail = ({ handleModal, code, name, price, image, description, suppl
         setEdit(true);
         await setProd(id, upDate);
         handleModal();
-      };
+    };
 
 
 
@@ -57,7 +57,7 @@ const ModalDetail = ({ handleModal, code, name, price, image, description, suppl
         <div className={m.modal} >
             <div className={m.modalContent}>
                 <div className={m.header}>
-                <div className={m.close} onClick={() => handleModal()}>❌</div>
+                    <div className={m.close} onClick={() => handleModal()}>❌</div>
                     <h4 className={m.pInput}>Prod cod: {code}</h4>
 
                 </div>

@@ -38,7 +38,8 @@ import {
     SEARCH_STOCK,
     FILTER_BY_PRICE,
     GET_ORDER_USER2,
-    FINISH_ORDER_USER2
+    FINISH_ORDER_USER2,
+    QUOTES_ORDER_USER3,
 } from '../redux/actionsType';
 
 const InitialState = {
@@ -67,6 +68,10 @@ const InitialState = {
 
 const reducer = (state = InitialState, action) => {
     switch (action.type) {
+        case QUOTES_ORDER_USER3:
+            return {
+                ...state
+            }
         case FINISH_ORDER_USER2:
             return {
                 ...state
