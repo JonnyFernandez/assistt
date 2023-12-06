@@ -3,7 +3,7 @@ import CardUser2 from '../cardUser2/CardUser2'
 import { useSelector, useDispatch } from 'react-redux'
 import { getOrdersUser2 } from '../../../redux/actions'
 import { useEffect } from 'react'
-
+import CardOrderCtrl from '../cardOrderCtrl/CardOrderCtrl'
 
 
 const Assignament = () => {

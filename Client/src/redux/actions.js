@@ -15,13 +15,29 @@ export const dispatchOrder = (id, amout) => {
     try {
       let info = { amout: amout }
 
-      // await axios.put(`http://localhost:3001/order/${id}`, info);
+      await axios.put(`http://localhost:3001/order/${id}`, info);
       dispatch({ type: FINISH_ORDER_USER2 });
     } catch (error) {
       console.error("Error al finalizar la órdenes:", error);
     }
   }
 }
+export const abolish_Order = (id, amout) => {
+
+  return async function (dispatch) {
+    try {
+      let info = { amout: amout }
+      // console.log(info);
+      await axios.put(`http://localhost:3001/order/${id}`, info);
+      dispatch({ type: FINISH_ORDER_USER2 });
+    } catch (error) {
+      console.error("Error al cancelar la órdenes:", error);
+    }
+  }
+}
+
+
+
 export const createProd = async (inputs) => {
   await axios.post("http://localhost:3001/prod/", inputs)
   // console.log(inputs);
