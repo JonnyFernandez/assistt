@@ -137,6 +137,32 @@ const acceptOrder = async (id, userEmail) => {
 }
 
 
+const finisOrder = async (id, amout) => {
+    const Order = await Orders.findByPk(id)
+    if (amout === 'cancelar') {
+        Order.monto = null
+        Order.providerCode = null
+        Order.aprobado = null
+        Order.dispatching = false
+        Order.save()
+        return Order
+
+    } else {
+        Order.monto = amout
+        Order.dispatching = true
+        Order.save()
+        return Order
+    }
+
+
+
+
+
+
+
+}
+
+
 module.exports = {
     createOrder,
     getOrder,
@@ -144,5 +170,6 @@ module.exports = {
     orderUpdate,
     OrdersUserById,
     setPauseOrder,
-    acceptOrder
+    acceptOrder,
+    finisOrder
 };

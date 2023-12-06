@@ -1,4 +1,4 @@
-const { createOrder, getOrder, getIdOrders, orderUpdate, OrdersUserById, setPauseOrder, acceptOrder } = require('../../controllers/orderCrtl/orderCtrl')
+const { createOrder, getOrder, getIdOrders, orderUpdate, OrdersUserById, setPauseOrder, acceptOrder, finisOrder } = require('../../controllers/orderCrtl/orderCtrl')
 // const generateRandomCode = require('../../utils/generateRandomCode')
 
 const postOrder = async (req, res) => {
@@ -36,9 +36,9 @@ const getByIdOrder = async (req, res) => {
 const updateOrder = async (req, res) => {
   try {
     const { id } = req.params;
-    const { aprobado, userEmail, quotes } = req.body;
-
-    const Update = aprobado ? await orderUpdate(id, aprobado) : userEmail ? await acceptOrder(id, userEmail) : ''
+    const { aprobado, userEmail, quotes, amout } = req.body;
+    // console.log(amout);
+    const Update = aprobado ? await orderUpdate(id, aprobado) : userEmail ? await acceptOrder(id, userEmail) : amout ? await finisOrder(id, amout) : 'Nothing in boby'
     res.status(200).json(Update)
   } catch (error) {
     res.status(400).json({ error: error.message })

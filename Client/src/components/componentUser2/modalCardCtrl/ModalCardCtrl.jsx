@@ -4,8 +4,9 @@
 import React, { useEffect, useState } from 'react';
 import c from './ModalCardCtrl.module.css'
 import { useDispatch } from 'react-redux';
-import { dispatchOrder } from '../../../redux/actions';
+import { dispatchOrder, abolish_Order } from '../../../redux/actions';
 import jsPDF from 'jspdf';
+import Swal from 'sweetalert2';
 
 
 const ModalCardCtrl = ({ isOpen, onClose, productDetails, id }) => {
@@ -54,40 +55,93 @@ const ModalCardCtrl = ({ isOpen, onClose, productDetails, id }) => {
     const totalAmount = calculateTotal();
 
 
+
+
     const generatePDF = () => {
-        const doc = new jsPDF();
+        Swal.fire({
+            title: '¿Desea generar el PDF?',
+            text: 'Una vez generado, el archivo PDF se descargará automáticamente.',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Generar PDF',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const doc = new jsPDF();
 
-        // Encabezado del PDF
-        doc.text('Lista de Productos', 10, 10);
+                doc.text('Lista de Productos', 10, 10);
 
-        // Contenido de la lista de productos
-        let y = 30; // Posición vertical inicial para el contenido de los productos
+                // Contenido de la lista de productos
+                let y = 30; // Posición vertical inicial para el contenido de los productos
 
-        productDetails.prods.forEach(item => {
-            doc.text(`Código: ${item.code}`, 10, y);
-            doc.text(`Nombre: ${item.name}`, 10, y + 10);
-            doc.text(`Cantidad: ${item.quanty}`, 10, y + 20);
-            doc.text(`Precio: $${item.price}`, 10, y + 30);
-            doc.text(`Total: $${item.price * item.quanty}.00`, 10, y + 40);
-            doc.line(10, y + 45, 200, y + 45); // Línea separadora entre productos
-            y += 60; // Incremento en la posición vertical para el siguiente producto
+                productDetails.prods.forEach(item => {
+                    doc.text(`Código: ${item.code}`, 10, y);
+                    doc.text(`Nombre: ${item.name}`, 10, y + 10);
+                    doc.text(`Cantidad: ${item.quanty}`, 10, y + 20);
+                    doc.text(`Precio: $${item.price}`, 10, y + 30);
+                    doc.text(`Total: $${item.price * item.quanty}.00`, 10, y + 40);
+                    doc.line(10, y + 45, 200, y + 45); // Línea separadora entre productos
+                    y += 60; // Incremento en la posición vertical para el siguiente producto
+                });
+                doc.text(`Monto Total: $${totalAmount}.00`, 10, y + 50);
+
+                doc.save('lista_productos.pdf');
+
+                Swal.fire({
+                    title: '¡PDF Generado!',
+                    text: 'El archivo PDF se ha generado correctamente.',
+                    icon: 'success',
+                    confirmButtonText: 'Cerrar'
+                });
+            }
         });
-        doc.text(`Monto Total: $${totalAmount}.00`, 10, y + 50);
-
-        // Descargar el archivo PDF al hacer clic en el botón
-        doc.save('lista_productos.pdf');
     };
 
 
 
     const finish_Order = () => {
-        // const amount = { amount: totalAmount }
-        dispatch(dispatchOrder(id, totalAmount))
+        Swal.fire({
+            title: 'Despachar orden',
+            text: 'Tienes un máximo de 3 días para hacerle llegar la orden al administrador.',
+            icon: 'info',
+            confirmButtonText: 'Entendido',
+            confirmButtonColor: '#3085d6',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Aquí puedes realizar la acción de despachar la orden si el usuario confirma
+                dispatch(dispatchOrder(id, totalAmount));
+                Swal.fire(
+                    '¡Orden despachada!',
+                    'La orden ha sido despachada correctamente.',
+                    'success'
+                );
+            }
+        });
+    };
 
-    }
     const cancelOrder = () => {
-        alert('al canselar, la orden vuelve a estar disponible para otros usuarios')
-    }
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: 'Una vez cancelada la orden volverá a estar disponible para otros usuarios y se eliminará de tus asignaciones.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, cancelar orden',
+            cancelButtonText: 'Cancelar',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Aquí puedes realizar la acción de cancelar la orden si el usuario confirma
+                dispatch(abolish_Order(id, 'cancelar'));
+                Swal.fire(
+                    '¡Orden cancelada!',
+                    'La orden ha sido cancelada correctamente.',
+                    'success'
+                );
+            }
+        });
+    };
+
 
     return (
         <div className={c.modalOverlay}>
@@ -124,7 +178,7 @@ const ModalCardCtrl = ({ isOpen, onClose, productDetails, id }) => {
                                         )
                                     })
                             }
-                        </div>) : <div></div>
+                        </div>) : ''
                     }
 
 
