@@ -11,16 +11,17 @@ import Auction from '../../components/componentUser2/auction/Auction';
 import OrderUser2 from '../../components/componentUser2/ordersUser2/OrdersUser2';
 import Prod from '../../components/componentUser2/prod/Prod';
 import EditProfile from '../../components/componentOfUser1/editProfile/EditProfile';
-
+import HistoryUser2 from '../../components/componentUser2/history_user2/HistoryUser2';
 
 const User2 = () => {
     const auth = useAuth()
-    const [sidebarVisible, setSidebarVisible] = useState(false);
+    // const [sidebarVisible, setSidebarVisible] = useState(false);
     const [addProd, setAddProd] = useState(false);
     const [assignament, setAssignament] = useState(false);
     const [auction, setAuction] = useState(true);
     const [orderUser2, setOrderUser2] = useState(false);
     const [prod, setProd] = useState(false);
+    const [history, setHistory] = useState(false);
     const [isEditProfile1ModalVisible, setEditProfile1ModalVisible] = useState(false);
 
     const handleEditProfileClick = () => {
@@ -31,13 +32,13 @@ const User2 = () => {
         setEditProfile1ModalVisible(false);
     };
 
-    const showSidebar = () => {
-        setSidebarVisible(true);
-    };
+    // const showSidebar = () => {
+    //     setSidebarVisible(true);
+    // };
 
-    const hideSidebar = () => {
-        setSidebarVisible(false);
-    };
+    // const hideSidebar = () => {
+    //     setSidebarVisible(false);
+    // };
     function handleSingOut() {
         Swal.fire({
             title: '¿Estás seguro?',
@@ -61,6 +62,7 @@ const User2 = () => {
                 setAssignament(false);
                 setAuction(false);
                 setOrderUser2(false);
+                setHistory(false);
                 setProd(true);
                 break;
             case "orderUser2":
@@ -68,6 +70,7 @@ const User2 = () => {
                 setAssignament(false);
                 setAuction(false);
                 setOrderUser2(true);
+                setHistory(false);
                 setProd(false);
                 break;
             case "addProd":
@@ -75,6 +78,7 @@ const User2 = () => {
                 setAssignament(false);
                 setAuction(false);
                 setOrderUser2(false);
+                setHistory(false);
                 setProd(false);
                 break;
             case "assignament":
@@ -82,6 +86,7 @@ const User2 = () => {
                 setAssignament(true);
                 setAuction(false);
                 setOrderUser2(false);
+                setHistory(false);
                 setProd(false);
                 break;
             case "auction":
@@ -89,6 +94,16 @@ const User2 = () => {
                 setAssignament(false);
                 setAuction(true);
                 setOrderUser2(false);
+                setHistory(false);
+                setProd(false);
+                break;
+
+            case "history":
+                setAddProd(false);
+                setAssignament(false);
+                setAuction(false);
+                setOrderUser2(false);
+                setHistory(true);
                 setProd(false);
                 break;
             default:
@@ -115,15 +130,10 @@ const User2 = () => {
                     {auction && <Auction />}
                     {orderUser2 && <OrderUser2 />}
                     {prod && <Prod />}
+                    {history && <HistoryUser2 />}
                 </div>
             </div>
-            <div >
-                {isEditProfile1ModalVisible && (
-                    <div className={u.modalBackdrop}>
-                        <EditProfile onClose={handleCloseEditProfileModal} />
-                    </div>
-                )}
-            </div>
+
 
 
             <div className={u.divFooter}>
