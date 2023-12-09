@@ -62,7 +62,7 @@ const Nav2 = ({ selector }) => {
             <button className="btn btn-primary" value={"addProd"} onClick={(e) => selector(e.target.value)}>Agregar Productos</button>
             <button className="btn btn-primary" value={"prod"} onClick={(e) => selector(e.target.value)}>Productos</button>
             <button className="btn btn-primary" value={"orderUser2"} onClick={(e) => selector(e.target.value)}>Despacho</button>
-            <button className="btn btn-primary" value={"orderUser2"} onClick={(e) => selector(e.target.value)}>Historial</button>
+            <button className="btn btn-primary" value={"history"} onClick={(e) => selector(e.target.value)}>Historial</button>
 
 
 

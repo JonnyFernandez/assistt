@@ -1,0 +1,35 @@
+.history {
+    background-color: #059ef1be;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* border-radius: 5px; */
+    border-radius: 15px;
+
+}
+
+.header {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    /* background-color: red; */
+}
+
+.body {
+    height: 90%;
+    width: 100%;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #bacad240;
+    /* background-image: url('../../../assets/azulDetalles.jpg'); */
+    background-size: cover;
+    border-radius: 15px;
+    /* background-color: red; */
+
+}
