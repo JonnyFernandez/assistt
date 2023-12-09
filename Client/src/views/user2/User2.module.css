@@ -14,7 +14,8 @@
     background-image: url('../../assets/auction03.jpg');
     background-size: cover;
     border-radius: 15px;
-   
+    background-color: red;
+
 }
 
 .bodyContainer {
@@ -23,9 +24,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
     border-radius: 15px;
-    
+
 }
 
 .sidebarButton {
@@ -39,12 +40,14 @@
 }
 
 .sidebar {
-    background-color: rgba(182, 175, 175, 0.548); 
+    background-color: rgba(182, 175, 175, 0.548);
     padding: 10px;
     margin-top: -180px;
     display: flex;
-    flex-direction: column; /* Cambiar a columna para mostrar las opciones en fila hacia abajo */
-    align-items: left; /* Alinear opciones al centro */
+    flex-direction: column;
+    /* Cambiar a columna para mostrar las opciones en fila hacia abajo */
+    align-items: left;
+    /* Alinear opciones al centro */
     position: absolute;
     z-index: 2000;
 }
@@ -68,21 +71,23 @@
     position: fixed;
     top: 150px;
     left: 300px;
-    width: 50%; /* Cambiado a 100% para ocupar toda la pantalla */
-    height: 50%; /* Cambiado a 100% para ocupar toda la pantalla */
-    background-color: rgba(0, 0, 0, 0.9); /* Ajusta el valor alpha para hacerlo más transparente */
+    width: 50%;
+    /* Cambiado a 100% para ocupar toda la pantalla */
+    height: 50%;
+    /* Cambiado a 100% para ocupar toda la pantalla */
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Ajusta el valor alpha para hacerlo más transparente */
     display: flex;
     align-items: center;
     justify-content: center;
-    
-  }
 
-  .modalContent {
-    background-color: #fff; /* Color de fondo claro para el contenido del modal */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); /* Sombra para resaltar el modal */
 }
 
-
-
+.modalContent {
+    background-color: #fff;
+    /* Color de fondo claro para el contenido del modal */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    /* Sombra para resaltar el modal */
+}

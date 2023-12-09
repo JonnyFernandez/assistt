@@ -167,3 +167,47 @@
     }
 }
 
+/* .menu {
+    border: 1px solid black;
+} */
+
+.sidebarButton {
+    position: relative;
+    /* top: -180px; */
+    border: none;
+    background-color: transparent;
+    padding: 1px 12px 1px;
+    /* margin-right: 10px; */
+    color: white;
+}
+
+.sidebar {
+    background-color: rgba(182, 175, 175, 0.548);
+    padding: 10px;
+    margin-top: 0px;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    /* Cambiar a columna para mostrar las opciones en fila hacia abajo */
+    align-items: left;
+    /* Alinear opciones al centro */
+    position: absolute;
+    z-index: 2000;
+    /* background-color: red; */
+}
+
+.sidebar button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    /* background-color: red; */
+}
+
+.sidebar button:hover {
+    background-color: #45a049;
+}

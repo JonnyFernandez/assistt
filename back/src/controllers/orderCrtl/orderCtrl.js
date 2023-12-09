@@ -142,7 +142,7 @@ const finisOrder = async (id, amout) => {
     if (amout === 'cancelar') {
         Order.monto = null
         Order.providerCode = null
-        Order.aprobado = null
+        // Order.aprobado = null
         Order.dispatching = false
         Order.save()
         return Order
