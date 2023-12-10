@@ -14,22 +14,40 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
     /* background-color: red; */
+    align-items: center;
+    font-size: xx-large;
+    color: aliceblue;
 }
 
 .body {
     height: 90%;
     width: 100%;
-    background-color: whitesmoke;
+    display: flex;
+    flex-direction: row;
+    background: linear-gradient(to top, rgba(30, 35, 38, 0.584), rgba(30, 35, 38, 0.748)),
+        url('../../../assets/auction01.jpg');
+    background-size: cover;
+    border-radius: 15px;
+    justify-content: space-around;
+}
+
+.bodyLeft {
+    width: 20%;
+    height: 100%;
+    background-color: rebeccapurple;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background-color: #bacad240;
-    /* background-image: url('../../../assets/azulDetalles.jpg'); */
-    background-size: cover;
-    border-radius: 15px;
-    /* background-color: red; */
+    justify-content: space-around;
+}
 
+.bodyRight {
+    width: 75%;
+    height: 100%;
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
