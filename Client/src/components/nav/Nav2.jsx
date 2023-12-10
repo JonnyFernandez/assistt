@@ -2,9 +2,11 @@
 import p from './Nav.module.css'
 import Swal from 'sweetalert2';
 import { useState } from 'react';
-import EditProfile from '../componentOfUser1/editProfile/EditProfile';
+import { useAuth } from '../../authAll/auth/AuthProvider'
 
 const Nav2 = ({ selector }) => {
+
+    const auth = useAuth()
 
     const [sidebarVisible, setSidebarVisible] = useState(false);
     const [isEditProfile1ModalVisible, setEditProfile1ModalVisible] = useState(false);

@@ -37,17 +37,17 @@ const HistoryUser2 = () => {
     return (
         <div className={w.history}>
             <div className={w.header} >
+                <select onChange={(e) => selector(e.target.value)}>
+                    <option value="">Opciones</option>
+                    <option value="History">Historial</option>
+                    <option value="Seller">Mas venidos</option>
+                    <option value="Orders">Ordenes</option>
+                </select>
                 <div>Historial De Ventas</div>
                 <div>$ 00.00</div>
             </div>
             <div className={w.body}>
-                <div className={w.bodyLeft}>
-                    <button value={'History'} onClick={(e) => selector(e.target.value)}> Historial </button>
-                    <button value={'Seller'} onClick={(e) => selector(e.target.value)}> Mas venidos </button>
-                    <button value={'Orders'} onClick={(e) => selector(e.target.value)}> Ordenes </button>
-                    {showOrders && <div><input type='text' /></div>}
-                    {showOrders && <div><input type='date' /></div>}
-                </div>
+
                 <div className={w.bodyRight}>
                     {showHistory && <History_orders />}
                     {showMoreSeller && <More_Seller />}
