@@ -41,7 +41,8 @@ import {
     FINISH_ORDER_USER2,
     QUOTES_ORDER_USER3,
     ORDER_HISTORY,
-    MORE_SELLER
+    MORE_SELLER,
+    SEARCH_MY_ORDER_CODE
 } from '../redux/actionsType';
 
 const InitialState = {
@@ -50,6 +51,7 @@ const InitialState = {
     backupProductUser2: [],
     Orders: [],
     historyOrder: [],
+    backup_historyOrder: [],
     backupOrder: [],
     OrdersUser: [],
     backupProduct: [],
@@ -65,13 +67,27 @@ const InitialState = {
     orderDetail: {},
     approvalStatus: {},
     currentPage: 1,
-    moreSeller: []
+    moreSeller: [],
 
 
 };
 
 const reducer = (state = InitialState, action) => {
     switch (action.type) {
+        case SEARCH_MY_ORDER_CODE:
+            const codeSelled = action.payload;
+
+            const filteredOrder = (codeSelled == null
+                ? state.backup_historyOrder
+                : state.backup_historyOrder.filter(item =>
+                    item.codeOrder.toLowerCase().includes(codeSelled.toLowerCase())
+                )
+            );
+            return {
+                ...state,
+                historyOrder: filteredOrder
+            };
+
         case MORE_SELLER:
             return {
                 ...state,
@@ -83,7 +99,8 @@ const reducer = (state = InitialState, action) => {
 
             return {
                 ...state,
-                historyOrder: history
+                historyOrder: history,
+                backup_historyOrder: history
             }
         case QUOTES_ORDER_USER3:
             return {

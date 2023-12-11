@@ -1,35 +1,27 @@
 import x from './MyOrders.module.css'
-import { history_order } from '../../../../redux/actions'
-import { useSelector, useDispatch } from 'react-redux'
-import { useEffect } from 'react'
 import CardOrderCtrl from '../../cardOrderCtrl/CardOrderCtrl'
+import SearchBarSelled from './searchBarSelled/SearchSelled'
 
-const MyOrders = () => {
-    const dispatch = useDispatch()
-
-    const userData = JSON.parse(localStorage.getItem('userInfo'))
-    const email = userData?.email || ''
-    useEffect(() => {
-        dispatch(history_order(email))
-        // return () => alert('cerrando');
-    }, [])
-
-    const data = useSelector(state => state.historyOrder)
-
-
-
+const MyOrders = ({ order }) => {
 
 
     return (
         <div className={x.history}>
-            <div className={x.header}></div>
+            <div className={x.header}>
+                <div className={x.title}>Orderes Despachadas</div>
+
+                <div className={x.headerSearch}>
+                    <SearchBarSelled />
+                </div>
+
+            </div>
             <div className={x.body}>
 
                 {
-                    data.length > 0
+                    order.length > 0
                         ? <div className={x.CardUser2Container}>
                             {
-                                data.map(item => {
+                                order.map(item => {
                                     return (
                                         <div key={item.id}>
                                             <CardOrderCtrl
@@ -46,7 +38,7 @@ const MyOrders = () => {
                                 })
                             }
                         </div>
-                        : 'No tienes Cotizaciones Aceptadas por el Admin'
+                        : <div className={x.message}>Orden no encontrada</div>
                 }
 
 
