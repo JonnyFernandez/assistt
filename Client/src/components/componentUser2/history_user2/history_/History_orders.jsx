@@ -13,8 +13,8 @@ const HistoryOrders = () => {
                 datasets: [{
                     label: 'Órdenes Despachadas',
                     data: [12, 19, 3, 5, 2, 3, 7, 8, 10, 15, 20, 30], // Datos mensuales de órdenes despachadas
-                    backgroundColor: 'rgba(54, 162, 235, 0.5)', // Color de las barras
-                    borderColor: 'rgba(54, 162, 235, 1)', // Color del borde de las barras
+                    backgroundColor: 'rgba(198, 218, 235, 0.5)', // Color de las barras
+                    borderColor: 'rgba(198, 218, 235, 1)', // Color del borde de las barras
                     borderWidth: 2
                 },
                 ]

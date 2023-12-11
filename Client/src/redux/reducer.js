@@ -40,7 +40,8 @@ import {
     GET_ORDER_USER2,
     FINISH_ORDER_USER2,
     QUOTES_ORDER_USER3,
-    ORDER_HISTORY
+    ORDER_HISTORY,
+    MORE_SELLER
 } from '../redux/actionsType';
 
 const InitialState = {
@@ -64,12 +65,19 @@ const InitialState = {
     orderDetail: {},
     approvalStatus: {},
     currentPage: 1,
+    moreSeller: []
 
 
 };
 
 const reducer = (state = InitialState, action) => {
     switch (action.type) {
+        case MORE_SELLER:
+            return {
+                ...state,
+                moreSeller: action.payload
+            }
+
         case ORDER_HISTORY:
             const history = state.backupOrder.filter(item => item.providerCode === action.payload && item.active && item.dispatching)
 
