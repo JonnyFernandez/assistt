@@ -36,11 +36,24 @@
 
 .header p {
     margin: 0;
-
-
-
-
 }
+
+.closeM {
+    border: transparent;
+    cursor: pointer;
+    width: auto;
+    height: auto;
+}
+
+.closeM:hover {
+    /* box-shadow: 0px 0px 5px white; */
+    background-color: rgb(209, 57, 57);
+    border-radius: 10px;
+}
+
+
+
+
 
 .reseña {
     cursor: pointer;
@@ -96,22 +109,89 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .modalButtons button:hover {
     background-color: #e4dbdb;
 }
 
-.reviewContent {
+/* .reviewContent {
     margin-top: 30px;
     font-size: 15px;
     line-height: 1.5;
     color: rgb(32, 32, 29)f6f;
-
-
-
-
     margin-bottom: 10px;
+} */
+.review {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.633);
+    display: flex;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.reviewHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.61);
+}
+
+.reviewContainer {
+    background-color: white;
+    border-radius: 8px;
+    width: 400px;
+    height: 200px;
+    overflow-x: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+.close {
+    width: 40px;
+    height: 20px;
+    /* background-color: rgba(0, 0, 0, 0.61); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    cursor: pointer;
+    color: white;
+}
+
+.close:hover {
+    color: black;
+    background-color: rgb(225, 78, 78);
+}
+
+.titleReview {
+    width: 100px;
+    height: 20px;
+    /* background-color: rgba(0, 0, 0, 0.61); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    color: white;
+}
+
+.reviewContent {
+    /* background-color: red; */
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    height: 100%;
 }
 
 .totalAmount {

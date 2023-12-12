@@ -46,6 +46,7 @@ const OrderUser2 = () => {
                                                     status={item.providerCode}
                                                     prods={item.Prods}
                                                     review={item.ReviewGeneral}
+                                                    dispatching={item.dispatching}
                                                 />
                                             </div>
 
