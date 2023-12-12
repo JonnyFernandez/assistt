@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
+import c from './More_Seller.module.css'
+
 
 const MoreSeller = ({ products }) => {
     const chartContainer = useRef(null);
@@ -36,7 +38,7 @@ const MoreSeller = ({ products }) => {
 
     return (
         <div>
-            <div>Productos más vendidos</div>
+            <div className={c.title}>Productos más vendidos</div>
             <canvas ref={chartContainer} width={900} height={300}></canvas>
         </div>
     );

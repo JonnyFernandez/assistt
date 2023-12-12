@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
+import g from './History_orders.module.css'
 
 const HistoryOrders = () => {
     const chartContainer = useRef(null);
@@ -34,8 +35,8 @@ const HistoryOrders = () => {
 
 
     return (
-        <div>
-            <div>Historial de órdenes</div>
+        <div >
+            <div className={g.title}>Historial de órdenes</div>
             <canvas ref={chartContainer} width={900} height={300}></canvas>
 
         </div>
