@@ -1,25 +1,28 @@
 import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
+import c from './More_Seller.module.css'
 
 
-const More_Seller = () => {
+const MoreSeller = ({ products }) => {
     const chartContainer = useRef(null);
 
     useEffect(() => {
         const ctx = chartContainer.current.getContext('2d');
+
+        const productNames = products.map(product => product.name);
+        const productCounts = products.map(product => product.count);
+
         const myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                labels: productNames,
                 datasets: [{
-                    label: 'Órdenes Despachadas',
-                    data: [12, 19, 3, 5, 2, 3, 7, 8, 10, 15, 20, 30], // Datos mensuales de órdenes despachadas
-                    backgroundColor: 'rgba(243, 236, 111, 0.5)', // Color de las barras
-                    borderColor: 'rgba(54, 162, 235, 1)', // Color del borde de las barras
+                    label: 'Cantidad Vendida',
+                    data: productCounts,
+                    backgroundColor: 'rgba(243, 236, 111, 0.5)',
+                    borderColor: '#8ecae6',
                     borderWidth: 1
-                },
-
-                ]
+                }]
             },
             options: {
                 scales: {
@@ -31,17 +34,14 @@ const More_Seller = () => {
         });
 
         return () => myChart.destroy(); // Destruir el gráfico al desmontar el componente
-    }, []);
-
-
+    }, [products]);
 
     return (
         <div>
-            <div>Historial de órdenes</div>
+            <div className={c.title}>Productos más vendidos</div>
             <canvas ref={chartContainer} width={900} height={300}></canvas>
-
         </div>
     );
-}
+};
 
-export default More_Seller
+export default MoreSeller;

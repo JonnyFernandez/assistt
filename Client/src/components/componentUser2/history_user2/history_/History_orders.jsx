@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
+import g from './History_orders.module.css'
 
 const HistoryOrders = () => {
     const chartContainer = useRef(null);
@@ -13,8 +14,8 @@ const HistoryOrders = () => {
                 datasets: [{
                     label: 'Órdenes Despachadas',
                     data: [12, 19, 3, 5, 2, 3, 7, 8, 10, 15, 20, 30], // Datos mensuales de órdenes despachadas
-                    backgroundColor: 'rgba(54, 162, 235, 0.5)', // Color de las barras
-                    borderColor: 'rgba(54, 162, 235, 1)', // Color del borde de las barras
+                    backgroundColor: 'rgba(198, 218, 235, 0.5)', // Color de las barras
+                    borderColor: 'rgba(198, 218, 235, 1)', // Color del borde de las barras
                     borderWidth: 2
                 },
                 ]
@@ -34,8 +35,8 @@ const HistoryOrders = () => {
 
 
     return (
-        <div>
-            <div>Historial de órdenes</div>
+        <div >
+            <div className={g.title}>Historial de órdenes</div>
             <canvas ref={chartContainer} width={900} height={300}></canvas>
 
         </div>

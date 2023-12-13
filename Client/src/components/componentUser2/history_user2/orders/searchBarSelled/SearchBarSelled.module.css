@@ -1,0 +1,17 @@
+.nav_search_input {
+    width: 200px;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.nav_search_input::placeholder {
+    color: #999;
+}
+
+.nav_search_input:focus {
+    border-color: #4a90e2;
+}

@@ -42,11 +42,14 @@ import {
     QUOTES_ORDER_USER3,
     ORDER_HISTORY,
     APPROVE_QUOTE_REQUEST,
-  APPROVE_QUOTE_SUCCESS,
-  APPROVE_QUOTE_FAILURE,
-  DISAPPROVE_QUOTE_REQUEST,
-  DISAPPROVE_QUOTE_SUCCESS,
-  DISAPPROVE_QUOTE_FAILURE,
+    APPROVE_QUOTE_SUCCESS,
+    APPROVE_QUOTE_FAILURE,
+    DISAPPROVE_QUOTE_REQUEST,
+    DISAPPROVE_QUOTE_SUCCESS,
+    DISAPPROVE_QUOTE_FAILURE,
+    MORE_SELLER,
+    SEARCH_MY_ORDER_CODE
+
 } from '../redux/actionsType';
 
 const InitialState = {
@@ -55,6 +58,7 @@ const InitialState = {
     backupProductUser2: [],
     Orders: [],
     historyOrder: [],
+    backup_historyOrder: [],
     backupOrder: [],
     OrdersUser: [],
     backupProduct: [],
@@ -73,12 +77,15 @@ const InitialState = {
     quotes: null,
     loading: false,
     error: null,
+    moreSeller: [],
+
 
 
 };
 
 const reducer = (state = InitialState, action) => {
     switch (action.type) {
+
         case APPROVE_QUOTE_REQUEST:
             case DISAPPROVE_QUOTE_REQUEST:
               return {
@@ -104,12 +111,35 @@ const reducer = (state = InitialState, action) => {
                 error: action.payload, // Actualiza el estado con el mensaje de error
               };
               
+
+        case SEARCH_MY_ORDER_CODE:
+            const codeSelled = action.payload;
+
+            const filteredOrder = (codeSelled == null
+                ? state.backup_historyOrder
+                : state.backup_historyOrder.filter(item =>
+                    item.codeOrder.toLowerCase().includes(codeSelled.toLowerCase())
+                )
+            );
+            return {
+                ...state,
+                historyOrder: filteredOrder
+            };
+
+        case MORE_SELLER:
+            return {
+                ...state,
+                moreSeller: action.payload
+            }
+
+
         case ORDER_HISTORY:
             const history = state.backupOrder.filter(item => item.providerCode === action.payload && item.active && item.dispatching)
 
             return {
                 ...state,
-                historyOrder: history
+                historyOrder: history,
+                backup_historyOrder: history
             }
         case QUOTES_ORDER_USER3:
             return {
