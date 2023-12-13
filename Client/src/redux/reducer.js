@@ -40,7 +40,13 @@ import {
     GET_ORDER_USER2,
     FINISH_ORDER_USER2,
     QUOTES_ORDER_USER3,
-    ORDER_HISTORY
+    ORDER_HISTORY,
+    APPROVE_QUOTE_REQUEST,
+  APPROVE_QUOTE_SUCCESS,
+  APPROVE_QUOTE_FAILURE,
+  DISAPPROVE_QUOTE_REQUEST,
+  DISAPPROVE_QUOTE_SUCCESS,
+  DISAPPROVE_QUOTE_FAILURE,
 } from '../redux/actionsType';
 
 const InitialState = {
@@ -64,12 +70,40 @@ const InitialState = {
     orderDetail: {},
     approvalStatus: {},
     currentPage: 1,
+    quotes: null,
+    loading: false,
+    error: null,
 
 
 };
 
 const reducer = (state = InitialState, action) => {
     switch (action.type) {
+        case APPROVE_QUOTE_REQUEST:
+            case DISAPPROVE_QUOTE_REQUEST:
+              return {
+                ...state,
+                loading: true,
+                error: null,
+              };
+        
+            case APPROVE_QUOTE_SUCCESS:
+            case DISAPPROVE_QUOTE_SUCCESS:
+              return {
+                ...state,
+                quotes: action.payload, // Actualiza el estado con las cotizaciones actualizadas
+                loading: false,
+                error: null,
+              };
+        
+            case APPROVE_QUOTE_FAILURE:
+            case DISAPPROVE_QUOTE_FAILURE:
+              return {
+                ...state,
+                loading: false,
+                error: action.payload, // Actualiza el estado con el mensaje de error
+              };
+              
         case ORDER_HISTORY:
             const history = state.backupOrder.filter(item => item.providerCode === action.payload && item.active && item.dispatching)
 
