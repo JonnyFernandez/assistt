@@ -21,7 +21,8 @@ const Modal = ({ isOpen, onClose, productDetails, id }) => {
     useEffect(() => {
         setShowReview(false)
     }, [])
-    console.log(showReview);
+
+
     const openReview = () => {
         setShowReview(true)
     }
@@ -39,6 +40,15 @@ const Modal = ({ isOpen, onClose, productDetails, id }) => {
         dispatch(acceptOrder_user2(id, userEmail))
     }
 
+    const calculateTotal = () => {
+        let total = 0;
+        productDetails.prods.forEach(item => {
+            total += item.quanty * item.price;
+        });
+        return total;
+    };
+    const totalAmount = calculateTotal();
+
     return (
         <div className={j.modalOverlay}>
 
@@ -47,7 +57,11 @@ const Modal = ({ isOpen, onClose, productDetails, id }) => {
                     <p>Codigo: {productDetails.code}</p>
                     <p>Fecha: {productDetails.date}</p>
                     <p>Estado: {!productDetails.status ? 'Disponible' : 'No Disponible'}</p>
-                    <p className={j.reseña} onClick={openReview}>Ver Reseña</p>
+                    <p className={j.reseña} onClick={openReview}>{review.length > 0 ? <div><svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="greenyellow" class="bi bi-card-text" viewBox="0 0 16 16">
+                        <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z" />
+                        <path d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8m0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5" />
+                    </svg></div> : ''}</p>
+                    <div>Monto total: ${totalAmount}.00</div>
                 </div>
 
 
@@ -62,8 +76,8 @@ const Modal = ({ isOpen, onClose, productDetails, id }) => {
                                                     <div className={j.info}>Codigo: {item.code}</div>
                                                     <div className={j.info}>Nombre: {item.name} </div>
                                                     <div className={j.info}>Cantidad: {item.quanty} </div>
-                                                    <div className={j.info}>precio: $ 159.111 </div>
-                                                    <div className={j.info}>total: $ 159.111 </div>
+                                                    <div className={j.info}>precio: $ {item.price} </div>
+                                                    <div className={j.info}>total: $ {item.quanty * item.price} </div>
                                                 </div>
 
                                             </div>
@@ -73,12 +87,17 @@ const Modal = ({ isOpen, onClose, productDetails, id }) => {
                         </div> : <div></div>
                     }
 
-                    {showReview && <div>
+                    {showReview && <div >
                         {
                             review.length > 0
-                                ? <div>
-                                    {review.map(item => <div className={j.review}>
+                                ? <div className={j.review}>
+
+                                    {review.map(item => <div >
                                         <div className={j.reviewContainer}>
+                                            <div className={j.reviewHeader}>
+                                                <div className={j.titleReview}>Reseña</div>
+                                                <div className={j.close} onClick={() => closeReview()}>X</div>
+                                            </div>
                                             <div className={j.reviewContent}>{item.review}</div>
                                         </div>
                                     </div>)}

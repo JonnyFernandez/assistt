@@ -37,8 +37,8 @@ const updateOrder = async (req, res) => {
   try {
     const { id } = req.params;
     const { aprobado, userEmail, quotes, amout } = req.body;
-    // console.log(quotes);
-    const Update = aprobado ? await orderUpdate(id, aprobado) : userEmail ? await acceptOrder(id, userEmail) : amout ? await finisOrder(id, amout) : quotes === false || quotes === true ? await aprov_Quote(id, quotes) : ''
+    console.log(aprobado);
+    const Update = aprobado === true || aprobado === false ? await orderUpdate(id, aprobado) : userEmail ? await acceptOrder(id, userEmail) : amout ? await finisOrder(id, amout) : quotes === false || quotes === true ? await aprov_Quote(id, quotes) : ''
 
     res.status(200).json(Update)
   } catch (error) {
