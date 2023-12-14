@@ -52,8 +52,7 @@ const Modal = ({ isOpen, onClose, productDetails, id }) => {
 
 
                 <div className={j.details}>
-                    {
-                        productDetails.prods.length > 0 ? <div>
+                    { productDetails.prods.length > 0 ? <div>
                             {
                                 productDetails.prods
                                     .map((item) => {

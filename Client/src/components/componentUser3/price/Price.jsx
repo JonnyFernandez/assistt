@@ -58,7 +58,6 @@ const Price = () => {
     }
   };
   
-  
 
   const openQuoteDetails = (quoteId) => {
     const selectedQuoteDetails = quotes.find((quote) => quote.id === quoteId);
@@ -66,38 +65,41 @@ const Price = () => {
     setSelectedQuote(quoteId);
     setIsModalOpen(true);
   };
+  
+  
 
   return (
     <div className={style.container}>
-      <h2 className={style.title}>Cotizaciones</h2>
+   
       {quotes === null ? (
         <p>Cargando cotizaciones...</p>
       ) : (
         <div className={style.cardContainer}>
-          {quotes
-            .filter((quote) => quote.providerCode !== null)
-            .map((quote) => (
-              <div key={quote.id} className={style.card}>
-                  <button className={`${style.h3buton} ${style.codeButton}`} onClick={() => openQuoteDetails(quote.id)}>
-                        {quote.codeOrder}
-                    </button>
-                <p>Aprobado: {quote.quotes !== null ? (quote.quotes ? 'Sí' : 'No') : 'En espera'}</p>
-                {quote.quotes === null && (
+          {quotes.map((quote) => (
+            <div key={quote.id} className={style.card}>
+              <button
+                className={`${style.h3buton} ${style.codeButton}`}
+                onClick={() => openQuoteDetails(quote.id)}
+              >
+                {quote.codeOrder}
+              </button>
+              <p>Aprobado: {quote.quotes !== null ? (quote.quotes ? 'Sí' : 'No') : 'En espera'}</p>
+              {quote.quotes === null && (
                 <div>
-                    <button onClick={(event) => approveQuotes(quote.id, event)}>
+                  <button onClick={() => approveQuotes(quote.id)}>
                     Aprobar
-                    </button>
-                    <button onClick={(event) => disapproveQuotes(quote.id, event)}>
+                  </button>
+                  <button onClick={() => disapproveQuotes(quote.id)}>
                     Desaprobar
+                  </button>
+                  <button onClick={() => openQuoteDetails(quote.id)}>
+                      Detalles
                     </button>
-                    <button onClick={() => openQuoteDetails(quote.id)}>
-                    Detalles
-                    </button>
-                </div>
-                )}
 
-              </div>
-            ))}
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       )}
 
