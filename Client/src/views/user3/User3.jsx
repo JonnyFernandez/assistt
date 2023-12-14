@@ -126,12 +126,12 @@ const User3 = () => {
             )}
             <div>
               <button className={style.button} onClick={showOrdersListOnClick}>
-                Órdenes de Compra
+                Órdenes de Compras
               </button>
             </div>
             <div>
               <button className={style.button} onClick={showMoreSellerOnClick}>
-              Top Ventas
+              Top Compras
               </button>
             </div>
             <div>

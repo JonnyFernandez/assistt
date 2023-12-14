@@ -29,7 +29,7 @@ const MoreSeller = () => {
 
   return (
     <div>
-      <h2 className={style.title} >Productos más vendidos</h2>
+      <h2 className={style.title} >Productos más comprados</h2>
       <div className={`${style.chartcontainer} ${style.rechartswrapper}`}>
       {sortedData.length > 0 ? (
           <BarChart
@@ -56,9 +56,9 @@ const MoreSeller = () => {
       
           <YAxis
             tickCount={5}
-            tickFormatter={(value) => `${value} ventas`}
+            tickFormatter={(value) => `${value} Compras`}
             label={{
-              value: 'Ventas',
+              value: 'Compras',
               angle: -90,
               position: 'insideLeft',
               offset: -25,
