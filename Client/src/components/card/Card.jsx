@@ -1,7 +1,7 @@
 import c from './Card.module.css'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { addFav, removeFav, addCart, removeCard } from '../../redux/actions'
+import { addFav, removeFav, addCart, removeCard, getProd } from '../../redux/actions'
 
 
 const Card = ({ id, code, name, description, quanty, price, stock, type }) => {
@@ -20,6 +20,7 @@ const Card = ({ id, code, name, description, quanty, price, stock, type }) => {
     const [cart, setCart] = useState(false)
 
     useEffect(() => {
+        dispatch(getProd())
         myFav.forEach((el) => {
             if (el.id === id) {
                 setFav(true);
@@ -28,6 +29,8 @@ const Card = ({ id, code, name, description, quanty, price, stock, type }) => {
     }, [myFav]);
 
     useEffect(() => {
+        dispatch(getProd())
+
         myList.forEach((item) => {
             if (item.id === id) {
                 setCart(true);
