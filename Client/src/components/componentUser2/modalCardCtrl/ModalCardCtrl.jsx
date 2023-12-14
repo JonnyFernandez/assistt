@@ -161,8 +161,7 @@ const ModalCardCtrl = ({ isOpen, onClose, productDetails, id }) => {
 
 
                 <div className={c.details}>
-                    {
-                        productDetails.prods.length > 0 ? (<div>
+                    {  productDetails.prods.length > 0 ? (<div>
                             {
                                 productDetails.prods
                                     .map((item) => {

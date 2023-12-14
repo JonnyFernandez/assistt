@@ -4,12 +4,97 @@ import Swal from 'sweetalert2'
 
 import {
   GET_PROD, ADD_FAV, REMOVE_FAV, ADD_CART, REMOVE_CART, GET_PROFILE, GET_ORDER, CLEAN_DETAIL, ORDER_DETAIL, BY_TYPE, QUANTITY, POST_USER,
-  GET_REVIEWS, PUT_REVISOR, GET_ENTITY, SEARCH_PROD, SEARCH_USER, GET_USERS_NAME, SET_SEARCH_RESULTS, ORDER_BY_ID_USER, CLEAN_CART, PUT_USER_BANNED, SEARCH_BY_CODE, SET_CART, SET_FAV, SET_CURRENT_PAGE, SET_NEXT_PAGE, SET_PREV_PAGE, FILTER_BY_TYPE, FILTER_BY_MIN_MAX, FILTER_BY_STATUS, SEACH_CODE_USER2, GET_PROD_USER2, SEARCH_PROD_CODE, SEARCH_PROD_NAME, SEARCH_STOCK, FILTER_BY_PRICE, ACCEPT_ORDER_USER2, GET_ORDER_USER2, FINISH_ORDER_USER2, QUOTES_ORDER_USER3, ORDER_HISTORY, MORE_SELLER, SEARCH_MY_ORDER_CODE
+  GET_REVIEWS, PUT_REVISOR, GET_ENTITY, SEARCH_PROD, SEARCH_USER, GET_USERS_NAME, SET_SEARCH_RESULTS, ORDER_BY_ID_USER, CLEAN_CART, PUT_USER_BANNED, SEARCH_BY_CODE, SET_CART, SET_FAV, SET_CURRENT_PAGE, SET_NEXT_PAGE, SET_PREV_PAGE, FILTER_BY_TYPE, FILTER_BY_MIN_MAX, FILTER_BY_STATUS, SEACH_CODE_USER2, GET_PROD_USER2, SEARCH_PROD_CODE, SEARCH_PROD_NAME, SEARCH_STOCK, FILTER_BY_PRICE, ACCEPT_ORDER_USER2, GET_ORDER_USER2, FINISH_ORDER_USER2, QUOTES_ORDER_USER3, ORDER_HISTORY,APPROVE_QUOTE_REQUEST, APPROVE_QUOTE_SUCCESS, APPROVE_QUOTE_FAILURE, DISAPPROVE_QUOTE_REQUEST, DISAPPROVE_QUOTE_SUCCESS, DISAPPROVE_QUOTE_FAILURE
+
 } from './actionsType'
 
 export const searchMyOrderCode = (payload) => {
   return { type: SEARCH_MY_ORDER_CODE, payload }
 }
+
+// Acción para aprobar una cotización
+export const approveQuoteRequest = () => ({
+  type: APPROVE_QUOTE_REQUEST,
+});
+
+export const approveQuoteSuccess = (data) => ({
+  type: APPROVE_QUOTE_SUCCESS,
+  payload: data,
+});
+
+export const approveQuoteFailure = (error) => ({
+  type: APPROVE_QUOTE_FAILURE,
+  payload: error,
+});
+
+export const approveQuote = (quoteId, userEmail) => async (dispatch) => {
+  dispatch(approveQuoteRequest());
+
+  try {
+    // Lógica para aprobar la cotización en el servidor
+    const response = await fetch(`http://localhost:3001/order/${quoteId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ quotes: true, userEmail }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(approveQuoteSuccess(data));
+    } else {
+      const errorData = await response.json();
+      throw new Error(errorData.message || 'Error al aprobar la cotización');
+    }
+  } catch (error) {
+    // Manejar errores y despachar acción de fallo
+    dispatch(approveQuoteFailure(error.message || 'Error al aprobar la cotización'));
+  }
+};
+
+// Acción para desaprobar una cotización
+export const disapproveQuoteRequest = () => ({
+  type: DISAPPROVE_QUOTE_REQUEST,
+});
+
+export const disapproveQuoteSuccess = (data) => ({
+  type: DISAPPROVE_QUOTE_SUCCESS,
+  payload: data,
+});
+
+export const disapproveQuoteFailure = (error) => ({
+  type: DISAPPROVE_QUOTE_FAILURE,
+  payload: error,
+});
+
+export const disapproveQuote = (quoteId) => async (dispatch) => {
+  dispatch(disapproveQuoteRequest());
+
+  try {
+    // Lógica para desaprobar la cotización en el servidor
+    const response = await fetch(`http://localhost:3001/order/${quoteId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ quotes: false }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(disapproveQuoteSuccess(data));
+    } else {
+      const errorData = await response.json();
+      throw new Error(errorData.message || 'Error al desaprobar la cotización');
+    }
+  } catch (error) {
+    // Manejar errores y despachar acción de fallo
+    dispatch(disapproveQuoteFailure(error.message || 'Error al desaprobar la cotización'));
+  }
+};
+
+
 
 export const history_order = (payload) => {
   return { type: ORDER_HISTORY, payload }

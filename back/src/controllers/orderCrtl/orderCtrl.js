@@ -175,14 +175,7 @@ const aprov_Quote = async (id, quotes) => {
 
 
 
-
-
 }
-
-
-
-
-
 
 
 
