@@ -1,19 +1,18 @@
 // Modal.js
 import React, { useEffect, useState } from 'react';
 import j from './Modal.module.css';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { acceptOrder_user2 } from '../../../redux/actions';
+import Swal from 'sweetalert2';
 
-const Modal = ({ isOpen, onClose, productDetails, id }) => {
+const Modal = ({ isOpen, onClose, productDetails, id, status }) => {
     const dispatch = useDispatch()
-    // const profile = useSelector(state => state.profile)
-    // const userEmail = profile.email;
+
 
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-    // const type = userInfo?.type || '';
     const userEmail = userInfo?.email || ''
 
-    // console.log(email);
+    // console.log(userEmail);
 
     const review = productDetails?.review
 
@@ -37,8 +36,27 @@ const Modal = ({ isOpen, onClose, productDetails, id }) => {
     }
 
     const acceptOrder = () => {
-        dispatch(acceptOrder_user2(id, userEmail))
-    }
+        // Mostrar una alerta de confirmación
+        Swal.fire({
+            title: 'Confirmar Asignacion',
+            text: '¿Deseas asignarte esta orden?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, asignar orden',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Aquí pones la lógica que ejecutas al confirmar la asignación de orden
+                dispatch(acceptOrder_user2(id, userEmail));
+                onClose(false);
+
+                // Mostrar un mensaje de éxito
+                Swal.fire('¡Orden asignada!', '', 'success');
+            }
+        });
+    };
 
     const calculateTotal = () => {
         let total = 0;
@@ -110,8 +128,9 @@ const Modal = ({ isOpen, onClose, productDetails, id }) => {
 
                 </div>
                 <div className={j.modalButtons}>
-                    <button onClick={() => acceptOrder()}>Aceptar</button>
-                    <button onClick={() => onClose(false)}>Ignorar</button>
+                    {!status && <button onClick={() => acceptOrder()}>Aceptar</button>}
+
+                    <button onClick={() => onClose(false)}>Volver</button>
                 </div>
             </div>
         </div>

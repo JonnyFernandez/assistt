@@ -4,7 +4,7 @@ import t from './CardUser2.module.css';
 import Modal from '../modal/Modal';
 
 const CardUser2 = ({ code, date, status, prods, review, id }) => {
-
+    // console.log(status);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null);
 
@@ -33,7 +33,7 @@ const CardUser2 = ({ code, date, status, prods, review, id }) => {
                 <div>Orden: {code}</div>
                 <div>{currentStatus}</div>
             </div>
-            <Modal isOpen={isModalOpen} onClose={handleCloseModal} productDetails={selectedProduct} id={id}
+            <Modal isOpen={isModalOpen} onClose={handleCloseModal} productDetails={selectedProduct} id={id} status={status}
             />
         </div>
     );

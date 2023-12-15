@@ -27,22 +27,22 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
+
         const inputErrors = LoginValidation({ email, password });
-    
+
         setErrors(inputErrors);
         if (Object.keys(inputErrors).length > 0) {
             return;
         }
-    
+
         try {
             const res = await axios.post(apiURL, { email, password });
             const aux = res.data;
             const userType = aux.body.type;
             const userActive = aux.body.active;
-        
+
             console.log("User Active:", userActive);
-        
+
             if (userActive === false) {
                 Swal.fire({
                     icon: "error",
@@ -51,14 +51,14 @@ const Login = () => {
                 });
                 return;
             }
-        
+
             const userTypeToRoute = {
                 client: '/user1',
                 supplier: '/user2',
                 admin: '/user3',
                 banned: '/login',
             };
-        
+
             if (userTypeToRoute.hasOwnProperty(userType)) {
                 const userInfo = {
                     id: aux.body.id,
@@ -68,7 +68,7 @@ const Login = () => {
                     accessToken: aux.accessToken,
                     refreshToken: aux.refreshToken,
                 };
-        
+
                 auth.saveUser(userInfo);
                 navigate(userTypeToRoute[userType]);
             } else {
@@ -78,26 +78,26 @@ const Login = () => {
                     text: "Tipo de Usuario inválido",
                 });
             }
-        
+
         } catch (error) {
             console.error("Error al procesar la solicitud:", error.message);
             // Muestra el mensaje de error específico del backend
             if (error.response && error.response.data && error.response.data.error) {
                 Swal.fire({
                     icon: "error",
-                    title:  error.response.data.error,
+                    title: error.response.data.error,
                     text: "Comuniquese con el Administrador",
                 });
-            } else  {
+            } else {
                 Swal.fire({
                     icon: "error",
                     title: error.response.data.error,
-               
+
                 });
             }
         }
-    }        
-    
+    }
+
 
     const toggleShowPassword = () => {
         setShowPwd(!showPwd);

@@ -22,15 +22,15 @@ const OrderUser2 = () => {
     return (
         <div className={m.orderControl}>
             <div className={m.header}>
-                <h2>Cotizaciones aprobadas</h2>
+                <h2>Cotizaciones Aprobadas</h2>
 
             </div>
 
             <div className={m.body}>
-                <div className={m.paginateContainer}>
-                    <h3>aca pongo cualquier cosas porque soy piola</h3>
+                {/* <div className={m.paginateContainer}>
+                    <h3></h3>
 
-                </div>
+                </div> */}
                 <div className={m.card}>
                     {
                         myOrders.length > 0
