@@ -12,7 +12,6 @@ import Footer from '../../components/footer/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import DashboardEntry from '../../components/componentUser3/DashboardEntry';
 import UserAvatarButton from '../../components/componentUser3/ModalEdit/UserAvatarButton';
-import HistoryUser3 from '../../components/componentUser3/historyUser3/HistoryUser3';
 
 const User3 = () => {
   const dispatch = useDispatch();
@@ -25,7 +24,7 @@ const User3 = () => {
   const [showMoreSeller, setShowMoreSeller] = useState(false);
   const [showPrice, setShowPrice] = useState(false);
   const [showDashboard, setShowDashboard] = useState(true);
-  const [showHistory, setShowHistory] = useState(true);
+  // const [showHistory, setShowHistory] = useState(true);
   const [showUserAvatarButton, setShowUserAvatarButton] = useState(true);
 
   useEffect(() => {
@@ -53,7 +52,7 @@ const User3 = () => {
     setSelectedOrder(null);
     setShowDashboard(false);
     setShowUserAvatarButton(false);
-    setShowHistory(false);
+
   };
 
   const showOrdersListOnClick = () => {
@@ -64,7 +63,7 @@ const User3 = () => {
     setSelectedOrder(null);
     setShowDashboard(false);
     setShowUserAvatarButton(false);
-    setShowHistory(false);
+
   };
 
   const showMoreSellerOnClick = () => {
@@ -74,7 +73,7 @@ const User3 = () => {
     setShowOrdersList(false);
     setShowDashboard(false);
     setShowUserAvatarButton(false);
-    setShowHistory(false);
+
   };
 
   const showPriceOnClick = () => {
@@ -84,7 +83,7 @@ const User3 = () => {
     setShowOrdersList(false);
     setShowDashboard(false);
     setShowUserAvatarButton(false);
-    setShowHistory(false);
+
   };
   const showHistoryOnClick = () => {
     setShowMoreSeller(false);
@@ -93,7 +92,7 @@ const User3 = () => {
     setShowOrdersList(false);
     setShowDashboard(false);
     setShowUserAvatarButton(false);
-    setShowHistory(true);
+
   };
 
 
@@ -146,7 +145,7 @@ const User3 = () => {
             </div>
             <div>
               <button className={style.button} onClick={showMoreSellerOnClick}>
-              Top Compras
+                Top Compras
               </button>
             </div>
             <div>
@@ -154,11 +153,7 @@ const User3 = () => {
                 Cotizaciones
               </button>
             </div>
-            <div>
-              <button className={style.button} onClick={showHistoryOnClick}>
-                Historial
-              </button>
-            </div>
+
           </div>
 
           <div className={style.info}>
@@ -172,7 +167,6 @@ const User3 = () => {
                 {selectedOrder && !showMoreSeller && !showPrice && <OrderDetail approvalStatus={approvalStatus} updateApprovalStatus={updateApprovalStatus} />}
                 {showUserList && <UserList users={searchResults} />}
                 {showPrice && <Price />}
-                {showHistory && <HistoryUser3 />}
               </div>
             </div>
           </div>
