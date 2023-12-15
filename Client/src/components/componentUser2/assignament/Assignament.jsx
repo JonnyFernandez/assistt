@@ -3,7 +3,6 @@ import CardUser2 from '../cardUser2/CardUser2'
 import { useSelector, useDispatch } from 'react-redux'
 import { getOrdersUser2 } from '../../../redux/actions'
 import { useEffect } from 'react'
-import CardOrderCtrl from '../cardOrderCtrl/CardOrderCtrl'
 
 
 const Assignament = () => {
@@ -25,15 +24,15 @@ const Assignament = () => {
     return (
         <div className={a.Assignament}>
             <div className={a.header}>
-                <h2>Mis Asignaciones</h2>
+                <h2>Asignaciones</h2>
 
             </div>
 
             <div className={a.body}>
                 <div className={a.paginateContainer}>
-                    <h3>Cotizaciones pendiente de revision</h3>
-
+                    <h3>Cotizaciones pendiente de revisión</h3>
                 </div>
+
                 <div className={a.card}>
                     {
                         myOrders.length > 0

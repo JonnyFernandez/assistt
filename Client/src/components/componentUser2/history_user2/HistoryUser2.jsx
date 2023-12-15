@@ -26,6 +26,7 @@ const HistoryUser2 = () => {
 
 
     const info = useSelector(state => state.moreSeller)
+    console.log(info);
     const orderSelled = useSelector(state => state.historyOrder)
 
 
