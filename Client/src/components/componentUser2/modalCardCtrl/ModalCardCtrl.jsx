@@ -5,10 +5,12 @@ import { useDispatch } from 'react-redux';
 import { dispatchOrder, abolish_Order } from '../../../redux/actions';
 import jsPDF from 'jspdf';
 import Swal from 'sweetalert2';
+import logo from '../../../assets/imageLogo/LOGO4.png'
 
 
 const ModalCardCtrl = ({ isOpen, onClose, productDetails, id }) => {
     const dispatch = useDispatch()
+    const [numeroRemito, setNumeroRemito] = useState(1); // Número consecutivo de remito
 
 
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
@@ -39,7 +41,6 @@ const ModalCardCtrl = ({ isOpen, onClose, productDetails, id }) => {
 
 
 
-
     const calculateTotal = () => {
         let total = 0;
         productDetails.prods.forEach(item => {
@@ -48,7 +49,6 @@ const ModalCardCtrl = ({ isOpen, onClose, productDetails, id }) => {
         return total;
     };
     const totalAmount = calculateTotal();
-
 
 
 
@@ -62,26 +62,101 @@ const ModalCardCtrl = ({ isOpen, onClose, productDetails, id }) => {
             cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.isConfirmed) {
-
                 const doc = new jsPDF();
-                doc.text('Lista de Productos', 10, 10);
+                const margin = 20;
+                const lineHeight = 12; // Se aumentó la altura de línea
+                const titleSpacing = 10; // Espaciado adicional entre títulos y contenido
+    
+                // Configuración de la hoja
+                const pageWidth = doc.internal.pageSize.width;
+                const pageHeight = doc.internal.pageSize.height;
+    
+                // Agregar bordes alrededor del remito
+                doc.setDrawColor(0); // Negro
+                doc.setLineWidth(0.5);
+                doc.rect(margin, margin, pageWidth - 2 * margin, pageHeight - 2 * margin, 'D');
+    
+                // Agregar el logo en la parte superior izquierda del PDF
+                const logoImg = new Image();
+                logoImg.src = logo;
+                doc.addImage(logoImg, 'PNG', margin + 8, margin + 10, 50, 35); // Ajusta el tamaño y la posición según sea necesario
+    
+                // Información del remito (lado izquierdo)
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(12);
+                doc.text('Remito N°: 12345', margin + 20, margin + 10);
+                doc.text('Fecha: 14/12/2023', margin + 20, margin + 15);
+    
+                // Línea divisoria entre el logo y la información del remito
+                doc.setLineWidth(0.2);
+                doc.line(margin, margin + 50, pageWidth - margin, margin + 50);
+    
+                // Información del cliente (lado derecho)
+                doc.setFont('helvetica', 'normal');
+                const clienteX = pageWidth / 2 + 15;
+                const clienteY = margin + 10;
+                doc.text('Datos del Cliente', clienteX, clienteY);
+                doc.text('Nombre: Juan Pérez', clienteX, clienteY + lineHeight);
+                doc.text('Dirección: Calle 123, Ciudad', clienteX, clienteY + 2 * lineHeight);
+    
+                // Espaciado adicional entre el cliente y los detalles de los productos
+                doc.text('', clienteX, clienteY + 3 * lineHeight + titleSpacing);
+    
+                // Detalles de la compra (lado derecho)
+                let y = margin + 40 + titleSpacing; // Posición vertical inicial para el contenido del remito
+    
+                // Detalles de la compra (lado izquierdo)
+                doc.setFontSize(16);  // Tamaño de letra más grande
+                doc.setFont('helvetica', 'bold');  // Fuente en negrita
+                doc.text('Detalle de Productos', margin + 60, y + lineHeight);  // Ajusta la posición vertical según sea necesario
+                y += 2 * lineHeight;  // Incremento en la posición vertical
 
-                // Contenido de la lista de productos
-                let y = 30; // Posición vertical inicial para el contenido de los productos
-
+    
                 productDetails.prods.forEach(item => {
-                    doc.text(`Código: ${item.code}`, 10, y);
-                    doc.text(`Nombre: ${item.name}`, 10, y + 10);
-                    doc.text(`Cantidad: ${item.quanty}`, 10, y + 20);
-                    doc.text(`Precio: $${item.price}`, 10, y + 30);
-                    doc.text(`Total: $${item.price * item.quanty}.00`, 10, y + 40);
-                    doc.line(10, y + 45, 200, y + 45); // Línea separadora entre productos
-                    y += 60; // Incremento en la posición vertical para el siguiente producto
+                    // Código
+                    doc.setFont('helvetica', 'bold');
+                    doc.text('Código:', margin + 10, y);
+                    doc.setFont('helvetica', 'normal');
+                    doc.text(item.code, margin + 40, y);
+    
+                    // Nombre
+                    y += lineHeight;
+                    doc.setFont('helvetica', 'bold');
+                    doc.text('Nombre:', margin + 10, y);
+                    doc.setFont('helvetica', 'normal');
+                    doc.text(item.name, margin + 40, y);
+    
+                    // Cantidad
+                    y += lineHeight;
+                    doc.setFont('helvetica', 'bold');
+                    doc.text('Cantidad:', margin + 10, y);
+                    doc.setFont('helvetica', 'normal');
+                    doc.text(item.quanty.toString(), margin + 40, y);
+    
+                    // Precio
+                    y += lineHeight;
+                    doc.setFont('helvetica', 'bold');
+                    doc.text('Precio:', margin + 10, y);
+                    doc.setFont('helvetica', 'normal');
+                    doc.text(`$${item.price}`, margin + 40, y);
+    
+                    // Total
+                    y += lineHeight;
+                    doc.setFont('helvetica', 'bold');
+                    doc.text('Total:', margin + 10, y);
+                    doc.setFont('helvetica', 'normal');
+                    doc.text(`$${item.price * item.quanty}.00`, margin + 40, y);
+    
+                    // Separación entre productos
+                    y += 5 * lineHeight;
                 });
-                doc.text(`Monto Total: $${totalAmount}.00`, 10, y + 50);
-
-                doc.save('lista_productos.pdf');
-
+    
+                // Agregar información adicional, como el monto total
+                doc.text(`Monto Total: $${totalAmount}.00`, margin + 10, pageHeight - margin - 15);
+    
+                // Guardar y descargar el PDF
+                doc.save('remito.pdf');
+    
                 Swal.fire({
                     title: '¡PDF Generado!',
                     text: 'El archivo PDF se ha generado correctamente.',
@@ -91,8 +166,10 @@ const ModalCardCtrl = ({ isOpen, onClose, productDetails, id }) => {
             }
         });
     };
-
-
+    
+    
+    
+    
 
     const finish_Order = () => {
         Swal.fire({

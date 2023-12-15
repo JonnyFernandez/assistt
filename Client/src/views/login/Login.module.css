@@ -17,6 +17,11 @@
 .formcontainer::before {
   content: "";
   background-color: rgba(0, 0, 0, 0.235);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .form {
@@ -47,22 +52,21 @@
 .title::after {
   position: absolute;
   content: "";
-  height: 12px;
-  width: 12px;
+  height: 16px;
+  width: 16px;
   border-radius: 50%;
-  left: 0px;
+  left: -10px;
   background-color: royalblue;
 }
 
 .title::before,
 .title::after {
-  width: 16px;
-  height: 16px;
-  background-color: royalblue;
+  animation: pulse 1s linear infinite;
 }
 
 .title::after {
-  animation: pulse 1s linear infinite;
+  left: auto;
+  right: 100px;
 }
 
 /* Mensaje de texto */
@@ -83,12 +87,13 @@
 }
 
 .form label .input {
-  width: 90%;
+  width: 100%;
   padding: 10px;
   color: rgb(92, 83, 83);
   font-family: Tahoma, Geneva, Verdana, sans-serif;
   border: 1px solid rgba(105, 105, 105, 0.397);
   border-radius: 8px;
+  transition: border-color 0.3s ease;
 }
 
 .form label .input+span {
@@ -100,23 +105,25 @@
   transition: 0.3s ease;
 }
 
+.form label .input:focus,
+.form label .input:valid {
+  border-color: #007bff; /* Cambié el color del borde al hacer focus o cuando es válido */
+}
+
 .form label .input:focus+span,
 .form label .input:valid+span {
   top: 26px;
   font-size: 0.6em;
   font-weight: 600;
+  color: #007bff; /* Cambié el color del texto al hacer focus o cuando es válido */
 }
 
-.form label .input:valid+span {
-  color: green;
-}
-
-
+/* Agregado estilo para el icono de ojo */
 .eyeButton {
   display: flex;
   border: none;
   background: transparent;
-  font-size: 12px;
+  font-size: 16px;
   cursor: pointer;
   position: absolute;
   right: 10px;
@@ -124,13 +131,12 @@
   transform: translateY(-50%);
 }
 
-
+/* Estilo para los mensajes de error */
 .error {
   color: red;
   font-size: 0.7em;
   margin-top: 2px;
   margin-left: 15px;
-
 }
 
 /* Estilo para el botón de inicio de sesión */
@@ -143,9 +149,9 @@
   cursor: pointer;
   font-size: 16px;
   margin-top: 10px;
+  transition: background-color 0.3s ease;
 }
 
 .loginButton:hover {
   background-color: #0056b3;
-  transition: background-color 0.3s ease;
 }
