@@ -30,7 +30,7 @@ const Assignament = () => {
 
             <div className={a.body}>
                 <div className={a.paginateContainer}>
-                    <h3>Cotizaciones pendiente de revisión</h3>
+                    <h3>Cotizaciones Pendientes de revisión</h3>
                 </div>
 
                 <div className={a.card}>

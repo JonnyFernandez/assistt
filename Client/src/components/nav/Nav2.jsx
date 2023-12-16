@@ -55,7 +55,7 @@ const Nav2 = ({ selector }) => {
                 {sidebarVisible && (
                     <div className={p.sidebar} onMouseOver={showSidebar} onMouseOut={hideSidebar}>
                         <button onClick={handleEditProfileClick}>Ver Perfil/Editar</button>
-                        <button onClick={handleSingOut}>Log Out</button>
+                        <button onClick={handleSingOut}>Cerrar Sesión</button>
                     </div>
                 )}
             </div>

@@ -1,0 +1,144 @@
+/* AboutUs.module.css */
+
+.aboutSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.sectionHeading {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #2d3748;
+}
+
+.teamMembers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centra las tarjetas horizontalmente */
+}
+
+.teamMemberCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px; /* Ajusta según sea necesario */
+  margin: 20px; /* Ajusta según sea necesario */
+  padding: 20px;
+  border: 1px solid #cbd5e0;
+  border-radius: 10px;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+}
+
+.teamMemberCard:hover {
+  transform: scale(1.01); /* Ajusta el valor según sea necesario */
+  transition: transform 0.6s ease; /* Ajusta la duración y la función de transición según sea necesario */
+}
+
+
+.teamMember {
+  text-align: center;
+}
+
+.memberPhoto {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.memberDetails {
+  margin-bottom: 10px;
+}
+
+.memberName {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: #2d3748;
+}
+
+.memberDescription {
+  color: #4a5568;
+}
+
+.memberLinks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+}
+
+.sectionText {
+  color: #4a5568;
+  line-height: 1.5;
+  text-align: center;
+  max-width: 800px; /* Ajusta según sea necesario */
+  margin: 0 auto; /* Centra el párrafo horizontalmente */
+  margin-bottom: 20px;
+}
+
+.techIcons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.techSection {
+  margin-top: 2rem;
+  
+}
+
+.techHeading {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #2d3748;
+}
+
+.techLinks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.techLink {
+  margin: 0 15px; /* Ajusta según sea necesario */
+  text-decoration: none;
+  color: hsl(227, 94%, 56%);
+  
+}
+
+.icon {
+  font-size: 3rem; /* Ajusta según sea necesario */
+  transition: transform 0.3s ease-in-out;
+}
+
+.icon:hover {
+  transform: scale(1.1);
+}
+
+.sectionHeadingT {
+  font-size: 1.8rem; /* Ajusta el tamaño de la letra según sea necesario */
+  margin-top: 0.2em; /* Ajusta el margen superior según sea necesario */
+  text-align: center;
+  color: #f5f6f9;
+  background-color: rgb(181, 179, 179);
+}
+
+
+
+
+  

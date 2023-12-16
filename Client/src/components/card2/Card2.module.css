@@ -36,10 +36,10 @@
 .decrece {
     margin-top: 12px;
     background-color: #41a0b3;
-    color: black;
+    color: rgb(247, 245, 245);
     border: none;
-    width: 26px;
-    height: 26px;
+    width: 30px;
+    height: 30px;
     border-radius: 5px;
 
 }
@@ -47,16 +47,15 @@
 .crece {
     margin-top: 12px;
     background-color: #41a0b3;
-    color: black;
+    color: rgb(241, 237, 237);
     border: none;
-    width: 26px;
-    height: 26px;
+    width: 30px;
+    height: 30px;
     border-radius: 5px;
 }
 
 .decrece:hover {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.577);
-    border: 1px solid black;
 }
 
 .crece:hover {
@@ -73,10 +72,6 @@
 }
 
 
-
-
-
-
 .input {
     width: 40px;
     margin: 0 15px;
@@ -85,17 +80,17 @@
 }
 
 .deleteCart {
-    background-color: red;
+    background-color: rgba(210, 24, 24, 0.801);
     color: white;
     border: none;
-    width: 26px;
-    height: 26px;
+    width: 30px;
+    height: 30px;
     border-radius: 5px;
 }
 
 .deleteCart:hover {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.577);
-    border: 1px solid black;
+    border: 1px solid rgb(241, 107, 107);
 }
 
 

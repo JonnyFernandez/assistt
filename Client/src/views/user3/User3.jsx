@@ -154,11 +154,6 @@ const User3 = () => {
                 Cotizaciones
               </button>
             </div>
-            <div>
-              <button className={style.button} onClick={showHistoryOnClick}>
-                Historial
-              </button>
-            </div>
           </div>
 
           <div className={style.info}>
