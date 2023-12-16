@@ -6,9 +6,10 @@ import App from './App.jsx';
 import { store } from './redux/store.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import AboutUs from './components/About/AboutUs.jsx';
 
 
-import { Landing, User1, User2, User3, Profile1, Profile2, Profile3, Cart, Orders, Fav, Login, Signup, OrderDetail, AllOrderHistory } from './views/index.jsx';
+import {  User1, User2, User3, Profile1, Profile2, Profile3, Cart, Orders, Fav, Login, Signup, AllOrderHistory } from './views/index.jsx';
 
 import ProtectedRoute from './authAll/ProtectedRoute.jsx';
 import { AuthProvider } from './authAll/auth/AuthProvider.jsx';
@@ -49,7 +50,6 @@ const router = createBrowserRouter([
         path: '/orders',
         element: <Orders />
       },
-
     ]
   },
   {
@@ -64,7 +64,6 @@ const router = createBrowserRouter([
         path: '/Profile2',
         element: <Profile2 />
       },
-
     ]
   },
   {
@@ -75,7 +74,6 @@ const router = createBrowserRouter([
         path: '/user3',
         element: <User3 />
       },
-
       {
         path: '/Profile3',
         element: <Profile3 />
@@ -92,31 +90,27 @@ const router = createBrowserRouter([
         path: '/orders',
         element: <Orders />
       },
-
       {
         path: '/usersList',
         element: <UserList />
       },
     ]
   },
-
-
+  // Nueva ruta para /about
+  {
+    path: '/aboutUs',
+    element: <AboutUs />
+  },
 ])
-
-
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store} >
-
     <React.StrictMode>
       <AuthProvider>
         <RouterProvider router={router} />
       </AuthProvider>
-
     </React.StrictMode>
-
   </Provider>
-
 )
 //-----------------------------------------------------------------------------------
 // import React from 'react'

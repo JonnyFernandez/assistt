@@ -153,7 +153,6 @@ const User3 = () => {
                 Cotizaciones
               </button>
             </div>
-
           </div>
 
           <div className={style.info}>

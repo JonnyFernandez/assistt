@@ -29,11 +29,15 @@ const CardOrderCtrl = ({ code, date, id, status, prods, review, dispatching }) =
 
     return (
         <div className={v.cardCtrl}>
-            <div className={v.header}>{dispatching ? '' : 'pendiente'}</div>
+            <div className={v.header}>{dispatching ? '' : 'Pendiente de Entrega'}</div>
             <div
                 className={currentStatus === 'Disponible' ? `${vt.card_green}` : `${v.card_blue}`}
                 onClick={() => handleCardClick(all)}
             >
+                <div className={v.title}>
+                 <h5>Pendiente de Entrega</h5>
+                </div>
+
                 <div>Fecha: {date ? date : "aaaa - mm - dd"} </div>
                 <div>Orden: {code ? code : 'AL-1111'} </div>
             </div>
