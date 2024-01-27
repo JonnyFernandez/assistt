@@ -20,6 +20,7 @@ const EditProfile = ({ onClose }) => {
 
     const [inputs, setInputs] = useState({ company: '', address: '', phone: '', image: '' });
     const [errors, setErrors] = useState({ company: '', address: '', phone: '' });
+    console.log(inputs.image);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
